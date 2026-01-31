@@ -1,142 +1,154 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>Meta Saudável - Emagreça em Casa</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-html{scroll-behavior:smooth}
-body{font-family:Arial,sans-serif;background:#f2f2f2;margin:0}
-.topbar{position:sticky;top:0;background:#fff;z-index:999;box-shadow:0 2px 10px rgba(0,0,0,.06)}
-.topbar-inner{max-width:980px;margin:auto;padding:12px 14px;display:flex;justify-content:space-between}
-.brand{font-weight:900;color:#27ae60}
-.nav a{margin-left:6px;padding:8px 10px;font-size:13px;font-weight:900;border-radius:10px;background:#f3fff7;color:#1f8a4a;text-decoration:none;border:1px solid rgba(39,174,96,.18)}
-.nav a:hover{background:#27ae60;color:#fff}
-.container{max-width:450px;margin:25px auto;background:#fff;padding:25px;border-radius:12px;box-shadow:0 0 15px rgba(0,0,0,.1)}
-h1,h2{color:#27ae60;text-align:center}
-.sub{text-align:center;color:#555;font-size:15px}
-img{width:250px;border-radius:10px;margin:14px auto;display:block}
-.offer-box{background:#f3fff7;border:1px solid rgba(39,174,96,.25);border-radius:12px;padding:14px;margin-bottom:14px;text-align:center}
-.timer{font-weight:900;font-size:18px;padding:10px;border:1px dashed #27ae60;border-radius:10px;display:inline-block;margin:8px}
-.prices{display:flex;justify-content:center;gap:10px}
-.old-price{text-decoration:line-through;color:#999}
-.new-price{font-size:26px;color:#1f8a4a;font-weight:900}
-.btn{display:block;background:#27ae60;color:#fff;padding:15px;margin-top:16px;border-radius:10px;font-weight:900;text-decoration:none;text-align:center}
-.btn:hover{background:#219150}
-.card{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:12px;padding:14px;margin-top:18px}
-.benefits{list-style:none;padding:0}
-.benefits li{margin:10px 0;display:flex;gap:10px}
-.check{background:#27ae60;color:#fff;width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:900}
-.section-title{color:#27ae60;font-weight:900;margin-top:10px}
-.comment{background:#f7f7f7;border-radius:10px;padding:10px;margin-top:10px}
-.float-wa{position:fixed;right:16px;bottom:16px;background:#27ae60;color:#fff;padding:12px 14px;border-radius:999px;font-weight:900;text-decoration:none}
-footer{text-align:center;font-size:12px;color:#888;margin-top:25px}
-</style>
+  <meta charset="UTF-8">
+  <title>Meta Saudável | Emagreça em Casa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body{
+      margin:0;
+      font-family:Arial, sans-serif;
+      background:#f2f2f2;
+    }
+
+    /* HEADER */
+    header{
+      background:#ffffff;
+      box-shadow:0 2px 10px rgba(0,0,0,0.06);
+      position:sticky;
+      top:0;
+      z-index:999;
+    }
+
+    .header-container{
+      max-width:980px;
+      margin:auto;
+      padding:14px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .logo{
+      font-weight:900;
+      font-size:18px;
+      color:#27ae60;
+    }
+
+    nav a{
+      margin-left:8px;
+      text-decoration:none;
+      font-weight:900;
+      font-size:13px;
+      padding:8px 10px;
+      border-radius:10px;
+      background:#f3fff7;
+      color:#1f8a4a;
+      border:1px solid rgba(39,174,96,0.18);
+    }
+
+    nav a:hover{
+      background:#27ae60;
+      color:#fff;
+    }
+
+    /* HERO */
+    .hero{
+      max-width:450px;
+      margin:40px auto;
+      background:#ffffff;
+      border-radius:14px;
+      padding:30px 25px;
+      box-shadow:0 0 15px rgba(0,0,0,0.1);
+      text-align:center;
+    }
+
+    .hero h1{
+      color:#27ae60;
+      margin-bottom:10px;
+    }
+
+    .hero p{
+      color:#555;
+      font-size:15px;
+      line-height:1.5;
+    }
+
+    .hero img{
+      width:240px;
+      margin:20px auto;
+      border-radius:12px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .btn{
+      display:block;
+      background:#27ae60;
+      color:#fff;
+      padding:15px;
+      margin-top:20px;
+      border-radius:10px;
+      font-weight:900;
+      text-decoration:none;
+    }
+
+    .btn:hover{
+      background:#219150;
+    }
+
+    /* FOOTER */
+    footer{
+      text-align:center;
+      font-size:12px;
+      color:#888;
+      margin:30px 0;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="topbar">
-  <div class="topbar-inner">
-    <div class="brand">Meta Saudável</div>
-    <div class="nav">
-      <a href="#ebooks">Ebooks</a>
-      <a href="#produtos">Produtos</a>
-      <a href="#videos">Vídeos</a>
-      <a href="#curiosidades">Curiosidades</a>
-      <a href="#comentarios">Comentários</a>
-      <a href="#contato">Contato</a>
-    </div>
+<header>
+  <div class="header-container">
+    <div class="logo">Meta Saudável</div>
+    <nav>
+      <a href="ebooks.html">Ebooks</a>
+      <a href="produtos.html">Produtos</a>
+      <a href="videos.html">Vídeos</a>
+      <a href="curiosidades.html">Curiosidades</a>
+      <a href="comentarios.html">Comentários</a>
+      <a href="contato.html">Contato</a>
+    </nav>
   </div>
-</div>
+</header>
 
-<a class="float-wa" href="https://wa.me/5511958749421" target="_blank">📲 WhatsApp</a>
+<main>
+  <section class="hero">
+    <h1>Emagreça em Casa</h1>
+    <p>
+      O <strong>Meta Saudável</strong> é um projeto criado para ajudar pessoas
+      a emagrecerem com saúde, sem dietas malucas e sem academia.
+    </p>
 
-<!-- EBOOKS -->
-<div class="container" id="ebooks">
-<h1>Meta Saudável</h1>
-<p class="sub">Emagreça em casa sem dietas malucas</p>
+    <img src="capa_meta_saudavel.jpg" alt="Meta Saudável Ebook">
 
-<div class="offer-box">
-  <div>Oferta termina em</div>
-  <div class="timer" id="countdown">15:00</div>
-  <div class="prices">
-    <span class="old-price">R$97,00</span>
-    <span class="new-price">R$47,00</span>
-  </div>
-</div>
+    <p>
+      Conteúdos práticos, ebooks e recomendações para quem quer
+      mudar o corpo e a rotina de forma simples e possível.
+    </p>
 
-<img src="capa_meta_saudavel.jpg">
+    <a href="ebooks.html" class="btn">
+      👉 Ver Ebooks Disponíveis
+    </a>
+  </section>
+</main>
 
-<ul class="benefits">
-<li><span class="check">✓</span>Treinos simples em casa</li>
-<li><span class="check">✓</span>Cardápio prático</li>
-<li><span class="check">✓</span>Ideal para iniciantes</li>
-</ul>
-
-<a href="https://pay.cakto.com.br/wzbj2wo_749364" class="btn" target="_blank">Comprar Meta Saudável</a>
-
-<div class="card">
-<h2>Ebook Recomendado</h2>
-<img src="Cinturinha_Fina.png" style="max-width:280px">
-<ul class="benefits">
-<li><span class="check">✓</span>Foco em cintura</li>
-<li><span class="check">✓</span>Método visual</li>
-<li><span class="check">✓</span>Conteúdo direto</li>
-</ul>
-<a href="https://pay.cakto.com.br/abbzsqj_416048?affiliate=qFsAcyY8" class="btn" target="_blank">
-Ver Ebook Recomendado
-</a>
-</div>
-
-<footer>© 2026 Meta Saudável</footer>
-</div>
-
-<!-- PRODUTOS -->
-<div class="container" id="produtos">
-<h2>Produtos</h2>
-<p>Em breve recomendações úteis para sua rotina.</p>
-</div>
-
-<!-- VIDEOS -->
-<div class="container" id="videos">
-<h2>Vídeos</h2>
-<p>Conteúdos rápidos para te ajudar.</p>
-</div>
-
-<!-- CURIOSIDADES -->
-<div class="container" id="curiosidades">
-<h2>Curiosidades</h2>
-<ul>
-<li>Água ajuda na saciedade</li>
-<li>Consistência vence motivação</li>
-<li>Sono influencia no emagrecimento</li>
-</ul>
-</div>
-
-<!-- COMENTARIOS -->
-<div class="container" id="comentarios">
-<h2>Comentários</h2>
-<div class="comment">Área de comentários em breve</div>
-</div>
-
-<!-- CONTATO -->
-<div class="container" id="contato">
-<h2>Contato</h2>
-<a href="https://wa.me/5511958749421" class="btn" target="_blank">Falar no WhatsApp</a>
-<footer>© 2026 Meta Saudável</footer>
-</div>
-
-<script>
-const end=Date.now()+15*60000;
-setInterval(()=>{
-const diff=end-Date.now();
-if(diff<=0)return;
-const m=String(Math.floor(diff/60000)).padStart(2,"0");
-const s=String(Math.floor(diff%60000/1000)).padStart(2,"0");
-document.getElementById("countdown").innerText=`${m}:${s}`;
-},1000);
-</script>
+<footer>
+  © 2026 Meta Saudável • Todos os direitos reservados
+</footer>
 
 </body>
 </html>
