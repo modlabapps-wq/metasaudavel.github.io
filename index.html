@@ -40,14 +40,12 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
-    /* BLOCO OFERTA */
     .offer-box{
       margin: 18px 0 8px;
       padding: 14px 12px;
       border-radius: 12px;
       background: #f3fff7;
       border: 1px solid rgba(39,174,96,0.25);
-      text-align: center;
     }
 
     .offer-title{
@@ -56,12 +54,10 @@
       margin-bottom: 6px;
       font-size: 14px;
       text-transform: uppercase;
-      letter-spacing: 0.6px;
     }
 
     .timer{
-      display: inline-block;
-      margin: 6px 0 10px;
+      margin: 6px auto 10px;
       padding: 10px 12px;
       border-radius: 10px;
       background: #ffffff;
@@ -69,16 +65,14 @@
       font-weight: 800;
       font-size: 18px;
       color: #0f5f32;
-      min-width: 160px;
+      width: fit-content;
     }
 
     .prices{
-      margin-top: 8px;
       display: flex;
       justify-content: center;
-      align-items: baseline;
       gap: 10px;
-      flex-wrap: wrap;
+      align-items: baseline;
     }
 
     .old-price{
@@ -95,14 +89,14 @@
     }
 
     .badge{
-      display: inline-block;
       margin-top: 8px;
       padding: 6px 10px;
-      border-radius: 999px;
+      border-radius: 20px;
       background: #27ae60;
       color: #fff;
       font-weight: 800;
       font-size: 12px;
+      display: inline-block;
     }
 
     .btn {
@@ -119,13 +113,6 @@
 
     .btn:hover {
       background: #219150;
-    }
-
-    .depoimento {
-      margin-top: 25px;
-      font-style: italic;
-      color: #555;
-      font-size: 14px;
     }
 
     .whats {
@@ -157,16 +144,12 @@
     Emagreça em casa sem academia, sem dietas malucas e sem remédios.
   </p>
 
-  <!-- IMAGEM DO EBOOK -->
   <img src="capa_meta_saudavel.jpg" alt="Capa do Ebook Meta Saudável">
 
-  <p>
-    <strong>
-      Transforme seu corpo em apenas 30 dias com um método simples e comprovado.
-    </strong>
-  </p>
+  <p><strong>
+    Transforme seu corpo em apenas 30 dias com um método simples e comprovado.
+  </strong></p>
 
-  <!-- OFERTA + TEMPORIZADOR + PREÇO -->
   <div class="offer-box">
     <div class="offer-title">Oferta termina em</div>
     <div class="timer" id="countdown">15:00</div>
@@ -179,25 +162,13 @@
     <div class="badge">Promoção por tempo limitado</div>
   </div>
 
-  <!-- BOTÃO DE COMPRA -->
-  <a href="https://pay.kiwify.com.br/mQMDfRq"
-     class="btn"
-     target="_blank">
+  <a href="https://pay.kiwify.com.br/mQMDfRq" class="btn" target="_blank">
     👉 Comprar Agora
   </a>
 
-  <!-- DEPOIMENTO -->
-  <div class="depoimento">
-    “Já perdi 6kg em 1 mês seguindo esse ebook. Simples, prático e funciona!”
-    <br>— Juliana M.
-  </div>
-
-  <!-- WHATSAPP -->
   <div class="whats">
     Dúvidas? Fale comigo no WhatsApp<br>
-    📲 <a href="https://wa.me/5511958749421" target="_blank">
-      Clique aqui
-    </a>
+    📲 <a href="https://wa.me/5511958749421" target="_blank">Clique aqui</a>
   </div>
 
   <footer>
@@ -207,49 +178,35 @@
 </div>
 
 <script>
-  // ======= TEMPORIZADOR (15 minutos por visitante) =======
-  // Se quiser mudar: altere OFFER_MINUTES para 60 (1h), 1440 (24h), etc.
   const OFFER_MINUTES = 15;
+  const key = "metaSaudavelOfferEnd";
 
-  function startOfferCountdown() {
-    const key = "metaSaudavelOfferEnd";
+  function startCountdown() {
+    let end = localStorage.getItem(key);
     const now = Date.now();
 
-    let end = parseInt(localStorage.getItem(key), 10);
-
-    // Se não existir ou expirou, cria um novo prazo
-    if (!end || isNaN(end) || end <= now) {
-      end = now + OFFER_MINUTES * 60 * 1000;
-      localStorage.setItem(key, String(end));
+    if (!end || end <= now) {
+      end = now + OFFER_MINUTES * 60000;
+      localStorage.setItem(key, end);
     }
 
     const el = document.getElementById("countdown");
 
     function tick() {
       const diff = end - Date.now();
-
       if (diff <= 0) {
         el.textContent = "00:00";
-        // Se quiser que reinicie sozinho ao acabar, descomente abaixo:
-        // localStorage.removeItem(key);
         return;
       }
-
-      const totalSeconds = Math.floor(diff / 1000);
-      const minutes = Math.floor(totalSeconds / 60);
-      const seconds = totalSeconds % 60;
-
-      const mm = String(minutes).padStart(2, "0");
-      const ss = String(seconds).padStart(2, "0");
-      el.textContent = `${mm}:${ss}`;
-
-      requestAnimationFrame(() => setTimeout(tick, 250));
+      const m = String(Math.floor(diff / 60000)).padStart(2,"0");
+      const s = String(Math.floor((diff % 60000) / 1000)).padStart(2,"0");
+      el.textContent = `${m}:${s}`;
+      setTimeout(tick, 1000);
     }
-
     tick();
   }
 
-  startOfferCountdown();
+  startCountdown();
 </script>
 
 </body>
