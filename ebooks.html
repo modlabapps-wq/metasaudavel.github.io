@@ -1,1 +1,411 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ebooks | Meta Saudável</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body{
+      margin:0;
+      font-family:Arial, sans-serif;
+      background:#f2f2f2;
+    }
+
+    /* HEADER */
+    header{
+      background:#ffffff;
+      box-shadow:0 2px 10px rgba(0,0,0,0.06);
+      position:sticky;
+      top:0;
+      z-index:999;
+    }
+    .header-container{
+      max-width:980px;
+      margin:auto;
+      padding:14px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+    .logo{
+      font-weight:900;
+      font-size:18px;
+      color:#27ae60;
+      white-space:nowrap;
+    }
+    nav a{
+      margin-left:8px;
+      text-decoration:none;
+      font-weight:900;
+      font-size:13px;
+      padding:8px 10px;
+      border-radius:10px;
+      background:#f3fff7;
+      color:#1f8a4a;
+      border:1px solid rgba(39,174,96,0.18);
+    }
+    nav a:hover{
+      background:#27ae60;
+      color:#fff;
+    }
+
+    /* LAYOUT */
+    .wrap{
+      max-width:980px;
+      margin:0 auto;
+      padding:18px 14px 40px;
+    }
+
+    .page-title{
+      max-width:450px;
+      margin:18px auto 0;
+      text-align:center;
+      color:#27ae60;
+      font-weight:900;
+      font-size:22px;
+    }
+    .page-sub{
+      max-width:450px;
+      margin:10px auto 22px;
+      text-align:center;
+      color:#555;
+      font-size:14px;
+      line-height:1.45;
+    }
+
+    .container{
+      max-width:450px;
+      margin:0 auto 18px;
+      background:#fff;
+      padding:22px;
+      border-radius:14px;
+      box-shadow:0 0 15px rgba(0,0,0,0.1);
+      text-align:center;
+    }
+
+    /* OFFER */
+    .offer-box{
+      margin:0 0 14px;
+      padding:14px 12px;
+      border-radius:12px;
+      background:#f3fff7;
+      border:1px solid rgba(39,174,96,0.25);
+    }
+    .offer-title{
+      font-weight:900;
+      color:#1f8a4a;
+      margin-bottom:8px;
+      font-size:13px;
+      text-transform:uppercase;
+      letter-spacing:0.7px;
+    }
+    .timer{
+      margin:6px auto 10px;
+      padding:10px 12px;
+      border-radius:10px;
+      background:#fff;
+      border:1px dashed rgba(39,174,96,0.6);
+      font-weight:900;
+      font-size:18px;
+      color:#0f5f32;
+      width:fit-content;
+      min-width:160px;
+    }
+    .prices{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      align-items:baseline;
+      flex-wrap:wrap;
+      margin-top:4px;
+    }
+    .old-price{
+      color:#999;
+      text-decoration:line-through;
+      font-weight:800;
+      font-size:16px;
+    }
+    .new-price{
+      color:#1f8a4a;
+      font-weight:900;
+      font-size:26px;
+    }
+    .badge{
+      margin-top:10px;
+      padding:6px 10px;
+      border-radius:20px;
+      background:#27ae60;
+      color:#fff;
+      font-weight:900;
+      font-size:12px;
+      display:inline-block;
+    }
+
+    /* IMAGES */
+    .cover{
+      width:250px;
+      border-radius:12px;
+      margin:14px auto 10px;
+      display:block;
+      box-shadow:0 4px 10px rgba(0,0,0,0.2);
+    }
+    .cover-aff{
+      width:100%;
+      max-width:280px;
+      border-radius:12px;
+      margin:12px auto;
+      display:block;
+      box-shadow:0 4px 10px rgba(0,0,0,0.18);
+    }
+
+    /* TEXT */
+    .headline{
+      margin:10px 0 0;
+      font-weight:900;
+      color:#222;
+      font-size:15px;
+      line-height:1.35;
+    }
+    .muted{
+      margin:10px 0 0;
+      color:#666;
+      font-size:14px;
+      line-height:1.45;
+      text-align:left;
+    }
+
+    /* BENEFITS */
+    .benefits{
+      margin:14px 0 0;
+      text-align:left;
+      padding:0;
+      list-style:none;
+    }
+    .benefits li{
+      margin:10px 0;
+      font-size:14px;
+      color:#444;
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      line-height:1.35;
+    }
+    .check{
+      width:22px;
+      height:22px;
+      border-radius:6px;
+      background:#27ae60;
+      color:#fff;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:900;
+      flex:0 0 22px;
+      margin-top:1px;
+    }
+
+    /* TRUST */
+    .trust{
+      margin-top:14px;
+      background:#f7f7f7;
+      border:1px solid rgba(0,0,0,0.08);
+      border-radius:12px;
+      padding:12px;
+      text-align:left;
+      font-size:13px;
+      color:#555;
+      line-height:1.35;
+    }
+
+    /* BUTTONS */
+    .btn{
+      display:block;
+      background:#27ae60;
+      color:#fff;
+      padding:15px;
+      text-decoration:none;
+      border-radius:10px;
+      font-size:18px;
+      margin-top:16px;
+      font-weight:900;
+      text-align:center;
+    }
+    .btn:hover{ background:#219150; }
+
+    .btn-secondary{
+      display:block;
+      background:#ffffff;
+      color:#1f8a4a;
+      padding:12px;
+      text-decoration:none;
+      border-radius:10px;
+      font-size:15px;
+      margin-top:10px;
+      font-weight:900;
+      border:1px solid rgba(39,174,96,0.25);
+      text-align:center;
+    }
+    .btn-secondary:hover{ background:#f3fff7; }
+
+    /* DIVIDER */
+    .divider{
+      height:1px;
+      background:rgba(0,0,0,0.08);
+      margin:18px 0;
+    }
+
+    /* FOOTER */
+    footer{
+      text-align:center;
+      font-size:12px;
+      color:#888;
+      margin:18px 0 0;
+    }
+
+    /* FLOAT WA */
+    .float-wa{
+      position:fixed;
+      right:16px;
+      bottom:16px;
+      z-index:9999;
+      text-decoration:none;
+      background:#27ae60;
+      color:#fff;
+      padding:12px 14px;
+      border-radius:999px;
+      font-weight:900;
+      box-shadow:0 10px 25px rgba(0,0,0,0.18);
+      border:1px solid rgba(255,255,255,0.25);
+      font-size:14px;
+    }
+    .float-wa:hover{ background:#219150; }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="header-container">
+      <div class="logo">Meta Saudável</div>
+      <nav>
+        <a href="index.html">Início</a>
+        <a href="ebooks.html">Ebooks</a>
+        <a href="produtos.html">Produtos</a>
+        <a href="videos.html">Vídeos</a>
+        <a href="curiosidades.html">Curiosidades</a>
+        <a href="comentarios.html">Comentários</a>
+        <a href="contato.html">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <a class="float-wa" href="https://wa.me/5511958749421" target="_blank" aria-label="WhatsApp">
+    📲 WhatsApp
+  </a>
+
+  <main class="wrap">
+    <div class="page-title">Ebooks</div>
+    <div class="page-sub">
+      Aqui você encontra nossos ebooks e recomendações para emagrecer com saúde, em casa.
+    </div>
+
+    <!-- SEU EBOOK (PRINCIPAL) -->
+    <section class="container" aria-label="Ebook Meta Saudável">
+      <div class="offer-box">
+        <div class="offer-title">Oferta termina em</div>
+        <div class="timer" id="countdown">15:00</div>
+
+        <div class="prices">
+          <span class="old-price">R$ 97,00</span>
+          <span class="new-price">R$ 47,00</span>
+        </div>
+
+        <div class="badge">Promoção por tempo limitado</div>
+      </div>
+
+      <img class="cover" src="capa_meta_saudavel.jpg" alt="Capa do Ebook Meta Saudável" loading="lazy">
+
+      <p class="headline">Como Emagrecer em Casa (Meta Saudável)</p>
+
+      <ul class="benefits">
+        <li><span class="check">✓</span> Rotina prática para começar do zero, mesmo com pouco tempo.</li>
+        <li><span class="check">✓</span> Alimentação inteligente + cardápio simples de 7 dias.</li>
+        <li><span class="check">✓</span> Treinos em casa (HIIT e força) com sugestão de rotina semanal.</li>
+        <li><span class="check">✓</span> Sono e hábitos para manter resultados no longo prazo.</li>
+      </ul>
+
+      <div class="trust">
+        ✅ Compra segura • ✅ Acesso digital • ✅ Conteúdo direto e prático<br>
+        Dúvidas? Fale comigo no WhatsApp.
+      </div>
+
+      <a class="btn" href="https://pay.cakto.com.br/wzbj2wo_749364" target="_blank">
+        👉 Comprar Agora
+      </a>
+
+      <a class="btn-secondary" href="#cinturinha-fina">Ver outra recomendação</a>
+
+      <footer>© 2026 Meta Saudável</footer>
+    </section>
+
+    <!-- RECOMENDAÇÃO (CINTURINHA FINA) -->
+    <section class="container" id="cinturinha-fina" aria-label="Ebook Cinturinha Fina">
+      <p class="headline">Cinturinha Fina</p>
+
+      <img class="cover-aff" src="Cinturinha_Fina.png" alt="Capa do Ebook Cinturinha Fina" loading="lazy">
+
+      <ul class="benefits">
+        <li><span class="check">✓</span> Foco em cintura e definição.</li>
+        <li><span class="check">✓</span> Conteúdo prático para fazer em casa.</li>
+        <li><span class="check">✓</span> Ideal para quem gosta de método direto e visual.</li>
+      </ul>
+
+      <a class="btn" href="https://pay.cakto.com.br/abbzsqj_416048?affiliate=qFsAcyY8" target="_blank">
+        👉 Ver Oferta
+      </a>
+
+      <a class="btn-secondary" href="index.html">Voltar ao início</a>
+
+      <footer>© 2026 Meta Saudável</footer>
+    </section>
+
+  </main>
+
+  <script>
+    // ======= TEMPORIZADOR (15 minutos por visitante) =======
+    const OFFER_MINUTES = 15;
+    const offerKey = "metaSaudavelOfferEnd";
+
+    function startCountdown() {
+      let end = parseInt(localStorage.getItem(offerKey), 10);
+      const now = Date.now();
+
+      if (!end || isNaN(end) || end <= now) {
+        end = now + OFFER_MINUTES * 60000;
+        localStorage.setItem(offerKey, String(end));
+      }
+
+      const el = document.getElementById("countdown");
+
+      function tick() {
+        const diff = end - Date.now();
+        if (diff <= 0) {
+          el.textContent = "00:00";
+          return;
+        }
+        const m = String(Math.floor(diff / 60000)).padStart(2, "0");
+        const s = String(Math.floor((diff % 60000) / 1000)).padStart(2, "0");
+        el.textContent = `${m}:${s}`;
+        setTimeout(tick, 1000);
+      }
+      tick();
+    }
+
+    startCountdown();
+  </script>
+</body>
+</html>
 
