@@ -1,188 +1,37 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Meta Saudável - Emagreça em Casa</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: Arial, sans-serif;
-      background:#f2f2f2;
-      margin:0;
-      padding:0;
-    }
-
-    /* HEADER */
-    .topbar {
-      position: sticky;
-      top:0;
-      z-index:999;
-      background:#fff;
-      box-shadow:0 2px 10px rgba(0,0,0,.06);
-      border-bottom:1px solid rgba(0,0,0,.08);
-    }
-    .topbar-inner {
-      max-width:980px;
-      margin:auto;
-      padding:12px 14px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:12px;
-    }
-    .brand {
-      font-weight:900;
-      color:#27ae60;
-    }
-    .nav a {
-      margin-left:6px;
-      padding:8px 10px;
-      font-size:13px;
-      font-weight:900;
-      border-radius:10px;
-      background:#f3fff7;
-      color:#1f8a4a;
-      text-decoration:none;
-      border:1px solid rgba(39,174,96,.18);
-    }
-    .nav a:hover { background:#27ae60; color:#fff; }
-
-    .container {
-      max-width:450px;
-      margin:25px auto;
-      background:#fff;
-      padding:25px;
-      border-radius:12px;
-      box-shadow:0 0 15px rgba(0,0,0,.1);
-      text-align:center;
-    }
-
-    h1 { color:#27ae60; }
-    .sub { color:#555; font-size:15px; }
-
-    img {
-      width:250px;
-      border-radius:10px;
-      margin:14px 0;
-      box-shadow:0 4px 10px rgba(0,0,0,.2);
-    }
-
-    /* OFERTA */
-    .offer-box {
-      background:#f3fff7;
-      border:1px solid rgba(39,174,96,.25);
-      border-radius:12px;
-      padding:14px;
-      margin-bottom:14px;
-    }
-    .timer {
-      font-weight:900;
-      font-size:18px;
-      padding:10px;
-      border:1px dashed #27ae60;
-      border-radius:10px;
-      margin:10px auto;
-      width:fit-content;
-    }
-    .prices {
-      display:flex;
-      justify-content:center;
-      gap:10px;
-      align-items:baseline;
-    }
-    .old-price { text-decoration:line-through; color:#999; }
-    .new-price { font-size:26px; color:#1f8a4a; font-weight:900; }
-
-    .btn {
-      display:block;
-      background:#27ae60;
-      color:#fff;
-      padding:15px;
-      margin-top:16px;
-      border-radius:10px;
-      font-weight:900;
-      text-decoration:none;
-    }
-    .btn:hover { background:#219150; }
-
-    .btn-secondary {
-      display:block;
-      margin-top:10px;
-      padding:12px;
-      border-radius:10px;
-      background:#fff;
-      border:1px solid rgba(39,174,96,.25);
-      color:#1f8a4a;
-      font-weight:900;
-      text-decoration:none;
-    }
-
-    .benefits {
-      list-style:none;
-      padding:0;
-      text-align:left;
-    }
-    .benefits li {
-      margin:10px 0;
-      display:flex;
-      gap:10px;
-      align-items:flex-start;
-      font-size:14px;
-    }
-    .check {
-      background:#27ae60;
-      color:#fff;
-      font-weight:900;
-      width:22px;
-      height:22px;
-      border-radius:6px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
-
-    .card {
-      background:#fff;
-      border:1px solid rgba(0,0,0,.08);
-      border-radius:12px;
-      padding:14px;
-      text-align:left;
-      margin-top:18px;
-    }
-
-    .tag {
-      display:inline-block;
-      margin-top:8px;
-      padding:6px 10px;
-      border-radius:999px;
-      background:#f3fff7;
-      border:1px solid rgba(39,174,96,.22);
-      color:#1f8a4a;
-      font-weight:900;
-      font-size:12px;
-    }
-
-    footer {
-      margin-top:26px;
-      font-size:12px;
-      color:#888;
-    }
-
-    /* WHATS FLUTUANTE */
-    .float-wa {
-      position:fixed;
-      right:16px;
-      bottom:16px;
-      background:#27ae60;
-      color:#fff;
-      padding:12px 14px;
-      border-radius:999px;
-      font-weight:900;
-      text-decoration:none;
-      box-shadow:0 10px 25px rgba(0,0,0,.18);
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Meta Saudável - Emagreça em Casa</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+html{scroll-behavior:smooth}
+body{font-family:Arial,sans-serif;background:#f2f2f2;margin:0}
+.topbar{position:sticky;top:0;background:#fff;z-index:999;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+.topbar-inner{max-width:980px;margin:auto;padding:12px 14px;display:flex;justify-content:space-between}
+.brand{font-weight:900;color:#27ae60}
+.nav a{margin-left:6px;padding:8px 10px;font-size:13px;font-weight:900;border-radius:10px;background:#f3fff7;color:#1f8a4a;text-decoration:none;border:1px solid rgba(39,174,96,.18)}
+.nav a:hover{background:#27ae60;color:#fff}
+.container{max-width:450px;margin:25px auto;background:#fff;padding:25px;border-radius:12px;box-shadow:0 0 15px rgba(0,0,0,.1)}
+h1,h2{color:#27ae60;text-align:center}
+.sub{text-align:center;color:#555;font-size:15px}
+img{width:250px;border-radius:10px;margin:14px auto;display:block}
+.offer-box{background:#f3fff7;border:1px solid rgba(39,174,96,.25);border-radius:12px;padding:14px;margin-bottom:14px;text-align:center}
+.timer{font-weight:900;font-size:18px;padding:10px;border:1px dashed #27ae60;border-radius:10px;display:inline-block;margin:8px}
+.prices{display:flex;justify-content:center;gap:10px}
+.old-price{text-decoration:line-through;color:#999}
+.new-price{font-size:26px;color:#1f8a4a;font-weight:900}
+.btn{display:block;background:#27ae60;color:#fff;padding:15px;margin-top:16px;border-radius:10px;font-weight:900;text-decoration:none;text-align:center}
+.btn:hover{background:#219150}
+.card{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:12px;padding:14px;margin-top:18px}
+.benefits{list-style:none;padding:0}
+.benefits li{margin:10px 0;display:flex;gap:10px}
+.check{background:#27ae60;color:#fff;width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:900}
+.section-title{color:#27ae60;font-weight:900;margin-top:10px}
+.comment{background:#f7f7f7;border-radius:10px;padding:10px;margin-top:10px}
+.float-wa{position:fixed;right:16px;bottom:16px;background:#27ae60;color:#fff;padding:12px 14px;border-radius:999px;font-weight:900;text-decoration:none}
+footer{text-align:center;font-size:12px;color:#888;margin-top:25px}
+</style>
 </head>
 
 <body>
@@ -192,6 +41,10 @@
     <div class="brand">Meta Saudável</div>
     <div class="nav">
       <a href="#ebooks">Ebooks</a>
+      <a href="#produtos">Produtos</a>
+      <a href="#videos">Vídeos</a>
+      <a href="#curiosidades">Curiosidades</a>
+      <a href="#comentarios">Comentários</a>
       <a href="#contato">Contato</a>
     </div>
   </div>
@@ -201,71 +54,88 @@
 
 <!-- EBOOKS -->
 <div class="container" id="ebooks">
-  <h1>Meta Saudável</h1>
-  <p class="sub">Emagreça em casa sem academia e sem dietas malucas.</p>
+<h1>Meta Saudável</h1>
+<p class="sub">Emagreça em casa sem dietas malucas</p>
 
-  <!-- OFERTA -->
-  <div class="offer-box">
-    <div>Oferta termina em</div>
-    <div class="timer" id="countdown">15:00</div>
-    <div class="prices">
-      <span class="old-price">R$ 97,00</span>
-      <span class="new-price">R$ 47,00</span>
-    </div>
+<div class="offer-box">
+  <div>Oferta termina em</div>
+  <div class="timer" id="countdown">15:00</div>
+  <div class="prices">
+    <span class="old-price">R$97,00</span>
+    <span class="new-price">R$47,00</span>
   </div>
+</div>
 
-  <!-- SEU EBOOK -->
-  <img src="capa_meta_saudavel.jpg" alt="Meta Saudável">
+<img src="capa_meta_saudavel.jpg">
 
-  <ul class="benefits">
-    <li><span class="check">✓</span> Treinos simples para fazer em casa</li>
-    <li><span class="check">✓</span> Cardápio prático e acessível</li>
-    <li><span class="check">✓</span> Ideal para iniciantes</li>
-  </ul>
+<ul class="benefits">
+<li><span class="check">✓</span>Treinos simples em casa</li>
+<li><span class="check">✓</span>Cardápio prático</li>
+<li><span class="check">✓</span>Ideal para iniciantes</li>
+</ul>
 
-  <a href="https://pay.cakto.com.br/wzbj2wo_749364" class="btn" target="_blank">
-    👉 Comprar Meta Saudável
-  </a>
+<a href="https://pay.cakto.com.br/wzbj2wo_749364" class="btn" target="_blank">Comprar Meta Saudável</a>
 
-  <!-- EBOOK AFILIADO -->
-  <div class="card">
-    <strong>Ebook Recomendado: Cinturinha Fina</strong>
-    <p>Produto parceiro. Ao comprar pelo link abaixo você me ajuda com uma comissão.</p>
+<div class="card">
+<h2>Ebook Recomendado</h2>
+<img src="Cinturinha_Fina.png" style="max-width:280px">
+<ul class="benefits">
+<li><span class="check">✓</span>Foco em cintura</li>
+<li><span class="check">✓</span>Método visual</li>
+<li><span class="check">✓</span>Conteúdo direto</li>
+</ul>
+<a href="https://pay.cakto.com.br/abbzsqj_416048?affiliate=qFsAcyY8" class="btn" target="_blank">
+Ver Ebook Recomendado
+</a>
+</div>
 
-    <img src="Cinturinha_Fina.png" alt="Cinturinha Fina" style="width:100%;max-width:280px;margin:12px auto;display:block;">
+<footer>© 2026 Meta Saudável</footer>
+</div>
 
-    <span class="tag">⭐ Produto Afiliado</span>
+<!-- PRODUTOS -->
+<div class="container" id="produtos">
+<h2>Produtos</h2>
+<p>Em breve recomendações úteis para sua rotina.</p>
+</div>
 
-    <ul class="benefits">
-      <li><span class="check">✓</span> Foco em redução de cintura</li>
-      <li><span class="check">✓</span> Método prático para fazer em casa</li>
-      <li><span class="check">✓</span> Conteúdo visual e direto</li>
-    </ul>
+<!-- VIDEOS -->
+<div class="container" id="videos">
+<h2>Vídeos</h2>
+<p>Conteúdos rápidos para te ajudar.</p>
+</div>
 
-    <a href="https://pay.cakto.com.br/abbzsqj_416048?affiliate=qFsAcyY8" class="btn" target="_blank">
-      👉 Ver Oferta Cinturinha Fina
-    </a>
-  </div>
+<!-- CURIOSIDADES -->
+<div class="container" id="curiosidades">
+<h2>Curiosidades</h2>
+<ul>
+<li>Água ajuda na saciedade</li>
+<li>Consistência vence motivação</li>
+<li>Sono influencia no emagrecimento</li>
+</ul>
+</div>
 
-  <footer>© 2026 Meta Saudável • Todos os direitos reservados</footer>
+<!-- COMENTARIOS -->
+<div class="container" id="comentarios">
+<h2>Comentários</h2>
+<div class="comment">Área de comentários em breve</div>
+</div>
+
+<!-- CONTATO -->
+<div class="container" id="contato">
+<h2>Contato</h2>
+<a href="https://wa.me/5511958749421" class="btn" target="_blank">Falar no WhatsApp</a>
+<footer>© 2026 Meta Saudável</footer>
 </div>
 
 <script>
-  const OFFER_MINUTES = 15;
-  const key = "offerEnd";
-  let end = localStorage.getItem(key);
-  if (!end || end < Date.now()) {
-    end = Date.now() + OFFER_MINUTES * 60000;
-    localStorage.setItem(key, end);
-  }
-  const el = document.getElementById("countdown");
-  setInterval(() => {
-    const diff = end - Date.now();
-    if (diff <= 0) return el.textContent = "00:00";
-    const m = String(Math.floor(diff / 60000)).padStart(2, "0");
-    const s = String(Math.floor(diff % 60000 / 1000)).padStart(2, "0");
-    el.textContent = `${m}:${s}`;
-  }, 1000);
+const end=Date.now()+15*60000;
+setInterval(()=>{
+const diff=end-Date.now();
+if(diff<=0)return;
+const m=String(Math.floor(diff/60000)).padStart(2,"0");
+const s=String(Math.floor(diff%60000/1000)).padStart(2,"0");
+document.getElementById("countdown").innerText=`${m}:${s}`;
+},1000);
 </script>
 
 </body>
