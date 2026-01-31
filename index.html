@@ -75,7 +75,7 @@ nav a:hover{ background:var(--green); color:#fff; }
   padding:22px 14px 60px;
 }
 
-/* HERO */
+/* HERO (SEM BOTÕES) */
 .hero{
   background:var(--card);
   border-radius:16px;
@@ -94,34 +94,6 @@ nav a:hover{ background:var(--green); color:#fff; }
   font-size:14px;
   line-height:1.5;
 }
-.hero-actions{
-  display:flex;
-  gap:10px;
-  justify-content:center;
-  flex-wrap:wrap;
-  margin-top:16px;
-}
-.btn{
-  display:inline-block;
-  background:var(--green);
-  color:#fff;
-  padding:13px 16px;
-  border-radius:12px;
-  text-decoration:none;
-  font-weight:900;
-}
-.btn:hover{ background:var(--green2); }
-.btn-ghost{
-  display:inline-block;
-  background:#fff;
-  color:#1f8a4a;
-  padding:12px 16px;
-  border-radius:12px;
-  text-decoration:none;
-  font-weight:900;
-  border:1px solid rgba(39,174,96,0.25);
-}
-.btn-ghost:hover{ background:#f3fff7; }
 
 /* SECTION */
 .section{
@@ -162,24 +134,25 @@ nav a:hover{ background:var(--green); color:#fff; }
   box-shadow:0 0 18px rgba(0,0,0,0.08);
 }
 
-/* SLIDER (SEM CORTAR IMAGEM) */
+/* SLIDER */
 .slider{
   position:relative;
-  height:520px;              /* AUMENTADO (antes 340) */
+  height:520px;
   border:1px solid var(--border);
   border-radius:16px;
   overflow:hidden;
   background:#fff;
 }
 @media (max-width: 520px){
-  .slider{ height:480px; }   /* Ajuste fino no celular */
+  .slider{ height:480px; }
 }
 
 .slide{
   position:absolute;
   inset:0;
   opacity:0;
-  transition: opacity .55s ease;
+  transition: opacity .55s ease, transform .55s ease;
+  transform: translateY(6px);
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -187,13 +160,16 @@ nav a:hover{ background:var(--green); color:#fff; }
   padding:18px;
   text-align:center;
 }
-.slide.active{ opacity:1; }
+.slide.active{
+  opacity:1;
+  transform: translateY(0);
+}
 
 .slide img{
   width:100%;
   max-width:320px;
-  height:340px;              /* fixa altura da área da imagem */
-  object-fit:contain;        /* NÃO CORTA A IMAGEM */
+  height:340px;
+  object-fit:contain;
   border-radius:14px;
   box-shadow:0 8px 18px rgba(0,0,0,0.16);
   background:#fff;
@@ -214,11 +190,23 @@ nav a:hover{ background:var(--green); color:#fff; }
   color:#666;
   font-size:13px;
   line-height:1.35;
-  margin:0 0 12px;
+  margin:0;
   max-width:420px;
 }
 
-/* SLIDER CONTROLS */
+/* CLICK EFFECT */
+.slide.clickable{
+  cursor:pointer;
+}
+.slide.clickable:hover{
+  filter: brightness(0.98);
+}
+.slider:hover .slide.active img{
+  transform: scale(1.01);
+  transition: transform .25s ease;
+}
+
+/* CONTROLS */
 .slider-controls{
   display:flex;
   justify-content:space-between;
@@ -250,6 +238,10 @@ nav a:hover{ background:var(--green); color:#fff; }
   cursor:pointer;
 }
 .mini-btn:hover{ background:var(--green); color:#fff; }
+.mini-btn:disabled{
+  opacity:.45;
+  cursor:not-allowed;
+}
 
 /* INFO BLOCKS */
 .info-grid{
@@ -330,18 +322,13 @@ footer{
   <section class="hero">
     <h1>Emagreça em Casa</h1>
     <p>Explore ebooks e recomendações para criar rotina e consistência.</p>
-    <div class="hero-actions">
-      <a class="btn" href="ebooks.html">👉 Ver Ebooks</a>
-      <a class="btn-ghost" href="produtos.html">Ver Produtos</a>
-      <a class="btn-ghost" href="videos.html">Ver Vídeos</a>
-    </div>
   </section>
 
   <!-- SLIDERS -->
   <section class="section">
     <div class="section-title">
       Destaques
-      <small>Ebooks e Produtos girando automaticamente</small>
+      <small>Clique no card para abrir</small>
     </div>
 
     <div class="cards-row">
@@ -358,10 +345,6 @@ footer{
           <div class="dots" id="ebooksDots"></div>
           <button class="mini-btn" type="button" id="ebooksNext">▶</button>
         </div>
-
-        <a class="btn-ghost" href="ebooks.html" style="margin-top:12px; display:block; text-align:center;">
-          Abrir página de ebooks
-        </a>
       </div>
 
       <!-- PRODUTOS -->
@@ -377,15 +360,11 @@ footer{
           <div class="dots" id="produtosDots"></div>
           <button class="mini-btn" type="button" id="produtosNext">▶</button>
         </div>
-
-        <a class="btn-ghost" href="produtos.html" style="margin-top:12px; display:block; text-align:center;">
-          Abrir página de produtos
-        </a>
       </div>
     </div>
   </section>
 
-  <!-- LINKS RÁPIDOS (VÍDEOS + CURIOSIDADES) -->
+  <!-- LINKS (SEM BOTÕES EXTRAS) -->
   <section class="section">
     <div class="section-title">Conteúdo</div>
 
@@ -397,7 +376,6 @@ footer{
           <li>Rotina semanal simples</li>
           <li>Motivação e consistência</li>
         </ul>
-        <a class="btn" href="videos.html" style="margin-top:12px;">Abrir vídeos</a>
       </div>
 
       <div class="info-card">
@@ -407,7 +385,6 @@ footer{
           <li>Como o sono influencia o peso</li>
           <li>O que fazer quando bate a ansiedade</li>
         </ul>
-        <a class="btn" href="curiosidades.html" style="margin-top:12px;">Abrir curiosidades</a>
       </div>
     </div>
   </section>
@@ -423,22 +400,22 @@ footer{
       name: "Como Emagrecer em Casa",
       img: "capa_meta_saudavel.jpg",
       desc: "Método prático para emagrecer sem academia.",
-      link: "https://pay.cakto.com.br/wzbj2wo_749364"
+      link: "ebooks.html"
     },
     {
       name: "Cinturinha Fina",
       img: "Cinturinha_Fina (2).png",
       desc: "Conteúdo direto e visual com foco em cintura e definição.",
-      link: "https://pay.cakto.com.br/abbzsqj_416048?affiliate=qFsAcyY8"
+      link: "ebooks.html#cinturinha-fina"
     }
   ];
 
-  // Adicione produtos depois:
-  // { name:"Nome", img:"arquivo.png", desc:"descrição", link:"https://..." }
+  // Adicione produtos depois (exemplo):
+  // { name:"Nome", img:"arquivo.png", desc:"descrição", link:"produtos.html#produto1" }
   const produtos = [];
 
-  // ====== SLIDER REUTILIZÁVEL ======
-  function createSlider({ mountId, dotsId, prevId, nextId, items, intervalMs = 3500, emptyTitle = "Em breve", emptyDesc = "Assim que você adicionar itens, eles vão aparecer aqui." }) {
+  // ====== SLIDER ======
+  function createSlider({ mountId, dotsId, prevId, nextId, items, intervalMs = 3500, emptyTitle, emptyDesc, emptyLink }) {
     const mount = document.getElementById(mountId);
     const dotsWrap = document.getElementById(dotsId);
     const prevBtn = document.getElementById(prevId);
@@ -446,19 +423,23 @@ footer{
 
     if (!mount || !dotsWrap || !prevBtn || !nextBtn) return;
 
+    function setDisabled(disabled){
+      prevBtn.disabled = disabled;
+      nextBtn.disabled = disabled;
+    }
+
     if (!items || items.length === 0) {
       mount.innerHTML = `
-        <div class="slide active">
+        <div class="slide active clickable" data-link="${emptyLink}">
           <div class="name">${emptyTitle}</div>
           <div class="desc">${emptyDesc}</div>
-          <a class="btn" href="${mountId === 'ebooksSlider' ? 'ebooks.html' : 'produtos.html'}">Ver página</a>
         </div>
       `;
       dotsWrap.innerHTML = "";
-      prevBtn.disabled = true;
-      nextBtn.disabled = true;
-      prevBtn.style.opacity = "0.45";
-      nextBtn.style.opacity = "0.45";
+      setDisabled(true);
+
+      const s = mount.querySelector(".slide");
+      s.addEventListener("click", () => { window.location.href = emptyLink; });
       return;
     }
 
@@ -471,13 +452,19 @@ footer{
 
       items.forEach((it, i) => {
         const slide = document.createElement("div");
-        slide.className = "slide" + (i === index ? " active" : "");
+        slide.className = "slide clickable" + (i === index ? " active" : "");
+        slide.setAttribute("data-link", it.link);
+
         slide.innerHTML = `
           <img src="${it.img}" alt="${it.name}" loading="lazy">
           <div class="name">${it.name}</div>
           <div class="desc">${it.desc || ""}</div>
-          <a class="btn" href="${it.link}" target="_blank" rel="noopener">Abrir Oferta</a>
         `;
+
+        slide.addEventListener("click", () => {
+          window.location.href = it.link;
+        });
+
         mount.appendChild(slide);
 
         const dot = document.createElement("div");
@@ -507,6 +494,7 @@ footer{
     prevBtn.addEventListener("click", () => { prev(); restart(); });
     nextBtn.addEventListener("click", () => { next(); restart(); });
 
+    setDisabled(false);
     render();
     restart();
   }
@@ -520,7 +508,8 @@ footer{
     items: ebooks,
     intervalMs: 3500,
     emptyTitle: "Sem ebooks",
-    emptyDesc: "Adicione ebooks e eles giram automaticamente."
+    emptyDesc: "Adicione ebooks e eles vão aparecer aqui.",
+    emptyLink: "ebooks.html"
   });
 
   createSlider({
@@ -531,7 +520,8 @@ footer{
     items: produtos,
     intervalMs: 3500,
     emptyTitle: "Produtos em breve",
-    emptyDesc: "Quando você adicionar produtos, eles vão aparecer aqui."
+    emptyDesc: "Quando você adicionar produtos, eles vão aparecer aqui.",
+    emptyLink: "produtos.html"
   });
 </script>
 
