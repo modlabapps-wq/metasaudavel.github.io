@@ -1,29 +1,42 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Meta Saudável | Emagreça em Casa</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
+    :root{
+      --green:#27ae60;
+      --green2:#219150;
+      --bg:#f2f2f2;
+      --card:#ffffff;
+      --text:#333;
+      --muted:#666;
+      --border:rgba(0,0,0,0.10);
+    }
+
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
     body{
       margin:0;
       font-family:Arial, sans-serif;
-      background:#f2f2f2;
+      background:var(--bg);
+      color:var(--text);
     }
 
     /* HEADER */
     header{
-      background:#ffffff;
-      box-shadow:0 2px 10px rgba(0,0,0,0.06);
       position:sticky;
       top:0;
       z-index:999;
+      background:#fff;
+      border-bottom:1px solid rgba(0,0,0,0.08);
+      box-shadow:0 2px 10px rgba(0,0,0,0.06);
     }
-
     .header-container{
       max-width:980px;
-      margin:auto;
+      margin:0 auto;
       padding:14px;
       display:flex;
       justify-content:space-between;
@@ -31,13 +44,12 @@
       flex-wrap:wrap;
       gap:10px;
     }
-
     .logo{
       font-weight:900;
       font-size:18px;
-      color:#27ae60;
+      color:var(--green);
+      white-space:nowrap;
     }
-
     nav a{
       margin-left:8px;
       text-decoration:none;
@@ -49,106 +61,442 @@
       color:#1f8a4a;
       border:1px solid rgba(39,174,96,0.18);
     }
+    nav a:hover{ background:var(--green); color:#fff; }
 
-    nav a:hover{
-      background:#27ae60;
-      color:#fff;
+    /* LAYOUT */
+    .wrap{
+      max-width:980px;
+      margin:0 auto;
+      padding:22px 14px 60px;
     }
 
-    /* HERO */
     .hero{
-      max-width:450px;
-      margin:40px auto;
-      background:#ffffff;
+      max-width:520px;
+      margin:20px auto 0;
+      background:var(--card);
       border-radius:14px;
-      padding:30px 25px;
-      box-shadow:0 0 15px rgba(0,0,0,0.1);
+      padding:26px 22px;
+      box-shadow:0 0 15px rgba(0,0,0,0.10);
       text-align:center;
     }
-
     .hero h1{
-      color:#27ae60;
-      margin-bottom:10px;
+      margin:0 0 10px;
+      color:var(--green);
+      font-size:24px;
     }
-
     .hero p{
-      color:#555;
-      font-size:15px;
-      line-height:1.5;
+      margin:0 0 14px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.45;
     }
 
-    .hero img{
-      width:240px;
-      margin:20px auto;
-      border-radius:12px;
-      box-shadow:0 4px 10px rgba(0,0,0,0.2);
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:16px;
+      max-width:520px;
+      margin:16px auto 0;
+    }
+
+    .card{
+      background:var(--card);
+      border-radius:14px;
+      padding:18px;
+      box-shadow:0 0 15px rgba(0,0,0,0.08);
+    }
+
+    .section-title{
+      margin:0 0 10px;
+      font-weight:900;
+      color:var(--green);
+      font-size:18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .section-title small{
+      font-weight:800;
+      color:#888;
+      font-size:12px;
     }
 
     .btn{
       display:block;
-      background:#27ae60;
+      background:var(--green);
       color:#fff;
-      padding:15px;
-      margin-top:20px;
-      border-radius:10px;
-      font-weight:900;
+      padding:14px;
+      border-radius:12px;
       text-decoration:none;
+      font-weight:900;
+      margin-top:12px;
+      text-align:center;
+    }
+    .btn:hover{ background:var(--green2); }
+
+    .btn-ghost{
+      display:block;
+      background:#fff;
+      color:#1f8a4a;
+      padding:12px;
+      border-radius:12px;
+      text-decoration:none;
+      font-weight:900;
+      margin-top:10px;
+      text-align:center;
+      border:1px solid rgba(39,174,96,0.25);
+    }
+    .btn-ghost:hover{ background:#f3fff7; }
+
+    /* SLIDER */
+    .slider{
+      position:relative;
+      height:340px;
+      border:1px solid var(--border);
+      border-radius:14px;
+      overflow:hidden;
+      background:#fff;
+    }
+    .slide{
+      position:absolute;
+      inset:0;
+      opacity:0;
+      transform:translateY(6px);
+      transition: opacity .6s ease, transform .6s ease;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      padding:16px;
+      text-align:center;
+    }
+    .slide.active{
+      opacity:1;
+      transform:translateY(0);
+    }
+    .slide img{
+      width:220px;
+      max-width:80%;
+      border-radius:12px;
+      box-shadow:0 6px 16px rgba(0,0,0,0.16);
+      margin-bottom:12px;
+    }
+    .slide .name{
+      font-weight:900;
+      font-size:16px;
+      margin:2px 0 6px;
+      color:#222;
+    }
+    .slide .desc{
+      font-size:13px;
+      color:#666;
+      line-height:1.35;
+      max-width:360px;
+      margin:0 0 10px;
     }
 
-    .btn:hover{
-      background:#219150;
+    .slider-controls{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      margin-top:10px;
+    }
+    .dots{
+      display:flex;
+      gap:6px;
+      align-items:center;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+    .dot{
+      width:8px; height:8px;
+      border-radius:99px;
+      background:rgba(39,174,96,0.25);
+      border:1px solid rgba(39,174,96,0.35);
+    }
+    .dot.active{ background:var(--green); }
+
+    .mini-btn{
+      border:none;
+      background:#f3fff7;
+      border:1px solid rgba(39,174,96,0.20);
+      color:#1f8a4a;
+      font-weight:900;
+      padding:8px 10px;
+      border-radius:12px;
+      cursor:pointer;
+    }
+    .mini-btn:hover{ background:var(--green); color:#fff; }
+
+    /* RELATOS */
+    .testi{
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:14px;
+      background:#fafafa;
+      margin-top:12px;
+      text-align:left;
+    }
+    .testi .who{
+      font-weight:900;
+      color:#1f8a4a;
+      margin-bottom:6px;
+    }
+    .testi .txt{
+      color:#444;
+      font-size:14px;
+      line-height:1.45;
+      white-space:pre-wrap;
+    }
+    .disclaimer{
+      margin-top:10px;
+      color:#888;
+      font-size:12px;
+      line-height:1.4;
+      text-align:left;
     }
 
-    /* FOOTER */
+    /* Whats flutuante */
+    .float-wa{
+      position:fixed;
+      right:16px;
+      bottom:16px;
+      z-index:9999;
+      text-decoration:none;
+      background:var(--green);
+      color:#fff;
+      padding:12px 14px;
+      border-radius:999px;
+      font-weight:900;
+      box-shadow:0 10px 25px rgba(0,0,0,0.18);
+      border:1px solid rgba(255,255,255,0.25);
+      font-size:14px;
+    }
+    .float-wa:hover{ background:var(--green2); }
+
     footer{
       text-align:center;
-      font-size:12px;
       color:#888;
-      margin:30px 0;
+      font-size:12px;
+      margin-top:18px;
     }
   </style>
 </head>
 
 <body>
+  <header>
+    <div class="header-container">
+      <div class="logo">Meta Saudável</div>
+      <nav>
+        <a href="index.html">Início</a>
+        <a href="ebooks.html">Ebooks</a>
+        <a href="produtos.html">Produtos</a>
+        <a href="videos.html">Vídeos</a>
+        <a href="curiosidades.html">Curiosidades</a>
+        <a href="comentarios.html">Comentários</a>
+        <a href="contato.html">Contato</a>
+      </nav>
+    </div>
+  </header>
 
-<header>
-  <div class="header-container">
-    <div class="logo">Meta Saudável</div>
-    <nav>
-      <a href="ebooks.html">Ebooks</a>
-      <a href="produtos.html">Produtos</a>
-      <a href="videos.html">Vídeos</a>
-      <a href="curiosidades.html">Curiosidades</a>
-      <a href="comentarios.html">Comentários</a>
-      <a href="contato.html">Contato</a>
-    </nav>
-  </div>
-</header>
+  <a class="float-wa" href="https://wa.me/5511958749421" target="_blank" aria-label="WhatsApp">📲 WhatsApp</a>
 
-<main>
-  <section class="hero">
-    <h1>Emagreça em Casa</h1>
-    <p>
-      O <strong>Meta Saudável</strong> é um projeto criado para ajudar pessoas
-      a emagrecerem com saúde, sem dietas malucas e sem academia.
-    </p>
+  <main class="wrap">
+    <section class="hero">
+      <h1>Emagreça em Casa</h1>
+      <p>
+        Conteúdos práticos, ebooks e recomendações para ajudar você a criar rotina e consistência.
+        Clique no que aparecer abaixo e vá direto para a oferta.
+      </p>
+      <a class="btn" href="ebooks.html">👉 Ver todos os Ebooks</a>
+      <a class="btn-ghost" href="produtos.html">Ver Produtos</a>
+    </section>
 
-    <img src="capa_meta_saudavel.jpg" alt="Meta Saudável Ebook">
+    <div class="grid">
+      <!-- SLIDER EBOOKS -->
+      <section class="card">
+        <div class="section-title">
+          Ebooks em destaque <small>(gira sozinho)</small>
+        </div>
 
-    <p>
-      Conteúdos práticos, ebooks e recomendações para quem quer
-      mudar o corpo e a rotina de forma simples e possível.
-    </p>
+        <div class="slider" id="ebooksSlider" aria-label="Carrossel de Ebooks"></div>
 
-    <a href="ebooks.html" class="btn">
-      👉 Ver Ebooks Disponíveis
-    </a>
-  </section>
-</main>
+        <div class="slider-controls">
+          <button class="mini-btn" type="button" id="ebooksPrev">◀</button>
+          <div class="dots" id="ebooksDots"></div>
+          <button class="mini-btn" type="button" id="ebooksNext">▶</button>
+        </div>
 
-<footer>
-  © 2026 Meta Saudável • Todos os direitos reservados
-</footer>
+        <a class="btn-ghost" href="ebooks.html">Abrir página de ebooks</a>
+      </section>
 
+      <!-- SLIDER PRODUTOS -->
+      <section class="card">
+        <div class="section-title">
+          Produtos em destaque <small>(aparece quando você adicionar)</small>
+        </div>
+
+        <div class="slider" id="produtosSlider" aria-label="Carrossel de Produtos"></div>
+
+        <div class="slider-controls">
+          <button class="mini-btn" type="button" id="produtosPrev">◀</button>
+          <div class="dots" id="produtosDots"></div>
+          <button class="mini-btn" type="button" id="produtosNext">▶</button>
+        </div>
+
+        <a class="btn-ghost" href="produtos.html">Abrir página de produtos</a>
+      </section>
+
+      <!-- RELATOS -->
+      <section class="card">
+        <div class="section-title">
+          Relatos e resultados <small>(use apenas relatos reais)</small>
+        </div>
+
+        <!-- Troque os textos abaixo por prints/relatos reais (com autorização) -->
+        <div class="testi">
+          <div class="who">Relato 1</div>
+          <div class="txt">“Cole aqui um relato real (ex: mensagem do WhatsApp/Instagram).”</div>
+        </div>
+
+        <div class="testi">
+          <div class="who">Relato 2</div>
+          <div class="txt">“Cole aqui um relato real (sem prometer resultados iguais pra todos).”</div>
+        </div>
+
+        <div class="disclaimer">
+          Resultados variam de pessoa para pessoa. O conteúdo é educativo e depende de rotina e consistência.
+        </div>
+
+        <a class="btn" href="ebooks.html">👉 Quero ver os Ebooks</a>
+      </section>
+
+      <footer>© 2026 Meta Saudável • Todos os direitos reservados</footer>
+    </div>
+  </main>
+
+  <script>
+    // ====== DADOS (VOCÊ EDITA AQUI) ======
+    const ebooks = [
+      {
+        name: "Como Emagrecer em Casa (Meta Saudável)",
+        img: "capa_meta_saudavel.jpg",
+        desc: "Método prático para rotina, treinos simples e alimentação acessível.",
+        link: "https://pay.cakto.com.br/wzbj2wo_749364"
+      },
+      {
+        name: "Cinturinha Fina",
+        img: "Cinturinha_Fina.png",
+        desc: "Conteúdo direto e visual com foco em cintura e definição.",
+        link: "https://pay.cakto.com.br/abbzsqj_416048?affiliate=qFsAcyY8"
+      }
+    ];
+
+    // Produtos: quando você postar, adicione itens aqui (exemplos abaixo)
+    // Coloque img (arquivo no GitHub), name, desc e link
+    const produtos = [
+      // Exemplo:
+      // { name:"Chá X", img:"cha_x.png", desc:"Ajuda na rotina (descrição curta).", link:"https://seu-link" },
+    ];
+
+    // ====== FUNÇÃO SLIDER (REUTILIZÁVEL) ======
+    function createSlider({ mountId, dotsId, prevId, nextId, items, intervalMs = 3500, emptyText = "Em breve..." }) {
+      const mount = document.getElementById(mountId);
+      const dotsWrap = document.getElementById(dotsId);
+      const prevBtn = document.getElementById(prevId);
+      const nextBtn = document.getElementById(nextId);
+
+      if (!mount || !dotsWrap || !prevBtn || !nextBtn) return;
+
+      if (!items || items.length === 0) {
+        mount.innerHTML = `
+          <div class="slide active">
+            <div class="name">${emptyText}</div>
+            <div class="desc">Assim que você adicionar itens, eles vão girar automaticamente aqui.</div>
+            <a class="btn" href="produtos.html">Ver página</a>
+          </div>
+        `;
+        dotsWrap.innerHTML = "";
+        prevBtn.disabled = true;
+        nextBtn.disabled = true;
+        prevBtn.style.opacity = "0.4";
+        nextBtn.style.opacity = "0.4";
+        return;
+      }
+
+      let index = 0;
+      let timer = null;
+
+      function render() {
+        mount.innerHTML = "";
+        dotsWrap.innerHTML = "";
+
+        items.forEach((it, i) => {
+          const slide = document.createElement("div");
+          slide.className = "slide" + (i === index ? " active" : "");
+          slide.innerHTML = `
+            <img src="${it.img}" alt="${it.name}" loading="lazy">
+            <div class="name">${it.name}</div>
+            <div class="desc">${it.desc || ""}</div>
+            <a class="btn" href="${it.link}" target="_blank" rel="noopener">👉 Abrir Oferta</a>
+          `;
+          mount.appendChild(slide);
+
+          const dot = document.createElement("div");
+          dot.className = "dot" + (i === index ? " active" : "");
+          dot.addEventListener("click", () => {
+            index = i;
+            render();
+            restart();
+          });
+          dotsWrap.appendChild(dot);
+        });
+      }
+
+      function next() {
+        index = (index + 1) % items.length;
+        render();
+      }
+
+      function prev() {
+        index = (index - 1 + items.length) % items.length;
+        render();
+      }
+
+      function restart() {
+        if (timer) clearInterval(timer);
+        timer = setInterval(next, intervalMs);
+      }
+
+      prevBtn.addEventListener("click", () => { prev(); restart(); });
+      nextBtn.addEventListener("click", () => { next(); restart(); });
+
+      render();
+      restart();
+    }
+
+    // ====== INICIALIZA ======
+    createSlider({
+      mountId: "ebooksSlider",
+      dotsId: "ebooksDots",
+      prevId: "ebooksPrev",
+      nextId: "ebooksNext",
+      items: ebooks,
+      intervalMs: 3500,
+      emptyText: "Sem ebooks por enquanto"
+    });
+
+    createSlider({
+      mountId: "produtosSlider",
+      dotsId: "produtosDots",
+      prevId: "produtosPrev",
+      nextId: "produtosNext",
+      items: produtos,
+      intervalMs: 3500,
+      emptyText: "Produtos em breve"
+    });
+  </script>
 </body>
 </html>
