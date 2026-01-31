@@ -40,6 +40,71 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
+    /* BLOCO OFERTA */
+    .offer-box{
+      margin: 18px 0 8px;
+      padding: 14px 12px;
+      border-radius: 12px;
+      background: #f3fff7;
+      border: 1px solid rgba(39,174,96,0.25);
+      text-align: center;
+    }
+
+    .offer-title{
+      font-weight: 800;
+      color: #1f8a4a;
+      margin-bottom: 6px;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    .timer{
+      display: inline-block;
+      margin: 6px 0 10px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: #ffffff;
+      border: 1px dashed rgba(39,174,96,0.6);
+      font-weight: 800;
+      font-size: 18px;
+      color: #0f5f32;
+      min-width: 160px;
+    }
+
+    .prices{
+      margin-top: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .old-price{
+      color: #999;
+      text-decoration: line-through;
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .new-price{
+      color: #1f8a4a;
+      font-weight: 900;
+      font-size: 26px;
+    }
+
+    .badge{
+      display: inline-block;
+      margin-top: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #27ae60;
+      color: #fff;
+      font-weight: 800;
+      font-size: 12px;
+    }
+
     .btn {
       display: block;
       background: #27ae60;
@@ -48,7 +113,7 @@
       text-decoration: none;
       border-radius: 8px;
       font-size: 18px;
-      margin-top: 20px;
+      margin-top: 18px;
       font-weight: bold;
     }
 
@@ -101,6 +166,19 @@
     </strong>
   </p>
 
+  <!-- OFERTA + TEMPORIZADOR + PREÇO -->
+  <div class="offer-box">
+    <div class="offer-title">Oferta termina em</div>
+    <div class="timer" id="countdown">15:00</div>
+
+    <div class="prices">
+      <span class="old-price">R$ 97,00</span>
+      <span class="new-price">R$ 47,00</span>
+    </div>
+
+    <div class="badge">Promoção por tempo limitado</div>
+  </div>
+
   <!-- BOTÃO DE COMPRA -->
   <a href="https://pay.kiwify.com.br/mQMDfRq"
      class="btn"
@@ -127,6 +205,52 @@
   </footer>
 
 </div>
+
+<script>
+  // ======= TEMPORIZADOR (15 minutos por visitante) =======
+  // Se quiser mudar: altere OFFER_MINUTES para 60 (1h), 1440 (24h), etc.
+  const OFFER_MINUTES = 15;
+
+  function startOfferCountdown() {
+    const key = "metaSaudavelOfferEnd";
+    const now = Date.now();
+
+    let end = parseInt(localStorage.getItem(key), 10);
+
+    // Se não existir ou expirou, cria um novo prazo
+    if (!end || isNaN(end) || end <= now) {
+      end = now + OFFER_MINUTES * 60 * 1000;
+      localStorage.setItem(key, String(end));
+    }
+
+    const el = document.getElementById("countdown");
+
+    function tick() {
+      const diff = end - Date.now();
+
+      if (diff <= 0) {
+        el.textContent = "00:00";
+        // Se quiser que reinicie sozinho ao acabar, descomente abaixo:
+        // localStorage.removeItem(key);
+        return;
+      }
+
+      const totalSeconds = Math.floor(diff / 1000);
+      const minutes = Math.floor(totalSeconds / 60);
+      const seconds = totalSeconds % 60;
+
+      const mm = String(minutes).padStart(2, "0");
+      const ss = String(seconds).padStart(2, "0");
+      el.textContent = `${mm}:${ss}`;
+
+      requestAnimationFrame(() => setTimeout(tick, 250));
+    }
+
+    tick();
+  }
+
+  startOfferCountdown();
+</script>
 
 </body>
 </html>
