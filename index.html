@@ -1,331 +1,426 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Meta Saudável - Emagreça em Casa</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
     html { scroll-behavior: smooth; }
 
-    body {
+    body{
       font-family: Arial, sans-serif;
-      background: #f2f2f2;
-      margin: 0;
-      padding: 0;
+      background:#f2f2f2;
+      margin:0;
+      padding:0;
     }
 
-    /* HEADER TOPO */
-    .topbar {
+    /* HEADER */
+    .topbar{
       position: sticky;
-      top: 0;
-      z-index: 999;
-      background: #ffffff;
-      border-bottom: 1px solid rgba(0,0,0,0.08);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      top:0;
+      z-index:999;
+      background:#fff;
+      border-bottom:1px solid rgba(0,0,0,0.08);
+      box-shadow:0 2px 10px rgba(0,0,0,0.06);
+    }
+    .topbar-inner{
+      max-width:980px;
+      margin:0 auto;
+      padding:12px 14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .brand{
+      font-weight:900;
+      color:#27ae60;
+      letter-spacing:0.3px;
+      font-size:16px;
+      white-space:nowrap;
+    }
+    .nav{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .nav a{
+      text-decoration:none;
+      color:#1f8a4a;
+      font-weight:900;
+      font-size:13px;
+      padding:8px 10px;
+      border-radius:10px;
+      background:#f3fff7;
+      border:1px solid rgba(39,174,96,0.18);
+    }
+    .nav a:hover{
+      background:#27ae60;
+      color:#fff;
     }
 
-    .topbar-inner {
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 12px 14px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
+    /* CONTAINERS */
+    .container{
+      max-width:450px;
+      margin:25px auto 40px;
+      background:#fff;
+      padding:25px;
+      border-radius:12px;
+      box-shadow:0 0 15px rgba(0,0,0,0.1);
+      text-align:center;
     }
 
-    .brand {
-      font-weight: 900;
-      color: #27ae60;
-      letter-spacing: 0.3px;
-      font-size: 16px;
-      white-space: nowrap;
+    h1{
+      color:#27ae60;
+      margin:0 0 10px;
+    }
+    .sub{
+      font-size:15px;
+      color:#555;
+      margin:0;
     }
 
-    .nav {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
+    img{
+      width:250px;
+      border-radius:10px;
+      margin:14px 0 6px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.2);
     }
 
-    .nav a {
-      text-decoration: none;
-      color: #1f8a4a;
-      font-weight: 800;
-      font-size: 13px;
-      padding: 8px 10px;
-      border-radius: 10px;
-      background: #f3fff7;
-      border: 1px solid rgba(39,174,96,0.18);
-    }
-
-    .nav a:hover {
-      background: #27ae60;
-      color: #fff;
-    }
-
-    /* CONTAINER */
-    .container {
-      max-width: 450px;
-      margin: 25px auto 40px;
-      background: #ffffff;
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-
-    h1 {
-      color: #27ae60;
-      margin-bottom: 10px;
-    }
-
-    .sub {
-      font-size: 15px;
-      color: #555;
-    }
-
-    img {
-      width: 250px;
-      border-radius: 10px;
-      margin: 18px 0 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-
-    /* OFERTA (AGORA ACIMA DO PRODUTO) */
+    /* OFFER ABOVE PRODUCT */
     .offer-box{
-      margin: 18px 0 14px;
-      padding: 14px 12px;
-      border-radius: 12px;
-      background: #f3fff7;
-      border: 1px solid rgba(39,174,96,0.25);
+      margin:18px 0 14px;
+      padding:14px 12px;
+      border-radius:12px;
+      background:#f3fff7;
+      border:1px solid rgba(39,174,96,0.25);
     }
-
     .offer-title{
-      font-weight: 900;
-      color: #1f8a4a;
-      margin-bottom: 8px;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.7px;
+      font-weight:900;
+      color:#1f8a4a;
+      margin-bottom:8px;
+      font-size:13px;
+      text-transform:uppercase;
+      letter-spacing:0.7px;
     }
-
     .timer{
-      margin: 6px auto 10px;
-      padding: 10px 12px;
-      border-radius: 10px;
-      background: #ffffff;
-      border: 1px dashed rgba(39,174,96,0.6);
-      font-weight: 900;
-      font-size: 18px;
-      color: #0f5f32;
-      width: fit-content;
-      min-width: 160px;
+      margin:6px auto 10px;
+      padding:10px 12px;
+      border-radius:10px;
+      background:#fff;
+      border:1px dashed rgba(39,174,96,0.6);
+      font-weight:900;
+      font-size:18px;
+      color:#0f5f32;
+      width:fit-content;
+      min-width:160px;
     }
-
     .prices{
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      align-items: baseline;
-      flex-wrap: wrap;
-      margin-top: 4px;
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      align-items:baseline;
+      flex-wrap:wrap;
+      margin-top:4px;
     }
-
     .old-price{
-      color: #999;
-      text-decoration: line-through;
-      font-weight: 800;
-      font-size: 16px;
+      color:#999;
+      text-decoration:line-through;
+      font-weight:800;
+      font-size:16px;
     }
-
     .new-price{
-      color: #1f8a4a;
-      font-weight: 900;
-      font-size: 26px;
+      color:#1f8a4a;
+      font-weight:900;
+      font-size:26px;
     }
-
     .badge{
-      margin-top: 10px;
-      padding: 6px 10px;
-      border-radius: 20px;
-      background: #27ae60;
-      color: #fff;
-      font-weight: 900;
-      font-size: 12px;
-      display: inline-block;
+      margin-top:10px;
+      padding:6px 10px;
+      border-radius:20px;
+      background:#27ae60;
+      color:#fff;
+      font-weight:900;
+      font-size:12px;
+      display:inline-block;
     }
 
-    .btn {
-      display: block;
-      background: #27ae60;
-      color: white;
-      padding: 15px;
-      text-decoration: none;
-      border-radius: 8px;
-      font-size: 18px;
-      margin-top: 16px;
-      font-weight: 900;
+    /* BENEFITS */
+    .benefits{
+      margin:14px 0 0;
+      text-align:left;
+      padding:0;
+      list-style:none;
+    }
+    .benefits li{
+      margin:10px 0;
+      font-size:14px;
+      color:#444;
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      line-height:1.35;
+    }
+    .check{
+      width:22px;
+      height:22px;
+      border-radius:6px;
+      background:#27ae60;
+      color:#fff;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:900;
+      flex:0 0 22px;
+      margin-top:1px;
     }
 
-    .btn:hover { background: #219150; }
+    /* TRUST */
+    .trust{
+      margin-top:14px;
+      background:#f7f7f7;
+      border:1px solid rgba(0,0,0,0.08);
+      border-radius:12px;
+      padding:12px;
+      text-align:left;
+      font-size:13px;
+      color:#555;
+      line-height:1.35;
+    }
 
-    /* SEÇÕES */
+    /* BUTTONS */
+    .btn{
+      display:block;
+      background:#27ae60;
+      color:#fff;
+      padding:15px;
+      text-decoration:none;
+      border-radius:10px;
+      font-size:18px;
+      margin-top:16px;
+      font-weight:900;
+    }
+    .btn:hover{ background:#219150; }
+
+    .btn-secondary{
+      display:block;
+      background:#ffffff;
+      color:#1f8a4a;
+      padding:12px;
+      text-decoration:none;
+      border-radius:10px;
+      font-size:15px;
+      margin-top:10px;
+      font-weight:900;
+      border:1px solid rgba(39,174,96,0.25);
+    }
+    .btn-secondary:hover{
+      background:#f3fff7;
+    }
+
+    /* SECTIONS */
     .section-title{
-      margin: 0 0 10px;
-      color: #27ae60;
-      font-size: 18px;
-      font-weight: 900;
-      text-align: left;
+      margin:0 0 10px;
+      color:#27ae60;
+      font-size:18px;
+      font-weight:900;
+      text-align:left;
     }
-
     .section-sub{
-      margin: 0 0 16px;
-      color: #666;
-      font-size: 14px;
-      text-align: left;
+      margin:0 0 16px;
+      color:#666;
+      font-size:14px;
+      text-align:left;
+    }
+    .anchor-offset{ scroll-margin-top: 86px; }
+
+    .card{
+      text-align:left;
+      background:#fff;
+      border:1px solid rgba(0,0,0,0.08);
+      border-radius:12px;
+      padding:14px;
+      margin-top:12px;
+    }
+    .card strong{ color:#222; }
+    .card p{
+      margin:8px 0 0;
+      color:#555;
+      font-size:14px;
+      line-height:1.45;
     }
 
-    /* offset do scroll para não colar no topo */
-    .anchor-offset{
-      scroll-margin-top: 80px;
-    }
-
-    /* Cards simples */
-    .card {
-      text-align: left;
-      background: #ffffff;
-      border: 1px solid rgba(0,0,0,0.08);
-      border-radius: 12px;
-      padding: 14px;
-      margin-top: 12px;
-    }
-
-    .card strong { color: #222; }
-    .card p { margin: 8px 0 0; color: #555; font-size: 14px; }
-
-    /* Vídeos */
+    /* VIDEO */
     .video-wrap{
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid rgba(0,0,0,0.10);
-      background: #000;
-      margin-top: 10px;
+      border-radius:12px;
+      overflow:hidden;
+      border:1px solid rgba(0,0,0,0.10);
+      background:#000;
+      margin-top:10px;
     }
-
     .video-wrap iframe{
-      width: 100%;
-      height: 220px;
-      border: 0;
-      display: block;
+      width:100%;
+      height:220px;
+      border:0;
+      display:block;
     }
 
-    /* Curiosidades */
+    /* LIST */
     .list{
-      text-align: left;
-      margin: 0;
-      padding-left: 18px;
-      color: #444;
-      font-size: 14px;
-      line-height: 1.5;
+      text-align:left;
+      margin:0;
+      padding-left:18px;
+      color:#444;
+      font-size:14px;
+      line-height:1.5;
     }
-    .list li{ margin: 8px 0; }
+    .list li{ margin:8px 0; }
 
-    /* Comentários */
+    /* FAQ */
+    .faq-item{
+      border:1px solid rgba(0,0,0,0.08);
+      border-radius:12px;
+      margin-top:10px;
+      overflow:hidden;
+      background:#fff;
+    }
+    .faq-q{
+      width:100%;
+      text-align:left;
+      border:0;
+      background:#f3fff7;
+      color:#1f8a4a;
+      font-weight:900;
+      padding:12px 12px;
+      cursor:pointer;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      font-size:14px;
+    }
+    .faq-a{
+      display:none;
+      padding:12px;
+      color:#555;
+      font-size:14px;
+      line-height:1.45;
+      background:#fff;
+    }
+    .faq-a.open{ display:block; }
+
+    /* COMMENTS */
     .comment-form{
-      text-align: left;
-      margin-top: 12px;
+      text-align:left;
+      margin-top:12px;
     }
     .comment-form label{
-      display: block;
-      font-size: 13px;
-      font-weight: 800;
-      color: #2b2b2b;
-      margin: 10px 0 6px;
+      display:block;
+      font-size:13px;
+      font-weight:900;
+      color:#2b2b2b;
+      margin:10px 0 6px;
     }
     .comment-form input,
     .comment-form textarea{
-      width: 100%;
-      box-sizing: border-box;
-      padding: 10px 12px;
-      border-radius: 10px;
-      border: 1px solid rgba(0,0,0,0.12);
-      outline: none;
-      font-size: 14px;
+      width:100%;
+      box-sizing:border-box;
+      padding:10px 12px;
+      border-radius:10px;
+      border:1px solid rgba(0,0,0,0.12);
+      outline:none;
+      font-size:14px;
     }
-    .comment-form textarea{ min-height: 90px; resize: vertical; }
-
+    .comment-form textarea{ min-height:90px; resize:vertical; }
     .comment-btn{
-      margin-top: 12px;
-      width: 100%;
-      background: #27ae60;
-      border: none;
-      color: #fff;
-      font-weight: 900;
-      font-size: 15px;
-      padding: 12px;
-      border-radius: 10px;
-      cursor: pointer;
+      margin-top:12px;
+      width:100%;
+      background:#27ae60;
+      border:none;
+      color:#fff;
+      font-weight:900;
+      font-size:15px;
+      padding:12px;
+      border-radius:10px;
+      cursor:pointer;
     }
     .comment-btn:hover{ background:#219150; }
-
     .comments-list{
-      text-align: left;
-      margin-top: 14px;
+      text-align:left;
+      margin-top:14px;
     }
     .comment-item{
-      background: #f7f7f7;
-      border: 1px solid rgba(0,0,0,0.08);
-      border-radius: 12px;
-      padding: 12px;
-      margin-top: 10px;
+      background:#f7f7f7;
+      border:1px solid rgba(0,0,0,0.08);
+      border-radius:12px;
+      padding:12px;
+      margin-top:10px;
     }
     .comment-item .name{
-      font-weight: 900;
-      color: #1f8a4a;
-      font-size: 14px;
+      font-weight:900;
+      color:#1f8a4a;
+      font-size:14px;
     }
     .comment-item .time{
-      font-size: 12px;
-      color: #888;
-      margin-left: 8px;
-      font-weight: 700;
+      font-size:12px;
+      color:#888;
+      margin-left:8px;
+      font-weight:800;
     }
     .comment-item .msg{
-      margin-top: 8px;
-      color: #444;
-      font-size: 14px;
-      line-height: 1.45;
-      white-space: pre-wrap;
-      word-wrap: break-word;
+      margin-top:8px;
+      color:#444;
+      font-size:14px;
+      line-height:1.45;
+      white-space:pre-wrap;
+      word-wrap:break-word;
     }
 
-    .whats {
-      margin-top: 16px;
-      font-size: 14px;
-      text-align: left;
+    /* CONTACT */
+    .whats{
+      margin-top:16px;
+      font-size:14px;
+      text-align:left;
+    }
+    .whats a{
+      color:#27ae60;
+      text-decoration:none;
+      font-weight:900;
     }
 
-    .whats a {
-      color: #27ae60;
-      text-decoration: none;
-      font-weight: 900;
+    footer{
+      margin-top:26px;
+      font-size:12px;
+      color:#888;
+      text-align:center;
     }
 
-    footer {
-      margin-top: 26px;
-      font-size: 12px;
-      color: #888;
-      text-align: center;
+    /* FLOATING WHATSAPP */
+    .float-wa{
+      position:fixed;
+      right:16px;
+      bottom:16px;
+      z-index:9999;
+      text-decoration:none;
+      background:#27ae60;
+      color:#fff;
+      padding:12px 14px;
+      border-radius:999px;
+      font-weight:900;
+      box-shadow:0 10px 25px rgba(0,0,0,0.18);
+      border:1px solid rgba(255,255,255,0.25);
+      font-size:14px;
     }
+    .float-wa:hover{ background:#219150; }
+
   </style>
 </head>
 
 <body>
 
-  <!-- HEADER -->
+  <!-- Header -->
   <div class="topbar">
     <div class="topbar-inner">
       <div class="brand">Meta Saudável</div>
@@ -334,21 +429,24 @@
         <a href="#produtos">Produtos</a>
         <a href="#videos">Vídeos</a>
         <a href="#curiosidades">Curiosidades</a>
+        <a href="#faq">FAQ</a>
         <a href="#comentarios">Comentários</a>
         <a href="#contato">Contato</a>
       </div>
     </div>
   </div>
 
+  <!-- Floating WhatsApp -->
+  <a class="float-wa" href="https://wa.me/5511958749421" target="_blank" aria-label="WhatsApp">
+    📲 WhatsApp
+  </a>
+
   <!-- EBOOKS -->
   <div class="container anchor-offset" id="ebooks">
     <h1>Meta Saudável</h1>
+    <p class="sub">Emagreça em casa sem academia, sem dietas malucas e sem remédios.</p>
 
-    <p class="sub">
-      Emagreça em casa sem academia, sem dietas malucas e sem remédios.
-    </p>
-
-    <!-- OFERTA AGORA ACIMA DO PRODUTO -->
+    <!-- Offer above product -->
     <div class="offer-box">
       <div class="offer-title">Oferta termina em</div>
       <div class="timer" id="countdown">15:00</div>
@@ -361,17 +459,32 @@
       <div class="badge">Promoção por tempo limitado</div>
     </div>
 
-    <!-- IMAGEM DO PRODUTO -->
-    <img src="capa_meta_saudavel.jpg" alt="Capa do Ebook Meta Saudável">
+    <!-- Product image -->
+    <img src="capa_meta_saudavel.jpg" alt="Capa do Ebook Meta Saudável" loading="lazy" />
 
-    <p><strong>
-      Transforme seu corpo em apenas 30 dias com um método simples e comprovado.
-    </strong></p>
+    <p><strong>Transforme seu corpo em apenas 30 dias com um método simples e comprovado.</strong></p>
 
-    <!-- BOTÃO DE COMPRA (CAKTO) -->
+    <!-- Benefits -->
+    <ul class="benefits">
+      <li><span class="check">✓</span> Rotina prática para começar do zero, mesmo com pouco tempo.</li>
+      <li><span class="check">✓</span> Alimentação inteligente + cardápio simples de 7 dias.</li>
+      <li><span class="check">✓</span> Treinos em casa (HIIT e força) com sugestão de rotina semanal.</li>
+      <li><span class="check">✓</span> Sono e hábitos que ajudam a manter os resultados no longo prazo.</li>
+    </ul>
+
+    <!-- Trust -->
+    <div class="trust">
+      ✅ Compra segura • ✅ Acesso imediato • ✅ Conteúdo prático para a vida real<br>
+      Se tiver dúvidas, fale comigo no WhatsApp.
+    </div>
+
+    <!-- Buy button -->
     <a href="https://pay.cakto.com.br/wzbj2wo_749364" class="btn" target="_blank">
       👉 Comprar Agora
     </a>
+
+    <!-- Secondary CTA -->
+    <a href="#videos" class="btn-secondary">Ver vídeos rápidos</a>
 
     <footer>© 2026 Meta Saudável • Todos os direitos reservados</footer>
   </div>
@@ -389,7 +502,7 @@
     <footer>© 2026 Meta Saudável • Todos os direitos reservados</footer>
   </div>
 
-  <!-- VÍDEOS -->
+  <!-- VIDEOS -->
   <div class="container anchor-offset" id="videos">
     <div class="section-title">Vídeos</div>
     <div class="section-sub">Conteúdos rápidos para te ajudar no dia a dia.</div>
@@ -398,8 +511,8 @@
       <strong>Vídeo 1 (exemplo)</strong>
       <p>Troque este vídeo pelo seu (YouTube) quando quiser.</p>
 
-      <div class="video-wrap" style="margin-top:10px;">
-        <!-- Substitua o ID do vídeo no final (dQw4w9WgXcQ) pelo seu -->
+      <div class="video-wrap">
+        <!-- Troque o ID do vídeo no final pelo seu -->
         <iframe
           src="https://www.youtube.com/embed/dQw4w9WgXcQ"
           title="Vídeo Meta Saudável"
@@ -410,8 +523,8 @@
     </div>
 
     <div class="card">
-      <strong>Quer colocar vídeos do TikTok aqui?</strong>
-      <p>Dá para embutir também (é só me mandar o link do vídeo).</p>
+      <strong>Dica</strong>
+      <p>Se você quiser, eu te ajudo a embutir vídeos do TikTok aqui também.</p>
     </div>
 
     <footer>© 2026 Meta Saudável • Todos os direitos reservados</footer>
@@ -435,7 +548,65 @@
     <footer>© 2026 Meta Saudável • Todos os direitos reservados</footer>
   </div>
 
-  <!-- COMENTÁRIOS -->
+  <!-- FAQ -->
+  <div class="container anchor-offset" id="faq">
+    <div class="section-title">FAQ</div>
+    <div class="section-sub">Respostas rápidas para dúvidas comuns.</div>
+
+    <div class="faq-item">
+      <button class="faq-q" type="button" data-faq="1">
+        Preciso de academia?
+        <span>+</span>
+      </button>
+      <div class="faq-a" id="faq-a-1">
+        Não. O foco é emagrecer em casa com exercícios simples e rotina prática.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" type="button" data-faq="2">
+        Serve para iniciantes?
+        <span>+</span>
+      </button>
+      <div class="faq-a" id="faq-a-2">
+        Sim. O material foi estruturado para quem está começando e quer consistência.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" type="button" data-faq="3">
+        Quanto tempo por dia eu preciso?
+        <span>+</span>
+      </button>
+      <div class="faq-a" id="faq-a-3">
+        Dá para começar com 20 a 30 minutos, ajustando conforme sua rotina.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" type="button" data-faq="4">
+        Vou precisar comprar suplementos?
+        <span>+</span>
+      </button>
+      <div class="faq-a" id="faq-a-4">
+        Não. A base é alimentação inteligente e treino. Suplementos não são obrigatórios.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" type="button" data-faq="5">
+        Como recebo o ebook?
+        <span>+</span>
+      </button>
+      <div class="faq-a" id="faq-a-5">
+        Após a compra, você recebe acesso digital (normalmente por e-mail ou área da plataforma).
+      </div>
+    </div>
+
+    <footer>© 2026 Meta Saudável • Todos os direitos reservados</footer>
+  </div>
+
+  <!-- COMMENTS -->
   <div class="container anchor-offset" id="comentarios">
     <div class="section-title">Comentários</div>
     <div class="section-sub">Deixe sua mensagem (aparece para você neste dispositivo).</div>
@@ -459,7 +630,7 @@
     <footer>© 2026 Meta Saudável • Todos os direitos reservados</footer>
   </div>
 
-  <!-- CONTATO -->
+  <!-- CONTACT -->
   <div class="container anchor-offset" id="contato">
     <div class="section-title">Contato</div>
     <div class="section-sub">Dúvidas? Fale comigo no WhatsApp.</div>
@@ -472,7 +643,7 @@
   </div>
 
   <script>
-    // ======= TEMPORIZADOR (15 minutos por visitante) =======
+    // ======= OFFER TIMER (15 min per visitor) =======
     const OFFER_MINUTES = 15;
     const offerKey = "metaSaudavelOfferEnd";
 
@@ -501,15 +672,33 @@
       tick();
     }
 
-    // ======= COMENTÁRIOS (localStorage) =======
+    // ======= FAQ TOGGLE =======
+    function setupFAQ(){
+      const buttons = document.querySelectorAll(".faq-q");
+      buttons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          const id = btn.getAttribute("data-faq");
+          const ans = document.getElementById("faq-a-" + id);
+          const plus = btn.querySelector("span");
+
+          const isOpen = ans.classList.contains("open");
+          document.querySelectorAll(".faq-a").forEach(a => a.classList.remove("open"));
+          document.querySelectorAll(".faq-q span").forEach(s => s.textContent = "+");
+
+          if (!isOpen) {
+            ans.classList.add("open");
+            plus.textContent = "–";
+          }
+        });
+      });
+    }
+
+    // ======= COMMENTS (localStorage) =======
     const commentsKey = "metaSaudavelComments";
 
     function loadComments() {
-      try {
-        return JSON.parse(localStorage.getItem(commentsKey)) || [];
-      } catch {
-        return [];
-      }
+      try { return JSON.parse(localStorage.getItem(commentsKey)) || []; }
+      catch { return []; }
     }
 
     function saveComments(list) {
@@ -524,6 +713,15 @@
       const hh = String(d.getHours()).padStart(2, "0");
       const mi = String(d.getMinutes()).padStart(2, "0");
       return `${dd}/${mm}/${yyyy} ${hh}:${mi}`;
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
     }
 
     function renderComments() {
@@ -550,15 +748,6 @@
       });
     }
 
-    function escapeHtml(str) {
-      return String(str)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-    }
-
     function setupCommentForm() {
       const form = document.getElementById("commentForm");
       form.addEventListener("submit", function(e) {
@@ -566,7 +755,6 @@
 
         const name = document.getElementById("name").value.trim();
         const message = document.getElementById("message").value.trim();
-
         if (!name || !message) return;
 
         const list = loadComments();
@@ -578,8 +766,9 @@
       });
     }
 
-    // start
+    // init
     startCountdown();
+    setupFAQ();
     setupCommentForm();
     renderComments();
   </script>
