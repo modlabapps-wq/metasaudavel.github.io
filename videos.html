@@ -49,11 +49,18 @@
       color:var(--green);
       white-space:nowrap;
     }
+
+    /* MENU (ajustado: não quebra no celular) */
     nav{
       display:flex;
-      flex-wrap:wrap;
       gap:8px;
+      flex-wrap:nowrap;
+      overflow-x:auto;
+      -webkit-overflow-scrolling:touch;
+      scrollbar-width:none;
     }
+    nav::-webkit-scrollbar{ display:none; }
+
     nav a{
       text-decoration:none;
       font-weight:900;
@@ -63,6 +70,8 @@
       background:var(--chip);
       color:#1f8a4a;
       border:1px solid rgba(39,174,96,0.18);
+      white-space:nowrap;
+      flex:0 0 auto;
     }
     nav a:hover{ background:var(--green); color:#fff; }
 
@@ -123,60 +132,6 @@
       white-space:nowrap;
     }
 
-    /* FILTERS */
-    .filters{
-      margin-top:14px;
-      background:#fff;
-      border-radius:16px;
-      padding:14px;
-      box-shadow:0 0 12px rgba(0,0,0,0.08);
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:center;
-      justify-content:space-between;
-    }
-    .search{
-      flex:1;
-      min-width:220px;
-      display:flex;
-      gap:10px;
-      align-items:center;
-      background:#fafafa;
-      border:1px solid rgba(0,0,0,0.10);
-      border-radius:12px;
-      padding:10px 12px;
-    }
-    .search input{
-      border:none;
-      outline:none;
-      background:transparent;
-      width:100%;
-      font-size:14px;
-    }
-    .tags{
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-    }
-    .tag{
-      cursor:pointer;
-      user-select:none;
-      padding:8px 10px;
-      border-radius:999px;
-      background:var(--chip);
-      border:1px solid rgba(39,174,96,0.18);
-      color:#1f8a4a;
-      font-weight:900;
-      font-size:12px;
-    }
-    .tag.active{
-      background:var(--green);
-      border-color:var(--green);
-      color:#fff;
-    }
-
     /* GRID */
     .grid{
       margin-top:14px;
@@ -233,7 +188,7 @@
       width:44px;
       height:44px;
       border-radius:999px;
-      background:var(--green);
+      background:rgba(39,174,96,0.55);
       color:#fff;
       display:flex;
       align-items:center;
@@ -257,55 +212,22 @@
       color:#222;
       line-height:1.25;
     }
-    .meta{
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-      align-items:center;
-      color:#666;
-      font-size:12px;
-      font-weight:800;
-    }
-    .chip{
-      background:#f3fff7;
-      border:1px solid rgba(39,174,96,0.18);
-      color:#1f8a4a;
-      padding:6px 8px;
-      border-radius:999px;
-      font-size:11px;
-      font-weight:900;
-    }
-    .desc{
-      margin:0;
-      color:#555;
-      font-size:13px;
-      line-height:1.4;
-    }
 
+    /* BOTÃO (desativado / em breve) */
     .btn{
       margin-top:auto;
       display:block;
       text-align:center;
       text-decoration:none;
-      background:var(--green);
-      color:#fff;
+      background:#e9f7ee;
+      color:#1f8a4a;
       padding:12px 12px;
       border-radius:12px;
       font-weight:900;
       font-size:14px;
-    }
-    .btn:hover{ background:var(--green2); }
-
-    /* EMPTY */
-    .empty{
-      margin-top:14px;
-      background:#fff;
-      border-radius:16px;
-      padding:18px;
-      box-shadow:0 0 12px rgba(0,0,0,0.08);
-      color:#555;
-      text-align:center;
-      display:none;
+      border:1px solid rgba(39,174,96,0.25);
+      pointer-events:none;
+      opacity:0.95;
     }
 
     /* FLOAT WA */
@@ -343,9 +265,7 @@
       <a href="index.html">Início</a>
       <a href="ebooks.html">Ebooks</a>
       <a href="produtos.html">Produtos</a>
-      <!-- removido: Vídeos (já está nessa página) -->
       <a href="curiosidades.html">Curiosidades</a>
-      <a href="contato.html">Contato</a>
     </nav>
   </div>
 </header>
@@ -358,224 +278,125 @@
     <div class="hero-left">
       <h1 class="title">Vídeos</h1>
       <p class="sub">
-        Aqui ficam os vídeos do TikTok com dicas rápidas, treinos, receitas e motivação.
-        Clique para assistir e salvar os melhores para sua rotina.
+        Em breve vou postar vídeos no TikTok com dicas rápidas, treinos, receitas e motivação.
+        Quando eu começar a postar, os links vão aparecer aqui.
       </p>
     </div>
 
     <div class="hero-right">
-      <div class="pill">🎥 Dicas curtas</div>
-      <div class="pill">🔥 Treino em casa</div>
-      <div class="pill">🥗 Alimentação</div>
-      <div class="pill">🧠 Consistência</div>
-    </div>
-  </section>
-
-  <section class="filters" aria-label="Filtro de vídeos">
-    <div class="search">
-      🔎 <input id="search" type="text" placeholder="Pesquisar vídeo (ex: barriga, treino, jejum, sono)..." />
-    </div>
-
-    <div class="tags" id="tags">
-      <div class="tag active" data-tag="todos">Todos</div>
-      <div class="tag" data-tag="treino">Treino</div>
-      <div class="tag" data-tag="alimentacao">Alimentação</div>
-      <div class="tag" data-tag="habitos">Hábitos</div>
-      <div class="tag" data-tag="motivacao">Motivação</div>
+      <div class="pill">🎥 Em breve</div>
+      <div class="pill">🔥 Em breve</div>
+      <div class="pill">🥗 Em breve</div>
+      <div class="pill">🧠 Em breve</div>
     </div>
   </section>
 
   <section class="grid" id="grid" aria-label="Lista de vídeos">
-    <!-- EXEMPLOS (troque os links pelos seus vídeos do TikTok) -->
 
-    <article class="card" data-tags="treino habitos">
+    <!-- TODOS EM BREVE (SEM LEGENDA / SEM COMENTÁRIO) -->
+    <article class="card">
       <div class="thumb">
-        <div class="placeholder">
-          Thumbnail do vídeo<br>
-          (adicione uma imagem quando quiser)
-        </div>
+        <div class="placeholder">📌 Em breve</div>
         <div class="play">▶</div>
       </div>
       <div class="content">
-        <h3 class="card-title">Treino rápido (7 minutos) para começar hoje</h3>
-        <div class="meta">
-          <span class="chip">Treino</span>
-          <span class="chip">Iniciante</span>
-          <span>⏱ 30–45s</span>
-        </div>
-        <p class="desc">Uma rotina curta para fazer em casa e criar consistência sem sofrer.</p>
-        <a class="btn" href="#" target="_blank" rel="noopener">Assistir no TikTok</a>
+        <h3 class="card-title">Em breve</h3>
+        <a class="btn" href="#">Em breve</a>
       </div>
     </article>
 
-    <article class="card" data-tags="alimentacao habitos">
+    <article class="card">
       <div class="thumb">
-        <div class="placeholder">
-          Thumbnail do vídeo<br>
-          (adicione uma imagem quando quiser)
-        </div>
+        <div class="placeholder">📌 Em breve</div>
         <div class="play">▶</div>
       </div>
       <div class="content">
-        <h3 class="card-title">3 alimentos que ajudam na saciedade</h3>
-        <div class="meta">
-          <span class="chip">Alimentação</span>
-          <span class="chip">Dica</span>
-          <span>🍽</span>
-        </div>
-        <p class="desc">Dica simples para controlar fome e reduzir beliscos ao longo do dia.</p>
-        <a class="btn" href="#" target="_blank" rel="noopener">Assistir no TikTok</a>
+        <h3 class="card-title">Em breve</h3>
+        <a class="btn" href="#">Em breve</a>
       </div>
     </article>
 
-    <article class="card" data-tags="habitos motivacao">
+    <article class="card">
       <div class="thumb">
-        <div class="placeholder">
-          Thumbnail do vídeo<br>
-          (adicione uma imagem quando quiser)
-        </div>
+        <div class="placeholder">📌 Em breve</div>
         <div class="play">▶</div>
       </div>
       <div class="content">
-        <h3 class="card-title">Como manter a rotina quando bate a preguiça</h3>
-        <div class="meta">
-          <span class="chip">Motivação</span>
-          <span class="chip">Hábitos</span>
-          <span>🧠</span>
-        </div>
-        <p class="desc">Um truque mental simples para voltar pro plano sem culpa e sem desistir.</p>
-        <a class="btn" href="#" target="_blank" rel="noopener">Assistir no TikTok</a>
+        <h3 class="card-title">Em breve</h3>
+        <a class="btn" href="#">Em breve</a>
       </div>
     </article>
 
-    <article class="card" data-tags="treino">
+    <article class="card">
       <div class="thumb">
-        <div class="placeholder">
-          Thumbnail do vídeo<br>
-          (adicione uma imagem quando quiser)
-        </div>
+        <div class="placeholder">📌 Em breve</div>
         <div class="play">▶</div>
       </div>
       <div class="content">
-        <h3 class="card-title">Treino para barriga (sem equipamento)</h3>
-        <div class="meta">
-          <span class="chip">Treino</span>
-          <span class="chip">Barriga</span>
-          <span>🏠</span>
-        </div>
-        <p class="desc">Sequência simples para ativar o core e fortalecer o abdômen em casa.</p>
-        <a class="btn" href="#" target="_blank" rel="noopener">Assistir no TikTok</a>
+        <h3 class="card-title">Em breve</h3>
+        <a class="btn" href="#">Em breve</a>
       </div>
     </article>
 
-    <article class="card" data-tags="alimentacao">
+    <article class="card">
       <div class="thumb">
-        <div class="placeholder">
-          Thumbnail do vídeo<br>
-          (adicione uma imagem quando quiser)
-        </div>
+        <div class="placeholder">📌 Em breve</div>
         <div class="play">▶</div>
       </div>
       <div class="content">
-        <h3 class="card-title">Café da manhã simples (proteico) para emagrecer</h3>
-        <div class="meta">
-          <span class="chip">Alimentação</span>
-          <span class="chip">Receita</span>
-          <span>🥚</span>
-        </div>
-        <p class="desc">Ideia rápida para começar o dia com mais saciedade e menos vontade de doce.</p>
-        <a class="btn" href="#" target="_blank" rel="noopener">Assistir no TikTok</a>
+        <h3 class="card-title">Em breve</h3>
+        <a class="btn" href="#">Em breve</a>
       </div>
     </article>
 
-    <article class="card" data-tags="habitos">
+    <article class="card">
       <div class="thumb">
-        <div class="placeholder">
-          Thumbnail do vídeo<br>
-          (adicione uma imagem quando quiser)
-        </div>
+        <div class="placeholder">📌 Em breve</div>
         <div class="play">▶</div>
       </div>
       <div class="content">
-        <h3 class="card-title">Sono e emagrecimento: o erro que te trava</h3>
-        <div class="meta">
-          <span class="chip">Hábitos</span>
-          <span class="chip">Sono</span>
-          <span>😴</span>
-        </div>
-        <p class="desc">O básico que muita gente ignora e que muda o apetite e a retenção.</p>
-        <a class="btn" href="#" target="_blank" rel="noopener">Assistir no TikTok</a>
+        <h3 class="card-title">Em breve</h3>
+        <a class="btn" href="#">Em breve</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="thumb">
+        <div class="placeholder">📌 Em breve</div>
+        <div class="play">▶</div>
+      </div>
+      <div class="content">
+        <h3 class="card-title">Em breve</h3>
+        <a class="btn" href="#">Em breve</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="thumb">
+        <div class="placeholder">📌 Em breve</div>
+        <div class="play">▶</div>
+      </div>
+      <div class="content">
+        <h3 class="card-title">Em breve</h3>
+        <a class="btn" href="#">Em breve</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="thumb">
+        <div class="placeholder">📌 Em breve</div>
+        <div class="play">▶</div>
+      </div>
+      <div class="content">
+        <h3 class="card-title">Em breve</h3>
+        <a class="btn" href="#">Em breve</a>
       </div>
     </article>
 
   </section>
 
-  <div class="empty" id="empty">
-    Nenhum vídeo encontrado com esse filtro/pesquisa.
-  </div>
-
   <footer>© 2026 Meta Saudável • Página de vídeos</footer>
 </main>
 
-<script>
-  const search = document.getElementById("search");
-  const tagsWrap = document.getElementById("tags");
-  const cards = Array.from(document.querySelectorAll(".card"));
-  const empty = document.getElementById("empty");
-  const grid = document.getElementById("grid");
-
-  let activeTag = "todos";
-
-  function normalize(str){
-    return (str || "")
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "");
-  }
-
-  function applyFilters(){
-    const q = normalize(search.value.trim());
-
-    let visibleCount = 0;
-
-    cards.forEach(card => {
-      const title = normalize(card.querySelector(".card-title")?.textContent || "");
-      const desc = normalize(card.querySelector(".desc")?.textContent || "");
-      const tags = normalize(card.getAttribute("data-tags") || "");
-
-      const matchTag = (activeTag === "todos") ? true : tags.includes(activeTag);
-      const matchText = (!q) ? true : (title.includes(q) || desc.includes(q));
-
-      const show = matchTag && matchText;
-      card.style.display = show ? "" : "none";
-      if(show) visibleCount++;
-    });
-
-    if(visibleCount === 0){
-      empty.style.display = "block";
-      grid.style.display = "none";
-    } else {
-      empty.style.display = "none";
-      grid.style.display = "grid";
-    }
-  }
-
-  tagsWrap.addEventListener("click", (e) => {
-    const t = e.target.closest(".tag");
-    if(!t) return;
-    activeTag = t.getAttribute("data-tag");
-
-    Array.from(tagsWrap.querySelectorAll(".tag")).forEach(x => x.classList.remove("active"));
-    t.classList.add("active");
-
-    applyFilters();
-  });
-
-  search.addEventListener("input", applyFilters);
-
-  applyFilters();
-</script>
-
 </body>
 </html>
-
