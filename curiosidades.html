@@ -82,12 +82,72 @@
     }
     .page-sub{
       max-width:940px;
-      margin:0 auto 18px;
+      margin:0 auto 14px;
       text-align:center;
       color:#555;
       font-size:14px;
       line-height:1.5;
     }
+
+    /* SEARCH */
+    .search-wrap{
+      max-width:980px;
+      margin:0 auto 16px;
+      background:#fff;
+      border-radius:16px;
+      box-shadow:0 0 14px rgba(0,0,0,0.08);
+      border:1px solid rgba(0,0,0,0.06);
+      padding:12px;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .search-input{
+      flex:1;
+      min-width:220px;
+      border:1px solid rgba(0,0,0,0.10);
+      background:#fff;
+      border-radius:12px;
+      padding:12px 12px;
+      font-size:14px;
+      outline:none;
+    }
+    .search-input:focus{
+      border-color: rgba(39,174,96,0.45);
+      box-shadow:0 0 0 4px rgba(39,174,96,0.12);
+    }
+    .search-meta{
+      font-size:12px;
+      font-weight:900;
+      color:#666;
+      display:flex;
+      gap:8px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .chip{
+      background:#f3fff7;
+      border:1px solid rgba(39,174,96,0.22);
+      color:#1f8a4a;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:900;
+      white-space:nowrap;
+    }
+    .btn-clear{
+      border:none;
+      cursor:pointer;
+      background:#fff;
+      color:#1f8a4a;
+      font-weight:900;
+      padding:10px 12px;
+      border-radius:12px;
+      font-size:13px;
+      border:1px solid rgba(39,174,96,0.25);
+    }
+    .btn-clear:hover{ background:#f3fff7; }
 
     /* FEATURE */
     .feature{
@@ -224,6 +284,11 @@
       flex-direction:column;
       gap:10px;
       border:1px solid rgba(0,0,0,0.06);
+      cursor:pointer;
+    }
+    .card:hover{
+      transform: translateY(-1px);
+      transition: transform .12s ease;
     }
     .tag{
       align-self:flex-start;
@@ -286,7 +351,7 @@
       <a href="ebooks.html">Ebooks</a>
       <a href="produtos.html">Produtos</a>
       <a href="videos.html">Vídeos</a>
-      <!-- removido: Curiosidades (já está nessa página) -->
+      <a href="curiosidades.html">Curiosidades</a>
       <a href="contato.html">Contato</a>
     </nav>
   </div>
@@ -303,6 +368,22 @@
     Quando chegar na 300, volta para a <b>01</b>.
   </p>
 
+  <!-- SEARCH BAR -->
+  <div class="search-wrap" aria-label="Pesquisar curiosidades">
+    <input
+      id="search"
+      class="search-input"
+      type="text"
+      placeholder="Pesquisar por palavra-chave... (ex.: sono, proteína, caminhada, ansiedade)"
+      autocomplete="off"
+    />
+    <div class="search-meta">
+      <span class="chip" id="resultCount">Mostrando: 300</span>
+      <button class="btn-clear" id="clearBtn" type="button">Limpar</button>
+    </div>
+  </div>
+
+  <!-- FEATURE -->
   <section class="feature" aria-label="Curiosidade em destaque">
     <div class="feature-left">
       <div class="feature-kicker">⭐ Curiosidade em destaque</div>
@@ -336,7 +417,6 @@
   // 300 CURIOSIDADES (garantido)
   // =========================================================
   const baseCuriosidades = [
-    // (1)–(60) extras “na mão” para ficar bem variado
     { tag:"Sono", title:"Dormir pouco aumenta a vontade de doce", text:"Cansaço pode aumentar fome e a busca por energia rápida. Melhorar o sono ajuda a controlar o apetite." },
     { tag:"Metabolismo", title:"Você queima calorias mesmo parado", text:"O metabolismo basal é o gasto para manter o corpo funcionando. Ele costuma ser a maior parte do gasto diário." },
     { tag:"Alimentação", title:"Proteína ajuda a segurar a fome", text:"Refeições com proteína e fibras geralmente dão mais saciedade e reduzem beliscos." },
@@ -346,69 +426,13 @@
     { tag:"Peso", title:"A balança oscila por água e sal", text:"Subidas rápidas muitas vezes são retenção. Olhe a tendência da semana." },
     { tag:"Mente", title:"Disciplina é direção, não perfeição", text:"Uma refeição ruim não destrói o processo. Volte para o plano na próxima." },
     { tag:"Alimentação", title:"Ultraprocessados facilitam exagero", text:"São muito palatáveis e pouco saciantes. Comida de verdade facilita controle." },
-    { tag:"Treino", title:"Consistência vence intensidade", text:"Treinos menores e frequentes costumam funcionar melhor do que um treino enorme raramente." },
-
-    { tag:"Fibras", title:"Fibras aumentam volume com poucas calorias", text:"Legumes, verduras, frutas e grãos ajudam a ficar satisfeito com menos." },
-    { tag:"Sono", title:"Horário regular melhora o sono", text:"Dormir e acordar em horários parecidos ajuda o corpo a entrar no ritmo." },
-    { tag:"Treino", title:"Treino de força ajuda a “secar” melhor", text:"Manter músculo melhora o corpo e ajuda a sustentar resultados." },
-    { tag:"Hábitos", title:"Ambiente manda mais que força de vontade", text:"Deixar opções boas fáceis e visíveis reduz decisões impulsivas." },
-    { tag:"Bebidas", title:"Calorias líquidas enganam", text:"Bebidas adoçadas somam calorias sem saciedade. Trocar por água/zero ajuda." },
-    { tag:"Digestão", title:"Mastigar bem reduz exageros", text:"Mastigação melhora percepção de saciedade e ajuda a digestão." },
-    { tag:"Alimentação", title:"“Saudável” também pode engordar", text:"Azeite, castanhas e pasta de amendoim são bons, mas porção importa." },
-    { tag:"Sono", title:"Tela à noite pode atrapalhar", text:"Reduzir celular/TV perto da hora de dormir pode melhorar o sono." },
-    { tag:"Rotina", title:"Planejar 2–3 refeições-base salva a semana", text:"Ter opções simples prontas reduz decisões no impulso quando bate fome." },
-    { tag:"Treino", title:"Treino em casa funciona", text:"Agachamento, flexão, prancha e caminhada já criam uma base forte." },
-
-    { tag:"Alimentação", title:"Fruta inteira sacia mais que suco", text:"A fruta tem fibras e mastigação. Suco concentra calorias e sacia menos." },
-    { tag:"Água", title:"Garrafa à vista = mais água", text:"O que fica perto e visível você consome mais. Use isso a seu favor." },
-    { tag:"Sono", title:"Álcool piora qualidade do sono", text:"Pode dar sonolência, mas reduz qualidade e pode aumentar fome no dia seguinte." },
-    { tag:"Mente", title:"Vontade passa como onda", text:"Esperar 10 minutos fazendo outra coisa muitas vezes reduz a vontade." },
-    { tag:"Treino", title:"Subir escadas conta muito", text:"Pequenas escolhas no dia somam gasto calórico na semana." },
-    { tag:"Alimentação", title:"Molhos escondem calorias", text:"Maionese e molhos cremosos somam rápido. Use com moderação." },
-    { tag:"Hábitos", title:"Comer sentado ajuda", text:"Comer distraído facilita exagero. Sentar e focar na refeição ajuda a parar na hora certa." },
-    { tag:"Mente", title:"Evite o “já que…”", text:"“Já que errei, vou chutar o balde” é armadilha. Pare no erro e siga." },
-    { tag:"Treino", title:"Dor não é requisito", text:"Treinar bem não precisa te destruir. Regularidade rende mais." },
-    { tag:"Sono", title:"Quarto mais escuro melhora sono", text:"Menos luz costuma melhorar profundidade do sono e disposição." },
-
-    { tag:"Alimentação", title:"Metade do prato com vegetais ajuda", text:"Mais volume de verduras/legumes tende a reduzir calorias sem passar fome." },
-    { tag:"Passos", title:"Caminhada pós-refeição ajuda rotina", text:"Uma caminhada leve após comer ajuda a manter consistência." },
-    { tag:"Metabolismo", title:"Platô é normal", text:"Estagnações acontecem. Ajustes pequenos e paciência resolvem." },
-    { tag:"Mente", title:"Compare você com você", text:"Avalie progresso semanal: energia, passos, medidas, consistência." },
-    { tag:"Alimentação", title:"Carboidrato não é inimigo", text:"Quantidade e contexto importam. Cortar tudo geralmente não é sustentável." },
-    { tag:"Hábitos", title:"Comprar com lista evita besteira", text:"Ir ao mercado com lista reduz compras impulsivas." },
-    { tag:"Treino", title:"Progredir pouco a pouco funciona", text:"Aumentar 1 repetição ou 1 minuto por semana já é progresso." },
-    { tag:"Água", title:"Água com gás pode ajudar", text:"Para alguns, dá sensação de estômago cheio e reduz beliscos." },
-    { tag:"Alimentação", title:"Comer no prato ajuda porção", text:"Evite comer direto do pacote: sirva e enxergue a quantidade." },
-    { tag:"Sono", title:"Sol cedo ajuda seu relógio biológico", text:"Luz natural pela manhã ajuda a regular sono à noite." },
-
-    { tag:"Treino", title:"Pernas e glúteos gastam bastante energia", text:"Treinar músculos grandes aumenta o gasto do treino e melhora o corpo." },
-    { tag:"Digestão", title:"Fibras precisam de água", text:"Aumente fibras junto com água para o intestino responder bem." },
-    { tag:"Mente", title:"Tenha um plano de emergência", text:"Separe 2 lanches “salva-vida” para não cair no impulso quando der fome." },
-    { tag:"Alimentação", title:"Temperos ajudam sem calorias", text:"Alho, cebola, ervas e limão melhoram sabor e facilitam manter a dieta." },
-    { tag:"Hábitos", title:"Deixe a roupa de treino pronta", text:"Menos fricção = mais chance de você treinar." },
-    { tag:"Sono", title:"Cafeína tarde pode atrapalhar", text:"Café no fim do dia pode piorar o sono. Ajuste horário se necessário." },
-    { tag:"Alimentação", title:"Proteína no café da manhã ajuda alguns", text:"Pode reduzir beliscos e vontade de doce ao longo do dia." },
-    { tag:"Metabolismo", title:"Peso sobe após treino de força", text:"Inflamação muscular e retenção podem subir a balança por 1–3 dias." },
-    { tag:"Hábitos", title:"Cozinhar simples já basta", text:"Arroz, feijão, ovos, frango, salada e fruta formam base forte." },
-    { tag:"Mente", title:"Foco em hoje, repita amanhã", text:"Pensar em 24 horas reduz ansiedade e melhora consistência." },
-
-    { tag:"Alimentação", title:"Comida “colorida” melhora variedade", text:"Mais cores no prato geralmente significa mais micronutrientes." },
-    { tag:"Treino", title:"O melhor treino é o que você consegue manter", text:"Se você só tem 10 minutos, faça 10. Constância vence." },
-    { tag:"Água", title:"Comece o dia com água", text:"Um copo de água ao acordar ajuda muita gente a se sentir melhor." },
-    { tag:"Mente", title:"Recompensa sem comida funciona", text:"Troque “me premiar com exagero” por descanso, música, banho ou algo leve." },
-    { tag:"Alimentação", title:"Legumes congelados salvam tempo", text:"Práticos e ajudam a manter comida de verdade na rotina." },
-    { tag:"Treino", title:"Flexão na parede é um começo", text:"Se flexão no chão é difícil, faça na parede e progrida." },
-    { tag:"Sono", title:"Banho morno pode relaxar", text:"Pode ajudar a reduzir tensão antes de dormir." },
-    { tag:"Passos", title:"Estacionar mais longe ajuda", text:"Pequenas caminhadas no dia somam bastante na semana." },
-    { tag:"Alimentação", title:"Arroz e feijão podem ser aliados", text:"Bem porcionados e com proteína + salada, funcionam muito bem." },
-    { tag:"Mente", title:"O básico bem feito vence qualquer segredo", text:"Sono, água, proteína, fibras e movimento: isso resolve a maior parte." }
+    { tag:"Treino", title:"Consistência vence intensidade", text:"Treinos menores e frequentes costumam funcionar melhor do que um treino enorme raramente." }
   ];
 
   const TARGET_TOTAL = 300;
 
   function pad3(n){ return String(n).padStart(3, "0"); }
 
-  // Geração inteligente para completar exatamente 300
   const tags = ["Sono","Treino","Alimentação","Hábitos","Metabolismo","Mente","Água","Digestão","Rotina","Passos"];
   const textMap = {
     "Sono":"Sono melhor costuma reduzir fome e melhorar escolhas. Proteja horário e reduza telas à noite quando possível.",
@@ -423,14 +447,8 @@
     "Passos":"Aumentar passos é uma forma simples de gastar mais energia. Caminhadas curtas contam muito na semana."
   };
 
+  // Base + geração até 300
   const curiosidades = [...baseCuriosidades];
-
-  // Se por algum motivo base passar de 300, corta (garante 300 exato)
-  if(curiosidades.length > TARGET_TOTAL){
-    curiosidades.length = TARGET_TOTAL;
-  }
-
-  // Completa até 300, com títulos únicos numerados
   while(curiosidades.length < TARGET_TOTAL){
     const n = curiosidades.length + 1; // 1..300
     const tag = tags[n % tags.length];
@@ -442,9 +460,7 @@
   }
 
   // =========================================================
-  // SEQUÊNCIA SEM REPETIR: vai seguindo até 300 e reinicia
-  // - Avança automaticamente 1 vez por dia (por visitante)
-  // - Botão "Próxima" avança sem voltar para a anterior
+  // SEQUÊNCIA SEM REPETIR (até 300, depois reinicia)
   // =========================================================
   const KEY_INDEX = "ms_curiosidade_index";
   const KEY_LAST_DAY = "ms_curiosidade_last_day";
@@ -517,22 +533,76 @@
     }
   });
 
-  function renderGrid(){
-    const grid = document.getElementById("grid");
+  // =========================================================
+  // GRID + PESQUISA
+  // =========================================================
+  const grid = document.getElementById("grid");
+  const search = document.getElementById("search");
+  const resultCount = document.getElementById("resultCount");
+  const clearBtn = document.getElementById("clearBtn");
+
+  function buildCard(c, i){
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+      <span class="tag">${c.tag}</span>
+      <h3>${pad3(i+1)}. ${c.title}</h3>
+      <p>${c.text}</p>
+    `;
+    // Clicar num card joga ele para destaque (ótimo!)
+    card.addEventListener("click", () => {
+      // acha índice real dentro do array principal
+      const idxReal = curiosidades.indexOf(c);
+      if(idxReal >= 0){
+        setIndex(idxReal);
+        renderFeatured(idxReal);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+    return card;
+  }
+
+  function renderGrid(list){
     grid.innerHTML = "";
-    curiosidades.forEach((c, i) => {
-      const card = document.createElement("div");
-      card.className = "card";
-      card.innerHTML = `
-        <span class="tag">${c.tag}</span>
-        <h3>${pad3(i+1)}. ${c.title}</h3>
-        <p>${c.text}</p>
-      `;
-      grid.appendChild(card);
+    list.forEach((c) => {
+      const idxReal = curiosidades.indexOf(c);
+      grid.appendChild(buildCard(c, idxReal));
     });
   }
 
-  // Atualiza textos para refletir 300 certinho
+  function normalize(s){
+    return (s || "")
+      .toString()
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+  }
+
+  function applySearch(){
+    const q = normalize(search.value).trim();
+    if(!q){
+      renderGrid(curiosidades);
+      resultCount.textContent = `Mostrando: ${curiosidades.length}`;
+      return;
+    }
+
+    const filtered = curiosidades.filter(c => {
+      const hay = normalize(c.tag + " " + c.title + " " + c.text);
+      return hay.includes(q);
+    });
+
+    renderGrid(filtered);
+    resultCount.textContent = `Encontradas: ${filtered.length}`;
+  }
+
+  search.addEventListener("input", applySearch);
+  clearBtn.addEventListener("click", () => {
+    search.value = "";
+    applySearch();
+    search.focus();
+  });
+
+  // Textos dinâmicos
   document.getElementById("subText").innerHTML =
     `Aqui tem <b>${curiosidades.length} curiosidades</b> para você nunca enjoar.
      A cada dia, o site avança automaticamente para a próxima — e você também pode clicar em “Próxima”.
@@ -544,7 +614,8 @@
   // INIT
   autoAdvanceDaily();
   renderFeatured(getIndex());
-  renderGrid();
+  renderGrid(curiosidades);
+  resultCount.textContent = `Mostrando: ${curiosidades.length}`;
 </script>
 
 </body>
