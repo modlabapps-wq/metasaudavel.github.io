@@ -52,7 +52,7 @@
       flex:0 0 auto;
     }
 
-    /* ✅ Menu com tamanho dinâmico (não quebra) */
+    /* ✅ Menu com tamanho dinâmico (evita quebrar em celulares / TikTok) */
     nav{
       display:flex;
       justify-content:flex-end;
@@ -66,8 +66,8 @@
     nav a{
       text-decoration:none;
       font-weight:900;
-      font-size: clamp(11px, 2.4vw, 13px);   /* 🔥 fonte reduz sozinha */
-      padding: clamp(6px, 1.6vw, 8px) clamp(7px, 2.0vw, 10px); /* 🔥 padding reduz sozinho */
+      font-size: clamp(11px, 2.4vw, 13px);
+      padding: clamp(6px, 1.6vw, 8px) clamp(7px, 2.0vw, 10px);
       border-radius:10px;
       background:var(--chip);
       color:#1f8a4a;
@@ -77,12 +77,6 @@
       line-height:1;
     }
     nav a:hover{ background:var(--green); color:#fff; }
-
-    nav a.active{
-      background:var(--green);
-      color:#fff;
-      border-color: rgba(39,174,96,0.55);
-    }
 
     /* ✅ Celular: logo central + menu central embaixo */
     @media (max-width: 720px){
@@ -389,7 +383,7 @@
       <a href="ebooks.html">Ebooks</a>
       <a href="produtos.html">Produtos</a>
       <a href="videos.html">Vídeos</a>
-      <a class="active" href="curiosidades.html">Curiosidades</a>
+      <!-- ✅ Removido "Curiosidades" daqui porque você já está nesta página -->
     </nav>
   </div>
 </header>
@@ -397,7 +391,6 @@
 <a class="float-wa" href="https://wa.me/5511958749421" target="_blank">📲 WhatsApp</a>
 
 <main class="wrap">
-  <!-- (RESTO DA PÁGINA SEM ALTERAÇÕES) -->
 
   <h1 class="page-title">Curiosidades</h1>
   <p class="page-sub" id="subText">
@@ -451,7 +444,9 @@
 </main>
 
 <script>
-  // (SEU SCRIPT INTACTO)
+  // =========================================================
+  // 300 CURIOSIDADES (garantido)
+  // =========================================================
   const baseCuriosidades = [
     { tag:"Sono", title:"Dormir pouco aumenta a vontade de doce", text:"Cansaço pode aumentar fome e a busca por energia rápida. Melhorar o sono ajuda a controlar o apetite." },
     { tag:"Metabolismo", title:"Você queima calorias mesmo parado", text:"O metabolismo basal é o gasto para manter o corpo funcionando. Ele costuma ser a maior parte do gasto diário." },
