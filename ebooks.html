@@ -126,7 +126,7 @@
       max-width:520px;
     }
 
-    /* ✅ BARRA DE FILTRO (novo) */
+    /* ✅ BARRA DE FILTRO */
     .filter-bar{
       background:#fff;
       border-radius:14px;
@@ -232,6 +232,20 @@
       display:flex;
       flex-direction:column;
       justify-content:flex-start;
+    }
+
+    /* ✅ “Etiqueta” da categoria (para você conferir e o usuário entender) */
+    .cat-pill{
+      display:inline-block;
+      margin:8px auto 0;
+      padding:6px 10px;
+      border-radius:999px;
+      background:#f3fff7;
+      border:1px solid rgba(39,174,96,0.18);
+      color:#1f8a4a;
+      font-weight:900;
+      font-size:12px;
+      width:fit-content;
     }
 
     /* OFFER */
@@ -397,7 +411,7 @@
   <div class="page-title">Ebooks</div>
   <div class="page-sub">Ebooks e recomendações para emagrecer com saúde.</div>
 
-  <!-- ✅ FILTRO (novo) -->
+  <!-- ✅ FILTRO -->
   <div class="filter-bar" aria-label="Filtro de ebooks">
     <div class="filter-left">
       <div class="search">
@@ -421,11 +435,11 @@
 
   <div class="grid" id="ebooksGrid">
 
-    <!-- SEU EBOOK -->
+    <!-- ✅ CLASSIFICAÇÃO: Alimentação e treino -->
     <section class="container ebook-item"
       data-title="Como Emagrecer em Casa"
       data-category="alimentacao_treinos"
-      data-tags="emagrecer em casa rotina simples cardapio pratico treinos em casa alimentacao treino">
+      data-tags="como emagrecer em casa rotina simples cardapio pratico treinos em casa alimentacao treino emagrecimento">
       <div class="offer-box">
         <div class="offer-title">Oferta termina em</div>
         <div class="timer" id="countdown-ms">15:00</div>
@@ -440,6 +454,7 @@
 
       <img class="cover" src="capa_meta_saudavel.jpg">
       <p class="headline">Como Emagrecer em Casa</p>
+      <div class="cat-pill">Alimentação e treino</div>
 
       <ul class="benefits">
         <li><span class="check">✓</span> Rotina simples</li>
@@ -450,11 +465,11 @@
       <a class="btn" href="https://pay.cakto.com.br/wzbj2wo_749364" target="_blank">Comprar</a>
     </section>
 
-    <!-- AFILIADOS -->
+    <!-- ✅ CLASSIFICAÇÃO: Alimentação -->
     <section class="container ebook-item"
       data-title="Cinturinha Fina"
       data-category="alimentacao"
-      data-tags="cinturinha fina cintura alimentacao dieta secar barriga">
+      data-tags="cinturinha fina cintura dieta alimentacao secar barriga emagrecer">
       <div class="offer-box">
         <div class="offer-title">Promoção por tempo limitado</div>
         <div class="timer timer-static">Oferta especial</div>
@@ -469,13 +484,16 @@
 
       <img class="cover-aff" src="Cinturinha_Fina.png">
       <p class="headline">Cinturinha Fina</p>
+      <div class="cat-pill">Alimentação</div>
+
       <a class="btn" href="https://pay.cakto.com.br/abbzsqj_416048?affiliate=qFsAcyY8" target="_blank">Ver oferta</a>
     </section>
 
+    <!-- ✅ CLASSIFICAÇÃO: Alimentação -->
     <section class="container ebook-item"
       data-title="A Comida com Testosterona"
       data-category="alimentacao"
-      data-tags="comida com testosterona alimentacao energia performance">
+      data-tags="a comida com testosterona alimentacao energia performance hormonios saude">
       <div class="offer-box">
         <div class="offer-title">Promoção por tempo limitado</div>
         <div class="timer timer-static">Oferta especial</div>
@@ -490,14 +508,16 @@
 
       <img class="cover-aff" src="comida_com_testosterona.jpg.png">
       <p class="headline">A Comida com Testosterona</p>
+      <div class="cat-pill">Alimentação</div>
+
       <a class="btn" href="https://pay.hotmart.com/K83209126H?off=p4cbtmlm&checkoutMode=10&ref=E104199384C&bid=1769904933200" target="_blank">Ver oferta</a>
     </section>
 
-    <!-- DIETA EM AÇÃO -->
+    <!-- ✅ CLASSIFICAÇÃO: Alimentação -->
     <section class="container ebook-item"
       data-title="Dieta em Ação"
       data-category="alimentacao"
-      data-tags="dieta em acao manual secreto emagrecimento alimentacao dieta cardapio">
+      data-tags="dieta em acao manual secreto emagrecimento alimentacao dieta cardapio reeducacao alimentar">
       <div class="offer-box">
         <div class="offer-title">Promoção por tempo limitado</div>
         <div class="timer timer-static">Oferta especial</div>
@@ -512,6 +532,8 @@
 
       <img class="cover-aff" src="dieta_em_acao.png" alt="Dieta em Ação">
       <p class="headline">Dieta em Ação</p>
+      <div class="cat-pill">Alimentação</div>
+
       <a class="btn" href="https://go.hotmart.com/V104082247X?dp=1" target="_blank">Ver oferta</a>
     </section>
 
@@ -545,7 +567,7 @@ const el = document.getElementById("countdown-ms");
   setTimeout(tick, 1000);
 })();
 
-/* ✅ FILTRO + BUSCA (novo) */
+/* ✅ FILTRO + BUSCA */
 const searchInput = document.getElementById("searchInput");
 const categorySelect = document.getElementById("categorySelect");
 const items = Array.from(document.querySelectorAll(".ebook-item"));
@@ -582,8 +604,6 @@ function applyFilters(){
 
 searchInput.addEventListener("input", applyFilters);
 categorySelect.addEventListener("change", applyFilters);
-
-/* Inicial */
 applyFilters();
 </script>
 
