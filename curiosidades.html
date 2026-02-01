@@ -49,11 +49,18 @@
       color:var(--green);
       white-space:nowrap;
     }
+
+    /* MENU (ajustado: não quebra no celular + sem contato) */
     nav{
       display:flex;
-      flex-wrap:wrap;
       gap:8px;
+      flex-wrap:nowrap;
+      overflow-x:auto;
+      -webkit-overflow-scrolling:touch;
+      scrollbar-width:none;
     }
+    nav::-webkit-scrollbar{ display:none; }
+
     nav a{
       text-decoration:none;
       font-weight:900;
@@ -63,6 +70,8 @@
       background:var(--chip);
       color:#1f8a4a;
       border:1px solid rgba(39,174,96,0.18);
+      white-space:nowrap;
+      flex:0 0 auto;
     }
     nav a:hover{ background:var(--green); color:#fff; }
 
@@ -352,7 +361,6 @@
       <a href="produtos.html">Produtos</a>
       <a href="videos.html">Vídeos</a>
       <a href="curiosidades.html">Curiosidades</a>
-      <a href="contato.html">Contato</a>
     </nav>
   </div>
 </header>
