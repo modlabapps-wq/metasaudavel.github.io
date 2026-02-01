@@ -105,7 +105,7 @@
       display:grid;
       grid-template-columns:repeat(2,1fr);
       gap:16px;
-      align-items:stretch; /* garante mesma altura */
+      align-items:stretch;
     }
     @media (max-width:980px){
       .grid{ grid-template-columns:1fr; }
@@ -118,32 +118,28 @@
       border-radius:14px;
       box-shadow:0 0 15px rgba(0,0,0,0.10);
       text-align:center;
-
-      display:flex;            /* chave para nivelar */
-      flex-direction:column;   /* conteúdo em coluna */
-      height:100%;             /* estica no grid */
+      display:flex;
+      flex-direction:column;
+      height:100%;
     }
 
-    /* título com limite para não "estourar" */
     .headline{
       font-weight:900;
       font-size:15px;
       margin:0 0 12px;
       line-height:1.35;
-
       display:-webkit-box;
       -webkit-box-orient:vertical;
-      -webkit-line-clamp:3;    /* limita a 3 linhas */
+      -webkit-line-clamp:3;
       overflow:hidden;
-      min-height:61px;         /* mantém altura igual */
+      min-height:61px;
     }
 
-    /* imagem padronizada */
     .img-prod{
       width:100%;
       max-width:260px;
-      height:200px;            /* altura fixa = nivelado */
-      object-fit:contain;      /* não distorce */
+      height:200px;
+      object-fit:contain;
       margin:10px auto 0;
       display:block;
       border-radius:12px;
@@ -159,7 +155,7 @@
       gap:10px;
       margin:14px 0 10px;
       flex-wrap:wrap;
-      min-height:34px;         /* reserva espaço */
+      min-height:34px;
     }
     .old-price{
       color:#999;
@@ -178,7 +174,7 @@
       list-style:none;
       padding:0;
       margin:10px 0 0;
-      flex:1 1 auto;           /* empurra botão pra baixo */
+      flex:1 1 auto;
     }
     .benefits li{
       display:flex;
@@ -311,7 +307,7 @@
            loading="lazy">
 
       <div class="prices">
-        <span class="old-price">R$ 100,00</span>
+        <span class="old-price">R$ 93,90</span>
         <span class="new-price">R$ 74,90</span>
       </div>
 
