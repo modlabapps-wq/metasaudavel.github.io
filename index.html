@@ -36,13 +36,15 @@ header{
   box-shadow:0 2px 10px rgba(0,0,0,0.06);
 }
 
+/* Desktop: logo esquerda + menu direita */
 .header-container{
   max-width:1200px;
   margin:auto;
-  padding:14px;
+  padding:14px 14px;
   display:flex;
   justify-content:space-between;
   align-items:center;
+  flex-wrap:nowrap;
   gap:12px;
 }
 
@@ -53,10 +55,15 @@ header{
   white-space:nowrap;
 }
 
+/* MENU (desktop) */
 nav{
   display:flex;
   gap:8px;
+  flex-wrap:nowrap;
+  justify-content:flex-end;
+  overflow:hidden;
 }
+
 nav a{
   text-decoration:none;
   font-weight:900;
@@ -67,26 +74,35 @@ nav a{
   color:#1f8a4a;
   border:1px solid rgba(39,174,96,0.18);
   white-space:nowrap;
+  flex:0 0 auto;
 }
 nav a:hover{ background:var(--green); color:#fff; }
 
-@media (max-width:720px){
+/* Celular: logo central e menu centralizado na linha de baixo */
+@media (max-width: 720px){
   .header-container{
     flex-direction:column;
     align-items:center;
+    justify-content:center;
     gap:10px;
+    padding:12px 14px 10px;
   }
-  nav{ justify-content:center; }
+  .logo{ text-align:center; }
+  nav{
+    width:100%;
+    justify-content:center;
+  }
 }
 
-@media (max-width:420px){
+/* Em telas muito pequenas: deixa o menu mais compacto para não quebrar */
+@media (max-width: 420px){
   nav a{
     font-size:11px;
     padding:7px 8px;
   }
 }
 
-/* WRAP */
+/* PAGE WRAP */
 .wrap{
   max-width:1200px;
   margin:auto;
@@ -113,7 +129,7 @@ nav a:hover{ background:var(--green); color:#fff; }
   line-height:1.5;
 }
 
-/* CURIOSIDADE DO DIA */
+/* Curiosidade do dia (topo) */
 .curiosity-top{
   margin-top:14px;
   background:var(--card);
@@ -145,30 +161,15 @@ nav a:hover{ background:var(--green); color:#fff; }
   font-size:14px;
   line-height:1.55;
 }
-
 .curiosity-actions{
-  margin-top:14px;
+  margin-top:12px;
   display:flex;
   gap:10px;
   flex-wrap:wrap;
   align-items:center;
 }
-
-.curiosity-btn{
-  background:#f3fff7;
-  border:1px solid rgba(39,174,96,0.25);
-  color:#1f8a4a;
-  font-weight:900;
-  padding:10px 12px;
-  border-radius:12px;
-  cursor:pointer;
-}
-.curiosity-btn:hover{
-  background:var(--green);
-  color:#fff;
-}
-
 .curiosity-link{
+  display:inline-block;
   text-decoration:none;
   background:var(--green);
   color:#fff;
@@ -178,6 +179,18 @@ nav a:hover{ background:var(--green); color:#fff; }
 }
 .curiosity-link:hover{ background:var(--green2); }
 
+.curiosity-copy{
+  border:none;
+  background:#f3fff7;
+  border:1px solid rgba(39,174,96,0.20);
+  color:#1f8a4a;
+  font-weight:900;
+  padding:10px 12px;
+  border-radius:12px;
+  cursor:pointer;
+}
+.curiosity-copy:hover{ background:var(--green); color:#fff; }
+
 .copy-feedback{
   font-size:12px;
   font-weight:900;
@@ -185,25 +198,201 @@ nav a:hover{ background:var(--green); color:#fff; }
   display:none;
 }
 
+/* SECTION */
+.section{
+  margin-top:18px;
+}
+.section-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:10px;
+  margin:0 0 10px;
+  font-weight:900;
+  color:var(--green);
+  font-size:18px;
+}
+.section-title small{
+  font-weight:800;
+  color:#888;
+  font-size:12px;
+}
+
+/* GRID */
+.cards-row{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:16px;
+  align-items:start;
+}
+@media (max-width: 980px){
+  .cards-row{ grid-template-columns: 1fr; }
+}
+
+/* CARD */
+.card{
+  background:var(--card);
+  border-radius:16px;
+  padding:18px;
+  box-shadow:0 0 18px rgba(0,0,0,0.08);
+}
+
+/* SLIDER */
+.slider{
+  position:relative;
+  height:520px;
+  border:1px solid var(--border);
+  border-radius:16px;
+  overflow:hidden;
+  background:#fff;
+}
+@media (max-width: 520px){
+  .slider{ height:480px; }
+}
+
+.slide{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  transition: opacity .55s ease, transform .55s ease;
+  transform: translateY(6px);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  text-align:center;
+}
+.slide.active{
+  opacity:1;
+  transform: translateY(0);
+}
+
+.slide img{
+  width:100%;
+  max-width:320px;
+  height:340px;
+  object-fit:contain;
+  border-radius:14px;
+  box-shadow:0 8px 18px rgba(0,0,0,0.16);
+  background:#fff;
+}
+@media (max-width: 520px){
+  .slide img{
+    max-width:280px;
+    height:320px;
+  }
+}
+
+/* CLICK EFFECT */
+.slide.clickable{ cursor:pointer; }
+.slide.clickable:hover{ filter: brightness(0.98); }
+.slider:hover .slide.active img{
+  transform: scale(1.01);
+  transition: transform .25s ease;
+}
+
+.slide .name{
+  font-weight:900;
+  font-size:16px;
+  margin:12px 0 6px;
+}
+.slide .desc{
+  color:#666;
+  font-size:13px;
+  line-height:1.35;
+  margin:0;
+  max-width:420px;
+}
+
+/* CONTROLS */
+.slider-controls{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-top:10px;
+}
+.dots{
+  display:flex;
+  gap:6px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.dot{
+  width:8px;height:8px;border-radius:999px;
+  background:rgba(39,174,96,0.25);
+  border:1px solid rgba(39,174,96,0.35);
+}
+.dot.active{ background:var(--green); }
+
+.mini-btn{
+  border:none;
+  background:#f3fff7;
+  border:1px solid rgba(39,174,96,0.20);
+  color:#1f8a4a;
+  font-weight:900;
+  padding:8px 12px;
+  border-radius:12px;
+  cursor:pointer;
+}
+.mini-btn:hover{ background:var(--green); color:#fff; }
+.mini-btn:disabled{
+  opacity:.45;
+  cursor:not-allowed;
+}
+
+/* INFO BLOCKS */
+.info-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:16px;
+  margin-top:16px;
+}
+@media (max-width: 980px){
+  .info-grid{ grid-template-columns: 1fr; }
+}
+.info-card{
+  background:var(--card);
+  border-radius:16px;
+  padding:18px;
+  box-shadow:0 0 18px rgba(0,0,0,0.08);
+}
+.info-card h3{
+  margin:0 0 10px;
+  color:var(--green);
+  font-size:16px;
+}
+.list{
+  margin:0;
+  padding-left:18px;
+  color:#444;
+  line-height:1.55;
+  font-size:14px;
+}
+
 /* FLOAT WA */
 .float-wa{
   position:fixed;
   right:16px;
   bottom:16px;
+  z-index:9999;
+  text-decoration:none;
   background:var(--green);
   color:#fff;
   padding:12px 14px;
   border-radius:999px;
   font-weight:900;
-  text-decoration:none;
   box-shadow:0 10px 25px rgba(0,0,0,0.18);
+  border:1px solid rgba(255,255,255,0.25);
+  font-size:14px;
 }
 .float-wa:hover{ background:var(--green2); }
 
 footer{
   text-align:center;
-  font-size:12px;
   color:#888;
+  font-size:12px;
   margin-top:18px;
 }
 </style>
@@ -223,56 +412,313 @@ footer{
   </div>
 </header>
 
-<a class="float-wa" href="https://wa.me/5511958749421" target="_blank">📲 WhatsApp</a>
+<a class="float-wa" href="https://wa.me/5511958749421" target="_blank" aria-label="WhatsApp">📲 WhatsApp</a>
 
 <main class="wrap">
 
-<section class="hero">
-  <h1>Emagreça em Casa</h1>
-  <p>Conteúdo prático, simples e organizado para quem quer resultados reais.</p>
-</section>
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Emagreça em Casa</h1>
+    <p>Conteúdo prático, simples e organizado para quem quer resultados reais.</p>
+  </section>
 
-<section class="curiosity-top">
-  <div class="curiosity-badge">Curiosidade do dia</div>
-  <h2 class="curiosity-title" id="curiosityTitle">Carregando...</h2>
-  <p class="curiosity-text" id="curiosityText">Carregando...</p>
+  <!-- Curiosidade do Dia (topo para tráfego orgânico) -->
+  <section class="curiosity-top" aria-label="Curiosidade do dia">
+    <div class="curiosity-badge">Curiosidade do dia</div>
+    <h2 class="curiosity-title" id="curiosityTitle">Carregando...</h2>
+    <p class="curiosity-text" id="curiosityText">Carregando...</p>
 
-  <div class="curiosity-actions">
-    <button class="curiosity-btn" onclick="copiarCuriosidade()">📋 Copiar curiosidade</button>
-    <a class="curiosity-link" href="curiosidades.html">Ver +300 curiosidades</a>
-    <span class="copy-feedback" id="copyFeedback">Copiado!</span>
-  </div>
-</section>
+    <div class="curiosity-actions">
+      <button class="curiosity-copy" type="button" id="copyCuriosityBtn">📋 Copiar curiosidade</button>
+      <a class="curiosity-link" href="curiosidades.html">Ver +300 curiosidades</a>
+      <span class="copy-feedback" id="copyFeedback">Copiado!</span>
+    </div>
+  </section>
 
-<footer>© 2026 Meta Saudável • Todos os direitos reservados</footer>
+  <!-- SLIDERS -->
+  <section class="section">
+    <div class="section-title">
+      Destaques
+      <small>Clique no card para abrir</small>
+    </div>
+
+    <div class="cards-row">
+      <!-- EBOOKS -->
+      <div class="card">
+        <div class="section-title" style="margin-top:0;">
+          Ebooks em destaque
+        </div>
+
+        <div class="slider" id="ebooksSlider"></div>
+
+        <div class="slider-controls">
+          <button class="mini-btn" type="button" id="ebooksPrev">◀</button>
+          <div class="dots" id="ebooksDots"></div>
+          <button class="mini-btn" type="button" id="ebooksNext">▶</button>
+        </div>
+      </div>
+
+      <!-- PRODUTOS -->
+      <div class="card">
+        <div class="section-title" style="margin-top:0;">
+          Produtos em destaque
+        </div>
+
+        <div class="slider" id="produtosSlider"></div>
+
+        <div class="slider-controls">
+          <button class="mini-btn" type="button" id="produtosPrev">◀</button>
+          <div class="dots" id="produtosDots"></div>
+          <button class="mini-btn" type="button" id="produtosNext">▶</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTEÚDO -->
+  <section class="section">
+    <div class="section-title">Conteúdo</div>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <h3>Vídeos</h3>
+        <ul class="list">
+          <li>Em breve</li>
+          <li>Treinos simples, dicas rápidas e motivação</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h3>Curiosidades</h3>
+        <ul class="list">
+          <li>Mais de <strong>300 curiosidades</strong> sobre emagrecimento</li>
+          <li>Hábitos que aceleram ou atrapalham o resultado</li>
+          <li>Psicologia, mente e comportamento alimentar</li>
+          <li>Dicas rápidas para aplicar no dia a dia</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>© 2026 Meta Saudável • Todos os direitos reservados</footer>
 
 </main>
 
 <script>
-/* Curiosidades */
-const curiosidades=[
- {t:"Sono e emagrecimento",d:"Dormir pouco aumenta a fome e reduz a saciedade. Priorize 7–8 horas por noite."},
- {t:"Água antes da refeição",d:"Beber água antes das refeições ajuda no controle das porções."},
- {t:"Proteína no café",d:"Proteína pela manhã ajuda a segurar a fome durante o dia."},
- {t:"Fibras ajudam",d:"Fibras aumentam a saciedade e melhoram o intestino."},
- {t:"Comer devagar",d:"O cérebro leva alguns minutos para reconhecer a saciedade."}
-];
+  // ====== Curiosidade do dia ======
+  const curiosidadesDoDia = [
+    { t:"Sono e emagrecimento", d:"Dormir pouco aumenta a fome e reduz a saciedade. Priorize 7–8 horas para ajudar o corpo a controlar o apetite." },
+    { t:"Água antes das refeições", d:"Um copo de água 10–15 min antes da refeição pode ajudar você a comer com mais consciência e controlar porções." },
+    { t:"Proteína no café da manhã", d:"Um café da manhã com proteína tende a segurar mais a fome ao longo do dia (ex.: ovos, iogurte, frango desfiado)." },
+    { t:"Fibras são aliadas", d:"Fibras aumentam a saciedade. Inclua feijão, aveia, frutas com casca e verduras no dia a dia." },
+    { t:"Ansiedade x fome", d:"Às vezes é vontade, não fome. Espere 10 minutos, beba água e faça uma respiração lenta antes de decidir comer." },
+    { t:"Passos contam", d:"Aumentar passos diários ajuda muito. Comece com uma meta realista e suba aos poucos semana a semana." },
+    { t:"Refrigerante e açúcar", d:"Bebidas açucaradas somam muitas calorias sem matar a fome. Trocar por água ou zero já melhora o resultado." },
+    { t:"Comer devagar", d:"Demora alguns minutos para o cérebro registrar saciedade. Comer mais devagar pode reduzir exageros." },
+    { t:"Prato inteligente", d:"Metade do prato com salada/legumes + 1/4 proteína + 1/4 carboidrato costuma funcionar bem para emagrecer com saúde." },
+    { t:"Belisco invisível", d:"O que mais atrapalha é o “só um pedacinho”. Anote lanchinhos por 3 dias e você identifica o que está sabotando." },
+    { t:"Treino em casa funciona", d:"Consistência > intensidade. 15–20 min por dia já cria resultado quando vira hábito." },
+    { t:"Fome à noite", d:"À noite a vontade aumenta. Tenha opções planejadas (iogurte, fruta, chá) para não atacar qualquer coisa." }
+  ];
 
-const hoje=new Date().toISOString().slice(0,10);
-const idx=Math.abs([...hoje].reduce((a,c)=>a+c.charCodeAt(0),0))%curiosidades.length;
-const cur=curiosidades[idx];
+  function dateKey(){
+    const now = new Date();
+    const y = now.getFullYear();
+    const m = String(now.getMonth()+1).padStart(2,"0");
+    const d = String(now.getDate()).padStart(2,"0");
+    return `${y}-${m}-${d}`;
+  }
 
-document.getElementById("curiosityTitle").textContent=cur.t;
-document.getElementById("curiosityText").textContent=cur.d;
+  function hashString(str){
+    let h = 0;
+    for(let i=0;i<str.length;i++){
+      h = (h<<5) - h + str.charCodeAt(i);
+      h |= 0;
+    }
+    return Math.abs(h);
+  }
 
-function copiarCuriosidade(){
-  const texto=`${cur.t}\n\n${cur.d}\n\nMeta Saudável`;
-  navigator.clipboard.writeText(texto).then(()=>{
-    const fb=document.getElementById("copyFeedback");
-    fb.style.display="inline";
-    setTimeout(()=>fb.style.display="none",2000);
+  let curiosityCurrent = null;
+
+  (function setCuriosityOfDay(){
+    const k = dateKey();
+    const idx = hashString(k) % curiosidadesDoDia.length;
+    curiosityCurrent = curiosidadesDoDia[idx];
+
+    const titleEl = document.getElementById("curiosityTitle");
+    const textEl = document.getElementById("curiosityText");
+    if(titleEl) titleEl.textContent = curiosityCurrent.t;
+    if(textEl) textEl.textContent = curiosityCurrent.d;
+  })();
+
+  function showCopied(){
+    const fb = document.getElementById("copyFeedback");
+    if(!fb) return;
+    fb.style.display = "inline";
+    setTimeout(()=>{ fb.style.display = "none"; }, 1800);
+  }
+
+  function copyFallback(text){
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    ta.setAttribute("readonly","");
+    ta.style.position = "fixed";
+    ta.style.left = "-9999px";
+    document.body.appendChild(ta);
+    ta.select();
+    try{ document.execCommand("copy"); }catch(e){}
+    document.body.removeChild(ta);
+    showCopied();
+  }
+
+  document.getElementById("copyCuriosityBtn").addEventListener("click", () => {
+    if(!curiosityCurrent) return;
+
+    const text =
+      `Curiosidade do dia — ${curiosityCurrent.t}\n\n` +
+      `${curiosityCurrent.d}\n\n` +
+      `Meta Saudável`;
+
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(showCopied).catch(()=>copyFallback(text));
+    }else{
+      copyFallback(text);
+    }
   });
-}
+
+  // ====== DADOS ======
+  const ebooks = [
+    {
+      name: "Como Emagrecer em Casa",
+      img: "capa_meta_saudavel.jpg",
+      desc: "Método prático para emagrecer sem academia.",
+      link: "ebooks.html"
+    },
+    {
+      name: "Cinturinha Fina",
+      img: "Cinturinha_Fina.png",
+      desc: "Foco em cintura e definição, com método direto e visual.",
+      link: "ebooks.html#cinturinha-fina"
+    },
+    {
+      name: "A Comida com Testosterona",
+      img: "comida_com_testosterona.jpg.png",
+      desc: "Receitas e rotina alimentar (abra na seção dentro de Ebooks).",
+      link: "ebooks.html#comida-com-testosterona"
+    }
+  ];
+
+  const produtos = [];
+
+  // ====== SLIDER ======
+  function createSlider({ mountId, dotsId, prevId, nextId, items, intervalMs = 3500, emptyTitle, emptyDesc, emptyLink }) {
+    const mount = document.getElementById(mountId);
+    const dotsWrap = document.getElementById(dotsId);
+    const prevBtn = document.getElementById(prevId);
+    const nextBtn = document.getElementById(nextId);
+
+    if (!mount || !dotsWrap || !prevBtn || !nextBtn) return;
+
+    function setDisabled(disabled){
+      prevBtn.disabled = disabled;
+      nextBtn.disabled = disabled;
+    }
+
+    if (!items || items.length === 0) {
+      mount.innerHTML = `
+        <div class="slide active clickable" data-link="${emptyLink}">
+          <div class="name">${emptyTitle}</div>
+          <div class="desc">${emptyDesc}</div>
+        </div>
+      `;
+      dotsWrap.innerHTML = "";
+      setDisabled(true);
+
+      const s = mount.querySelector(".slide");
+      s.addEventListener("click", () => { window.location.href = emptyLink; });
+      return;
+    }
+
+    let index = 0;
+    let timer = null;
+
+    function render() {
+      mount.innerHTML = "";
+      dotsWrap.innerHTML = "";
+
+      items.forEach((it, i) => {
+        const slide = document.createElement("div");
+        slide.className = "slide clickable" + (i === index ? " active" : "");
+        slide.setAttribute("data-link", it.link);
+
+        slide.innerHTML = `
+          <img src="${it.img}" alt="${it.name}" loading="lazy">
+          <div class="name">${it.name}</div>
+          <div class="desc">${it.desc || ""}</div>
+        `;
+
+        slide.addEventListener("click", () => {
+          window.location.href = it.link;
+        });
+
+        mount.appendChild(slide);
+
+        const dot = document.createElement("div");
+        dot.className = "dot" + (i === index ? " active" : "");
+        dot.addEventListener("click", () => {
+          index = i;
+          render();
+          restart();
+        });
+        dotsWrap.appendChild(dot);
+      });
+    }
+
+    function next() {
+      index = (index + 1) % items.length;
+      render();
+    }
+    function prev() {
+      index = (index - 1 + items.length) % items.length;
+      render();
+    }
+    function restart() {
+      if (timer) clearInterval(timer);
+      timer = setInterval(next, intervalMs);
+    }
+
+    prevBtn.addEventListener("click", () => { prev(); restart(); });
+    nextBtn.addEventListener("click", () => { next(); restart(); });
+
+    setDisabled(false);
+    render();
+    restart();
+  }
+
+  // init
+  createSlider({
+    mountId: "ebooksSlider",
+    dotsId: "ebooksDots",
+    prevId: "ebooksPrev",
+    nextId: "ebooksNext",
+    items: ebooks,
+    intervalMs: 3500,
+    emptyTitle: "Sem ebooks",
+    emptyDesc: "Adicione ebooks e eles vão aparecer aqui.",
+    emptyLink: "ebooks.html"
+  });
+
+  createSlider({
+    mountId: "produtosSlider",
+    dotsId: "produtosDots",
+    prevId: "produtosPrev",
+    nextId: "produtosNext",
+    items: produtos,
+    intervalMs: 3500,
+    emptyTitle: "Produtos em breve",
+    emptyDesc: "Quando você adicionar produtos, eles vão aparecer aqui.",
+    emptyLink: "produtos.html"
+  });
 </script>
 
 </body>
