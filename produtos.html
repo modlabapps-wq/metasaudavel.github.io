@@ -105,35 +105,51 @@
       display:grid;
       grid-template-columns:repeat(2,1fr);
       gap:16px;
+      align-items:stretch; /* garante mesma altura */
     }
     @media (max-width:980px){
       .grid{ grid-template-columns:1fr; }
     }
 
-    /* CARD */
+    /* CARD (nivelado) */
     .container{
       background:#fff;
       padding:22px;
       border-radius:14px;
       box-shadow:0 0 15px rgba(0,0,0,0.10);
       text-align:center;
+
+      display:flex;            /* chave para nivelar */
+      flex-direction:column;   /* conteúdo em coluna */
+      height:100%;             /* estica no grid */
     }
 
+    /* título com limite para não "estourar" */
     .headline{
       font-weight:900;
       font-size:15px;
       margin:0 0 12px;
       line-height:1.35;
+
+      display:-webkit-box;
+      -webkit-box-orient:vertical;
+      -webkit-line-clamp:3;    /* limita a 3 linhas */
+      overflow:hidden;
+      min-height:61px;         /* mantém altura igual */
     }
 
+    /* imagem padronizada */
     .img-prod{
       width:100%;
       max-width:260px;
-      margin:10px auto;
+      height:200px;            /* altura fixa = nivelado */
+      object-fit:contain;      /* não distorce */
+      margin:10px auto 0;
       display:block;
       border-radius:12px;
       box-shadow:0 4px 10px rgba(0,0,0,0.18);
       background:#fff;
+      padding:10px;
     }
 
     .prices{
@@ -141,8 +157,9 @@
       justify-content:center;
       align-items:baseline;
       gap:10px;
-      margin:12px 0;
+      margin:14px 0 10px;
       flex-wrap:wrap;
+      min-height:34px;         /* reserva espaço */
     }
     .old-price{
       color:#999;
@@ -160,7 +177,8 @@
       text-align:left;
       list-style:none;
       padding:0;
-      margin:16px 0;
+      margin:10px 0 0;
+      flex:1 1 auto;           /* empurra botão pra baixo */
     }
     .benefits li{
       display:flex;
@@ -193,7 +211,7 @@
       border-radius:10px;
       font-weight:900;
       font-size:18px;
-      margin-top:12px;
+      margin-top:14px;
     }
     .btn:hover{ background:var(--green2); }
 
@@ -203,12 +221,6 @@
       margin-top:10px;
       line-height:1.45;
       text-align:center;
-    }
-
-    footer{
-      font-size:12px;
-      color:#888;
-      margin-top:12px;
     }
 
     /* WHATSAPP */
@@ -224,6 +236,7 @@
       text-decoration:none;
       box-shadow:0 10px 25px rgba(0,0,0,0.18);
       border:1px solid rgba(255,255,255,0.25);
+      z-index:9999;
     }
     .float-wa:hover{ background:var(--green2); }
   </style>
@@ -255,10 +268,7 @@
 
     <!-- PRODUTO 1 -->
     <div class="container">
-
-      <p class="headline">
-        Creatina Monohidratada 300g – Puro Nutrition
-      </p>
+      <p class="headline">Creatina Monohidratada 300g – Puro Nutrition</p>
 
       <img class="img-prod"
            src="creatina-puro-nutrition-300g.jpg"
@@ -284,28 +294,25 @@
       </a>
 
       <div class="fineprint">
-        *Preço de referência para comparação. Valor final definido pela Amazon no momento da compra.  
+        *Preço de referência para comparação. Valor final definido pela Amazon no momento da compra.<br>
         Link de afiliado — podemos receber comissão sem custo adicional.*
       </div>
-
     </div>
 
     <!-- PRODUTO 2 -->
     <div class="container">
-
       <p class="headline">
         OMEGA 3 + VITAMINA E - (Alta Concentração) 1100mg EPA/DHA - Selo Internacional de Qualidade MEG-3® - 90 Cápsulas Softgel Everlasting Nutrition
       </p>
 
-      <!-- IMAGEM: suba essa imagem no GitHub com este nome -->
       <img class="img-prod"
            src="omega-3-vitamina-e-everlasting-90caps.jpg"
            alt="Ômega 3 + Vitamina E Everlasting Nutrition 90 cápsulas"
            loading="lazy">
 
       <div class="prices">
-        <span class="old-price">R$ 149,90</span>
-        <span class="new-price">R$ 129,90</span>
+        <span class="old-price">R$ 100,00</span>
+        <span class="new-price">R$ 74,90</span>
       </div>
 
       <ul class="benefits">
@@ -322,10 +329,9 @@
       </a>
 
       <div class="fineprint">
-        *Preço de referência para comparação. Valor final definido pela Amazon no momento da compra.  
+        *Preço de referência para comparação. Valor final definido pela Amazon no momento da compra.<br>
         Link de afiliado — podemos receber comissão sem custo adicional.*
       </div>
-
     </div>
 
   </section>
