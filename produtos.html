@@ -13,7 +13,6 @@
       --card:#ffffff;
       --text:#222;
       --muted:#666;
-      --border:rgba(0,0,0,0.10);
     }
 
     *{ box-sizing:border-box; }
@@ -52,7 +51,6 @@
     nav{
       display:flex;
       gap:8px;
-      flex-wrap:nowrap;
       overflow-x:auto;
       scrollbar-width:none;
     }
@@ -68,7 +66,6 @@
       border:1px solid rgba(39,174,96,0.18);
       white-space:nowrap;
     }
-    nav a:hover{ background:var(--green); color:#fff; }
 
     @media (max-width:720px){
       .header-container{
@@ -111,7 +108,7 @@
       .grid{ grid-template-columns:1fr; }
     }
 
-    /* CARD (nivelado) */
+    /* CARD NIVELADO */
     .container{
       background:#fff;
       padding:22px;
@@ -154,8 +151,8 @@
       align-items:baseline;
       gap:10px;
       margin:14px 0 10px;
-      flex-wrap:wrap;
       min-height:34px;
+      flex-wrap:wrap;
     }
     .old-price{
       color:#999;
@@ -166,7 +163,7 @@
     .new-price{
       color:#1f8a4a;
       font-weight:900;
-      font-size:26px;
+      font-size:24px;
     }
 
     .benefits{
@@ -219,7 +216,6 @@
       text-align:center;
     }
 
-    /* WHATSAPP */
     .float-wa{
       position:fixed;
       right:16px;
@@ -231,10 +227,7 @@
       font-weight:900;
       text-decoration:none;
       box-shadow:0 10px 25px rgba(0,0,0,0.18);
-      border:1px solid rgba(255,255,255,0.25);
-      z-index:9999;
     }
-    .float-wa:hover{ background:var(--green2); }
   </style>
 </head>
 
@@ -252,7 +245,7 @@
   </div>
 </header>
 
-<a class="float-wa" href="https://wa.me/5511958749421" target="_blank" rel="noopener">📲 WhatsApp</a>
+<a class="float-wa" href="https://wa.me/5511958749421" target="_blank">📲 WhatsApp</a>
 
 <main class="wrap">
   <div class="page-title">Produtos</div>
@@ -265,67 +258,66 @@
     <!-- PRODUTO 1 -->
     <div class="container">
       <p class="headline">Creatina Monohidratada 300g – Puro Nutrition</p>
-
-      <img class="img-prod"
-           src="creatina-puro-nutrition-300g.jpg"
-           alt="Creatina Monohidratada Puro Nutrition 300g"
-           loading="lazy">
-
+      <img class="img-prod" src="creatina-puro-nutrition-300g.jpg" alt="Creatina Puro Nutrition 300g">
       <div class="prices">
         <span class="old-price">R$ 100,00</span>
         <span class="new-price">R$ 89,97</span>
       </div>
-
       <ul class="benefits">
         <li><span class="check">✓</span> Suplemento amplamente utilizado para complementar treinos.</li>
-        <li><span class="check">✓</span> Produto com alta avaliação e boa aceitação.</li>
-        <li><span class="check">✓</span> Marca reconhecida no mercado.</li>
+        <li><span class="check">✓</span> Produto com alta avaliação.</li>
+        <li><span class="check">✓</span> Marca reconhecida.</li>
       </ul>
-
-      <a class="btn"
-         href="https://amzn.to/4qUglGX"
-         target="_blank"
-         rel="nofollow noopener">
-        👉 Ver oferta
-      </a>
-
-      <div class="fineprint">
-        *Preço de referência para comparação. Valor final definido pela Amazon no momento da compra.<br>
-        Link de afiliado — podemos receber comissão sem custo adicional.*
-      </div>
+      <a class="btn" href="https://amzn.to/4qUglGX" target="_blank" rel="nofollow noopener">👉 Ver oferta</a>
+      <div class="fineprint">*Link de afiliado. Preço definido pela Amazon.</div>
     </div>
 
     <!-- PRODUTO 2 -->
     <div class="container">
-      <p class="headline">
-        OMEGA 3 + VITAMINA E - (Alta Concentração) 1100mg EPA/DHA - Selo Internacional de Qualidade MEG-3® - 90 Cápsulas Softgel Everlasting Nutrition
-      </p>
-
-      <img class="img-prod"
-           src="omega-3-vitamina-e-everlasting-90caps.jpg"
-           alt="Ômega 3 + Vitamina E Everlasting Nutrition 90 cápsulas"
-           loading="lazy">
-
+      <p class="headline">Ômega 3 + Vitamina E Everlasting Nutrition – 90 cápsulas</p>
+      <img class="img-prod" src="omega-3-vitamina-e-everlasting-90caps.jpg" alt="Ômega 3 Everlasting Nutrition">
       <div class="prices">
         <span class="old-price">R$ 93,90</span>
         <span class="new-price">R$ 74,90</span>
       </div>
+      <ul class="benefits">
+        <li><span class="check">✓</span> Alta concentração de EPA/DHA.</li>
+        <li><span class="check">✓</span> Selo internacional MEG-3®.</li>
+        <li><span class="check">✓</span> Praticidade diária.</li>
+      </ul>
+      <a class="btn" href="https://amzn.to/4tdM2MH" target="_blank" rel="nofollow noopener">👉 Ver oferta</a>
+      <div class="fineprint">*Link de afiliado. Preço definido pela Amazon.</div>
+    </div>
+
+    <!-- PRODUTO 3 -->
+    <div class="container">
+      <p class="headline">
+        Whey Protein Concentrado – Dux Human Health (sabores variados) – 900g
+      </p>
+
+      <img class="img-prod"
+           src="whey-dux-doce-de-leite-900g.jpg"
+           alt="Whey Protein Concentrado Dux 900g">
+
+      <div class="prices">
+        <span class="new-price">A partir de R$ 147,24</span>
+      </div>
 
       <ul class="benefits">
-        <li><span class="check">✓</span> Alta concentração (EPA/DHA) para complementar a rotina.</li>
-        <li><span class="check">✓</span> Selo internacional de qualidade MEG-3®.</li>
-        <li><span class="check">✓</span> 90 cápsulas softgel (praticidade no dia a dia).</li>
+        <li><span class="check">✓</span> Auxilia no aporte diário de proteínas.</li>
+        <li><span class="check">✓</span> Sabores variados (preço pode variar).</li>
+        <li><span class="check">✓</span> Marca premium reconhecida.</li>
       </ul>
 
       <a class="btn"
-         href="https://amzn.to/4tdM2MH"
+         href="https://amzn.to/4qUBiS0"
          target="_blank"
          rel="nofollow noopener">
         👉 Ver oferta
       </a>
 
       <div class="fineprint">
-        *Preço de referência para comparação. Valor final definido pela Amazon no momento da compra.<br>
+        *Preço varia conforme o sabor. Valor final definido pela Amazon.  
         Link de afiliado — podemos receber comissão sem custo adicional.*
       </div>
     </div>
