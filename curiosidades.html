@@ -34,13 +34,13 @@
       z-index:999;
     }
 
-    /* ✅ Título na 1ª linha + menu fixo na 2ª (sem scroll lateral) */
+    /* ✅ PADRÃO: Desktop = logo esquerda / menu direita */
     .header-container{
       max-width:1200px;
       margin:auto;
       padding:14px;
       display:flex;
-      flex-direction:column;
+      justify-content:space-between;
       align-items:center;
       gap:10px;
     }
@@ -49,26 +49,22 @@
       font-size:18px;
       color:var(--green);
       white-space:nowrap;
-      width:100%;
-      text-align:center;
+      flex:0 0 auto;
     }
 
-    /* ✅ Menu parado na 2ª linha e sem quebrar */
+    /* MENU: fica à direita no desktop */
     nav{
       display:flex;
-      justify-content:center;
+      justify-content:flex-end;
       align-items:center;
-      gap:6px;
+      gap:8px;
       flex-wrap:nowrap;
-      overflow:visible;
-      width:100%;
     }
-
     nav a{
       text-decoration:none;
       font-weight:900;
-      font-size:12px;
-      padding:7px 8px;
+      font-size:13px;
+      padding:8px 10px;
       border-radius:10px;
       background:var(--chip);
       color:#1f8a4a;
@@ -78,19 +74,38 @@
     }
     nav a:hover{ background:var(--green); color:#fff; }
 
-    /* ✅ Aba ativa destacada (Curiosidades) */
+    /* Aba ativa */
     nav a.active{
       background:var(--green);
       color:#fff;
       border-color: rgba(39,174,96,0.55);
     }
 
+    /* ✅ CELULAR: logo central + menu central embaixo (segunda linha) */
+    @media (max-width: 720px){
+      .header-container{
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        gap:10px;
+      }
+      .logo{
+        width:100%;
+        text-align:center;
+      }
+      nav{
+        width:100%;
+        justify-content:center;
+        flex-wrap:wrap;      /* quebra em 2 linhas se precisar */
+        gap:8px;
+      }
+    }
+
+    /* EXTRA: telas bem pequenas -> diminui um pouco sem bagunçar */
     @media (max-width: 380px){
-      nav{ gap:5px; }
       nav a{
-        font-size:11px;
-        padding:6px 7px;
-        border-radius:9px;
+        font-size:12px;
+        padding:7px 8px;
       }
     }
 
@@ -576,9 +591,7 @@
       <h3>${pad3(i+1)}. ${c.title}</h3>
       <p>${c.text}</p>
     `;
-    // Clicar num card joga ele para destaque (ótimo!)
     card.addEventListener("click", () => {
-      // acha índice real dentro do array principal
       const idxReal = curiosidades.indexOf(c);
       if(idxReal >= 0){
         setIndex(idxReal);
@@ -629,7 +642,6 @@
     search.focus();
   });
 
-  // Textos dinâmicos
   document.getElementById("subText").innerHTML =
     `Aqui tem <b>${curiosidades.length} curiosidades</b> para você nunca enjoar.
      A cada dia, o site avança automaticamente para a próxima — e você também pode clicar em “Próxima”.
@@ -638,7 +650,6 @@
   document.getElementById("gridSmall").textContent =
     `${curiosidades.length} no total • leitura rápida`;
 
-  // INIT
   autoAdvanceDaily();
   renderFeatured(getIndex());
   renderGrid(curiosidades);
