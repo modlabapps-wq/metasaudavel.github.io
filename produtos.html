@@ -49,13 +49,18 @@
       color:var(--green);
       white-space:nowrap;
       text-align:left;
+      flex:0 0 auto;
     }
+
     nav{
       display:flex;
       gap:8px;
       justify-content:flex-end;
       align-items:center;
-      flex-wrap:wrap;
+      flex-wrap:nowrap;         /* NÃO quebra no desktop */
+      white-space:nowrap;
+      flex:1 1 auto;
+      overflow:hidden;
     }
     nav a{
       text-decoration:none;
@@ -67,24 +72,53 @@
       color:#1f8a4a;
       border:1px solid rgba(39,174,96,0.18);
       white-space:nowrap;
+      flex:0 0 auto;
     }
     nav a:hover{ background:var(--green); color:#fff; }
 
-    /* Celular: tudo centralizado (logo + menu) */
-    @media (max-width:700px){
+    /* ===== CELULAR: dinâmica para NUNCA quebrar linha ===== */
+    @media (max-width:760px){
       .header-container{
         flex-direction:column;
         justify-content:center;
         align-items:center;
         text-align:center;
+        padding:12px 10px 10px;
+        gap:10px;
       }
+
       .logo{
         width:100%;
         text-align:center;
+        font-size:18px;
       }
+
+      /* Menu vira "faixa" com scroll horizontal */
       nav{
         width:100%;
         justify-content:center;
+        gap:6px;
+        padding:0 2px;
+        overflow-x:auto;         /* rola para o lado */
+        overflow-y:hidden;
+        -webkit-overflow-scrolling:touch;
+        scrollbar-width:none;    /* Firefox */
+      }
+      nav::-webkit-scrollbar{ display:none; } /* Chrome/Safari */
+
+      /* Botões menores e responsivos */
+      nav a{
+        font-size:12px;
+        padding:7px 9px;
+        border-radius:999px;
+      }
+    }
+
+    /* Telas MUITO pequenas (TikTok/Android compact) */
+    @media (max-width:380px){
+      nav a{
+        font-size:11px;
+        padding:6px 8px;
       }
     }
 
@@ -269,7 +303,7 @@
 <header>
   <div class="header-container">
     <div class="logo">Meta Saudável</div>
-    <nav>
+    <nav aria-label="Menu principal">
       <a href="index.html">Início</a>
       <a href="ebooks.html">Ebooks</a>
       <a href="videos.html">Vídeos</a>
@@ -279,7 +313,7 @@
   </div>
 </header>
 
-<a class="float-wa" href="https://wa.me/5511958749421" target="_blank">📲 WhatsApp</a>
+<a class="float-wa" href="https://wa.me/5511958749421" target="_blank" rel="noopener">📲 WhatsApp</a>
 
 <main class="wrap">
   <div class="page-title">Produtos</div>
