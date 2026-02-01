@@ -34,7 +34,7 @@
       z-index:999;
     }
 
-    /* ✅ PADRÃO: Desktop logo à esquerda + menu à direita | Mobile centralizado em 2 linhas */
+    /* ✅ PADRÃO: Desktop logo à esquerda + menu à direita */
     .header-container{
       max-width:1200px;
       margin:auto;
@@ -73,22 +73,53 @@
     }
     nav a:hover{ background:var(--green); color:#fff; }
 
-    /* ✅ CELULAR: logo centralizado e menu centralizado na linha de baixo (sem rolagem lateral) */
+    /* ✅ CELULAR: logo centralizado e menu abaixo
+       ✅ Menu dinâmico: reduz fonte/padding e evita quebrar em 2 linhas
+       ✅ Se ainda não couber (TikTok browser), vira rolagem horizontal suave (sem quebrar)
+    */
     @media (max-width: 640px){
       .header-container{
         flex-wrap:wrap;
         justify-content:center;
         text-align:center;
+        padding:12px 12px;
       }
       .logo{
         width:100%;
         text-align:center;
       }
+
       nav{
         width:100%;
         justify-content:center;
-        flex-wrap:wrap;
-        overflow:visible;
+
+        /* evita quebrar em 2 linhas */
+        flex-wrap:nowrap;
+
+        /* fallback para telas MUITO estreitas (TikTok in-app) */
+        overflow-x:auto;
+        -webkit-overflow-scrolling:touch;
+        scrollbar-width:none;
+        padding-bottom:2px;
+      }
+      nav::-webkit-scrollbar{ display:none; }
+
+      nav a{
+        /* fonte e padding dinâmicos: se adapta ao tamanho */
+        font-size:clamp(11px, 3.2vw, 13px);
+        padding:clamp(6px, 2.4vw, 8px) clamp(8px, 2.8vw, 10px);
+        border-radius:12px;
+      }
+    }
+
+    /* extra: telas super pequenas (caso extremo) */
+    @media (max-width: 360px){
+      nav{
+        justify-content:flex-start; /* melhor para scroll */
+      }
+      nav a{
+        font-size:11px;
+        padding:6px 8px;
       }
     }
 
@@ -293,7 +324,6 @@
       line-height:1.25;
     }
 
-    /* TAG TEMA */
     .tag{
       display:inline-flex;
       align-items:center;
@@ -309,7 +339,6 @@
       white-space:nowrap;
     }
 
-    /* BOTÃO (desativado / em breve) */
     .btn{
       margin-top:auto;
       display:block;
@@ -326,7 +355,6 @@
       opacity:0.95;
     }
 
-    /* FLOAT WA */
     .float-wa{
       position:fixed;
       right:16px;
@@ -351,7 +379,6 @@
       margin-top:18px;
     }
 
-    /* estado vazio */
     .empty{
       grid-column:1 / -1;
       background:#fff;
@@ -399,7 +426,6 @@
     </div>
   </section>
 
-  <!-- ✅ ABA DE PESQUISA POR TEMAS -->
   <section class="filter" aria-label="Pesquisa por temas">
     <div class="field">
       <label for="search">Pesquisar</label>
@@ -426,11 +452,6 @@
   </section>
 
   <section class="grid" id="grid" aria-label="Lista de vídeos">
-
-    <!-- EXEMPLO: quando tiver vídeos, basta trocar:
-         data-theme="treino" e colocar href real no link do TikTok.
-         Por enquanto deixei tudo em breve.
-    -->
 
     <article class="card" data-title="Em breve" data-theme="treino">
       <div class="thumb">
@@ -579,10 +600,8 @@
         if(show) visible++;
       });
 
-      // mensagem de resultado
       count.textContent = `Mostrando ${visible} vídeo${visible === 1 ? '' : 's'}`;
 
-      // estado vazio
       const existingEmpty = grid.querySelector('.empty');
       if(visible === 0){
         if(!existingEmpty){
@@ -596,7 +615,6 @@
       }
     }
 
-    // eventos
     search.addEventListener('input', update);
     theme.addEventListener('change', update);
     clear.addEventListener('click', () => {
@@ -605,7 +623,6 @@
       update();
     });
 
-    // inicial
     update();
   })();
 </script>
