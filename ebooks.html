@@ -21,42 +21,42 @@
       top:0;
       z-index:999;
     }
+
     .header-container{
       max-width:980px;
       margin:auto;
-      padding:14px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:10px;
-    }
-    .logo{
-      font-weight:900;
-      font-size:18px;
-      color:#27ae60;
-      white-space:nowrap;
+      padding:14px 14px 6px;
+      text-align:center;
     }
 
-    /* MENU */
+    .logo{
+      font-weight:900;
+      font-size:20px;
+      color:#27ae60;
+      margin-bottom:8px;
+    }
+
+    /* MENU – SEGUNDA LINHA FIXA */
     nav{
       display:flex;
-      gap:8px;
-      overflow-x:auto;
-      scrollbar-width:none;
+      justify-content:center;
+      gap:10px;
+      padding-bottom:10px;
+      flex-wrap:nowrap;
     }
-    nav::-webkit-scrollbar{ display:none; }
 
     nav a{
       text-decoration:none;
       font-weight:900;
       font-size:13px;
-      padding:8px 10px;
+      padding:8px 12px;
       border-radius:10px;
       background:#f3fff7;
       color:#1f8a4a;
       border:1px solid rgba(39,174,96,0.18);
       white-space:nowrap;
     }
+
     nav a:hover{
       background:#27ae60;
       color:#fff;
@@ -76,6 +76,7 @@
       font-size:22px;
       margin-top:18px;
     }
+
     .page-sub{
       text-align:center;
       color:#555;
@@ -83,148 +84,6 @@
       margin:10px auto 22px;
       max-width:520px;
     }
-
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap:18px;
-      align-items:stretch;
-    }
-    @media (max-width:780px){
-      .grid{ grid-template-columns:1fr; }
-    }
-
-    .container{
-      background:#fff;
-      padding:22px;
-      border-radius:14px;
-      box-shadow:0 0 15px rgba(0,0,0,0.1);
-      text-align:center;
-      display:flex;
-      flex-direction:column;
-      justify-content:flex-start;
-    }
-
-    /* OFFER (harmonia entre cards) */
-    .offer-box{
-      margin-bottom:14px;
-      padding:14px 12px;
-      border-radius:12px;
-      background:#f3fff7;
-      border:1px solid rgba(39,174,96,0.25);
-      min-height:140px; /* mantém o topo dos cards alinhado mesmo sem temporizador */
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      gap:8px;
-    }
-    .offer-title{
-      font-weight:900;
-      color:#1f8a4a;
-      font-size:13px;
-      text-transform:uppercase;
-    }
-    .timer{
-      font-weight:900;
-      font-size:18px;
-      color:#0f5f32;
-      border:1px dashed rgba(39,174,96,0.6);
-      border-radius:10px;
-      padding:10px;
-      width:fit-content;
-      margin:0 auto;
-      line-height:1;
-    }
-    /* “preenche” o espaço do timer quando não existe contagem */
-    .timer-static{
-      font-size:14px;
-      border-style:solid;
-      border-color:rgba(39,174,96,0.22);
-      color:#1f8a4a;
-      padding:11px 12px; /* altura parecida com o timer */
-    }
-
-    .prices{
-      display:flex;
-      justify-content:center;
-      gap:10px;
-      align-items:baseline;
-      flex-wrap:wrap;
-    }
-    .old-price{
-      color:#999;
-      text-decoration:line-through;
-      font-weight:800;
-    }
-    .new-price{
-      color:#1f8a4a;
-      font-weight:900;
-      font-size:26px;
-    }
-    .badge{
-      padding:6px 10px;
-      border-radius:20px;
-      background:#27ae60;
-      color:#fff;
-      font-weight:900;
-      font-size:12px;
-      display:inline-block;
-      width:fit-content;
-      margin:0 auto;
-    }
-
-    .cover, .cover-aff{
-      width:100%;
-      max-width:260px;
-      border-radius:12px;
-      margin:14px auto;
-      display:block;
-      box-shadow:0 4px 10px rgba(0,0,0,0.2);
-    }
-
-    .headline{
-      font-weight:900;
-      color:#222;
-      font-size:15px;
-    }
-
-    .benefits{
-      list-style:none;
-      padding:0;
-      margin-top:12px;
-      text-align:left;
-    }
-    .benefits li{
-      margin:8px 0;
-      display:flex;
-      gap:8px;
-      font-size:14px;
-      color:#444;
-    }
-    .check{
-      background:#27ae60;
-      color:#fff;
-      width:22px;
-      height:22px;
-      border-radius:6px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-weight:900;
-    }
-
-    .btn{
-      display:block;
-      background:#27ae60;
-      color:#fff;
-      padding:14px;
-      border-radius:10px;
-      font-weight:900;
-      margin-top:14px;
-      text-decoration:none;
-      margin-top:auto; /* empurra botão pro final e ajuda a alinhar */
-    }
-    .btn:hover{ background:#219150; }
 
     footer{
       text-align:center;
@@ -253,9 +112,11 @@
 <header>
   <div class="header-container">
     <div class="logo">Meta Saudável</div>
+
     <nav>
       <a href="index.html">Início</a>
       <a href="produtos.html">Produtos</a>
+      <a href="ebooks.html">Ebooks</a>
       <a href="videos.html">Vídeos</a>
       <a href="curiosidades.html">Curiosidades</a>
     </nav>
@@ -268,101 +129,10 @@
   <div class="page-title">Ebooks</div>
   <div class="page-sub">Ebooks e recomendações para emagrecer com saúde.</div>
 
-  <div class="grid">
-
-    <!-- SEU EBOOK -->
-    <section class="container">
-      <div class="offer-box">
-        <div class="offer-title">Oferta termina em</div>
-        <div class="timer" id="countdown-ms">15:00</div>
-
-        <div class="prices">
-          <span class="old-price">R$ 97,00</span>
-          <span class="new-price">R$ 47,00</span>
-        </div>
-
-        <div class="badge">Promoção</div>
-      </div>
-
-      <img class="cover" src="capa_meta_saudavel.jpg">
-      <p class="headline">Como Emagrecer em Casa</p>
-
-      <ul class="benefits">
-        <li><span class="check">✓</span> Rotina simples</li>
-        <li><span class="check">✓</span> Cardápio prático</li>
-        <li><span class="check">✓</span> Treinos em casa</li>
-      </ul>
-
-      <a class="btn" href="https://pay.cakto.com.br/wzbj2wo_749364" target="_blank">Comprar</a>
-    </section>
-
-    <!-- AFILIADOS (SEM TIMER, MAS COM PREÇO E HARMONIA) -->
-    <section class="container">
-      <div class="offer-box">
-        <div class="offer-title">Promoção por tempo limitado</div>
-        <div class="timer timer-static">Oferta especial</div>
-
-        <div class="prices">
-          <span class="old-price">R$ 250,00</span>
-          <span class="new-price">R$ 197,00</span>
-        </div>
-
-        <div class="badge">Promoção por tempo limitado</div>
-      </div>
-
-      <img class="cover-aff" src="Cinturinha_Fina.png">
-      <p class="headline">Cinturinha Fina</p>
-      <a class="btn" href="https://pay.cakto.com.br/abbzsqj_416048?affiliate=qFsAcyY8" target="_blank">Ver oferta</a>
-    </section>
-
-    <section class="container">
-      <div class="offer-box">
-        <div class="offer-title">Promoção por tempo limitado</div>
-        <div class="timer timer-static">Oferta especial</div>
-
-        <div class="prices">
-          <span class="old-price">R$ 130,00</span>
-          <span class="new-price">R$ 99,00</span>
-        </div>
-
-        <div class="badge">Promoção por tempo limitado</div>
-      </div>
-
-      <img class="cover-aff" src="comida_com_testosterona.jpg.png">
-      <p class="headline">A Comida com Testosterona</p>
-      <a class="btn" href="https://pay.hotmart.com/K83209126H?off=p4cbtmlm&checkoutMode=10&ref=E104199384C&bid=1769904933200" target="_blank">Ver oferta</a>
-    </section>
-
-  </div>
-
-  <footer>© 2026 Meta Saudável</footer>
+  <!-- CONTEÚDO DA PÁGINA -->
 </main>
 
-<script>
-/* Temporizador apenas do ebook Meta Saudável */
-const OFFER_MINUTES = 15;
-const key = "offer_ms";
-let end = localStorage.getItem(key);
-
-if(!end || end < Date.now()){
-  end = Date.now() + OFFER_MINUTES * 60000;
-  localStorage.setItem(key, end);
-}
-
-const el = document.getElementById("countdown-ms");
-
-(function tick(){
-  const d = end - Date.now();
-  if(d <= 0){
-    el.textContent = "00:00";
-    return;
-  }
-  el.textContent =
-    String(Math.floor(d / 60000)).padStart(2,"0") + ":" +
-    String(Math.floor(d % 60000 / 1000)).padStart(2,"0");
-  setTimeout(tick, 1000);
-})();
-</script>
+<footer>© 2026 Meta Saudável</footer>
 
 </body>
 </html>
