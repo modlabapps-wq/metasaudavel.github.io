@@ -28,7 +28,6 @@
       display:flex;
       justify-content:space-between;
       align-items:center;
-      flex-wrap:wrap;
       gap:10px;
     }
     .logo{
@@ -38,7 +37,7 @@
       white-space:nowrap;
     }
 
-    /* MENU (igual no index: não quebra no celular) */
+    /* MENU */
     nav{
       display:flex;
       gap:8px;
@@ -74,25 +73,33 @@
     }
 
     .page-title{
-      max-width:450px;
-      margin:18px auto 0;
       text-align:center;
       color:#27ae60;
       font-weight:900;
       font-size:22px;
+      margin-top:18px;
     }
     .page-sub{
-      max-width:450px;
-      margin:10px auto 22px;
       text-align:center;
       color:#555;
       font-size:14px;
-      line-height:1.45;
+      margin:10px auto 22px;
+      max-width:520px;
+    }
+
+    /* GRID 2x2 */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:18px;
+    }
+    @media (max-width: 780px){
+      .grid{
+        grid-template-columns: 1fr;
+      }
     }
 
     .container{
-      max-width:450px;
-      margin:0 auto 18px;
       background:#fff;
       padding:22px;
       border-radius:14px;
@@ -102,7 +109,7 @@
 
     /* OFFER */
     .offer-box{
-      margin:0 0 14px;
+      margin-bottom:14px;
       padding:14px 12px;
       border-radius:12px;
       background:#f3fff7;
@@ -111,36 +118,30 @@
     .offer-title{
       font-weight:900;
       color:#1f8a4a;
-      margin-bottom:8px;
       font-size:13px;
+      margin-bottom:8px;
       text-transform:uppercase;
-      letter-spacing:0.7px;
     }
     .timer{
-      margin:6px auto 10px;
-      padding:10px 12px;
-      border-radius:10px;
-      background:#fff;
-      border:1px dashed rgba(39,174,96,0.6);
       font-weight:900;
       font-size:18px;
       color:#0f5f32;
+      border:1px dashed rgba(39,174,96,0.6);
+      border-radius:10px;
+      padding:10px;
       width:fit-content;
-      min-width:160px;
+      margin:6px auto;
     }
     .prices{
       display:flex;
       justify-content:center;
       gap:10px;
       align-items:baseline;
-      flex-wrap:wrap;
-      margin-top:4px;
     }
     .old-price{
       color:#999;
       text-decoration:line-through;
       font-weight:800;
-      font-size:16px;
     }
     .new-price{
       color:#1f8a4a;
@@ -148,7 +149,7 @@
       font-size:26px;
     }
     .badge{
-      margin-top:10px;
+      margin-top:8px;
       padding:6px 10px;
       border-radius:20px;
       background:#27ae60;
@@ -158,298 +159,185 @@
       display:inline-block;
     }
 
-    /* IMAGES */
-    .cover{
-      width:250px;
+    .cover, .cover-aff{
+      width:100%;
+      max-width:260px;
       border-radius:12px;
-      margin:14px auto 10px;
+      margin:14px auto;
       display:block;
       box-shadow:0 4px 10px rgba(0,0,0,0.2);
     }
-    .cover-aff{
-      width:100%;
-      max-width:280px;
-      border-radius:12px;
-      margin:12px auto;
-      display:block;
-      box-shadow:0 4px 10px rgba(0,0,0,0.18);
-    }
 
-    /* TEXT */
     .headline{
-      margin:10px 0 0;
       font-weight:900;
       color:#222;
       font-size:15px;
-      line-height:1.35;
     }
 
-    /* BENEFITS */
     .benefits{
-      margin:14px 0 0;
-      text-align:left;
-      padding:0;
       list-style:none;
+      padding:0;
+      margin-top:12px;
+      text-align:left;
     }
     .benefits li{
-      margin:10px 0;
+      margin:8px 0;
+      display:flex;
+      gap:8px;
       font-size:14px;
       color:#444;
-      display:flex;
-      gap:10px;
-      align-items:flex-start;
-      line-height:1.35;
     }
     .check{
+      background:#27ae60;
+      color:#fff;
       width:22px;
       height:22px;
       border-radius:6px;
-      background:#27ae60;
-      color:#fff;
-      display:inline-flex;
+      display:flex;
       align-items:center;
       justify-content:center;
       font-weight:900;
-      flex:0 0 22px;
-      margin-top:1px;
     }
 
-    /* TRUST */
-    .trust{
-      margin-top:14px;
-      background:#f7f7f7;
-      border:1px solid rgba(0,0,0,0.08);
-      border-radius:12px;
-      padding:12px;
-      text-align:left;
-      font-size:13px;
-      color:#555;
-      line-height:1.35;
-    }
-
-    /* BUTTONS */
     .btn{
       display:block;
       background:#27ae60;
       color:#fff;
-      padding:15px;
-      text-decoration:none;
+      padding:14px;
       border-radius:10px;
-      font-size:18px;
-      margin-top:16px;
       font-weight:900;
-      text-align:center;
+      margin-top:14px;
+      text-decoration:none;
     }
     .btn:hover{ background:#219150; }
 
-    .btn-secondary{
-      display:block;
-      background:#ffffff;
-      color:#1f8a4a;
-      padding:12px;
-      text-decoration:none;
-      border-radius:10px;
-      font-size:15px;
-      margin-top:10px;
-      font-weight:900;
-      border:1px solid rgba(39,174,96,0.25);
-      text-align:center;
-    }
-    .btn-secondary:hover{ background:#f3fff7; }
-
-    /* FOOTER */
     footer{
       text-align:center;
       font-size:12px;
       color:#888;
-      margin:18px 0 0;
+      margin-top:18px;
     }
 
-    /* FLOAT WA */
     .float-wa{
       position:fixed;
       right:16px;
       bottom:16px;
-      z-index:9999;
-      text-decoration:none;
       background:#27ae60;
       color:#fff;
       padding:12px 14px;
       border-radius:999px;
       font-weight:900;
+      text-decoration:none;
       box-shadow:0 10px 25px rgba(0,0,0,0.18);
-      border:1px solid rgba(255,255,255,0.25);
-      font-size:14px;
     }
-    .float-wa:hover{ background:#219150; }
   </style>
 </head>
 
 <body>
-  <header>
-    <div class="header-container">
-      <div class="logo">Meta Saudável</div>
-      <nav>
-        <a href="index.html">Início</a>
-        <a href="ebooks.html">Ebooks</a>
-        <a href="produtos.html">Produtos</a>
-        <a href="videos.html">Vídeos</a>
-        <a href="curiosidades.html">Curiosidades</a>
-      </nav>
-    </div>
-  </header>
 
-  <a class="float-wa" href="https://wa.me/5511958749421" target="_blank" aria-label="WhatsApp">
-    📲 WhatsApp
-  </a>
+<header>
+  <div class="header-container">
+    <div class="logo">Meta Saudável</div>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="ebooks.html">Ebooks</a>
+      <a href="produtos.html">Produtos</a>
+      <a href="videos.html">Vídeos</a>
+      <a href="curiosidades.html">Curiosidades</a>
+    </nav>
+  </div>
+</header>
 
-  <main class="wrap">
-    <div class="page-title">Ebooks</div>
-    <div class="page-sub">
-      Aqui você encontra nossos ebooks e recomendações para emagrecer com saúde, em casa.
-    </div>
+<a class="float-wa" href="https://wa.me/5511958749421" target="_blank">📲 WhatsApp</a>
 
-    <!-- SEU EBOOK (PRINCIPAL) -->
-    <section class="container" aria-label="Ebook Meta Saudável">
+<main class="wrap">
+  <div class="page-title">Ebooks</div>
+  <div class="page-sub">Ebooks e recomendações para emagrecer com saúde.</div>
+
+  <div class="grid">
+
+    <!-- META SAUDÁVEL -->
+    <section class="container">
       <div class="offer-box">
         <div class="offer-title">Oferta termina em</div>
         <div class="timer" id="countdown-ms">15:00</div>
-
         <div class="prices">
           <span class="old-price">R$ 97,00</span>
           <span class="new-price">R$ 47,00</span>
         </div>
-
-        <div class="badge">Promoção por tempo limitado</div>
+        <div class="badge">Promoção</div>
       </div>
 
-      <img class="cover" src="capa_meta_saudavel.jpg" alt="Capa do Ebook Meta Saudável" loading="lazy">
-
-      <p class="headline">Como Emagrecer em Casa (Meta Saudável)</p>
+      <img class="cover" src="capa_meta_saudavel.jpg">
+      <p class="headline">Como Emagrecer em Casa</p>
 
       <ul class="benefits">
-        <li><span class="check">✓</span> Rotina prática para começar do zero, mesmo com pouco tempo.</li>
-        <li><span class="check">✓</span> Alimentação inteligente + cardápio simples de 7 dias.</li>
-        <li><span class="check">✓</span> Treinos em casa (HIIT e força) com sugestão de rotina semanal.</li>
-        <li><span class="check">✓</span> Sono e hábitos para manter resultados no longo prazo.</li>
+        <li><span class="check">✓</span> Rotina simples</li>
+        <li><span class="check">✓</span> Cardápio prático</li>
+        <li><span class="check">✓</span> Treinos em casa</li>
       </ul>
 
-      <div class="trust">
-        ✅ Compra segura • ✅ Acesso digital • ✅ Conteúdo direto e prático<br>
-        Dúvidas? Fale comigo no WhatsApp.
-      </div>
-
-      <a class="btn" href="https://pay.cakto.com.br/wzbj2wo_749364" target="_blank">
-        👉 Comprar Agora
-      </a>
-
-      <a class="btn-secondary" href="#cinturinha-fina">Ver outra recomendação</a>
-
-      <footer>© 2026 Meta Saudável</footer>
+      <a class="btn" href="https://pay.cakto.com.br/wzbj2wo_749364" target="_blank">Comprar</a>
     </section>
 
-    <!-- RECOMENDAÇÃO (CINTURINHA FINA) - COM OFERTA -->
-    <section class="container" id="cinturinha-fina" aria-label="Ebook Cinturinha Fina">
+    <!-- CINTURINHA FINA -->
+    <section class="container">
       <div class="offer-box">
         <div class="offer-title">Oferta termina em</div>
         <div class="timer" id="countdown-cf">15:00</div>
-
         <div class="prices">
-          <span class="old-price">R$ 197,00</span>
-          <span class="new-price">R$ 97,00</span>
+          <span class="old-price">R$ 250,00</span>
+          <span class="new-price">R$ 197,00</span>
         </div>
-
-        <div class="badge">Promoção por tempo limitado</div>
+        <div class="badge">Promoção</div>
       </div>
 
+      <img class="cover-aff" src="Cinturinha_Fina.png">
       <p class="headline">Cinturinha Fina</p>
 
-      <img class="cover-aff" src="Cinturinha_Fina.png" alt="Capa do Ebook Cinturinha Fina" loading="lazy">
-
-      <ul class="benefits">
-        <li><span class="check">✓</span> Foco em cintura e definição.</li>
-        <li><span class="check">✓</span> Conteúdo prático para fazer em casa.</li>
-        <li><span class="check">✓</span> Ideal para quem gosta de método direto e visual.</li>
-      </ul>
-
-      <a class="btn" href="https://pay.cakto.com.br/abbzsqj_416048?affiliate=qFsAcyY8" target="_blank">
-        👉 Ver Oferta
-      </a>
-
-      <a class="btn-secondary" href="#comida-com-testosterona">Ver outra recomendação</a>
-
-      <footer>© 2026 Meta Saudável</footer>
+      <a class="btn" href="https://pay.cakto.com.br/abbzsqj_416048?affiliate=qFsAcyY8" target="_blank">Ver oferta</a>
     </section>
 
-    <!-- NOVO EBOOK (A COMIDA COM TESTOSTERONA) - COM OFERTA -->
-    <section class="container" id="comida-com-testosterona" aria-label="Ebook A Comida com Testosterona">
+    <!-- TESTOSTERONA -->
+    <section class="container">
       <div class="offer-box">
         <div class="offer-title">Oferta termina em</div>
         <div class="timer" id="countdown-tst">15:00</div>
-
         <div class="prices">
-          <span class="old-price">R$ 99,00</span>
-          <span class="new-price">R$ 47,00</span>
+          <span class="old-price">R$ 130,00</span>
+          <span class="new-price">R$ 99,00</span>
         </div>
-
-        <div class="badge">Promoção por tempo limitado</div>
+        <div class="badge">Promoção</div>
       </div>
 
+      <img class="cover-aff" src="comida_com_testosterona.jpg.png">
       <p class="headline">A Comida com Testosterona</p>
 
-      <img class="cover-aff" src="comida_com_testosterona.jpg.png" alt="Capa do Ebook A Comida com Testosterona" loading="lazy">
-
-      <ul class="benefits">
-        <li><span class="check">✓</span> Receitas com alimentos naturais para promover bem-estar.</li>
-        <li><span class="check">✓</span> Conteúdo especial sobre menopausa.</li>
-        <li><span class="check">✓</span> Guia prático e fácil de aplicar no dia a dia.</li>
-      </ul>
-
-      <a class="btn" href="https://pay.hotmart.com/K83209126H?off=p4cbtmlm&checkoutMode=10&ref=E104199384C&bid=1769904933200" target="_blank">
-        👉 Ver Oferta
-      </a>
-
-      <a class="btn-secondary" href="index.html">Voltar ao início</a>
-
-      <footer>© 2026 Meta Saudável</footer>
+      <a class="btn" href="https://pay.hotmart.com/K83209126H?off=p4cbtmlm&checkoutMode=10&ref=E104199384C&bid=1769904933200" target="_blank">Ver oferta</a>
     </section>
 
-  </main>
+  </div>
 
-  <script>
-    // ======= TEMPORIZADOR (15 minutos por visitante / por produto) =======
-    const OFFER_MINUTES = 15;
+  <footer>© 2026 Meta Saudável</footer>
+</main>
 
-    function startCountdown(elId, storageKey) {
-      let end = parseInt(localStorage.getItem(storageKey), 10);
-      const now = Date.now();
+<script>
+const OFFER_MINUTES = 15;
+["ms","cf","tst"].forEach(k=>{
+  const id="countdown-"+k, key="offer_"+k;
+  let end=localStorage.getItem(key);
+  if(!end||end<Date.now()) end=Date.now()+OFFER_MINUTES*60000,localStorage.setItem(key,end);
+  const el=document.getElementById(id);
+  (function tick(){
+    const d=end-Date.now();
+    if(d<=0){el.textContent="00:00";return;}
+    el.textContent=
+      String(Math.floor(d/60000)).padStart(2,"0")+":"+
+      String(Math.floor(d%60000/1000)).padStart(2,"0");
+    setTimeout(tick,1000);
+  })();
+});
+</script>
 
-      if (!end || isNaN(end) || end <= now) {
-        end = now + OFFER_MINUTES * 60000;
-        localStorage.setItem(storageKey, String(end));
-      }
-
-      const el = document.getElementById(elId);
-      if (!el) return;
-
-      function tick() {
-        const diff = end - Date.now();
-        if (diff <= 0) {
-          el.textContent = "00:00";
-          return;
-        }
-        const m = String(Math.floor(diff / 60000)).padStart(2, "0");
-        const s = String(Math.floor((diff % 60000) / 1000)).padStart(2, "0");
-        el.textContent = `${m}:${s}`;
-        setTimeout(tick, 1000);
-      }
-      tick();
-    }
-
-    // timers independentes
-    startCountdown("countdown-ms", "metaSaudavelOfferEnd_ms");
-    startCountdown("countdown-cf", "metaSaudavelOfferEnd_cf");
-    startCountdown("countdown-tst", "metaSaudavelOfferEnd_tst");
-  </script>
 </body>
 </html>
