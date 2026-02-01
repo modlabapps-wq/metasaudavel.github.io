@@ -22,7 +22,7 @@
       z-index:999;
     }
 
-    /* ✅ Desktop: logo esquerda + menu direita */
+    /* Desktop: logo esquerda + menu direita */
     .header-container{
       max-width:980px;
       margin:auto;
@@ -66,7 +66,7 @@
       color:#fff;
     }
 
-    /* ✅ Mobile: logo central + menu central abaixo + dinâmico */
+    /* Mobile: logo central + menu central abaixo + dinâmico */
     @media (max-width:780px){
       .header-container{
         flex-direction:column;
@@ -126,7 +126,7 @@
       max-width:520px;
     }
 
-    /* ✅ BUSCA "SOLTA" (sem filtro automático feio) */
+    /* Busca */
     .search-bar{
       background:#fff;
       border-radius:14px;
@@ -174,12 +174,8 @@
     .clear-btn:hover{ background:#e4eae6; }
 
     @media (max-width:520px){
-      .search-bar{
-        flex-wrap:wrap;
-      }
-      .search-btn, .clear-btn{
-        flex:1;
-      }
+      .search-bar{ flex-wrap:wrap; }
+      .search-btn, .clear-btn{ flex:1; }
     }
 
     .grid{
@@ -202,6 +198,9 @@
       flex-direction:column;
       justify-content:flex-start;
     }
+
+    /* ✅ IMPORTANTE: ancora não fica escondida pelo header */
+    .ebook-item{ scroll-margin-top: 110px; }
 
     /* OFFER */
     .offer-box{
@@ -288,7 +287,6 @@
       margin:0;
     }
 
-    /* ✅ comentários/benefícios (igual ao seu ebook) */
     .benefits{
       list-style:none;
       padding:0;
@@ -371,7 +369,6 @@
   <div class="page-title">Ebooks</div>
   <div class="page-sub">Ebooks e recomendações para emagrecer com saúde.</div>
 
-  <!-- ✅ BUSCA SIMPLES (sem filtro automático) -->
   <div class="search-bar">
     <input id="searchInput" type="text" placeholder="Digite o que você procura (ex: dieta, treino, cintura, receitas)..." autocomplete="off" />
     <button class="search-btn" id="searchBtn">Pesquisar</button>
@@ -380,8 +377,11 @@
 
   <div class="grid" id="ebooksGrid">
 
-    <!-- SEU EBOOK -->
-    <section class="container ebook-item" data-title="Como Emagrecer em Casa" data-tags="emagrecer em casa rotina cardapio treinos em casa alimentacao treino">
+    <!-- ✅ ID para o Index abrir aqui -->
+    <section class="container ebook-item" id="como-emagrecer-em-casa"
+      data-title="Como Emagrecer em Casa"
+      data-tags="emagrecer em casa rotina cardapio treinos em casa alimentacao treino">
+
       <div class="offer-box">
         <div class="offer-title">Oferta termina em</div>
         <div class="timer" id="countdown-ms">15:00</div>
@@ -406,8 +406,10 @@
       <a class="btn" href="https://pay.cakto.com.br/wzbj2wo_749364" target="_blank">Comprar</a>
     </section>
 
-    <!-- CINTURINHA FINA -->
-    <section class="container ebook-item" data-title="Cinturinha Fina" data-tags="cinturinha fina cintura dieta secar barriga alimentacao medidas">
+    <section class="container ebook-item" id="cinturinha-fina"
+      data-title="Cinturinha Fina"
+      data-tags="cinturinha fina cintura dieta secar barriga alimentacao medidas">
+
       <div class="offer-box">
         <div class="offer-title">Promoção por tempo limitado</div>
         <div class="timer timer-static">Oferta especial</div>
@@ -432,8 +434,10 @@
       <a class="btn" href="https://pay.cakto.com.br/abbzsqj_416048?affiliate=qFsAcyY8" target="_blank">Ver oferta</a>
     </section>
 
-    <!-- A COMIDA COM TESTOSTERONA -->
-    <section class="container ebook-item" data-title="A Comida com Testosterona" data-tags="testosterona alimentacao energia desempenho saude alimentos cardapio">
+    <section class="container ebook-item" id="comida-com-testosterona"
+      data-title="A Comida com Testosterona"
+      data-tags="testosterona alimentacao energia desempenho saude alimentos cardapio">
+
       <div class="offer-box">
         <div class="offer-title">Promoção por tempo limitado</div>
         <div class="timer timer-static">Oferta especial</div>
@@ -458,8 +462,10 @@
       <a class="btn" href="https://pay.hotmart.com/K83209126H?off=p4cbtmlm&checkoutMode=10&ref=E104199384C&bid=1769904933200" target="_blank">Ver oferta</a>
     </section>
 
-    <!-- DIETA EM AÇÃO -->
-    <section class="container ebook-item" data-title="Dieta em Ação" data-tags="dieta em acao emagrecimento manual secreto alimentacao receitas cardapio">
+    <section class="container ebook-item" id="dieta-em-acao"
+      data-title="Dieta em Ação"
+      data-tags="dieta em acao emagrecimento manual secreto alimentacao receitas cardapio">
+
       <div class="offer-box">
         <div class="offer-title">Promoção por tempo limitado</div>
         <div class="timer timer-static">Oferta especial</div>
@@ -514,7 +520,7 @@ const el = document.getElementById("countdown-ms");
   setTimeout(tick, 1000);
 })();
 
-/* ✅ BUSCA SOMENTE QUANDO CLICAR EM "PESQUISAR" (sem automático) */
+/* Busca só ao clicar em Pesquisar */
 const searchInput = document.getElementById("searchInput");
 const searchBtn = document.getElementById("searchBtn");
 const clearBtn = document.getElementById("clearBtn");
@@ -545,7 +551,6 @@ function clearSearch(){
 searchBtn.addEventListener("click", runSearch);
 clearBtn.addEventListener("click", clearSearch);
 
-/* Enter também pesquisa */
 searchInput.addEventListener("keydown", (e) => {
   if(e.key === "Enter") runSearch();
 });
