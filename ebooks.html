@@ -22,13 +22,13 @@
       z-index:999;
     }
 
-    /* ✅ AJUSTE: 2 LINHAS (logo em cima, menu embaixo) */
+    /* ✅ Desktop: logo esquerda + menu direita (igual 1ª imagem) */
     .header-container{
       max-width:980px;
       margin:auto;
-      padding:14px 14px 10px;
+      padding:14px;
       display:flex;
-      flex-direction:column;
+      justify-content:space-between;
       align-items:center;
       gap:10px;
     }
@@ -38,17 +38,13 @@
       font-size:18px;
       color:#27ae60;
       white-space:nowrap;
-      line-height:1;
     }
 
-    /* ✅ MENU: parado, sem rolagem lateral, sem quebra de linha */
+    /* MENU */
     nav{
       display:flex;
-      justify-content:center;
       gap:8px;
-      flex-wrap:nowrap;      /* não quebra linha */
-      overflow:visible;      /* não anda pro lado */
-      width:100%;
+      flex-wrap:nowrap;
     }
 
     nav a{
@@ -61,29 +57,34 @@
       color:#1f8a4a;
       border:1px solid rgba(39,174,96,0.18);
       white-space:nowrap;
-      flex:0 0 auto;
     }
     nav a:hover{
       background:#27ae60;
       color:#fff;
     }
 
-    /* ✅ Ajuste fino no mobile pra caber SEM quebrar o menu */
-    @media (max-width:520px){
-      nav{ gap:6px; }
+    /* ✅ Celular: logo central + menu central embaixo (padrão para todas as páginas) */
+    @media (max-width:780px){
+      .header-container{
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        padding:12px 12px 10px;
+        gap:10px;
+      }
+      .logo{
+        text-align:center;
+        font-size:18px;
+      }
+      nav{
+        width:100%;
+        justify-content:center;
+        flex-wrap:wrap;  /* pode quebrar em 2 linhas se precisar */
+        gap:8px;
+      }
       nav a{
         font-size:12px;
-        padding:7px 8px;
-        border-radius:9px;
-      }
-      .header-container{ padding:12px 10px 10px; }
-      .logo{ font-size:17px; }
-    }
-
-    @media (max-width:400px){
-      nav a{
-        font-size:11px;
-        padding:6px 7px;
+        padding:8px 10px;
       }
     }
 
@@ -137,7 +138,7 @@
       border-radius:12px;
       background:#f3fff7;
       border:1px solid rgba(39,174,96,0.25);
-      min-height:140px; /* mantém alinhado mesmo sem timer nos afiliados */
+      min-height:140px;
       display:flex;
       flex-direction:column;
       justify-content:center;
@@ -247,7 +248,7 @@
       border-radius:10px;
       font-weight:900;
       text-decoration:none;
-      margin-top:auto; /* alinha botões no final */
+      margin-top:auto;
     }
     .btn:hover{ background:#219150; }
 
@@ -321,7 +322,7 @@
       <a class="btn" href="https://pay.cakto.com.br/wzbj2wo_749364" target="_blank">Comprar</a>
     </section>
 
-    <!-- AFILIADOS (SEM TIMER, MAS COM PREÇO E HARMONIA) -->
+    <!-- AFILIADOS -->
     <section class="container">
       <div class="offer-box">
         <div class="offer-title">Promoção por tempo limitado</div>
