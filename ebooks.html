@@ -88,6 +88,7 @@
       display:grid;
       grid-template-columns: repeat(2, 1fr);
       gap:18px;
+      align-items:stretch;
     }
     @media (max-width:780px){
       .grid{ grid-template-columns:1fr; }
@@ -99,21 +100,28 @@
       border-radius:14px;
       box-shadow:0 0 15px rgba(0,0,0,0.1);
       text-align:center;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-start;
     }
 
-    /* OFFER (apenas ebook próprio) */
+    /* OFFER (harmonia entre cards) */
     .offer-box{
       margin-bottom:14px;
       padding:14px 12px;
       border-radius:12px;
       background:#f3fff7;
       border:1px solid rgba(39,174,96,0.25);
+      min-height:140px; /* mantém o topo dos cards alinhado mesmo sem temporizador */
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      gap:8px;
     }
     .offer-title{
       font-weight:900;
       color:#1f8a4a;
       font-size:13px;
-      margin-bottom:8px;
       text-transform:uppercase;
     }
     .timer{
@@ -124,13 +132,24 @@
       border-radius:10px;
       padding:10px;
       width:fit-content;
-      margin:6px auto;
+      margin:0 auto;
+      line-height:1;
     }
+    /* “preenche” o espaço do timer quando não existe contagem */
+    .timer-static{
+      font-size:14px;
+      border-style:solid;
+      border-color:rgba(39,174,96,0.22);
+      color:#1f8a4a;
+      padding:11px 12px; /* altura parecida com o timer */
+    }
+
     .prices{
       display:flex;
       justify-content:center;
       gap:10px;
       align-items:baseline;
+      flex-wrap:wrap;
     }
     .old-price{
       color:#999;
@@ -143,7 +162,6 @@
       font-size:26px;
     }
     .badge{
-      margin-top:8px;
       padding:6px 10px;
       border-radius:20px;
       background:#27ae60;
@@ -151,6 +169,8 @@
       font-weight:900;
       font-size:12px;
       display:inline-block;
+      width:fit-content;
+      margin:0 auto;
     }
 
     .cover, .cover-aff{
@@ -202,6 +222,7 @@
       font-weight:900;
       margin-top:14px;
       text-decoration:none;
+      margin-top:auto; /* empurra botão pro final e ajuda a alinhar */
     }
     .btn:hover{ background:#219150; }
 
@@ -254,10 +275,12 @@
       <div class="offer-box">
         <div class="offer-title">Oferta termina em</div>
         <div class="timer" id="countdown-ms">15:00</div>
+
         <div class="prices">
           <span class="old-price">R$ 97,00</span>
           <span class="new-price">R$ 47,00</span>
         </div>
+
         <div class="badge">Promoção</div>
       </div>
 
@@ -273,14 +296,38 @@
       <a class="btn" href="https://pay.cakto.com.br/wzbj2wo_749364" target="_blank">Comprar</a>
     </section>
 
-    <!-- AFILIADOS (SEM TIMER) -->
+    <!-- AFILIADOS (SEM TIMER, MAS COM PREÇO E HARMONIA) -->
     <section class="container">
+      <div class="offer-box">
+        <div class="offer-title">Promoção por tempo limitado</div>
+        <div class="timer timer-static">Oferta especial</div>
+
+        <div class="prices">
+          <span class="old-price">R$ 250,00</span>
+          <span class="new-price">R$ 197,00</span>
+        </div>
+
+        <div class="badge">Promoção por tempo limitado</div>
+      </div>
+
       <img class="cover-aff" src="Cinturinha_Fina.png">
       <p class="headline">Cinturinha Fina</p>
       <a class="btn" href="https://pay.cakto.com.br/abbzsqj_416048?affiliate=qFsAcyY8" target="_blank">Ver oferta</a>
     </section>
 
     <section class="container">
+      <div class="offer-box">
+        <div class="offer-title">Promoção por tempo limitado</div>
+        <div class="timer timer-static">Oferta especial</div>
+
+        <div class="prices">
+          <span class="old-price">R$ 130,00</span>
+          <span class="new-price">R$ 99,00</span>
+        </div>
+
+        <div class="badge">Promoção por tempo limitado</div>
+      </div>
+
       <img class="cover-aff" src="comida_com_testosterona.jpg.png">
       <p class="headline">A Comida com Testosterona</p>
       <a class="btn" href="https://pay.hotmart.com/K83209126H?off=p4cbtmlm&checkoutMode=10&ref=E104199384C&bid=1769904933200" target="_blank">Ver oferta</a>
