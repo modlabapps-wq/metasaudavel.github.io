@@ -32,6 +32,8 @@
       top:0;
       z-index:999;
     }
+
+    /* Desktop: logo esquerda + menu direita */
     .header-container{
       max-width:1200px;
       margin:auto;
@@ -39,7 +41,6 @@
       display:flex;
       justify-content:space-between;
       align-items:center;
-      flex-wrap:wrap;
       gap:10px;
     }
     .logo{
@@ -47,11 +48,14 @@
       font-size:18px;
       color:var(--green);
       white-space:nowrap;
+      text-align:left;
     }
     nav{
       display:flex;
-      flex-wrap:wrap;
       gap:8px;
+      justify-content:flex-end;
+      align-items:center;
+      flex-wrap:wrap;
     }
     nav a{
       text-decoration:none;
@@ -62,8 +66,27 @@
       background:#f3fff7;
       color:#1f8a4a;
       border:1px solid rgba(39,174,96,0.18);
+      white-space:nowrap;
     }
     nav a:hover{ background:var(--green); color:#fff; }
+
+    /* Celular: tudo centralizado (logo + menu) */
+    @media (max-width:700px){
+      .header-container{
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        text-align:center;
+      }
+      .logo{
+        width:100%;
+        text-align:center;
+      }
+      nav{
+        width:100%;
+        justify-content:center;
+      }
+    }
 
     /* LAYOUT */
     .wrap{
@@ -107,7 +130,7 @@
       text-align:center;
     }
 
-    /* EM BREVE */
+    /* "EM BREVE" */
     .soon-box{
       margin:0 0 14px;
       padding:14px 12px;
@@ -141,7 +164,7 @@
       border:1px solid rgba(39,174,96,0.25);
     }
 
-    /* PLACEHOLDER */
+    /* PLACEHOLDER IMAGE */
     .img-placeholder{
       width:100%;
       max-width:280px;
@@ -197,7 +220,7 @@
       margin-top:1px;
     }
 
-    /* BUTTON DISABLED */
+    /* BUTTON (DISABLED LOOK) */
     .btn{
       display:block;
       background:#cfeedd;
@@ -211,6 +234,7 @@
       border:1px solid rgba(39,174,96,0.25);
       cursor:not-allowed;
       pointer-events:none;
+      opacity:0.9;
     }
 
     footer{
@@ -265,7 +289,7 @@
 
   <section class="grid">
 
-    <div class="container">
+    <div class="container" id="produto-1">
       <div class="soon-box">
         <div class="soon-title">Em breve</div>
         <p class="soon-text">Novos produtos chegando</p>
@@ -277,30 +301,30 @@
       <div class="img-placeholder">📦 PRODUTO EM BREVE</div>
 
       <ul class="benefits">
-        <li><span class="check">✓</span> Seleção focada em praticidade.</li>
-        <li><span class="check">✓</span> Conteúdo alinhado com sua rotina.</li>
-        <li><span class="check">✓</span> Links liberados em breve.</li>
+        <li><span class="check">✓</span> Seleção focada em praticidade e resultados.</li>
+        <li><span class="check">✓</span> Itens e recomendações alinhados com sua rotina.</li>
+        <li><span class="check">✓</span> Links e detalhes serão liberados em breve.</li>
       </ul>
 
       <a class="btn" href="#">🔒 Em breve</a>
       <footer>© 2026 Meta Saudável</footer>
     </div>
 
-    <div class="container">
+    <div class="container" id="produto-2">
       <div class="soon-box">
         <div class="soon-title">Em breve</div>
         <p class="soon-text">Ofertas e novidades</p>
         <div class="soon-badge">Aguarde 🙂</div>
       </div>
 
-      <p class="headline">Produtos recomendados + links</p>
+      <p class="headline">Em breve: produtos recomendados + links</p>
 
       <div class="img-placeholder">🛒 OFERTAS EM BREVE</div>
 
       <ul class="benefits">
-        <li><span class="check">✓</span> Recomendações confiáveis.</li>
-        <li><span class="check">✓</span> Preço e benefícios claros.</li>
-        <li><span class="check">✓</span> Tudo organizado.</li>
+        <li><span class="check">✓</span> Recomendações confiáveis e fáceis de comprar.</li>
+        <li><span class="check">✓</span> Você verá preço, descrição e benefícios.</li>
+        <li><span class="check">✓</span> Tudo organizado para não ficar bagunçado.</li>
       </ul>
 
       <a class="btn" href="#">🔒 Em breve</a>
