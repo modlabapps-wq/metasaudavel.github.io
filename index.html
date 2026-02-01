@@ -38,12 +38,11 @@ header{
 .header-container{
   max-width:1200px;
   margin:auto;
-  padding:14px 14px;
+  padding:14px;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  flex-wrap:wrap;
-  gap:10px;
+  gap:12px;
 }
 .logo{
   font-weight:900;
@@ -51,22 +50,33 @@ header{
   color:var(--green);
   white-space:nowrap;
 }
+
+/* MENU RESPONSIVO */
 nav{
   display:flex;
-  flex-wrap:wrap;
   gap:8px;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
 }
+nav::-webkit-scrollbar{ display:none; }
+
 nav a{
   text-decoration:none;
   font-weight:900;
   font-size:13px;
-  padding:8px 10px;
+  padding:8px 12px;
   border-radius:10px;
   background:#f3fff7;
   color:#1f8a4a;
   border:1px solid rgba(39,174,96,0.18);
+  white-space:nowrap;
+  flex-shrink:0;
 }
-nav a:hover{ background:var(--green); color:#fff; }
+nav a:hover{
+  background:var(--green);
+  color:#fff;
+}
 
 /* PAGE WRAP */
 .wrap{
@@ -75,7 +85,7 @@ nav a:hover{ background:var(--green); color:#fff; }
   padding:22px 14px 60px;
 }
 
-/* HERO (SEM BOTÕES) */
+/* HERO */
 .hero{
   background:var(--card);
   border-radius:16px;
@@ -120,7 +130,6 @@ nav a:hover{ background:var(--green); color:#fff; }
   display:grid;
   grid-template-columns: 1fr 1fr;
   gap:16px;
-  align-items:start;
 }
 @media (max-width: 980px){
   .cards-row{ grid-template-columns: 1fr; }
@@ -174,37 +183,8 @@ nav a:hover{ background:var(--green); color:#fff; }
   box-shadow:0 8px 18px rgba(0,0,0,0.16);
   background:#fff;
 }
-@media (max-width: 520px){
-  .slide img{
-    max-width:280px;
-    height:320px;
-  }
-}
 
-/* CLICK EFFECT */
-.slide.clickable{
-  cursor:pointer;
-}
-.slide.clickable:hover{
-  filter: brightness(0.98);
-}
-.slider:hover .slide.active img{
-  transform: scale(1.01);
-  transition: transform .25s ease;
-}
-
-.slide .name{
-  font-weight:900;
-  font-size:16px;
-  margin:12px 0 6px;
-}
-.slide .desc{
-  color:#666;
-  font-size:13px;
-  line-height:1.35;
-  margin:0;
-  max-width:420px;
-}
+.slide.clickable{ cursor:pointer; }
 
 /* CONTROLS */
 .slider-controls{
@@ -217,60 +197,12 @@ nav a:hover{ background:var(--green); color:#fff; }
 .dots{
   display:flex;
   gap:6px;
-  justify-content:center;
-  flex-wrap:wrap;
 }
 .dot{
   width:8px;height:8px;border-radius:999px;
   background:rgba(39,174,96,0.25);
-  border:1px solid rgba(39,174,96,0.35);
 }
 .dot.active{ background:var(--green); }
-
-.mini-btn{
-  border:none;
-  background:#f3fff7;
-  border:1px solid rgba(39,174,96,0.20);
-  color:#1f8a4a;
-  font-weight:900;
-  padding:8px 12px;
-  border-radius:12px;
-  cursor:pointer;
-}
-.mini-btn:hover{ background:var(--green); color:#fff; }
-.mini-btn:disabled{
-  opacity:.45;
-  cursor:not-allowed;
-}
-
-/* INFO BLOCKS */
-.info-grid{
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  gap:16px;
-  margin-top:16px;
-}
-@media (max-width: 980px){
-  .info-grid{ grid-template-columns: 1fr; }
-}
-.info-card{
-  background:var(--card);
-  border-radius:16px;
-  padding:18px;
-  box-shadow:0 0 18px rgba(0,0,0,0.08);
-}
-.info-card h3{
-  margin:0 0 10px;
-  color:var(--green);
-  font-size:16px;
-}
-.list{
-  margin:0;
-  padding-left:18px;
-  color:#444;
-  line-height:1.55;
-  font-size:14px;
-}
 
 /* FLOAT WA */
 .float-wa{
@@ -285,7 +217,6 @@ nav a:hover{ background:var(--green); color:#fff; }
   border-radius:999px;
   font-weight:900;
   box-shadow:0 10px 25px rgba(0,0,0,0.18);
-  border:1px solid rgba(255,255,255,0.25);
   font-size:14px;
 }
 .float-wa:hover{ background:var(--green2); }
@@ -305,231 +236,27 @@ footer{
   <div class="header-container">
     <div class="logo">Meta Saudável</div>
     <nav>
+      <a href="index.html">Início</a>
       <a href="ebooks.html">Ebooks</a>
       <a href="produtos.html">Produtos</a>
       <a href="videos.html">Vídeos</a>
       <a href="curiosidades.html">Curiosidades</a>
-      <a href="contato.html">Contato</a>
     </nav>
   </div>
 </header>
 
-<a class="float-wa" href="https://wa.me/5511958749421" target="_blank" aria-label="WhatsApp">📲 WhatsApp</a>
+<a class="float-wa" href="https://wa.me/5511958749421" target="_blank">📲 WhatsApp</a>
 
 <main class="wrap">
 
-  <!-- HERO -->
   <section class="hero">
     <h1>Emagreça em Casa</h1>
-    <p>Explore ebooks e recomendações para criar rotina e consistência.</p>
-  </section>
-
-  <!-- SLIDERS -->
-  <section class="section">
-    <div class="section-title">
-      Destaques
-      <small>Clique no card para abrir</small>
-    </div>
-
-    <div class="cards-row">
-      <!-- EBOOKS -->
-      <div class="card">
-        <div class="section-title" style="margin-top:0;">
-          Ebooks em destaque <small>(gira sozinho)</small>
-        </div>
-
-        <div class="slider" id="ebooksSlider"></div>
-
-        <div class="slider-controls">
-          <button class="mini-btn" type="button" id="ebooksPrev">◀</button>
-          <div class="dots" id="ebooksDots"></div>
-          <button class="mini-btn" type="button" id="ebooksNext">▶</button>
-        </div>
-      </div>
-
-      <!-- PRODUTOS -->
-      <div class="card">
-        <div class="section-title" style="margin-top:0;">
-          Produtos em destaque <small>(gira sozinho)</small>
-        </div>
-
-        <div class="slider" id="produtosSlider"></div>
-
-        <div class="slider-controls">
-          <button class="mini-btn" type="button" id="produtosPrev">◀</button>
-          <div class="dots" id="produtosDots"></div>
-          <button class="mini-btn" type="button" id="produtosNext">▶</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- LINKS (SEM BOTÕES EXTRAS) -->
-  <section class="section">
-    <div class="section-title">Conteúdo</div>
-
-    <div class="info-grid">
-      <div class="info-card">
-        <h3>Vídeos</h3>
-        <ul class="list">
-          <li>Dicas rápidas de treino em casa</li>
-          <li>Rotina semanal simples</li>
-          <li>Motivação e consistência</li>
-        </ul>
-      </div>
-
-      <div class="info-card">
-        <h3>Curiosidades</h3>
-        <ul class="list">
-          <li>Hábitos que ajudam na saciedade</li>
-          <li>Como o sono influencia o peso</li>
-          <li>O que fazer quando bate a ansiedade</li>
-        </ul>
-      </div>
-    </div>
+    <p>Explore ebooks e conteúdos práticos para criar rotina e consistência.</p>
   </section>
 
   <footer>© 2026 Meta Saudável • Todos os direitos reservados</footer>
 
 </main>
-
-<script>
-  // ====== DADOS ======
-  // ✅ Corrigido: TODOS os ebooks agora levam para a página de EBOOKS, não para checkout.
-  const ebooks = [
-    {
-      name: "Como Emagrecer em Casa",
-      img: "capa_meta_saudavel.jpg",
-      desc: "Método prático para emagrecer sem academia.",
-      link: "ebooks.html"
-    },
-    {
-      name: "Cinturinha Fina",
-      img: "Cinturinha_Fina.png",
-      desc: "Foco em cintura e definição, com método direto e visual.",
-      link: "ebooks.html#cinturinha-fina"
-    },
-    {
-      name: "A Comida com Testosterona",
-      img: "comida_com_testosterona.jpg.png",
-      desc: "Receitas e rotina alimentar (abra na seção dentro de Ebooks).",
-      link: "ebooks.html#comida-com-testosterona"
-    }
-  ];
-
-  // Produtos ficam aqui (se quiser depois, adicionamos)
-  const produtos = [];
-
-  // ====== SLIDER ======
-  function createSlider({ mountId, dotsId, prevId, nextId, items, intervalMs = 3500, emptyTitle, emptyDesc, emptyLink }) {
-    const mount = document.getElementById(mountId);
-    const dotsWrap = document.getElementById(dotsId);
-    const prevBtn = document.getElementById(prevId);
-    const nextBtn = document.getElementById(nextId);
-
-    if (!mount || !dotsWrap || !prevBtn || !nextBtn) return;
-
-    function setDisabled(disabled){
-      prevBtn.disabled = disabled;
-      nextBtn.disabled = disabled;
-    }
-
-    if (!items || items.length === 0) {
-      mount.innerHTML = `
-        <div class="slide active clickable" data-link="${emptyLink}">
-          <div class="name">${emptyTitle}</div>
-          <div class="desc">${emptyDesc}</div>
-        </div>
-      `;
-      dotsWrap.innerHTML = "";
-      setDisabled(true);
-
-      const s = mount.querySelector(".slide");
-      s.addEventListener("click", () => { window.location.href = emptyLink; });
-      return;
-    }
-
-    let index = 0;
-    let timer = null;
-
-    function render() {
-      mount.innerHTML = "";
-      dotsWrap.innerHTML = "";
-
-      items.forEach((it, i) => {
-        const slide = document.createElement("div");
-        slide.className = "slide clickable" + (i === index ? " active" : "");
-        slide.setAttribute("data-link", it.link);
-
-        slide.innerHTML = `
-          <img src="${it.img}" alt="${it.name}" loading="lazy">
-          <div class="name">${it.name}</div>
-          <div class="desc">${it.desc || ""}</div>
-        `;
-
-        slide.addEventListener("click", () => {
-          window.location.href = it.link;
-        });
-
-        mount.appendChild(slide);
-
-        const dot = document.createElement("div");
-        dot.className = "dot" + (i === index ? " active" : "");
-        dot.addEventListener("click", () => {
-          index = i;
-          render();
-          restart();
-        });
-        dotsWrap.appendChild(dot);
-      });
-    }
-
-    function next() {
-      index = (index + 1) % items.length;
-      render();
-    }
-    function prev() {
-      index = (index - 1 + items.length) % items.length;
-      render();
-    }
-    function restart() {
-      if (timer) clearInterval(timer);
-      timer = setInterval(next, intervalMs);
-    }
-
-    prevBtn.addEventListener("click", () => { prev(); restart(); });
-    nextBtn.addEventListener("click", () => { next(); restart(); });
-
-    setDisabled(false);
-    render();
-    restart();
-  }
-
-  // init
-  createSlider({
-    mountId: "ebooksSlider",
-    dotsId: "ebooksDots",
-    prevId: "ebooksPrev",
-    nextId: "ebooksNext",
-    items: ebooks,
-    intervalMs: 3500,
-    emptyTitle: "Sem ebooks",
-    emptyDesc: "Adicione ebooks e eles vão aparecer aqui.",
-    emptyLink: "ebooks.html"
-  });
-
-  createSlider({
-    mountId: "produtosSlider",
-    dotsId: "produtosDots",
-    prevId: "produtosPrev",
-    nextId: "produtosNext",
-    items: produtos,
-    intervalMs: 3500,
-    emptyTitle: "Produtos em breve",
-    emptyDesc: "Quando você adicionar produtos, eles vão aparecer aqui.",
-    emptyLink: "produtos.html"
-  });
-</script>
 
 </body>
 </html>
