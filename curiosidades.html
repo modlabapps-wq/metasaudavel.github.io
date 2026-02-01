@@ -33,14 +33,15 @@
       top:0;
       z-index:999;
     }
+
+    /* ✅ Título na 1ª linha + menu fixo na 2ª (sem scroll lateral) */
     .header-container{
       max-width:1200px;
       margin:auto;
       padding:14px;
       display:flex;
-      justify-content:space-between;
+      flex-direction:column;
       align-items:center;
-      flex-wrap:wrap;
       gap:10px;
     }
     .logo{
@@ -48,24 +49,26 @@
       font-size:18px;
       color:var(--green);
       white-space:nowrap;
+      width:100%;
+      text-align:center;
     }
 
-    /* MENU (ajustado: não quebra no celular + sem contato) */
+    /* ✅ Menu parado na 2ª linha e sem quebrar */
     nav{
       display:flex;
-      gap:8px;
+      justify-content:center;
+      align-items:center;
+      gap:6px;
       flex-wrap:nowrap;
-      overflow-x:auto;
-      -webkit-overflow-scrolling:touch;
-      scrollbar-width:none;
+      overflow:visible;
+      width:100%;
     }
-    nav::-webkit-scrollbar{ display:none; }
 
     nav a{
       text-decoration:none;
       font-weight:900;
-      font-size:13px;
-      padding:8px 10px;
+      font-size:12px;
+      padding:7px 8px;
       border-radius:10px;
       background:var(--chip);
       color:#1f8a4a;
@@ -74,6 +77,22 @@
       flex:0 0 auto;
     }
     nav a:hover{ background:var(--green); color:#fff; }
+
+    /* ✅ Aba ativa destacada (Curiosidades) */
+    nav a.active{
+      background:var(--green);
+      color:#fff;
+      border-color: rgba(39,174,96,0.55);
+    }
+
+    @media (max-width: 380px){
+      nav{ gap:5px; }
+      nav a{
+        font-size:11px;
+        padding:6px 7px;
+        border-radius:9px;
+      }
+    }
 
     /* LAYOUT */
     .wrap{
@@ -360,7 +379,7 @@
       <a href="ebooks.html">Ebooks</a>
       <a href="produtos.html">Produtos</a>
       <a href="videos.html">Vídeos</a>
-      <a href="curiosidades.html">Curiosidades</a>
+      <a class="active" href="curiosidades.html">Curiosidades</a>
     </nav>
   </div>
 </header>
