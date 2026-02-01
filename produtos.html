@@ -1,1 +1,374 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Produtos | Meta Saudável</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root{
+      --green:#27ae60;
+      --green2:#219150;
+      --bg:#f2f2f2;
+      --card:#ffffff;
+      --text:#222;
+      --muted:#666;
+      --border:rgba(0,0,0,0.10);
+    }
+
+    html { scroll-behavior: smooth; }
+    body{
+      margin:0;
+      font-family:Arial, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+
+    /* HEADER */
+    header{
+      background:#ffffff;
+      box-shadow:0 2px 10px rgba(0,0,0,0.06);
+      position:sticky;
+      top:0;
+      z-index:999;
+    }
+    .header-container{
+      max-width:1200px;
+      margin:auto;
+      padding:14px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+    .logo{
+      font-weight:900;
+      font-size:18px;
+      color:var(--green);
+      white-space:nowrap;
+    }
+    nav{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    nav a{
+      text-decoration:none;
+      font-weight:900;
+      font-size:13px;
+      padding:8px 10px;
+      border-radius:10px;
+      background:#f3fff7;
+      color:#1f8a4a;
+      border:1px solid rgba(39,174,96,0.18);
+    }
+    nav a:hover{ background:var(--green); color:#fff; }
+
+    /* LAYOUT */
+    .wrap{
+      max-width:1200px;
+      margin:0 auto;
+      padding:18px 14px 40px;
+    }
+
+    .page-title{
+      margin:18px auto 0;
+      text-align:center;
+      color:var(--green);
+      font-weight:900;
+      font-size:22px;
+    }
+    .page-sub{
+      max-width:820px;
+      margin:10px auto 22px;
+      text-align:center;
+      color:#555;
+      font-size:14px;
+      line-height:1.45;
+    }
+
+    /* GRID 2 COL */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap:16px;
+    }
+    @media (max-width:980px){
+      .grid{ grid-template-columns:1fr; }
+    }
+
+    /* CARD */
+    .container{
+      background:#fff;
+      padding:22px;
+      border-radius:14px;
+      box-shadow:0 0 15px rgba(0,0,0,0.10);
+      text-align:center;
+    }
+
+    /* OFFER */
+    .offer-box{
+      margin:0 0 14px;
+      padding:14px 12px;
+      border-radius:12px;
+      background:#f3fff7;
+      border:1px solid rgba(39,174,96,0.25);
+    }
+    .offer-title{
+      font-weight:900;
+      color:#1f8a4a;
+      margin-bottom:8px;
+      font-size:13px;
+      text-transform:uppercase;
+      letter-spacing:0.7px;
+    }
+    .timer{
+      margin:6px auto 10px;
+      padding:10px 12px;
+      border-radius:10px;
+      background:#fff;
+      border:1px dashed rgba(39,174,96,0.6);
+      font-weight:900;
+      font-size:18px;
+      color:#0f5f32;
+      min-width:160px;
+      width:fit-content;
+    }
+    .prices{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      align-items:baseline;
+      flex-wrap:wrap;
+    }
+    .old-price{
+      color:#999;
+      text-decoration:line-through;
+      font-weight:800;
+      font-size:16px;
+    }
+    .new-price{
+      color:#1f8a4a;
+      font-weight:900;
+      font-size:26px;
+    }
+    .badge{
+      margin-top:10px;
+      padding:6px 10px;
+      border-radius:20px;
+      background:var(--green);
+      color:#fff;
+      font-weight:900;
+      font-size:12px;
+      display:inline-block;
+    }
+
+    /* IMAGE */
+    .img-prod{
+      width:100%;
+      max-width:280px;
+      border-radius:12px;
+      margin:12px auto;
+      display:block;
+      box-shadow:0 4px 10px rgba(0,0,0,0.18);
+      background:#fff;
+    }
+
+    /* TEXT */
+    .headline{
+      margin:10px 0 0;
+      font-weight:900;
+      color:#222;
+      font-size:15px;
+      line-height:1.35;
+    }
+
+    /* BENEFITS */
+    .benefits{
+      margin:14px 0 0;
+      text-align:left;
+      padding:0;
+      list-style:none;
+    }
+    .benefits li{
+      margin:10px 0;
+      font-size:14px;
+      color:#444;
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      line-height:1.35;
+    }
+    .check{
+      width:22px;
+      height:22px;
+      border-radius:6px;
+      background:var(--green);
+      color:#fff;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:900;
+      flex:0 0 22px;
+      margin-top:1px;
+    }
+
+    /* BUTTON */
+    .btn{
+      display:block;
+      background:var(--green);
+      color:#fff;
+      padding:15px;
+      text-decoration:none;
+      border-radius:10px;
+      font-size:18px;
+      margin-top:16px;
+      font-weight:900;
+    }
+    .btn:hover{ background:var(--green2); }
+
+    footer{
+      text-align:center;
+      font-size:12px;
+      color:#888;
+      margin-top:12px;
+    }
+
+    /* FLOAT WA */
+    .float-wa{
+      position:fixed;
+      right:16px;
+      bottom:16px;
+      z-index:9999;
+      text-decoration:none;
+      background:var(--green);
+      color:#fff;
+      padding:12px 14px;
+      border-radius:999px;
+      font-weight:900;
+      box-shadow:0 10px 25px rgba(0,0,0,0.18);
+      border:1px solid rgba(255,255,255,0.25);
+      font-size:14px;
+    }
+    .float-wa:hover{ background:var(--green2); }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-container">
+    <div class="logo">Meta Saudável</div>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="ebooks.html">Ebooks</a>
+      <!-- removido: Produtos (já está nessa página) -->
+      <a href="videos.html">Vídeos</a>
+      <a href="curiosidades.html">Curiosidades</a>
+      <a href="contato.html">Contato</a>
+    </nav>
+  </div>
+</header>
+
+<a class="float-wa" href="https://wa.me/5511958749421" target="_blank">📲 WhatsApp</a>
+
+<main class="wrap">
+  <div class="page-title">Produtos</div>
+  <div class="page-sub">
+    Produtos e recomendações selecionadas para apoiar sua jornada de saúde e emagrecimento.
+  </div>
+
+  <!-- GRID (2 por linha) -->
+  <section class="grid">
+
+    <!-- PRODUTO 1 (EXEMPLO) -->
+    <div class="container" id="produto-1">
+      <div class="offer-box">
+        <div class="offer-title">Oferta termina em</div>
+        <div class="timer" id="countdown-p1">15:00</div>
+
+        <div class="prices">
+          <span class="old-price">R$ 159,00</span>
+          <span class="new-price">R$ 99,00</span>
+        </div>
+
+        <div class="badge">Promoção por tempo limitado</div>
+      </div>
+
+      <p class="headline">Produto Exemplo 1</p>
+
+      <img class="img-prod" src="produto_exemplo_1.png" alt="Produto Exemplo 1" loading="lazy">
+
+      <ul class="benefits">
+        <li><span class="check">✓</span> Benefício principal do produto.</li>
+        <li><span class="check">✓</span> Benefício secundário (resultado esperado).</li>
+        <li><span class="check">✓</span> Indicado para quem quer praticidade.</li>
+      </ul>
+
+      <a class="btn" href="#" target="_blank">👉 Ver Oferta</a>
+      <footer>© 2026 Meta Saudável</footer>
+    </div>
+
+    <!-- PRODUTO 2 (EXEMPLO) -->
+    <div class="container" id="produto-2">
+      <div class="offer-box">
+        <div class="offer-title">Oferta termina em</div>
+        <div class="timer" id="countdown-p2">15:00</div>
+
+        <div class="prices">
+          <span class="old-price">R$ 120,00</span>
+          <span class="new-price">R$ 79,00</span>
+        </div>
+
+        <div class="badge">Promoção por tempo limitado</div>
+      </div>
+
+      <p class="headline">Produto Exemplo 2</p>
+
+      <img class="img-prod" src="produto_exemplo_2.png" alt="Produto Exemplo 2" loading="lazy">
+
+      <ul class="benefits">
+        <li><span class="check">✓</span> Apoia a rotina (ex.: bem-estar / energia).</li>
+        <li><span class="check">✓</span> Fácil de encaixar no dia a dia.</li>
+        <li><span class="check">✓</span> Recomendação popular.</li>
+      </ul>
+
+      <a class="btn" href="#" target="_blank">👉 Ver Oferta</a>
+      <footer>© 2026 Meta Saudável</footer>
+    </div>
+
+  </section>
+</main>
+
+<script>
+  const OFFER_MINUTES = 15;
+
+  function startCountdown(elId, key){
+    let end = parseInt(localStorage.getItem(key),10);
+    const now = Date.now();
+    if(!end || end <= now){
+      end = now + OFFER_MINUTES*60000;
+      localStorage.setItem(key, end);
+    }
+    const el = document.getElementById(elId);
+    if(!el) return;
+
+    function tick(){
+      const diff = end - Date.now();
+      if(diff <= 0){ el.textContent = "00:00"; return; }
+      const m = String(Math.floor(diff/60000)).padStart(2,"0");
+      const s = String(Math.floor((diff%60000)/1000)).padStart(2,"0");
+      el.textContent = `${m}:${s}`;
+      setTimeout(tick,1000);
+    }
+    tick();
+  }
+
+  startCountdown("countdown-p1","offer-p1");
+  startCountdown("countdown-p2","offer-p2");
+</script>
+
+</body>
+</html>
 
