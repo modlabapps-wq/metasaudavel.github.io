@@ -41,9 +41,7 @@
     nav{
       display:flex;
       gap:8px;
-      flex-wrap:nowrap;
       overflow-x:auto;
-      -webkit-overflow-scrolling:touch;
       scrollbar-width:none;
     }
     nav::-webkit-scrollbar{ display:none; }
@@ -58,7 +56,6 @@
       color:#1f8a4a;
       border:1px solid rgba(39,174,96,0.18);
       white-space:nowrap;
-      flex:0 0 auto;
     }
     nav a:hover{
       background:#27ae60;
@@ -87,16 +84,13 @@
       max-width:520px;
     }
 
-    /* GRID 2x2 */
     .grid{
       display:grid;
       grid-template-columns: repeat(2, 1fr);
       gap:18px;
     }
-    @media (max-width: 780px){
-      .grid{
-        grid-template-columns: 1fr;
-      }
+    @media (max-width:780px){
+      .grid{ grid-template-columns:1fr; }
     }
 
     .container{
@@ -107,7 +101,7 @@
       text-align:center;
     }
 
-    /* OFFER */
+    /* OFFER (apenas ebook próprio) */
     .offer-box{
       margin-bottom:14px;
       padding:14px 12px;
@@ -240,7 +234,6 @@
     <div class="logo">Meta Saudável</div>
     <nav>
       <a href="index.html">Início</a>
-      <a href="ebooks.html">Ebooks</a>
       <a href="produtos.html">Produtos</a>
       <a href="videos.html">Vídeos</a>
       <a href="curiosidades.html">Curiosidades</a>
@@ -256,7 +249,7 @@
 
   <div class="grid">
 
-    <!-- META SAUDÁVEL -->
+    <!-- SEU EBOOK -->
     <section class="container">
       <div class="offer-box">
         <div class="offer-title">Oferta termina em</div>
@@ -280,39 +273,16 @@
       <a class="btn" href="https://pay.cakto.com.br/wzbj2wo_749364" target="_blank">Comprar</a>
     </section>
 
-    <!-- CINTURINHA FINA -->
+    <!-- AFILIADOS (SEM TIMER) -->
     <section class="container">
-      <div class="offer-box">
-        <div class="offer-title">Oferta termina em</div>
-        <div class="timer" id="countdown-cf">15:00</div>
-        <div class="prices">
-          <span class="old-price">R$ 250,00</span>
-          <span class="new-price">R$ 197,00</span>
-        </div>
-        <div class="badge">Promoção</div>
-      </div>
-
       <img class="cover-aff" src="Cinturinha_Fina.png">
       <p class="headline">Cinturinha Fina</p>
-
       <a class="btn" href="https://pay.cakto.com.br/abbzsqj_416048?affiliate=qFsAcyY8" target="_blank">Ver oferta</a>
     </section>
 
-    <!-- TESTOSTERONA -->
     <section class="container">
-      <div class="offer-box">
-        <div class="offer-title">Oferta termina em</div>
-        <div class="timer" id="countdown-tst">15:00</div>
-        <div class="prices">
-          <span class="old-price">R$ 130,00</span>
-          <span class="new-price">R$ 99,00</span>
-        </div>
-        <div class="badge">Promoção</div>
-      </div>
-
       <img class="cover-aff" src="comida_com_testosterona.jpg.png">
       <p class="headline">A Comida com Testosterona</p>
-
       <a class="btn" href="https://pay.hotmart.com/K83209126H?off=p4cbtmlm&checkoutMode=10&ref=E104199384C&bid=1769904933200" target="_blank">Ver oferta</a>
     </section>
 
@@ -322,21 +292,29 @@
 </main>
 
 <script>
+/* Temporizador apenas do ebook Meta Saudável */
 const OFFER_MINUTES = 15;
-["ms","cf","tst"].forEach(k=>{
-  const id="countdown-"+k, key="offer_"+k;
-  let end=localStorage.getItem(key);
-  if(!end||end<Date.now()) end=Date.now()+OFFER_MINUTES*60000,localStorage.setItem(key,end);
-  const el=document.getElementById(id);
-  (function tick(){
-    const d=end-Date.now();
-    if(d<=0){el.textContent="00:00";return;}
-    el.textContent=
-      String(Math.floor(d/60000)).padStart(2,"0")+":"+
-      String(Math.floor(d%60000/1000)).padStart(2,"0");
-    setTimeout(tick,1000);
-  })();
-});
+const key = "offer_ms";
+let end = localStorage.getItem(key);
+
+if(!end || end < Date.now()){
+  end = Date.now() + OFFER_MINUTES * 60000;
+  localStorage.setItem(key, end);
+}
+
+const el = document.getElementById("countdown-ms");
+
+(function tick(){
+  const d = end - Date.now();
+  if(d <= 0){
+    el.textContent = "00:00";
+    return;
+  }
+  el.textContent =
+    String(Math.floor(d / 60000)).padStart(2,"0") + ":" +
+    String(Math.floor(d % 60000 / 1000)).padStart(2,"0");
+  setTimeout(tick, 1000);
+})();
 </script>
 
 </body>
