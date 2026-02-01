@@ -35,16 +35,18 @@ header{
   border-bottom:1px solid rgba(0,0,0,0.08);
   box-shadow:0 2px 10px rgba(0,0,0,0.06);
 }
+
+/* >>> AJUSTE: HEADER EM 2 LINHAS (logo em cima, menu embaixo) <<< */
 .header-container{
   max-width:1200px;
   margin:auto;
-  padding:14px 14px;
+  padding:12px 14px 10px;
   display:flex;
-  justify-content:space-between;
-  align-items:center;
-  flex-wrap:nowrap; /* importante */
-  gap:12px;
+  flex-direction:column;     /* 2 linhas */
+  align-items:center;        /* centraliza */
+  gap:10px;
 }
+
 .logo{
   font-weight:900;
   font-size:18px;
@@ -52,22 +54,21 @@ header{
   white-space:nowrap;
 }
 
-/* MENU RESPONSIVO (não quebra linha no celular) */
+/* MENU FIXO (sem rolagem lateral) */
 nav{
+  width:100%;
   display:flex;
+  justify-content:center;    /* centraliza os itens */
   gap:8px;
-  flex-wrap:nowrap;
-  overflow-x:auto;
-  -webkit-overflow-scrolling:touch;
-  scrollbar-width:none;
+  flex-wrap:nowrap;          /* não quebra linha */
+  overflow:hidden;           /* impede rolagem */
 }
-nav::-webkit-scrollbar{ display:none; }
 
 nav a{
   text-decoration:none;
   font-weight:900;
-  font-size:13px;
-  padding:8px 10px;
+  font-size:12px;            /* levemente menor para caber */
+  padding:8px 10px;          /* mais compacto */
   border-radius:10px;
   background:#f3fff7;
   color:#1f8a4a;
@@ -76,6 +77,14 @@ nav a{
   flex:0 0 auto;
 }
 nav a:hover{ background:var(--green); color:#fff; }
+
+/* Em telas muito pequenas, reduz ainda mais para NÃO quebrar */
+@media (max-width: 420px){
+  nav a{
+    font-size:11px;
+    padding:7px 8px;
+  }
+}
 
 /* PAGE WRAP */
 .wrap{
@@ -190,6 +199,18 @@ nav a:hover{ background:var(--green); color:#fff; }
   }
 }
 
+/* CLICK EFFECT */
+.slide.clickable{
+  cursor:pointer;
+}
+.slide.clickable:hover{
+  filter: brightness(0.98);
+}
+.slider:hover .slide.active img{
+  transform: scale(1.01);
+  transition: transform .25s ease;
+}
+
 .slide .name{
   font-weight:900;
   font-size:16px;
@@ -201,18 +222,6 @@ nav a:hover{ background:var(--green); color:#fff; }
   line-height:1.35;
   margin:0;
   max-width:420px;
-}
-
-/* CLICK EFFECT */
-.slide.clickable{
-  cursor:pointer;
-}
-.slide.clickable:hover{
-  filter: brightness(0.98);
-}
-.slider:hover .slide.active img{
-  transform: scale(1.01);
-  transition: transform .25s ease;
 }
 
 /* CONTROLS */
