@@ -1,1 +1,581 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Vídeos | Meta Saudável</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root{
+      --green:#27ae60;
+      --green2:#219150;
+      --bg:#f2f2f2;
+      --card:#ffffff;
+      --text:#222;
+      --muted:#666;
+      --border:rgba(0,0,0,0.10);
+      --chip:#f3fff7;
+    }
+
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family:Arial, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+
+    /* HEADER */
+    header{
+      background:#fff;
+      box-shadow:0 2px 10px rgba(0,0,0,0.06);
+      position:sticky;
+      top:0;
+      z-index:999;
+    }
+    .header-container{
+      max-width:1200px;
+      margin:auto;
+      padding:14px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+    .logo{
+      font-weight:900;
+      font-size:18px;
+      color:var(--green);
+      white-space:nowrap;
+    }
+    nav{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    nav a{
+      text-decoration:none;
+      font-weight:900;
+      font-size:13px;
+      padding:8px 10px;
+      border-radius:10px;
+      background:var(--chip);
+      color:#1f8a4a;
+      border:1px solid rgba(39,174,96,0.18);
+    }
+    nav a:hover{ background:var(--green); color:#fff; }
+
+    /* LAYOUT */
+    .wrap{
+      max-width:1200px;
+      margin:0 auto;
+      padding:18px 14px 44px;
+    }
+
+    .hero{
+      background:var(--card);
+      border-radius:16px;
+      box-shadow:0 0 15px rgba(0,0,0,0.10);
+      padding:20px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+    .hero-left{
+      min-width:260px;
+      flex:1;
+    }
+    .title{
+      margin:0;
+      color:var(--green);
+      font-weight:900;
+      font-size:22px;
+    }
+    .sub{
+      margin:8px 0 0;
+      color:#555;
+      font-size:14px;
+      line-height:1.45;
+      max-width:700px;
+    }
+
+    .hero-right{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:flex-end;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 12px;
+      border-radius:999px;
+      background:#f3fff7;
+      border:1px solid rgba(39,174,96,0.22);
+      color:#1f8a4a;
+      font-weight:900;
+      font-size:13px;
+      white-space:nowrap;
+    }
+
+    /* FILTERS */
+    .filters{
+      margin-top:14px;
+      background:#fff;
+      border-radius:16px;
+      padding:14px;
+      box-shadow:0 0 12px rgba(0,0,0,0.08);
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .search{
+      flex:1;
+      min-width:220px;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      background:#fafafa;
+      border:1px solid rgba(0,0,0,0.10);
+      border-radius:12px;
+      padding:10px 12px;
+    }
+    .search input{
+      border:none;
+      outline:none;
+      background:transparent;
+      width:100%;
+      font-size:14px;
+    }
+    .tags{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .tag{
+      cursor:pointer;
+      user-select:none;
+      padding:8px 10px;
+      border-radius:999px;
+      background:var(--chip);
+      border:1px solid rgba(39,174,96,0.18);
+      color:#1f8a4a;
+      font-weight:900;
+      font-size:12px;
+    }
+    .tag.active{
+      background:var(--green);
+      border-color:var(--green);
+      color:#fff;
+    }
+
+    /* GRID */
+    .grid{
+      margin-top:14px;
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap:16px;
+    }
+    @media (max-width: 980px){
+      .grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 560px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    /* VIDEO CARD */
+    .card{
+      background:#fff;
+      border-radius:16px;
+      box-shadow:0 0 14px rgba(0,0,0,0.09);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+    }
+    .thumb{
+      position:relative;
+      height:190px;
+      background:linear-gradient(135deg, rgba(39,174,96,0.12), rgba(39,174,96,0.03));
+      border-bottom:1px solid rgba(0,0,0,0.06);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px;
+    }
+    .thumb .placeholder{
+      width:100%;
+      height:100%;
+      border-radius:12px;
+      border:1px dashed rgba(39,174,96,0.55);
+      background:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#0f5f32;
+      font-weight:900;
+      font-size:13px;
+      text-align:center;
+      padding:12px;
+      line-height:1.3;
+    }
+    .play{
+      position:absolute;
+      right:12px;
+      bottom:12px;
+      width:44px;
+      height:44px;
+      border-radius:999px;
+      background:var(--green);
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:900;
+      box-shadow:0 10px 18px rgba(0,0,0,0.18);
+      border:1px solid rgba(255,255,255,0.25);
+    }
+
+    .content{
+      padding:14px 14px 16px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      flex:1;
+    }
+    .card-title{
+      margin:0;
+      font-size:15px;
+      font-weight:900;
+      color:#222;
+      line-height:1.25;
+    }
+    .meta{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      align-items:center;
+      color:#666;
+      font-size:12px;
+      font-weight:800;
+    }
+    .chip{
+      background:#f3fff7;
+      border:1px solid rgba(39,174,96,0.18);
+      color:#1f8a4a;
+      padding:6px 8px;
+      border-radius:999px;
+      font-size:11px;
+      font-weight:900;
+    }
+    .desc{
+      margin:0;
+      color:#555;
+      font-size:13px;
+      line-height:1.4;
+    }
+
+    .btn{
+      margin-top:auto;
+      display:block;
+      text-align:center;
+      text-decoration:none;
+      background:var(--green);
+      color:#fff;
+      padding:12px 12px;
+      border-radius:12px;
+      font-weight:900;
+      font-size:14px;
+    }
+    .btn:hover{ background:var(--green2); }
+
+    /* EMPTY */
+    .empty{
+      margin-top:14px;
+      background:#fff;
+      border-radius:16px;
+      padding:18px;
+      box-shadow:0 0 12px rgba(0,0,0,0.08);
+      color:#555;
+      text-align:center;
+      display:none;
+    }
+
+    /* FLOAT WA */
+    .float-wa{
+      position:fixed;
+      right:16px;
+      bottom:16px;
+      z-index:9999;
+      text-decoration:none;
+      background:var(--green);
+      color:#fff;
+      padding:12px 14px;
+      border-radius:999px;
+      font-weight:900;
+      box-shadow:0 10px 25px rgba(0,0,0,0.18);
+      border:1px solid rgba(255,255,255,0.25);
+      font-size:14px;
+    }
+    .float-wa:hover{ background:var(--green2); }
+
+    footer{
+      text-align:center;
+      font-size:12px;
+      color:#888;
+      margin-top:18px;
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="header-container">
+    <div class="logo">Meta Saudável</div>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="ebooks.html">Ebooks</a>
+      <a href="produtos.html">Produtos</a>
+      <!-- removido: Vídeos (já está nessa página) -->
+      <a href="curiosidades.html">Curiosidades</a>
+      <a href="contato.html">Contato</a>
+    </nav>
+  </div>
+</header>
+
+<a class="float-wa" href="https://wa.me/5511958749421" target="_blank" aria-label="WhatsApp">📲 WhatsApp</a>
+
+<main class="wrap">
+
+  <section class="hero">
+    <div class="hero-left">
+      <h1 class="title">Vídeos</h1>
+      <p class="sub">
+        Aqui ficam os vídeos do TikTok com dicas rápidas, treinos, receitas e motivação.
+        Clique para assistir e salvar os melhores para sua rotina.
+      </p>
+    </div>
+
+    <div class="hero-right">
+      <div class="pill">🎥 Dicas curtas</div>
+      <div class="pill">🔥 Treino em casa</div>
+      <div class="pill">🥗 Alimentação</div>
+      <div class="pill">🧠 Consistência</div>
+    </div>
+  </section>
+
+  <section class="filters" aria-label="Filtro de vídeos">
+    <div class="search">
+      🔎 <input id="search" type="text" placeholder="Pesquisar vídeo (ex: barriga, treino, jejum, sono)..." />
+    </div>
+
+    <div class="tags" id="tags">
+      <div class="tag active" data-tag="todos">Todos</div>
+      <div class="tag" data-tag="treino">Treino</div>
+      <div class="tag" data-tag="alimentacao">Alimentação</div>
+      <div class="tag" data-tag="habitos">Hábitos</div>
+      <div class="tag" data-tag="motivacao">Motivação</div>
+    </div>
+  </section>
+
+  <section class="grid" id="grid" aria-label="Lista de vídeos">
+    <!-- EXEMPLOS (troque os links pelos seus vídeos do TikTok) -->
+
+    <article class="card" data-tags="treino habitos">
+      <div class="thumb">
+        <div class="placeholder">
+          Thumbnail do vídeo<br>
+          (adicione uma imagem quando quiser)
+        </div>
+        <div class="play">▶</div>
+      </div>
+      <div class="content">
+        <h3 class="card-title">Treino rápido (7 minutos) para começar hoje</h3>
+        <div class="meta">
+          <span class="chip">Treino</span>
+          <span class="chip">Iniciante</span>
+          <span>⏱ 30–45s</span>
+        </div>
+        <p class="desc">Uma rotina curta para fazer em casa e criar consistência sem sofrer.</p>
+        <a class="btn" href="#" target="_blank" rel="noopener">Assistir no TikTok</a>
+      </div>
+    </article>
+
+    <article class="card" data-tags="alimentacao habitos">
+      <div class="thumb">
+        <div class="placeholder">
+          Thumbnail do vídeo<br>
+          (adicione uma imagem quando quiser)
+        </div>
+        <div class="play">▶</div>
+      </div>
+      <div class="content">
+        <h3 class="card-title">3 alimentos que ajudam na saciedade</h3>
+        <div class="meta">
+          <span class="chip">Alimentação</span>
+          <span class="chip">Dica</span>
+          <span>🍽</span>
+        </div>
+        <p class="desc">Dica simples para controlar fome e reduzir beliscos ao longo do dia.</p>
+        <a class="btn" href="#" target="_blank" rel="noopener">Assistir no TikTok</a>
+      </div>
+    </article>
+
+    <article class="card" data-tags="habitos motivacao">
+      <div class="thumb">
+        <div class="placeholder">
+          Thumbnail do vídeo<br>
+          (adicione uma imagem quando quiser)
+        </div>
+        <div class="play">▶</div>
+      </div>
+      <div class="content">
+        <h3 class="card-title">Como manter a rotina quando bate a preguiça</h3>
+        <div class="meta">
+          <span class="chip">Motivação</span>
+          <span class="chip">Hábitos</span>
+          <span>🧠</span>
+        </div>
+        <p class="desc">Um truque mental simples para voltar pro plano sem culpa e sem desistir.</p>
+        <a class="btn" href="#" target="_blank" rel="noopener">Assistir no TikTok</a>
+      </div>
+    </article>
+
+    <article class="card" data-tags="treino">
+      <div class="thumb">
+        <div class="placeholder">
+          Thumbnail do vídeo<br>
+          (adicione uma imagem quando quiser)
+        </div>
+        <div class="play">▶</div>
+      </div>
+      <div class="content">
+        <h3 class="card-title">Treino para barriga (sem equipamento)</h3>
+        <div class="meta">
+          <span class="chip">Treino</span>
+          <span class="chip">Barriga</span>
+          <span>🏠</span>
+        </div>
+        <p class="desc">Sequência simples para ativar o core e fortalecer o abdômen em casa.</p>
+        <a class="btn" href="#" target="_blank" rel="noopener">Assistir no TikTok</a>
+      </div>
+    </article>
+
+    <article class="card" data-tags="alimentacao">
+      <div class="thumb">
+        <div class="placeholder">
+          Thumbnail do vídeo<br>
+          (adicione uma imagem quando quiser)
+        </div>
+        <div class="play">▶</div>
+      </div>
+      <div class="content">
+        <h3 class="card-title">Café da manhã simples (proteico) para emagrecer</h3>
+        <div class="meta">
+          <span class="chip">Alimentação</span>
+          <span class="chip">Receita</span>
+          <span>🥚</span>
+        </div>
+        <p class="desc">Ideia rápida para começar o dia com mais saciedade e menos vontade de doce.</p>
+        <a class="btn" href="#" target="_blank" rel="noopener">Assistir no TikTok</a>
+      </div>
+    </article>
+
+    <article class="card" data-tags="habitos">
+      <div class="thumb">
+        <div class="placeholder">
+          Thumbnail do vídeo<br>
+          (adicione uma imagem quando quiser)
+        </div>
+        <div class="play">▶</div>
+      </div>
+      <div class="content">
+        <h3 class="card-title">Sono e emagrecimento: o erro que te trava</h3>
+        <div class="meta">
+          <span class="chip">Hábitos</span>
+          <span class="chip">Sono</span>
+          <span>😴</span>
+        </div>
+        <p class="desc">O básico que muita gente ignora e que muda o apetite e a retenção.</p>
+        <a class="btn" href="#" target="_blank" rel="noopener">Assistir no TikTok</a>
+      </div>
+    </article>
+
+  </section>
+
+  <div class="empty" id="empty">
+    Nenhum vídeo encontrado com esse filtro/pesquisa.
+  </div>
+
+  <footer>© 2026 Meta Saudável • Página de vídeos</footer>
+</main>
+
+<script>
+  const search = document.getElementById("search");
+  const tagsWrap = document.getElementById("tags");
+  const cards = Array.from(document.querySelectorAll(".card"));
+  const empty = document.getElementById("empty");
+  const grid = document.getElementById("grid");
+
+  let activeTag = "todos";
+
+  function normalize(str){
+    return (str || "")
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+  }
+
+  function applyFilters(){
+    const q = normalize(search.value.trim());
+
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+      const title = normalize(card.querySelector(".card-title")?.textContent || "");
+      const desc = normalize(card.querySelector(".desc")?.textContent || "");
+      const tags = normalize(card.getAttribute("data-tags") || "");
+
+      const matchTag = (activeTag === "todos") ? true : tags.includes(activeTag);
+      const matchText = (!q) ? true : (title.includes(q) || desc.includes(q));
+
+      const show = matchTag && matchText;
+      card.style.display = show ? "" : "none";
+      if(show) visibleCount++;
+    });
+
+    if(visibleCount === 0){
+      empty.style.display = "block";
+      grid.style.display = "none";
+    } else {
+      empty.style.display = "none";
+      grid.style.display = "grid";
+    }
+  }
+
+  tagsWrap.addEventListener("click", (e) => {
+    const t = e.target.closest(".tag");
+    if(!t) return;
+    activeTag = t.getAttribute("data-tag");
+
+    Array.from(tagsWrap.querySelectorAll(".tag")).forEach(x => x.classList.remove("active"));
+    t.classList.add("active");
+
+    applyFilters();
+  });
+
+  search.addEventListener("input", applyFilters);
+
+  applyFilters();
+</script>
+
+</body>
+</html>
 
