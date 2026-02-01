@@ -21,12 +21,12 @@ html{ scroll-behavior:smooth; }
 
 body{
   margin:0;
-  font-family: Arial, sans-serif;
+  font-family:Arial, sans-serif;
   background:var(--bg);
   color:var(--text);
 }
 
-/* ================= HEADER ================= */
+/* ===== HEADER ===== */
 header{
   position:sticky;
   top:0;
@@ -35,7 +35,6 @@ header{
   border-bottom:1px solid rgba(0,0,0,0.08);
   box-shadow:0 2px 10px rgba(0,0,0,0.06);
 }
-
 .header-container{
   max-width:1200px;
   margin:auto;
@@ -45,26 +44,21 @@ header{
   align-items:center;
   gap:12px;
 }
-
 .logo{
   font-weight:900;
   font-size:18px;
   color:var(--green);
   white-space:nowrap;
 }
-
 nav{
   display:flex;
   gap:8px;
-  flex-wrap:nowrap;
-  justify-content:flex-end;
 }
-
 nav a{
   text-decoration:none;
   font-weight:900;
-  font-size: clamp(11px, 2.6vw, 13px);
-  padding: clamp(6px, 1.6vw, 8px) clamp(7px, 2.2vw, 10px);
+  font-size:clamp(11px,2.6vw,13px);
+  padding:clamp(6px,1.6vw,8px) clamp(7px,2.2vw,10px);
   border-radius:10px;
   background:#f3fff7;
   color:#1f8a4a;
@@ -83,13 +77,12 @@ nav a:hover{ background:var(--green); color:#fff; }
     width:100%;
     justify-content:center;
     overflow-x:auto;
-    -webkit-overflow-scrolling:touch;
     scrollbar-width:none;
   }
   nav::-webkit-scrollbar{ display:none; }
 }
 
-/* ================= LAYOUT ================= */
+/* ===== LAYOUT ===== */
 .wrap{
   max-width:1200px;
   margin:auto;
@@ -113,17 +106,15 @@ nav a:hover{ background:var(--green); color:#fff; }
   margin:0;
   color:var(--muted);
   font-size:14px;
-  line-height:1.5;
 }
 
-/* ================= CURIOSIDADE ================= */
+/* ===== CURIOSIDADE DO DIA ===== */
 .curiosity-top{
   margin-top:14px;
   background:var(--card);
   border-radius:16px;
   padding:18px;
   box-shadow:0 0 18px rgba(0,0,0,0.08);
-  border:1px solid rgba(39,174,96,0.12);
 }
 .curiosity-badge{
   display:inline-block;
@@ -134,29 +125,26 @@ nav a:hover{ background:var(--green); color:#fff; }
   font-size:12px;
   padding:6px 10px;
   border-radius:999px;
-  margin-bottom:10px;
+  margin-bottom:8px;
 }
 .curiosity-title{
-  margin:0 0 8px;
   font-weight:900;
   color:#1f8a4a;
-  font-size:16px;
+  margin:0 0 6px;
 }
 .curiosity-text{
   margin:0;
   color:#444;
   font-size:14px;
-  line-height:1.55;
 }
 .curiosity-actions{
-  margin-top:12px;
+  margin-top:10px;
   display:flex;
   gap:10px;
   flex-wrap:wrap;
 }
-.curiosity-link,
-.curiosity-copy{
-  text-decoration:none;
+.curiosity-actions a,
+.curiosity-actions button{
   border:none;
   cursor:pointer;
   background:var(--green);
@@ -165,18 +153,13 @@ nav a:hover{ background:var(--green); color:#fff; }
   padding:10px 12px;
   border-radius:12px;
 }
-.curiosity-copy{
+.curiosity-actions button{
   background:#f3fff7;
   color:#1f8a4a;
   border:1px solid rgba(39,174,96,0.25);
 }
-.curiosity-link:hover,
-.curiosity-copy:hover{
-  background:var(--green2);
-  color:#fff;
-}
 
-/* ================= SLIDERS ================= */
+/* ===== SECTIONS ===== */
 .section{ margin-top:18px; }
 .section-title{
   font-weight:900;
@@ -185,6 +168,7 @@ nav a:hover{ background:var(--green); color:#fff; }
   margin-bottom:10px;
 }
 
+/* ===== SLIDERS ===== */
 .cards-row{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -215,43 +199,26 @@ nav a:hover{ background:var(--green); color:#fff; }
   inset:0;
   opacity:0;
   transform:translateY(6px);
-  transition: opacity .5s ease, transform .5s ease;
+  transition:opacity .5s ease, transform .5s ease;
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  padding:18px;
   text-align:center;
+  padding:18px;
   pointer-events:none;
 }
-
 .slide.active{
   opacity:1;
   transform:translateY(0);
   pointer-events:auto;
-}
-
-/* ===== EFEITO CLICÁVEL ===== */
-.slide.active.clickable{
   cursor:pointer;
-  transition: transform .18s ease, filter .18s ease;
-}
-.slide.active.clickable:hover{
-  transform: translateY(-2px) scale(1.01);
-  filter: brightness(1.03);
-}
-.slide.active.clickable:hover img{
-  transform: scale(1.03);
-  transition: transform .18s ease;
-}
-@media (hover:none){
-  .slide.active.clickable:hover,
-  .slide.active.clickable:hover img{
-    transform:none;
-    filter:none;
-  }
 }
 
+/* Hover clicável */
+.slide.active:hover{
+  transform:translateY(-2px) scale(1.01);
+}
 .slide img{
   width:100%;
   max-width:320px;
@@ -260,10 +227,9 @@ nav a:hover{ background:var(--green); color:#fff; }
   border-radius:14px;
   box-shadow:0 8px 18px rgba(0,0,0,0.16);
 }
-
 .slide .name{
   font-weight:900;
-  margin-top:12px;
+  margin-top:10px;
 }
 .slide .desc{
   font-size:13px;
@@ -275,7 +241,6 @@ nav a:hover{ background:var(--green); color:#fff; }
   justify-content:space-between;
   margin-top:10px;
 }
-
 .mini-btn{
   background:#f3fff7;
   border:1px solid rgba(39,174,96,0.20);
@@ -287,25 +252,32 @@ nav a:hover{ background:var(--green); color:#fff; }
 }
 .mini-btn:hover{ background:var(--green); color:#fff; }
 
-/* ================= FOOTER ================= */
+/* ===== CONTEÚDO ===== */
+.info-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+@media (max-width:980px){
+  .info-grid{ grid-template-columns:1fr; }
+}
+.info-card{
+  background:var(--card);
+  border-radius:16px;
+  padding:18px;
+  box-shadow:0 0 18px rgba(0,0,0,0.08);
+}
+.info-card h3{
+  margin:0 0 8px;
+  color:var(--green);
+}
+
+/* FOOTER */
 footer{
   text-align:center;
   font-size:12px;
   color:#888;
   margin-top:18px;
-}
-
-/* WHATSAPP */
-.float-wa{
-  position:fixed;
-  right:16px;
-  bottom:16px;
-  background:var(--green);
-  color:#fff;
-  padding:12px 14px;
-  border-radius:999px;
-  font-weight:900;
-  text-decoration:none;
 }
 </style>
 </head>
@@ -324,13 +296,21 @@ footer{
   </div>
 </header>
 
-<a class="float-wa" href="https://wa.me/5511958749421" target="_blank">📲 WhatsApp</a>
-
 <main class="wrap">
 
 <section class="hero">
   <h1>Emagreça em Casa</h1>
-  <p>Conteúdo prático, simples e organizado para quem quer resultados reais.</p>
+  <p>Conteúdo simples, direto e organizado para quem quer resultados reais.</p>
+</section>
+
+<section class="curiosity-top">
+  <div class="curiosity-badge">Curiosidade do dia</div>
+  <h3 class="curiosity-title" id="curTitle"></h3>
+  <p class="curiosity-text" id="curText"></p>
+  <div class="curiosity-actions">
+    <button onclick="copyCur()">📋 Copiar</button>
+    <a href="curiosidades.html">Ver +300 curiosidades</a>
+  </div>
 </section>
 
 <section class="section">
@@ -338,21 +318,35 @@ footer{
 
   <div class="cards-row">
     <div class="card">
-      <div class="section-title">Ebooks em destaque</div>
+      <div class="section-title">Ebooks</div>
       <div class="slider" id="ebooksSlider"></div>
       <div class="slider-controls">
-        <button class="mini-btn" id="ebooksPrev">◀</button>
-        <button class="mini-btn" id="ebooksNext">▶</button>
+        <button class="mini-btn" onclick="prevSlide('ebooks')">◀</button>
+        <button class="mini-btn" onclick="nextSlide('ebooks')">▶</button>
       </div>
     </div>
 
     <div class="card">
-      <div class="section-title">Produtos em destaque</div>
+      <div class="section-title">Produtos</div>
       <div class="slider" id="produtosSlider"></div>
       <div class="slider-controls">
-        <button class="mini-btn" id="produtosPrev">◀</button>
-        <button class="mini-btn" id="produtosNext">▶</button>
+        <button class="mini-btn" onclick="prevSlide('produtos')">◀</button>
+        <button class="mini-btn" onclick="nextSlide('produtos')">▶</button>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">Conteúdo</div>
+  <div class="info-grid">
+    <div class="info-card">
+      <h3>Vídeos</h3>
+      <p>Em breve</p>
+    </div>
+    <div class="info-card">
+      <h3>Curiosidades</h3>
+      <p>Mais de <strong>300 curiosidades</strong> sobre emagrecimento, hábitos e comportamento.</p>
     </div>
   </div>
 </section>
@@ -361,46 +355,50 @@ footer{
 </main>
 
 <script>
-const ebooks=[
- {name:"Como Emagrecer em Casa",img:"capa_meta_saudavel.jpg",desc:"Método prático para emagrecer sem academia.",link:"ebooks.html#como-emagrecer-em-casa"},
- {name:"Cinturinha Fina",img:"Cinturinha_Fina.png",desc:"Redução de medidas e rotina simples.",link:"ebooks.html#cinturinha-fina"},
- {name:"A Comida com Testosterona",img:"comida_com_testosterona.jpg.png",desc:"Alimentação e desempenho.",link:"ebooks.html#comida-com-testosterona"},
- {name:"Dieta em Ação",img:"dieta_em_acao.png",desc:"Plano alimentar prático.",link:"ebooks.html#dieta-em-acao"}
+/* Curiosidade do dia */
+const curiosidades=[
+ ["Sono e emagrecimento","Dormir pouco aumenta a fome e reduz a saciedade."],
+ ["Água antes das refeições","Beber água antes de comer ajuda a controlar porções."],
+ ["Proteína no café","Proteína pela manhã ajuda a segurar a fome."]
 ];
-
-const produtos=[
- {name:"Creatina Monohidratada",img:"creatina-puro-nutrition-300g.jpg",desc:"Complemento para treinos.",link:"produtos.html"},
- {name:"Ômega 3 + Vitamina E",img:"omega-3-vitamina-e-everlasting-90caps.jpg",desc:"Alta concentração EPA/DHA.",link:"produtos.html"}
-];
-
-function slider(mount,prev,next,items){
- let i=0;
- function render(){
-  mount.innerHTML="";
-  const s=document.createElement("div");
-  s.className="slide active clickable";
-  s.innerHTML=`<img src="${items[i].img}"><div class="name">${items[i].name}</div><div class="desc">${items[i].desc}</div>`;
-  s.onclick=()=>location.href=items[i].link;
-  mount.appendChild(s);
- }
- prev.onclick=()=>{i=(i-1+items.length)%items.length;render();}
- next.onclick=()=>{i=(i+1)%items.length;render();}
- render();
+const d=new Date().getDate()%curiosidades.length;
+document.getElementById("curTitle").textContent=curiosidades[d][0];
+document.getElementById("curText").textContent=curiosidades[d][1];
+function copyCur(){
+ navigator.clipboard.writeText(curiosidades[d][0]+" - "+curiosidades[d][1]);
 }
 
-slider(
- document.getElementById("ebooksSlider"),
- document.getElementById("ebooksPrev"),
- document.getElementById("ebooksNext"),
- ebooks
-);
+/* SLIDERS COM AUTOPLAY */
+const data={
+ ebooks:[
+  {n:"Como Emagrecer em Casa",i:"capa_meta_saudavel.jpg",d:"Método prático.",l:"ebooks.html#como-emagrecer-em-casa"},
+  {n:"Cinturinha Fina",i:"Cinturinha_Fina.png",d:"Redução de medidas.",l:"ebooks.html#cinturinha-fina"},
+  {n:"A Comida com Testosterona",i:"comida_com_testosterona.jpg.png",d:"Alimentação e energia.",l:"ebooks.html#comida-com-testosterona"},
+  {n:"Dieta em Ação",i:"dieta_em_acao.png",d:"Plano alimentar.",l:"ebooks.html#dieta-em-acao"}
+ ],
+ produtos:[
+  {n:"Creatina Monohidratada",i:"creatina-puro-nutrition-300g.jpg",d:"Complemento para treino.",l:"produtos.html"},
+  {n:"Ômega 3 + Vitamina E",i:"omega-3-vitamina-e-everlasting-90caps.jpg",d:"EPA/DHA alta.",l:"produtos.html"}
+ ]
+};
 
-slider(
- document.getElementById("produtosSlider"),
- document.getElementById("produtosPrev"),
- document.getElementById("produtosNext"),
- produtos
-);
+const idx={ebooks:0,produtos:0};
+
+function render(type){
+ const s=document.getElementById(type+"Slider");
+ const it=data[type][idx[type]];
+ s.innerHTML=`<div class="slide active" onclick="location.href='${it.l}'">
+   <img src="${it.i}">
+   <div class="name">${it.n}</div>
+   <div class="desc">${it.d}</div>
+ </div>`;
+}
+function nextSlide(t){ idx[t]=(idx[t]+1)%data[t].length; render(t); }
+function prevSlide(t){ idx[t]=(idx[t]-1+data[t].length)%data[t].length; render(t); }
+
+render("ebooks"); render("produtos");
+setInterval(()=>nextSlide("ebooks"),3500);
+setInterval(()=>nextSlide("produtos"),3500);
 </script>
 
 </body>
