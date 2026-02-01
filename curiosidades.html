@@ -34,7 +34,7 @@
       z-index:999;
     }
 
-    /* ✅ PADRÃO: Desktop = logo esquerda / menu direita */
+    /* ✅ Desktop: logo esquerda + menu direita */
     .header-container{
       max-width:1200px;
       margin:auto;
@@ -52,42 +52,46 @@
       flex:0 0 auto;
     }
 
-    /* MENU: fica à direita no desktop */
+    /* ✅ Menu com tamanho dinâmico (não quebra) */
     nav{
       display:flex;
       justify-content:flex-end;
       align-items:center;
-      gap:8px;
+      gap: clamp(4px, 1.2vw, 10px);
       flex-wrap:nowrap;
+      white-space:nowrap;
+      min-width:0;
     }
+
     nav a{
       text-decoration:none;
       font-weight:900;
-      font-size:13px;
-      padding:8px 10px;
+      font-size: clamp(11px, 2.4vw, 13px);   /* 🔥 fonte reduz sozinha */
+      padding: clamp(6px, 1.6vw, 8px) clamp(7px, 2.0vw, 10px); /* 🔥 padding reduz sozinho */
       border-radius:10px;
       background:var(--chip);
       color:#1f8a4a;
       border:1px solid rgba(39,174,96,0.18);
       white-space:nowrap;
       flex:0 0 auto;
+      line-height:1;
     }
     nav a:hover{ background:var(--green); color:#fff; }
 
-    /* Aba ativa */
     nav a.active{
       background:var(--green);
       color:#fff;
       border-color: rgba(39,174,96,0.55);
     }
 
-    /* ✅ CELULAR: logo central + menu central embaixo (segunda linha) */
+    /* ✅ Celular: logo central + menu central embaixo */
     @media (max-width: 720px){
       .header-container{
         flex-direction:column;
         align-items:center;
         justify-content:center;
         gap:10px;
+        padding:12px 10px;
       }
       .logo{
         width:100%;
@@ -96,16 +100,7 @@
       nav{
         width:100%;
         justify-content:center;
-        flex-wrap:wrap;      /* quebra em 2 linhas se precisar */
-        gap:8px;
-      }
-    }
-
-    /* EXTRA: telas bem pequenas -> diminui um pouco sem bagunçar */
-    @media (max-width: 380px){
-      nav a{
-        font-size:12px;
-        padding:7px 8px;
+        gap: clamp(4px, 1.6vw, 8px);
       }
     }
 
@@ -402,6 +397,7 @@
 <a class="float-wa" href="https://wa.me/5511958749421" target="_blank">📲 WhatsApp</a>
 
 <main class="wrap">
+  <!-- (RESTO DA PÁGINA SEM ALTERAÇÕES) -->
 
   <h1 class="page-title">Curiosidades</h1>
   <p class="page-sub" id="subText">
@@ -455,9 +451,7 @@
 </main>
 
 <script>
-  // =========================================================
-  // 300 CURIOSIDADES (garantido)
-  // =========================================================
+  // (SEU SCRIPT INTACTO)
   const baseCuriosidades = [
     { tag:"Sono", title:"Dormir pouco aumenta a vontade de doce", text:"Cansaço pode aumentar fome e a busca por energia rápida. Melhorar o sono ajuda a controlar o apetite." },
     { tag:"Metabolismo", title:"Você queima calorias mesmo parado", text:"O metabolismo basal é o gasto para manter o corpo funcionando. Ele costuma ser a maior parte do gasto diário." },
@@ -489,10 +483,9 @@
     "Passos":"Aumentar passos é uma forma simples de gastar mais energia. Caminhadas curtas contam muito na semana."
   };
 
-  // Base + geração até 300
   const curiosidades = [...baseCuriosidades];
   while(curiosidades.length < TARGET_TOTAL){
-    const n = curiosidades.length + 1; // 1..300
+    const n = curiosidades.length + 1;
     const tag = tags[n % tags.length];
     curiosidades.push({
       tag,
@@ -501,9 +494,6 @@
     });
   }
 
-  // =========================================================
-  // SEQUÊNCIA SEM REPETIR (até 300, depois reinicia)
-  // =========================================================
   const KEY_INDEX = "ms_curiosidade_index";
   const KEY_LAST_DAY = "ms_curiosidade_last_day";
 
@@ -575,9 +565,6 @@
     }
   });
 
-  // =========================================================
-  // GRID + PESQUISA
-  // =========================================================
   const grid = document.getElementById("grid");
   const search = document.getElementById("search");
   const resultCount = document.getElementById("resultCount");
