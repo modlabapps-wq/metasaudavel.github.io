@@ -24,7 +24,6 @@
       color:var(--text);
     }
 
-    /* HEADER */
     header{
       background:#ffffff;
       box-shadow:0 2px 10px rgba(0,0,0,0.06);
@@ -63,12 +62,8 @@
       color:#1f8a4a;
       border:1px solid rgba(39,174,96,0.18);
     }
-    nav a:hover{
-      background:var(--green);
-      color:#fff;
-    }
+    nav a:hover{ background:var(--green); color:#fff; }
 
-    /* LAYOUT */
     .wrap{
       max-width:1200px;
       margin:0 auto;
@@ -91,18 +86,15 @@
       line-height:1.45;
     }
 
-    /* GRID 2 COL */
     .grid{
       display:grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap:16px;
-      align-items:stretch;
     }
-    @media (max-width: 980px){
-      .grid{ grid-template-columns: 1fr; }
+    @media (max-width:980px){
+      .grid{ grid-template-columns:1fr; }
     }
 
-    /* CARD */
     .container{
       background:#fff;
       padding:22px;
@@ -111,7 +103,6 @@
       text-align:center;
     }
 
-    /* OFFER */
     .offer-box{
       margin:0 0 14px;
       padding:14px 12px;
@@ -136,8 +127,8 @@
       font-weight:900;
       font-size:18px;
       color:#0f5f32;
-      width:fit-content;
       min-width:160px;
+      width:fit-content;
     }
     .prices{
       display:flex;
@@ -145,7 +136,6 @@
       gap:10px;
       align-items:baseline;
       flex-wrap:wrap;
-      margin-top:4px;
     }
     .old-price{
       color:#999;
@@ -169,7 +159,6 @@
       display:inline-block;
     }
 
-    /* IMAGES */
     .cover{
       width:250px;
       max-width:100%;
@@ -187,7 +176,6 @@
       box-shadow:0 4px 10px rgba(0,0,0,0.18);
     }
 
-    /* TEXT */
     .headline{
       margin:10px 0 0;
       font-weight:900;
@@ -196,7 +184,6 @@
       line-height:1.35;
     }
 
-    /* BENEFITS */
     .benefits{
       margin:14px 0 0;
       text-align:left;
@@ -226,20 +213,6 @@
       margin-top:1px;
     }
 
-    /* TRUST */
-    .trust{
-      margin-top:14px;
-      background:#f7f7f7;
-      border:1px solid rgba(0,0,0,0.08);
-      border-radius:12px;
-      padding:12px;
-      text-align:left;
-      font-size:13px;
-      color:#555;
-      line-height:1.35;
-    }
-
-    /* BUTTONS */
     .btn{
       display:block;
       background:var(--green);
@@ -250,225 +223,165 @@
       font-size:18px;
       margin-top:16px;
       font-weight:900;
-      text-align:center;
     }
     .btn:hover{ background:var(--green2); }
 
-    .btn-secondary{
-      display:block;
-      background:#ffffff;
-      color:#1f8a4a;
-      padding:12px;
-      text-decoration:none;
-      border-radius:10px;
-      font-size:15px;
-      margin-top:10px;
-      font-weight:900;
-      border:1px solid rgba(39,174,96,0.25);
-      text-align:center;
-    }
-    .btn-secondary:hover{ background:#f3fff7; }
-
-    /* FOOTER */
     footer{
       text-align:center;
       font-size:12px;
       color:#888;
-      margin:18px 0 0;
+      margin-top:12px;
     }
 
-    /* FLOAT WA */
     .float-wa{
       position:fixed;
       right:16px;
       bottom:16px;
-      z-index:9999;
-      text-decoration:none;
       background:var(--green);
       color:#fff;
       padding:12px 14px;
       border-radius:999px;
       font-weight:900;
+      text-decoration:none;
       box-shadow:0 10px 25px rgba(0,0,0,0.18);
-      border:1px solid rgba(255,255,255,0.25);
-      font-size:14px;
     }
     .float-wa:hover{ background:var(--green2); }
   </style>
 </head>
 
 <body>
-  <header>
-    <div class="header-container">
-      <div class="logo">Meta Saudável</div>
-      <nav>
-        <a href="index.html">Início</a>
-        <!-- removido: Ebooks (já está nessa página) -->
-        <a href="produtos.html">Produtos</a>
-        <a href="videos.html">Vídeos</a>
-        <a href="curiosidades.html">Curiosidades</a>
-        <!-- removido: Comentários -->
-        <a href="contato.html">Contato</a>
-      </nav>
+
+<header>
+  <div class="header-container">
+    <div class="logo">Meta Saudável</div>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="produtos.html">Produtos</a>
+      <a href="videos.html">Vídeos</a>
+      <a href="curiosidades.html">Curiosidades</a>
+      <a href="contato.html">Contato</a>
+    </nav>
+  </div>
+</header>
+
+<a class="float-wa" href="https://wa.me/5511958749421" target="_blank">📲 WhatsApp</a>
+
+<main class="wrap">
+  <div class="page-title">Ebooks</div>
+  <div class="page-sub">
+    Aqui você encontra nossos ebooks e recomendações para emagrecer com saúde, em casa.
+  </div>
+
+  <section class="grid">
+
+    <!-- META SAUDÁVEL -->
+    <div class="container">
+      <div class="offer-box">
+        <div class="offer-title">Oferta termina em</div>
+        <div class="timer" id="countdown-ms">15:00</div>
+        <div class="prices">
+          <span class="old-price">R$ 97,00</span>
+          <span class="new-price">R$ 47,00</span>
+        </div>
+        <div class="badge">Promoção por tempo limitado</div>
+      </div>
+
+      <img class="cover" src="capa_meta_saudavel.jpg" alt="Ebook Meta Saudável">
+
+      <p class="headline">Como Emagrecer em Casa (Meta Saudável)</p>
+
+      <ul class="benefits">
+        <li><span class="check">✓</span> Rotina prática para começar do zero.</li>
+        <li><span class="check">✓</span> Alimentação inteligente e simples.</li>
+        <li><span class="check">✓</span> Treinos em casa com rotina semanal.</li>
+        <li><span class="check">✓</span> Hábitos para manter resultados.</li>
+      </ul>
+
+      <a class="btn" href="https://pay.cakto.com.br/wzbj2wo_749364" target="_blank">👉 Comprar Agora</a>
+      <footer>© 2026 Meta Saudável</footer>
     </div>
-  </header>
 
-  <a class="float-wa" href="https://wa.me/5511958749421" target="_blank" aria-label="WhatsApp">
-    📲 WhatsApp
-  </a>
+    <!-- CINTURINHA FINA -->
+    <div class="container">
+      <div class="offer-box">
+        <div class="offer-title">Oferta termina em</div>
+        <div class="timer" id="countdown-cf">15:00</div>
+        <div class="prices">
+          <span class="old-price">R$ 250,00</span>
+          <span class="new-price">R$ 197,00</span>
+        </div>
+        <div class="badge">Promoção por tempo limitado</div>
+      </div>
 
-  <main class="wrap">
-    <div class="page-title">Ebooks</div>
-    <div class="page-sub">
-      Aqui você encontra nossos ebooks e recomendações para emagrecer com saúde, em casa.
+      <p class="headline">Cinturinha Fina</p>
+
+      <img class="cover-aff" src="Cinturinha_Fina.png" alt="Ebook Cinturinha Fina">
+
+      <ul class="benefits">
+        <li><span class="check">✓</span> Foco em cintura e definição.</li>
+        <li><span class="check">✓</span> Método prático em casa.</li>
+        <li><span class="check">✓</span> Conteúdo visual e direto.</li>
+      </ul>
+
+      <a class="btn" href="https://pay.cakto.com.br/abbzsqj_416048?affiliate=qFsAcyY8" target="_blank">👉 Ver Oferta</a>
+      <footer>© 2026 Meta Saudável</footer>
     </div>
 
-    <!-- GRID 2 POR LINHA -->
-    <section class="grid" aria-label="Lista de Ebooks">
-
-      <!-- SEU EBOOK (PRINCIPAL) -->
-      <div class="container" id="meta-saudavel" aria-label="Ebook Meta Saudável">
-        <div class="offer-box">
-          <div class="offer-title">Oferta termina em</div>
-          <div class="timer" id="countdown-ms">15:00</div>
-
-          <div class="prices">
-            <span class="old-price">R$ 97,00</span>
-            <span class="new-price">R$ 47,00</span>
-          </div>
-
-          <div class="badge">Promoção por tempo limitado</div>
+    <!-- A COMIDA COM TESTOSTERONA -->
+    <div class="container">
+      <div class="offer-box">
+        <div class="offer-title">Oferta termina em</div>
+        <div class="timer" id="countdown-tst">15:00</div>
+        <div class="prices">
+          <span class="old-price">R$ 130,00</span>
+          <span class="new-price">R$ 99,00</span>
         </div>
-
-        <img class="cover" src="capa_meta_saudavel.jpg" alt="Capa do Ebook Meta Saudável" loading="lazy">
-
-        <p class="headline">Como Emagrecer em Casa (Meta Saudável)</p>
-
-        <ul class="benefits">
-          <li><span class="check">✓</span> Rotina prática para começar do zero, mesmo com pouco tempo.</li>
-          <li><span class="check">✓</span> Alimentação inteligente + cardápio simples de 7 dias.</li>
-          <li><span class="check">✓</span> Treinos em casa (HIIT e força) com sugestão de rotina semanal.</li>
-          <li><span class="check">✓</span> Sono e hábitos para manter resultados no longo prazo.</li>
-        </ul>
-
-        <div class="trust">
-          ✅ Compra segura • ✅ Acesso digital • ✅ Conteúdo direto e prático<br>
-          Dúvidas? Fale comigo no WhatsApp.
-        </div>
-
-        <a class="btn" href="https://pay.cakto.com.br/wzbj2wo_749364" target="_blank">
-          👉 Comprar Agora
-        </a>
-
-        <a class="btn-secondary" href="#cinturinha-fina">Ver outra recomendação</a>
-
-        <footer>© 2026 Meta Saudável</footer>
+        <div class="badge">Promoção por tempo limitado</div>
       </div>
 
-      <!-- CINTURINHA FINA (PROMO 197 / RISCADO 250) -->
-      <div class="container" id="cinturinha-fina" aria-label="Ebook Cinturinha Fina">
-        <div class="offer-box">
-          <div class="offer-title">Oferta termina em</div>
-          <div class="timer" id="countdown-cf">15:00</div>
+      <p class="headline">A Comida com Testosterona</p>
 
-          <div class="prices">
-            <span class="old-price">R$ 250,00</span>
-            <span class="new-price">R$ 197,00</span>
-          </div>
+      <img class="cover-aff" src="comida_com_testosterona.jpg.png" alt="Ebook A Comida com Testosterona">
 
-          <div class="badge">Promoção por tempo limitado</div>
-        </div>
+      <ul class="benefits">
+        <li><span class="check">✓</span> Receitas naturais e simples.</li>
+        <li><span class="check">✓</span> Conteúdo especial sobre menopausa.</li>
+        <li><span class="check">✓</span> Aplicação prática no dia a dia.</li>
+      </ul>
 
-        <p class="headline">Cinturinha Fina</p>
+      <a class="btn" href="https://pay.hotmart.com/K83209126H?off=p4cbtmlm&checkoutMode=10&ref=E104199384C&bid=1769904933200" target="_blank">👉 Ver Oferta</a>
+      <footer>© 2026 Meta Saudável</footer>
+    </div>
 
-        <img class="cover-aff" src="Cinturinha_Fina.png" alt="Capa do Ebook Cinturinha Fina" loading="lazy">
+  </section>
+</main>
 
-        <ul class="benefits">
-          <li><span class="check">✓</span> Foco em cintura e definição.</li>
-          <li><span class="check">✓</span> Conteúdo prático para fazer em casa.</li>
-          <li><span class="check">✓</span> Ideal para quem gosta de método direto e visual.</li>
-        </ul>
+<script>
+  const OFFER_MINUTES = 15;
 
-        <a class="btn" href="https://pay.cakto.com.br/abbzsqj_416048?affiliate=qFsAcyY8" target="_blank">
-          👉 Ver Oferta
-        </a>
-
-        <a class="btn-secondary" href="#comida-com-testosterona">Ver outra recomendação</a>
-
-        <footer>© 2026 Meta Saudável</footer>
-      </div>
-
-      <!-- A COMIDA COM TESTOSTERONA (PROMO 99 / RISCADO 130) -->
-      <div class="container" id="comida-com-testosterona" aria-label="Ebook A Comida com Testosterona">
-        <div class="offer-box">
-          <div class="offer-title">Oferta termina em</div>
-          <div class="timer" id="countdown-tst">15:00</div>
-
-          <div class="prices">
-            <span class="old-price">R$ 130,00</span>
-            <span class="new-price">R$ 99,00</span>
-          </div>
-
-          <div class="badge">Promoção por tempo limitado</div>
-        </div>
-
-        <p class="headline">A Comida com Testosterona</p>
-
-        <img class="cover-aff" src="comida_com_testosterona.jpg.png" alt="Capa do Ebook A Comida com Testosterona" loading="lazy">
-
-        <ul class="benefits">
-          <li><span class="check">✓</span> Receitas com alimentos naturais para promover bem-estar.</li>
-          <li><span class="check">✓</span> Conteúdo especial sobre menopausa.</li>
-          <li><span class="check">✓</span> Guia prático e fácil de aplicar no dia a dia.</li>
-        </ul>
-
-        <a class="btn" href="https://pay.hotmart.com/K83209126H?off=p4cbtmlm&checkoutMode=10&ref=E104199384C&bid=1769904933200" target="_blank">
-          👉 Ver Oferta
-        </a>
-
-        <a class="btn-secondary" href="index.html">Voltar ao início</a>
-
-        <footer>© 2026 Meta Saudável</footer>
-      </div>
-
-    </section>
-
-  </main>
-
-  <script>
-    // ======= TEMPORIZADOR (15 minutos por visitante / por produto) =======
-    const OFFER_MINUTES = 15;
-
-    function startCountdown(elId, storageKey) {
-      let end = parseInt(localStorage.getItem(storageKey), 10);
-      const now = Date.now();
-
-      if (!end || isNaN(end) || end <= now) {
-        end = now + OFFER_MINUTES * 60000;
-        localStorage.setItem(storageKey, String(end));
-      }
-
-      const el = document.getElementById(elId);
-      if (!el) return;
-
-      function tick() {
-        const diff = end - Date.now();
-        if (diff <= 0) {
-          el.textContent = "00:00";
-          return;
-        }
-        const m = String(Math.floor(diff / 60000)).padStart(2, "0");
-        const s = String(Math.floor((diff % 60000) / 1000)).padStart(2, "0");
-        el.textContent = `${m}:${s}`;
-        setTimeout(tick, 1000);
-      }
-      tick();
+  function startCountdown(elId, key){
+    let end = parseInt(localStorage.getItem(key),10);
+    const now = Date.now();
+    if(!end || end <= now){
+      end = now + OFFER_MINUTES*60000;
+      localStorage.setItem(key, end);
     }
+    const el = document.getElementById(elId);
+    function tick(){
+      const diff = end - Date.now();
+      if(diff <= 0){ el.textContent = "00:00"; return; }
+      const m = String(Math.floor(diff/60000)).padStart(2,"0");
+      const s = String(Math.floor((diff%60000)/1000)).padStart(2,"0");
+      el.textContent = `${m}:${s}`;
+      setTimeout(tick,1000);
+    }
+    tick();
+  }
 
-    // timers independentes
-    startCountdown("countdown-ms", "metaSaudavelOfferEnd_ms");
-    startCountdown("countdown-cf", "metaSaudavelOfferEnd_cf");
-    startCountdown("countdown-tst", "metaSaudavelOfferEnd_tst");
-  </script>
+  startCountdown("countdown-ms","offer-ms");
+  startCountdown("countdown-cf","offer-cf");
+  startCountdown("countdown-tst","offer-tst");
+</script>
+
 </body>
 </html>
