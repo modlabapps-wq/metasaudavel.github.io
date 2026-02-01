@@ -122,95 +122,64 @@
       text-align:center;
       color:#555;
       font-size:14px;
-      margin:10px auto 22px;
+      margin:10px auto 16px;
       max-width:520px;
     }
 
-    /* ✅ BARRA DE FILTRO */
-    .filter-bar{
+    /* ✅ BUSCA "SOLTA" (sem filtro automático feio) */
+    .search-bar{
       background:#fff;
       border-radius:14px;
       box-shadow:0 0 15px rgba(0,0,0,0.08);
-      padding:14px;
+      padding:12px;
       margin:0 auto 18px;
       display:flex;
       gap:10px;
       align-items:center;
-      justify-content:space-between;
-      flex-wrap:wrap;
     }
-
-    .filter-left{
-      display:flex;
-      gap:10px;
-      flex:1 1 520px;
-      flex-wrap:wrap;
-      align-items:center;
-    }
-
-    .search{
-      flex:1 1 260px;
-      display:flex;
-      gap:8px;
-      align-items:center;
+    .search-bar input{
+      flex:1;
+      border:none;
+      outline:none;
       background:#f3fff7;
       border:1px solid rgba(39,174,96,0.18);
       border-radius:12px;
-      padding:10px 12px;
-    }
-    .search span{
-      font-weight:900;
-      color:#1f8a4a;
-      font-size:13px;
-      white-space:nowrap;
-    }
-    .search input{
-      border:none;
-      outline:none;
-      background:transparent;
-      width:100%;
+      padding:12px 12px;
       font-size:14px;
       color:#222;
+      font-weight:700;
     }
-
-    .category{
-      flex:0 0 auto;
-      display:flex;
-      gap:8px;
-      align-items:center;
-      background:#f3fff7;
-      border:1px solid rgba(39,174,96,0.18);
-      border-radius:12px;
-      padding:10px 12px;
-    }
-    .category label{
-      font-weight:900;
-      color:#1f8a4a;
-      font-size:13px;
-      white-space:nowrap;
-    }
-    .category select{
+    .search-btn{
       border:none;
-      outline:none;
-      background:transparent;
-      font-weight:900;
-      color:#0f5f32;
-      font-size:13px;
       cursor:pointer;
-    }
-
-    .results{
-      flex:0 0 auto;
-      font-size:12px;
-      color:#666;
+      background:#27ae60;
+      color:#fff;
       font-weight:900;
+      padding:12px 14px;
+      border-radius:12px;
       white-space:nowrap;
     }
+    .search-btn:hover{ background:#219150; }
+
+    .clear-btn{
+      border:none;
+      cursor:pointer;
+      background:#eef2ef;
+      color:#2b2b2b;
+      font-weight:900;
+      padding:12px 12px;
+      border-radius:12px;
+      white-space:nowrap;
+    }
+    .clear-btn:hover{ background:#e4eae6; }
 
     @media (max-width:520px){
-      .filter-bar{ padding:12px; }
-      .search span{ display:none; }
-      .category label{ display:none; }
+      .search-bar{
+        flex-wrap:wrap;
+      }
+      .search-btn, .clear-btn{
+        flex:1;
+      }
     }
 
     .grid{
@@ -232,20 +201,6 @@
       display:flex;
       flex-direction:column;
       justify-content:flex-start;
-    }
-
-    /* ✅ “Etiqueta” da categoria (para você conferir e o usuário entender) */
-    .cat-pill{
-      display:inline-block;
-      margin:8px auto 0;
-      padding:6px 10px;
-      border-radius:999px;
-      background:#f3fff7;
-      border:1px solid rgba(39,174,96,0.18);
-      color:#1f8a4a;
-      font-weight:900;
-      font-size:12px;
-      width:fit-content;
     }
 
     /* OFFER */
@@ -330,8 +285,10 @@
       font-weight:900;
       color:#222;
       font-size:15px;
+      margin:0;
     }
 
+    /* ✅ comentários/benefícios (igual ao seu ebook) */
     .benefits{
       list-style:none;
       padding:0;
@@ -341,9 +298,10 @@
     .benefits li{
       margin:8px 0;
       display:flex;
-      gap:8px;
+      gap:10px;
       font-size:14px;
       color:#444;
+      align-items:flex-start;
     }
     .check{
       background:#27ae60;
@@ -355,6 +313,8 @@
       align-items:center;
       justify-content:center;
       font-weight:900;
+      flex:0 0 22px;
+      margin-top:1px;
     }
 
     .btn{
@@ -411,35 +371,17 @@
   <div class="page-title">Ebooks</div>
   <div class="page-sub">Ebooks e recomendações para emagrecer com saúde.</div>
 
-  <!-- ✅ FILTRO -->
-  <div class="filter-bar" aria-label="Filtro de ebooks">
-    <div class="filter-left">
-      <div class="search">
-        <span>Buscar</span>
-        <input id="searchInput" type="text" placeholder="Digite: dieta, treino, cintura..." autocomplete="off" />
-      </div>
-
-      <div class="category">
-        <label for="categorySelect">Categoria</label>
-        <select id="categorySelect">
-          <option value="todos">Todos</option>
-          <option value="alimentacao">Alimentação</option>
-          <option value="treinos">Treinos</option>
-          <option value="alimentacao_treinos">Alimentação e treino</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="results" id="resultsCount">Mostrando 0</div>
+  <!-- ✅ BUSCA SIMPLES (sem filtro automático) -->
+  <div class="search-bar">
+    <input id="searchInput" type="text" placeholder="Digite o que você procura (ex: dieta, treino, cintura, receitas)..." autocomplete="off" />
+    <button class="search-btn" id="searchBtn">Pesquisar</button>
+    <button class="clear-btn" id="clearBtn">Limpar</button>
   </div>
 
   <div class="grid" id="ebooksGrid">
 
-    <!-- ✅ CLASSIFICAÇÃO: Alimentação e treino -->
-    <section class="container ebook-item"
-      data-title="Como Emagrecer em Casa"
-      data-category="alimentacao_treinos"
-      data-tags="como emagrecer em casa rotina simples cardapio pratico treinos em casa alimentacao treino emagrecimento">
+    <!-- SEU EBOOK -->
+    <section class="container ebook-item" data-title="Como Emagrecer em Casa" data-tags="emagrecer em casa rotina cardapio treinos em casa alimentacao treino">
       <div class="offer-box">
         <div class="offer-title">Oferta termina em</div>
         <div class="timer" id="countdown-ms">15:00</div>
@@ -452,24 +394,20 @@
         <div class="badge">Promoção</div>
       </div>
 
-      <img class="cover" src="capa_meta_saudavel.jpg">
+      <img class="cover" src="capa_meta_saudavel.jpg" alt="Como Emagrecer em Casa">
       <p class="headline">Como Emagrecer em Casa</p>
-      <div class="cat-pill">Alimentação e treino</div>
 
       <ul class="benefits">
-        <li><span class="check">✓</span> Rotina simples</li>
-        <li><span class="check">✓</span> Cardápio prático</li>
-        <li><span class="check">✓</span> Treinos em casa</li>
+        <li><span class="check">✓</span> Guia direto ao ponto para começar sem academia e sem complicação.</li>
+        <li><span class="check">✓</span> Rotina prática + cardápio simples para encaixar no dia a dia.</li>
+        <li><span class="check">✓</span> Treinos em casa para acelerar resultados com consistência.</li>
       </ul>
 
       <a class="btn" href="https://pay.cakto.com.br/wzbj2wo_749364" target="_blank">Comprar</a>
     </section>
 
-    <!-- ✅ CLASSIFICAÇÃO: Alimentação -->
-    <section class="container ebook-item"
-      data-title="Cinturinha Fina"
-      data-category="alimentacao"
-      data-tags="cinturinha fina cintura dieta alimentacao secar barriga emagrecer">
+    <!-- CINTURINHA FINA -->
+    <section class="container ebook-item" data-title="Cinturinha Fina" data-tags="cinturinha fina cintura dieta secar barriga alimentacao medidas">
       <div class="offer-box">
         <div class="offer-title">Promoção por tempo limitado</div>
         <div class="timer timer-static">Oferta especial</div>
@@ -482,18 +420,20 @@
         <div class="badge">Promoção por tempo limitado</div>
       </div>
 
-      <img class="cover-aff" src="Cinturinha_Fina.png">
+      <img class="cover-aff" src="Cinturinha_Fina.png" alt="Cinturinha Fina">
       <p class="headline">Cinturinha Fina</p>
-      <div class="cat-pill">Alimentação</div>
+
+      <ul class="benefits">
+        <li><span class="check">✓</span> Focado em redução de medidas e hábitos que “secam” a barriga.</li>
+        <li><span class="check">✓</span> Estratégias de alimentação para controlar fome e inchaço.</li>
+        <li><span class="check">✓</span> Ideal para quem quer resultado visível e rotina simples.</li>
+      </ul>
 
       <a class="btn" href="https://pay.cakto.com.br/abbzsqj_416048?affiliate=qFsAcyY8" target="_blank">Ver oferta</a>
     </section>
 
-    <!-- ✅ CLASSIFICAÇÃO: Alimentação -->
-    <section class="container ebook-item"
-      data-title="A Comida com Testosterona"
-      data-category="alimentacao"
-      data-tags="a comida com testosterona alimentacao energia performance hormonios saude">
+    <!-- A COMIDA COM TESTOSTERONA -->
+    <section class="container ebook-item" data-title="A Comida com Testosterona" data-tags="testosterona alimentacao energia desempenho saude alimentos cardapio">
       <div class="offer-box">
         <div class="offer-title">Promoção por tempo limitado</div>
         <div class="timer timer-static">Oferta especial</div>
@@ -506,18 +446,20 @@
         <div class="badge">Promoção por tempo limitado</div>
       </div>
 
-      <img class="cover-aff" src="comida_com_testosterona.jpg.png">
+      <img class="cover-aff" src="comida_com_testosterona.jpg.png" alt="A Comida com Testosterona">
       <p class="headline">A Comida com Testosterona</p>
-      <div class="cat-pill">Alimentação</div>
+
+      <ul class="benefits">
+        <li><span class="check">✓</span> Conteúdo voltado para alimentação e performance (energia e disposição).</li>
+        <li><span class="check">✓</span> Ajuda a organizar escolhas alimentares com foco em saúde.</li>
+        <li><span class="check">✓</span> Bom para quem quer disciplina e um “norte” no dia a dia.</li>
+      </ul>
 
       <a class="btn" href="https://pay.hotmart.com/K83209126H?off=p4cbtmlm&checkoutMode=10&ref=E104199384C&bid=1769904933200" target="_blank">Ver oferta</a>
     </section>
 
-    <!-- ✅ CLASSIFICAÇÃO: Alimentação -->
-    <section class="container ebook-item"
-      data-title="Dieta em Ação"
-      data-category="alimentacao"
-      data-tags="dieta em acao manual secreto emagrecimento alimentacao dieta cardapio reeducacao alimentar">
+    <!-- DIETA EM AÇÃO -->
+    <section class="container ebook-item" data-title="Dieta em Ação" data-tags="dieta em acao emagrecimento manual secreto alimentacao receitas cardapio">
       <div class="offer-box">
         <div class="offer-title">Promoção por tempo limitado</div>
         <div class="timer timer-static">Oferta especial</div>
@@ -532,7 +474,12 @@
 
       <img class="cover-aff" src="dieta_em_acao.png" alt="Dieta em Ação">
       <p class="headline">Dieta em Ação</p>
-      <div class="cat-pill">Alimentação</div>
+
+      <ul class="benefits">
+        <li><span class="check">✓</span> Ótimo para quem precisa de um plano alimentar e direção para começar.</li>
+        <li><span class="check">✓</span> Ajuda a manter consistência com escolhas mais simples no dia a dia.</li>
+        <li><span class="check">✓</span> Indicado para quem quer praticidade e emagrecimento com organização.</li>
+      </ul>
 
       <a class="btn" href="https://go.hotmart.com/V104082247X?dp=1" target="_blank">Ver oferta</a>
     </section>
@@ -567,11 +514,11 @@ const el = document.getElementById("countdown-ms");
   setTimeout(tick, 1000);
 })();
 
-/* ✅ FILTRO + BUSCA */
+/* ✅ BUSCA SOMENTE QUANDO CLICAR EM "PESQUISAR" (sem automático) */
 const searchInput = document.getElementById("searchInput");
-const categorySelect = document.getElementById("categorySelect");
+const searchBtn = document.getElementById("searchBtn");
+const clearBtn = document.getElementById("clearBtn");
 const items = Array.from(document.querySelectorAll(".ebook-item"));
-const resultsCount = document.getElementById("resultsCount");
 
 function normalize(str){
   return (str || "")
@@ -580,31 +527,28 @@ function normalize(str){
     .replace(/[\u0300-\u036f]/g, "");
 }
 
-function applyFilters(){
+function runSearch(){
   const q = normalize(searchInput.value.trim());
-  const cat = categorySelect.value;
-
-  let visible = 0;
-
   items.forEach(card => {
     const title = normalize(card.getAttribute("data-title"));
     const tags  = normalize(card.getAttribute("data-tags"));
-    const c     = card.getAttribute("data-category");
-
-    const matchesCategory = (cat === "todos") || (c === cat);
-    const matchesSearch = !q || title.includes(q) || tags.includes(q);
-
-    const show = matchesCategory && matchesSearch;
+    const show = !q || title.includes(q) || tags.includes(q);
     card.style.display = show ? "" : "none";
-    if(show) visible++;
   });
-
-  resultsCount.textContent = "Mostrando " + visible;
 }
 
-searchInput.addEventListener("input", applyFilters);
-categorySelect.addEventListener("change", applyFilters);
-applyFilters();
+function clearSearch(){
+  searchInput.value = "";
+  items.forEach(card => card.style.display = "");
+}
+
+searchBtn.addEventListener("click", runSearch);
+clearBtn.addEventListener("click", clearSearch);
+
+/* Enter também pesquisa */
+searchInput.addEventListener("keydown", (e) => {
+  if(e.key === "Enter") runSearch();
+});
 </script>
 
 </body>
