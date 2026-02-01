@@ -1,1 +1,434 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Curiosidades | Meta Saudável</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root{
+      --green:#27ae60;
+      --green2:#219150;
+      --bg:#f2f2f2;
+      --card:#ffffff;
+      --text:#222;
+      --muted:#666;
+      --border:rgba(0,0,0,0.10);
+      --chip:#f3fff7;
+    }
+
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family:Arial, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+
+    /* HEADER */
+    header{
+      background:#fff;
+      box-shadow:0 2px 10px rgba(0,0,0,0.06);
+      position:sticky;
+      top:0;
+      z-index:999;
+    }
+    .header-container{
+      max-width:1200px;
+      margin:auto;
+      padding:14px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+    .logo{
+      font-weight:900;
+      font-size:18px;
+      color:var(--green);
+      white-space:nowrap;
+    }
+    nav{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    nav a{
+      text-decoration:none;
+      font-weight:900;
+      font-size:13px;
+      padding:8px 10px;
+      border-radius:10px;
+      background:var(--chip);
+      color:#1f8a4a;
+      border:1px solid rgba(39,174,96,0.18);
+    }
+    nav a:hover{ background:var(--green); color:#fff; }
+
+    /* LAYOUT */
+    .wrap{
+      max-width:1200px;
+      margin:0 auto;
+      padding:18px 14px 44px;
+    }
+
+    .page-title{
+      margin:18px auto 6px;
+      text-align:center;
+      color:var(--green);
+      font-weight:900;
+      font-size:24px;
+    }
+    .page-sub{
+      max-width:900px;
+      margin:0 auto 18px;
+      text-align:center;
+      color:#555;
+      font-size:14px;
+      line-height:1.5;
+    }
+
+    /* FEATURE (Curiosidade do dia) */
+    .feature{
+      background:#fff;
+      border-radius:18px;
+      box-shadow:0 0 16px rgba(0,0,0,0.10);
+      padding:18px;
+      display:flex;
+      gap:16px;
+      align-items:flex-start;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      border:1px solid rgba(0,0,0,0.06);
+    }
+    .feature-left{
+      min-width:240px;
+      flex:1;
+    }
+    .feature-kicker{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      font-weight:900;
+      font-size:12px;
+      color:#1f8a4a;
+      background:#f3fff7;
+      border:1px solid rgba(39,174,96,0.22);
+      padding:7px 10px;
+      border-radius:999px;
+      margin-bottom:10px;
+      letter-spacing:0.5px;
+      text-transform:uppercase;
+    }
+    .feature-title{
+      margin:0;
+      font-size:18px;
+      font-weight:900;
+      color:#1f8a4a;
+      line-height:1.25;
+    }
+    .feature-text{
+      margin:10px 0 0;
+      color:#444;
+      font-size:14px;
+      line-height:1.55;
+      max-width:780px;
+    }
+    .feature-meta{
+      margin-top:12px;
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      align-items:center;
+      color:#666;
+      font-size:12px;
+      font-weight:800;
+    }
+    .pill{
+      background:#f7f7f7;
+      border:1px solid rgba(0,0,0,0.08);
+      padding:6px 10px;
+      border-radius:999px;
+      font-weight:900;
+      color:#444;
+      font-size:11px;
+    }
+    .feature-right{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:flex-end;
+    }
+    .btn{
+      border:none;
+      cursor:pointer;
+      background:var(--green);
+      color:#fff;
+      font-weight:900;
+      padding:12px 14px;
+      border-radius:12px;
+      font-size:13px;
+      box-shadow:0 10px 18px rgba(0,0,0,0.12);
+    }
+    .btn:hover{ background:var(--green2); }
+    .btn-ghost{
+      background:#fff;
+      color:#1f8a4a;
+      border:1px solid rgba(39,174,96,0.25);
+      box-shadow:none;
+    }
+    .btn-ghost:hover{ background:#f3fff7; }
+
+    /* GRID */
+    .grid-title{
+      margin:16px 0 10px;
+      font-weight:900;
+      color:var(--green);
+      font-size:16px;
+      display:flex;
+      justify-content:space-between;
+      align-items:baseline;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .grid-title small{
+      font-weight:900;
+      color:#888;
+      font-size:12px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap:16px;
+    }
+    @media (max-width: 980px){
+      .grid{ grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      background:#fff;
+      border-radius:16px;
+      padding:18px;
+      box-shadow:0 0 16px rgba(0,0,0,0.10);
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      border:1px solid rgba(0,0,0,0.06);
+    }
+    .tag{
+      align-self:flex-start;
+      padding:6px 10px;
+      border-radius:999px;
+      background:#f3fff7;
+      border:1px solid rgba(39,174,96,0.22);
+      color:#1f8a4a;
+      font-size:12px;
+      font-weight:900;
+    }
+    .card h3{
+      margin:0;
+      color:var(--green);
+      font-size:16px;
+      font-weight:900;
+      line-height:1.25;
+    }
+    .card p{
+      margin:0;
+      color:#444;
+      font-size:14px;
+      line-height:1.5;
+    }
+
+    /* FLOAT WA */
+    .float-wa{
+      position:fixed;
+      right:16px;
+      bottom:16px;
+      z-index:9999;
+      text-decoration:none;
+      background:var(--green);
+      color:#fff;
+      padding:12px 14px;
+      border-radius:999px;
+      font-weight:900;
+      box-shadow:0 10px 25px rgba(0,0,0,0.18);
+      border:1px solid rgba(255,255,255,0.25);
+      font-size:14px;
+    }
+    .float-wa:hover{ background:var(--green2); }
+
+    footer{
+      text-align:center;
+      font-size:12px;
+      color:#888;
+      margin-top:22px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-container">
+    <div class="logo">Meta Saudável</div>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="ebooks.html">Ebooks</a>
+      <a href="produtos.html">Produtos</a>
+      <a href="videos.html">Vídeos</a>
+      <!-- removido: Curiosidades (já está nessa página) -->
+      <a href="contato.html">Contato</a>
+    </nav>
+  </div>
+</header>
+
+<a class="float-wa" href="https://wa.me/5511958749421" target="_blank">📲 WhatsApp</a>
+
+<main class="wrap">
+
+  <h1 class="page-title">Curiosidades</h1>
+  <p class="page-sub">
+    Todo dia aparece uma curiosidade nova aqui em cima.  
+    Role para ver várias outras e aprender de um jeito leve.
+  </p>
+
+  <!-- CURIOSIDADE DO DIA (AUTO) -->
+  <section class="feature" aria-label="Curiosidade do dia">
+    <div class="feature-left">
+      <div class="feature-kicker">⭐ Curiosidade do dia</div>
+      <h2 class="feature-title" id="dailyTitle">Carregando...</h2>
+      <p class="feature-text" id="dailyText">Aguarde.</p>
+
+      <div class="feature-meta">
+        <span class="pill" id="dailyTag">—</span>
+        <span class="pill" id="dailyIndex">—</span>
+      </div>
+    </div>
+
+    <div class="feature-right">
+      <button class="btn btn-ghost" id="btnShuffle" type="button">Ver outra curiosidade</button>
+      <button class="btn" id="btnCopy" type="button">Copiar texto</button>
+    </div>
+  </section>
+
+  <div class="grid-title">
+    Mais curiosidades
+    <small>Leitura rápida • prática • sem complicação</small>
+  </div>
+
+  <section class="grid" id="grid"></section>
+
+  <footer>© 2026 Meta Saudável • Curiosidades</footer>
+</main>
+
+<script>
+  // ====== BANCO DE CURIOSIDADES ======
+  const curiosidades = [
+    { tag:"Metabolismo", title:"Seu corpo queima mais calorias em repouso do que você imagina", text:"Grande parte do gasto calórico do dia vem do metabolismo basal: respirar, manter temperatura, circulação e funcionamento dos órgãos. Por isso, pequenos hábitos consistentes impactam muito no resultado." },
+    { tag:"Sono", title:"Dormir pouco aumenta a fome no dia seguinte", text:"Poucas horas de sono tendem a aumentar a vontade de comer e a busca por alimentos mais calóricos. Dormir melhor ajuda a controlar apetite, ansiedade e energia para treinar." },
+    { tag:"Alimentação", title:"Proteína ajuda na saciedade e na manutenção muscular", text:"Incluir proteína nas refeições costuma ajudar a manter saciedade por mais tempo. Além disso, manter massa muscular favorece um metabolismo mais ativo ao longo do tempo." },
+    { tag:"Hábitos", title:"Comer devagar pode reduzir exageros", text:"O cérebro leva um tempo para entender que você já está satisfeito. Comer com calma, sem pressa, aumenta a chance de você parar na hora certa." },
+    { tag:"Treino", title:"Treino curto e frequente vence treino longo e raro", text:"Consistência ganha de intensidade. Fazer 10 a 20 minutos várias vezes por semana tende a ser mais sustentável do que um treino enorme uma vez e depois sumir." },
+    { tag:"Estresse", title:"Cortisol alto pode atrapalhar", text:"Estresse constante aumenta a vontade de beliscar e piora o sono. Reduzir estresse (caminhada, rotina, respiração, sono) facilita emagrecer." },
+    { tag:"Água", title:"Sede pode parecer fome", text:"Às vezes o corpo está pedindo água, mas a sensação parece fome. Beber água e esperar alguns minutos pode ajudar a decidir melhor." },
+    { tag:"Fibras", title:"Fibras ajudam na saciedade com poucas calorias", text:"Saladas, legumes, verduras, frutas e grãos aumentam volume da refeição e ajudam a manter saciedade. Isso facilita comer menos sem sofrimento." },
+    { tag:"Passos", title:"Caminhar é subestimado", text:"A caminhada diária aumenta gasto calórico e melhora saúde. Para muita gente, aumentar passos é o primeiro empurrão real no emagrecimento." },
+    { tag:"Rotina", title:"O que você repete vira resultado", text:"Emagrecimento é soma de repetições: o que você come na maioria dos dias, como dorme e quanto se movimenta. Não é um dia perfeito, é o padrão." },
+    { tag:"Apetite", title:"Alimentos ultraprocessados aumentam vontade de comer", text:"Ultraprocessados são muito palatáveis e fáceis de exagerar. Quanto mais base você coloca em comida de verdade, mais fácil controlar porções." },
+    { tag:"Peso", title:"O peso oscila e isso é normal", text:"O número na balança sobe e desce por água, sal, digestão e hormônios. Olhe tendência semanal/mensal, não um único dia." },
+    { tag:"Força", title:"Musculação ajuda a 'secar' de verdade", text:"Treino de força ajuda a manter (ou ganhar) massa muscular. Isso melhora estética e facilita manter o peso no longo prazo." },
+    { tag:"Cardápio", title:"Planejar 2 a 3 opções salva sua semana", text:"Ter opções simples (ex.: arroz/feijão/frango, ovos, salada, frutas) evita decisões no impulso quando bate fome." },
+    { tag:"Doces", title:"Vontade de doce piora com sono ruim", text:"Cansaço aumenta busca por energia rápida (açúcar). Melhorar sono e comer proteína+fibras pode reduzir a vontade." },
+    { tag:"Consistência", title:"Disciplina não é rigidez, é direção", text:"Você não precisa ser perfeito, só precisa continuar. Errou numa refeição? Volta na próxima e segue o plano." },
+    { tag:"Prato", title:"Um truque simples: metade do prato de vegetais", text:"Preencher metade do prato com legumes/verduras e dividir o resto entre proteína e carboidrato ajuda muito a controlar calorias." },
+    { tag:"Ansiedade", title:"Comer ansioso é diferente de comer com fome", text:"Fome física cresce aos poucos; ansiedade é vontade repentina e específica. Fazer uma pausa de 3 minutos ajuda a decidir melhor." },
+    { tag:"Bebidas", title:"Calorias líquidas enganam", text:"Refrigerante, suco, bebidas adoçadas e alcoólicas somam muitas calorias sem saciedade. Trocar por água/zero já ajuda bastante." },
+    { tag:"Tempo", title:"O 'melhor' treino é o que você consegue fazer", text:"Se você só tem 10 minutos, faça 10. A consistência abre caminho para evoluir depois." },
+    { tag:"Jejum", title:"Jejum não é obrigatório para emagrecer", text:"Algumas pessoas se adaptam bem, outras não. O que importa é o total e a qualidade do que você come na semana." },
+    { tag:"Sal", title:"Muito sal aumenta retenção", text:"Se você comeu muito sal, pode ver a balança subir por água. Isso costuma normalizar em 1–3 dias com hidratação e rotina." },
+    { tag:"Proteína", title:"Proteína no café da manhã ajuda a evitar beliscos", text:"Começar o dia com ovos, iogurte, queijo, frango, whey (se usar) ou equivalente pode reduzir a fome mais tarde." },
+    { tag:"Mentira comum", title:"'Suor' não é gordura indo embora", text:"Suor é perda de água e controle térmico. Gordura se perde com consistência, déficit calórico e rotina de movimento." },
+    { tag:"Sono", title:"Rotina de sono vale mais que 'dormir muito' uma vez", text:"Dormir bem vários dias seguidos é melhor do que dormir 10h só no fim de semana. O corpo gosta de ritmo." },
+    { tag:"Treino", title:"Fortalecer pernas ajuda mais do que só abdômen", text:"Pernas e glúteos têm músculos grandes e gastam mais energia no treino. Treino completo costuma render melhor." },
+    { tag:"Compulsão", title:"Ambiente manda mais do que força de vontade", text:"Se a casa está cheia de besteira, você vai lutar todo dia. Deixar opções melhores à vista facilita seguir o plano." },
+    { tag:"Hábito", title:"Comece pequeno para não desistir", text:"Meta pequena e diária (ex.: 10min de caminhada) é mais sustentável. Depois você aumenta." },
+    { tag:"Frequência", title:"Você não precisa 'compensar' com exagero no treino", text:"Errou na dieta? Volta pro básico. Treinar demais para compensar costuma gerar mais fome e desistência." },
+    { tag:"Foco", title:"O básico bem feito vence qualquer 'segredo'", text:"Sono, comida de verdade, proteína, fibras, água e movimento. Quando isso está alinhado, o corpo responde." }
+  ];
+
+  // ====== CURIOSIDADE DO DIA ======
+  // Troca automaticamente pela DATA (mesma curiosidade para todos no mesmo dia).
+  function getDailyIndex(){
+    const now = new Date();
+    const seed = now.getFullYear() * 10000 + (now.getMonth()+1) * 100 + now.getDate(); // YYYYMMDD
+    return seed % curiosidades.length;
+  }
+
+  let currentIndex = getDailyIndex();
+
+  function renderDaily(idx){
+    const item = curiosidades[idx];
+    document.getElementById("dailyTitle").textContent = item.title;
+    document.getElementById("dailyText").textContent = item.text;
+    document.getElementById("dailyTag").textContent = "🏷 " + item.tag;
+    document.getElementById("dailyIndex").textContent = "📌 Curiosidade " + (idx + 1) + " de " + curiosidades.length;
+  }
+
+  // Botão "Ver outra" (troca na hora, mas no dia seguinte volta pro automático do dia)
+  document.getElementById("btnShuffle").addEventListener("click", () => {
+    if(curiosidades.length <= 1) return;
+    let next = currentIndex;
+    while(next === currentIndex){
+      next = Math.floor(Math.random() * curiosidades.length);
+    }
+    currentIndex = next;
+    renderDaily(currentIndex);
+  });
+
+  // Botão copiar
+  document.getElementById("btnCopy").addEventListener("click", async () => {
+    const t = document.getElementById("dailyTitle").textContent;
+    const s = document.getElementById("dailyText").textContent;
+    const tag = document.getElementById("dailyTag").textContent.replace("🏷 ","");
+    const text = `Curiosidade (${tag}): ${t}\n\n${s}\n\nMeta Saudável`;
+    try{
+      await navigator.clipboard.writeText(text);
+      const btn = document.getElementById("btnCopy");
+      const old = btn.textContent;
+      btn.textContent = "Copiado ✅";
+      setTimeout(() => btn.textContent = old, 1400);
+    }catch(e){
+      alert("Não foi possível copiar. Selecione o texto manualmente.");
+    }
+  });
+
+  // ====== GRID ======
+  function renderGrid(){
+    const grid = document.getElementById("grid");
+    grid.innerHTML = "";
+    curiosidades.forEach((c) => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <span class="tag">${c.tag}</span>
+        <h3>${c.title}</h3>
+        <p>${c.text}</p>
+      `;
+      grid.appendChild(card);
+    });
+  }
+
+  // INIT
+  renderDaily(currentIndex);
+  renderGrid();
+</script>
+
+</body>
+</html>
 
