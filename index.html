@@ -1,279 +1,302 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <title>Curiosidades | Meta Saudável</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<title>Meta Saudável | Emagreça em Casa</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    :root{
-      --green:#27ae60;
-      --green2:#219150;
-      --bg:#f2f2f2;
-      --card:#ffffff;
-      --text:#222;
-      --muted:#666;
-      --border:rgba(0,0,0,0.10);
-      --chip:#f3fff7;
-    }
+<style>
+:root{
+  --green:#27ae60;
+  --green2:#219150;
+  --bg:#f2f2f2;
+  --card:#ffffff;
+  --text:#222;
+  --muted:#666;
+  --border:rgba(0,0,0,0.10);
+}
 
-    html{ scroll-behavior:smooth; }
-    body{
-      margin:0;
-      font-family:Arial, sans-serif;
-      background:var(--bg);
-      color:var(--text);
-    }
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
 
-    /* HEADER */
-    header{
-      background:#fff;
-      box-shadow:0 2px 10px rgba(0,0,0,0.06);
-      position:sticky;
-      top:0;
-      z-index:999;
-    }
-    .header-container{
-      max-width:1200px;
-      margin:auto;
-      padding:14px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      flex-wrap:wrap;
-      gap:10px;
-    }
-    .logo{
-      font-weight:900;
-      font-size:18px;
-      color:var(--green);
-      white-space:nowrap;
-    }
-    nav{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-    }
-    nav a{
-      text-decoration:none;
-      font-weight:900;
-      font-size:13px;
-      padding:8px 10px;
-      border-radius:10px;
-      background:var(--chip);
-      color:#1f8a4a;
-      border:1px solid rgba(39,174,96,0.18);
-    }
-    nav a:hover{ background:var(--green); color:#fff; }
+body{
+  margin:0;
+  font-family: Arial, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
 
-    /* LAYOUT */
-    .wrap{
-      max-width:1200px;
-      margin:0 auto;
-      padding:18px 14px 44px;
-    }
+/* HEADER */
+header{
+  position:sticky;
+  top:0;
+  z-index:999;
+  background:#fff;
+  border-bottom:1px solid rgba(0,0,0,0.08);
+  box-shadow:0 2px 10px rgba(0,0,0,0.06);
+}
+.header-container{
+  max-width:1200px;
+  margin:auto;
+  padding:14px 14px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.logo{
+  font-weight:900;
+  font-size:18px;
+  color:var(--green);
+  white-space:nowrap;
+}
+nav{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+nav a{
+  text-decoration:none;
+  font-weight:900;
+  font-size:13px;
+  padding:8px 10px;
+  border-radius:10px;
+  background:#f3fff7;
+  color:#1f8a4a;
+  border:1px solid rgba(39,174,96,0.18);
+}
+nav a:hover{ background:var(--green); color:#fff; }
 
-    .page-title{
-      margin:18px auto 6px;
-      text-align:center;
-      color:var(--green);
-      font-weight:900;
-      font-size:24px;
-    }
-    .page-sub{
-      max-width:940px;
-      margin:0 auto 18px;
-      text-align:center;
-      color:#555;
-      font-size:14px;
-      line-height:1.5;
-    }
+/* PAGE WRAP */
+.wrap{
+  max-width:1200px;
+  margin:auto;
+  padding:22px 14px 60px;
+}
 
-    /* FEATURE */
-    .feature{
-      background:#fff;
-      border-radius:18px;
-      box-shadow:0 0 16px rgba(0,0,0,0.10);
-      padding:18px;
-      display:flex;
-      gap:16px;
-      align-items:flex-start;
-      justify-content:space-between;
-      flex-wrap:wrap;
-      border:1px solid rgba(0,0,0,0.06);
-    }
-    .feature-left{
-      min-width:240px;
-      flex:1;
-    }
-    .feature-kicker{
-      display:inline-flex;
-      gap:8px;
-      align-items:center;
-      font-weight:900;
-      font-size:12px;
-      color:#1f8a4a;
-      background:#f3fff7;
-      border:1px solid rgba(39,174,96,0.22);
-      padding:7px 10px;
-      border-radius:999px;
-      margin-bottom:10px;
-      letter-spacing:0.5px;
-      text-transform:uppercase;
-    }
-    .feature-title{
-      margin:0;
-      font-size:18px;
-      font-weight:900;
-      color:#1f8a4a;
-      line-height:1.25;
-    }
-    .feature-text{
-      margin:10px 0 0;
-      color:#444;
-      font-size:14px;
-      line-height:1.55;
-      max-width:780px;
-    }
-    .feature-meta{
-      margin-top:12px;
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-      align-items:center;
-      color:#666;
-      font-size:12px;
-      font-weight:800;
-    }
-    .pill{
-      background:#f7f7f7;
-      border:1px solid rgba(0,0,0,0.08);
-      padding:6px 10px;
-      border-radius:999px;
-      font-weight:900;
-      color:#444;
-      font-size:11px;
-      display:inline-flex;
-      gap:6px;
-      align-items:center;
-    }
+/* HERO (SEM BOTÕES) */
+.hero{
+  background:var(--card);
+  border-radius:16px;
+  padding:28px 22px;
+  box-shadow:0 0 18px rgba(0,0,0,0.10);
+  text-align:center;
+}
+.hero h1{
+  margin:0 0 10px;
+  color:var(--green);
+  font-size:26px;
+}
+.hero p{
+  margin:0;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.5;
+}
 
-    .feature-right{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:center;
-      justify-content:flex-end;
-    }
-    .btn{
-      border:none;
-      cursor:pointer;
-      background:var(--green);
-      color:#fff;
-      font-weight:900;
-      padding:12px 14px;
-      border-radius:12px;
-      font-size:13px;
-      box-shadow:0 10px 18px rgba(0,0,0,0.12);
-    }
-    .btn:hover{ background:var(--green2); }
-    .btn-ghost{
-      background:#fff;
-      color:#1f8a4a;
-      border:1px solid rgba(39,174,96,0.25);
-      box-shadow:none;
-    }
-    .btn-ghost:hover{ background:#f3fff7; }
+/* SECTION */
+.section{
+  margin-top:18px;
+}
+.section-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:10px;
+  margin:0 0 10px;
+  font-weight:900;
+  color:var(--green);
+  font-size:18px;
+}
+.section-title small{
+  font-weight:800;
+  color:#888;
+  font-size:12px;
+}
 
-    /* GRID */
-    .grid-title{
-      margin:16px 0 10px;
-      font-weight:900;
-      color:var(--green);
-      font-size:16px;
-      display:flex;
-      justify-content:space-between;
-      align-items:baseline;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-    .grid-title small{
-      font-weight:900;
-      color:#888;
-      font-size:12px;
-    }
+/* GRID */
+.cards-row{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:16px;
+  align-items:start;
+}
+@media (max-width: 980px){
+  .cards-row{ grid-template-columns: 1fr; }
+}
 
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap:16px;
-    }
-    @media (max-width: 980px){
-      .grid{ grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 600px){
-      .grid{ grid-template-columns: 1fr; }
-    }
+/* CARD */
+.card{
+  background:var(--card);
+  border-radius:16px;
+  padding:18px;
+  box-shadow:0 0 18px rgba(0,0,0,0.08);
+}
 
-    .card{
-      background:#fff;
-      border-radius:16px;
-      padding:18px;
-      box-shadow:0 0 16px rgba(0,0,0,0.10);
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      border:1px solid rgba(0,0,0,0.06);
-    }
-    .tag{
-      align-self:flex-start;
-      padding:6px 10px;
-      border-radius:999px;
-      background:#f3fff7;
-      border:1px solid rgba(39,174,96,0.22);
-      color:#1f8a4a;
-      font-size:12px;
-      font-weight:900;
-    }
-    .card h3{
-      margin:0;
-      color:var(--green);
-      font-size:16px;
-      font-weight:900;
-      line-height:1.25;
-    }
-    .card p{
-      margin:0;
-      color:#444;
-      font-size:14px;
-      line-height:1.5;
-    }
+/* SLIDER */
+.slider{
+  position:relative;
+  height:520px;
+  border:1px solid var(--border);
+  border-radius:16px;
+  overflow:hidden;
+  background:#fff;
+}
+@media (max-width: 520px){
+  .slider{ height:480px; }
+}
 
-    /* FLOAT WA */
-    .float-wa{
-      position:fixed;
-      right:16px;
-      bottom:16px;
-      z-index:9999;
-      text-decoration:none;
-      background:var(--green);
-      color:#fff;
-      padding:12px 14px;
-      border-radius:999px;
-      font-weight:900;
-      box-shadow:0 10px 25px rgba(0,0,0,0.18);
-      border:1px solid rgba(255,255,255,0.25);
-      font-size:14px;
-    }
-    .float-wa:hover{ background:var(--green2); }
+.slide{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  transition: opacity .55s ease, transform .55s ease;
+  transform: translateY(6px);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  text-align:center;
+}
+.slide.active{
+  opacity:1;
+  transform: translateY(0);
+}
 
-    footer{
-      text-align:center;
-      font-size:12px;
-      color:#888;
-      margin-top:22px;
-    }
-  </style>
+.slide img{
+  width:100%;
+  max-width:320px;
+  height:340px;
+  object-fit:contain;
+  border-radius:14px;
+  box-shadow:0 8px 18px rgba(0,0,0,0.16);
+  background:#fff;
+}
+@media (max-width: 520px){
+  .slide img{
+    max-width:280px;
+    height:320px;
+  }
+}
+
+/* CLICK EFFECT */
+.slide.clickable{
+  cursor:pointer;
+}
+.slide.clickable:hover{
+  filter: brightness(0.98);
+}
+.slider:hover .slide.active img{
+  transform: scale(1.01);
+  transition: transform .25s ease;
+}
+
+.slide .name{
+  font-weight:900;
+  font-size:16px;
+  margin:12px 0 6px;
+}
+.slide .desc{
+  color:#666;
+  font-size:13px;
+  line-height:1.35;
+  margin:0;
+  max-width:420px;
+}
+
+/* CONTROLS */
+.slider-controls{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-top:10px;
+}
+.dots{
+  display:flex;
+  gap:6px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.dot{
+  width:8px;height:8px;border-radius:999px;
+  background:rgba(39,174,96,0.25);
+  border:1px solid rgba(39,174,96,0.35);
+}
+.dot.active{ background:var(--green); }
+
+.mini-btn{
+  border:none;
+  background:#f3fff7;
+  border:1px solid rgba(39,174,96,0.20);
+  color:#1f8a4a;
+  font-weight:900;
+  padding:8px 12px;
+  border-radius:12px;
+  cursor:pointer;
+}
+.mini-btn:hover{ background:var(--green); color:#fff; }
+.mini-btn:disabled{
+  opacity:.45;
+  cursor:not-allowed;
+}
+
+/* INFO BLOCKS */
+.info-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:16px;
+  margin-top:16px;
+}
+@media (max-width: 980px){
+  .info-grid{ grid-template-columns: 1fr; }
+}
+.info-card{
+  background:var(--card);
+  border-radius:16px;
+  padding:18px;
+  box-shadow:0 0 18px rgba(0,0,0,0.08);
+}
+.info-card h3{
+  margin:0 0 10px;
+  color:var(--green);
+  font-size:16px;
+}
+.list{
+  margin:0;
+  padding-left:18px;
+  color:#444;
+  line-height:1.55;
+  font-size:14px;
+}
+
+/* FLOAT WA */
+.float-wa{
+  position:fixed;
+  right:16px;
+  bottom:16px;
+  z-index:9999;
+  text-decoration:none;
+  background:var(--green);
+  color:#fff;
+  padding:12px 14px;
+  border-radius:999px;
+  font-weight:900;
+  box-shadow:0 10px 25px rgba(0,0,0,0.18);
+  border:1px solid rgba(255,255,255,0.25);
+  font-size:14px;
+}
+.float-wa:hover{ background:var(--green2); }
+
+footer{
+  text-align:center;
+  color:#888;
+  font-size:12px;
+  margin-top:18px;
+}
+</style>
 </head>
 
 <body>
@@ -282,269 +305,230 @@
   <div class="header-container">
     <div class="logo">Meta Saudável</div>
     <nav>
-      <a href="index.html">Início</a>
       <a href="ebooks.html">Ebooks</a>
       <a href="produtos.html">Produtos</a>
       <a href="videos.html">Vídeos</a>
-      <!-- removido: Curiosidades (já está nessa página) -->
+      <a href="curiosidades.html">Curiosidades</a>
       <a href="contato.html">Contato</a>
     </nav>
   </div>
 </header>
 
-<a class="float-wa" href="https://wa.me/5511958749421" target="_blank">📲 WhatsApp</a>
+<a class="float-wa" href="https://wa.me/5511958749421" target="_blank" aria-label="WhatsApp">📲 WhatsApp</a>
 
 <main class="wrap">
 
-  <h1 class="page-title">Curiosidades</h1>
-  <p class="page-sub" id="subText">
-    Aqui tem <b>300 curiosidades</b> para você nunca enjoar.
-    A cada dia, o site avança automaticamente para a próxima — e você também pode clicar em “Próxima”.
-    Quando chegar na 300, volta para a <b>01</b>.
-  </p>
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Emagreça em Casa</h1>
+    <p>Explore ebooks e recomendações para criar rotina e consistência.</p>
+  </section>
 
-  <section class="feature" aria-label="Curiosidade em destaque">
-    <div class="feature-left">
-      <div class="feature-kicker">⭐ Curiosidade em destaque</div>
-      <h2 class="feature-title" id="dailyTitle">Carregando...</h2>
-      <p class="feature-text" id="dailyText">Aguarde.</p>
-
-      <div class="feature-meta">
-        <span class="pill" id="dailyTag">—</span>
-        <span class="pill" id="dailyIndex">—</span>
-      </div>
+  <!-- SLIDERS -->
+  <section class="section">
+    <div class="section-title">
+      Destaques
+      <small>Clique no card para abrir</small>
     </div>
 
-    <div class="feature-right">
-      <button class="btn btn-ghost" id="btnNext" type="button">Próxima curiosidade</button>
-      <button class="btn" id="btnCopy" type="button">Copiar texto</button>
+    <div class="cards-row">
+      <!-- EBOOKS -->
+      <div class="card">
+        <div class="section-title" style="margin-top:0;">
+          Ebooks em destaque <small>(gira sozinho)</small>
+        </div>
+
+        <div class="slider" id="ebooksSlider"></div>
+
+        <div class="slider-controls">
+          <button class="mini-btn" type="button" id="ebooksPrev">◀</button>
+          <div class="dots" id="ebooksDots"></div>
+          <button class="mini-btn" type="button" id="ebooksNext">▶</button>
+        </div>
+      </div>
+
+      <!-- PRODUTOS -->
+      <div class="card">
+        <div class="section-title" style="margin-top:0;">
+          Produtos em destaque <small>(gira sozinho)</small>
+        </div>
+
+        <div class="slider" id="produtosSlider"></div>
+
+        <div class="slider-controls">
+          <button class="mini-btn" type="button" id="produtosPrev">◀</button>
+          <div class="dots" id="produtosDots"></div>
+          <button class="mini-btn" type="button" id="produtosNext">▶</button>
+        </div>
+      </div>
     </div>
   </section>
 
-  <div class="grid-title">
-    Todas as curiosidades
-    <small id="gridSmall">300 no total • leitura rápida</small>
-  </div>
+  <!-- LINKS (SEM BOTÕES EXTRAS) -->
+  <section class="section">
+    <div class="section-title">Conteúdo</div>
 
-  <section class="grid" id="grid"></section>
+    <div class="info-grid">
+      <div class="info-card">
+        <h3>Vídeos</h3>
+        <ul class="list">
+          <li>Dicas rápidas de treino em casa</li>
+          <li>Rotina semanal simples</li>
+          <li>Motivação e consistência</li>
+        </ul>
+      </div>
 
-  <footer>© 2026 Meta Saudável • Curiosidades</footer>
+      <div class="info-card">
+        <h3>Curiosidades</h3>
+        <ul class="list">
+          <li>Hábitos que ajudam na saciedade</li>
+          <li>Como o sono influencia o peso</li>
+          <li>O que fazer quando bate a ansiedade</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>© 2026 Meta Saudável • Todos os direitos reservados</footer>
+
 </main>
 
 <script>
-  // =========================================================
-  // 300 CURIOSIDADES (garantido)
-  // =========================================================
-  const baseCuriosidades = [
-    // (1)–(60) extras “na mão” para ficar bem variado
-    { tag:"Sono", title:"Dormir pouco aumenta a vontade de doce", text:"Cansaço pode aumentar fome e a busca por energia rápida. Melhorar o sono ajuda a controlar o apetite." },
-    { tag:"Metabolismo", title:"Você queima calorias mesmo parado", text:"O metabolismo basal é o gasto para manter o corpo funcionando. Ele costuma ser a maior parte do gasto diário." },
-    { tag:"Alimentação", title:"Proteína ajuda a segurar a fome", text:"Refeições com proteína e fibras geralmente dão mais saciedade e reduzem beliscos." },
-    { tag:"Hábitos", title:"Comer devagar ajuda a perceber saciedade", text:"O cérebro precisa de alguns minutos para registrar que você já comeu o suficiente." },
-    { tag:"Água", title:"Sede pode parecer fome", text:"Antes de beliscar, beba água e espere alguns minutos. Pode ser só hidratação." },
-    { tag:"Passos", title:"Caminhar diariamente é subestimado", text:"Aumentar passos no dia é uma forma sustentável de gastar mais energia sem sofrimento." },
-    { tag:"Peso", title:"A balança oscila por água e sal", text:"Subidas rápidas muitas vezes são retenção. Olhe a tendência da semana." },
-    { tag:"Mente", title:"Disciplina é direção, não perfeição", text:"Uma refeição ruim não destrói o processo. Volte para o plano na próxima." },
-    { tag:"Alimentação", title:"Ultraprocessados facilitam exagero", text:"São muito palatáveis e pouco saciantes. Comida de verdade facilita controle." },
-    { tag:"Treino", title:"Consistência vence intensidade", text:"Treinos menores e frequentes costumam funcionar melhor do que um treino enorme raramente." },
-
-    { tag:"Fibras", title:"Fibras aumentam volume com poucas calorias", text:"Legumes, verduras, frutas e grãos ajudam a ficar satisfeito com menos." },
-    { tag:"Sono", title:"Horário regular melhora o sono", text:"Dormir e acordar em horários parecidos ajuda o corpo a entrar no ritmo." },
-    { tag:"Treino", title:"Treino de força ajuda a “secar” melhor", text:"Manter músculo melhora o corpo e ajuda a sustentar resultados." },
-    { tag:"Hábitos", title:"Ambiente manda mais que força de vontade", text:"Deixar opções boas fáceis e visíveis reduz decisões impulsivas." },
-    { tag:"Bebidas", title:"Calorias líquidas enganam", text:"Bebidas adoçadas somam calorias sem saciedade. Trocar por água/zero ajuda." },
-    { tag:"Digestão", title:"Mastigar bem reduz exageros", text:"Mastigação melhora percepção de saciedade e ajuda a digestão." },
-    { tag:"Alimentação", title:"“Saudável” também pode engordar", text:"Azeite, castanhas e pasta de amendoim são bons, mas porção importa." },
-    { tag:"Sono", title:"Tela à noite pode atrapalhar", text:"Reduzir celular/TV perto da hora de dormir pode melhorar o sono." },
-    { tag:"Rotina", title:"Planejar 2–3 refeições-base salva a semana", text:"Ter opções simples prontas reduz decisões no impulso quando bate fome." },
-    { tag:"Treino", title:"Treino em casa funciona", text:"Agachamento, flexão, prancha e caminhada já criam uma base forte." },
-
-    { tag:"Alimentação", title:"Fruta inteira sacia mais que suco", text:"A fruta tem fibras e mastigação. Suco concentra calorias e sacia menos." },
-    { tag:"Água", title:"Garrafa à vista = mais água", text:"O que fica perto e visível você consome mais. Use isso a seu favor." },
-    { tag:"Sono", title:"Álcool piora qualidade do sono", text:"Pode dar sonolência, mas reduz qualidade e pode aumentar fome no dia seguinte." },
-    { tag:"Mente", title:"Vontade passa como onda", text:"Esperar 10 minutos fazendo outra coisa muitas vezes reduz a vontade." },
-    { tag:"Treino", title:"Subir escadas conta muito", text:"Pequenas escolhas no dia somam gasto calórico na semana." },
-    { tag:"Alimentação", title:"Molhos escondem calorias", text:"Maionese e molhos cremosos somam rápido. Use com moderação." },
-    { tag:"Hábitos", title:"Comer sentado ajuda", text:"Comer distraído facilita exagero. Sentar e focar na refeição ajuda a parar na hora certa." },
-    { tag:"Mente", title:"Evite o “já que…”", text:"“Já que errei, vou chutar o balde” é armadilha. Pare no erro e siga." },
-    { tag:"Treino", title:"Dor não é requisito", text:"Treinar bem não precisa te destruir. Regularidade rende mais." },
-    { tag:"Sono", title:"Quarto mais escuro melhora sono", text:"Menos luz costuma melhorar profundidade do sono e disposição." },
-
-    { tag:"Alimentação", title:"Metade do prato com vegetais ajuda", text:"Mais volume de verduras/legumes tende a reduzir calorias sem passar fome." },
-    { tag:"Passos", title:"Caminhada pós-refeição ajuda rotina", text:"Uma caminhada leve após comer ajuda a manter consistência." },
-    { tag:"Metabolismo", title:"Platô é normal", text:"Estagnações acontecem. Ajustes pequenos e paciência resolvem." },
-    { tag:"Mente", title:"Compare você com você", text:"Avalie progresso semanal: energia, passos, medidas, consistência." },
-    { tag:"Alimentação", title:"Carboidrato não é inimigo", text:"Quantidade e contexto importam. Cortar tudo geralmente não é sustentável." },
-    { tag:"Hábitos", title:"Comprar com lista evita besteira", text:"Ir ao mercado com lista reduz compras impulsivas." },
-    { tag:"Treino", title:"Progredir pouco a pouco funciona", text:"Aumentar 1 repetição ou 1 minuto por semana já é progresso." },
-    { tag:"Água", title:"Água com gás pode ajudar", text:"Para alguns, dá sensação de estômago cheio e reduz beliscos." },
-    { tag:"Alimentação", title:"Comer no prato ajuda porção", text:"Evite comer direto do pacote: sirva e enxergue a quantidade." },
-    { tag:"Sono", title:"Sol cedo ajuda seu relógio biológico", text:"Luz natural pela manhã ajuda a regular sono à noite." },
-
-    { tag:"Treino", title:"Pernas e glúteos gastam bastante energia", text:"Treinar músculos grandes aumenta o gasto do treino e melhora o corpo." },
-    { tag:"Digestão", title:"Fibras precisam de água", text:"Aumente fibras junto com água para o intestino responder bem." },
-    { tag:"Mente", title:"Tenha um plano de emergência", text:"Separe 2 lanches “salva-vida” para não cair no impulso quando der fome." },
-    { tag:"Alimentação", title:"Temperos ajudam sem calorias", text:"Alho, cebola, ervas e limão melhoram sabor e facilitam manter a dieta." },
-    { tag:"Hábitos", title:"Deixe a roupa de treino pronta", text:"Menos fricção = mais chance de você treinar." },
-    { tag:"Sono", title:"Cafeína tarde pode atrapalhar", text:"Café no fim do dia pode piorar o sono. Ajuste horário se necessário." },
-    { tag:"Alimentação", title:"Proteína no café da manhã ajuda alguns", text:"Pode reduzir beliscos e vontade de doce ao longo do dia." },
-    { tag:"Metabolismo", title:"Peso sobe após treino de força", text:"Inflamação muscular e retenção podem subir a balança por 1–3 dias." },
-    { tag:"Hábitos", title:"Cozinhar simples já basta", text:"Arroz, feijão, ovos, frango, salada e fruta formam base forte." },
-    { tag:"Mente", title:"Foco em hoje, repita amanhã", text:"Pensar em 24 horas reduz ansiedade e melhora consistência." },
-
-    { tag:"Alimentação", title:"Comida “colorida” melhora variedade", text:"Mais cores no prato geralmente significa mais micronutrientes." },
-    { tag:"Treino", title:"O melhor treino é o que você consegue manter", text:"Se você só tem 10 minutos, faça 10. Constância vence." },
-    { tag:"Água", title:"Comece o dia com água", text:"Um copo de água ao acordar ajuda muita gente a se sentir melhor." },
-    { tag:"Mente", title:"Recompensa sem comida funciona", text:"Troque “me premiar com exagero” por descanso, música, banho ou algo leve." },
-    { tag:"Alimentação", title:"Legumes congelados salvam tempo", text:"Práticos e ajudam a manter comida de verdade na rotina." },
-    { tag:"Treino", title:"Flexão na parede é um começo", text:"Se flexão no chão é difícil, faça na parede e progrida." },
-    { tag:"Sono", title:"Banho morno pode relaxar", text:"Pode ajudar a reduzir tensão antes de dormir." },
-    { tag:"Passos", title:"Estacionar mais longe ajuda", text:"Pequenas caminhadas no dia somam bastante na semana." },
-    { tag:"Alimentação", title:"Arroz e feijão podem ser aliados", text:"Bem porcionados e com proteína + salada, funcionam muito bem." },
-    { tag:"Mente", title:"O básico bem feito vence qualquer segredo", text:"Sono, água, proteína, fibras e movimento: isso resolve a maior parte." }
+  // ====== DADOS ======
+  // ✅ Corrigido: TODOS os ebooks agora levam para a página de EBOOKS, não para checkout.
+  const ebooks = [
+    {
+      name: "Como Emagrecer em Casa",
+      img: "capa_meta_saudavel.jpg",
+      desc: "Método prático para emagrecer sem academia.",
+      link: "ebooks.html"
+    },
+    {
+      name: "Cinturinha Fina",
+      img: "Cinturinha_Fina.png",
+      desc: "Foco em cintura e definição, com método direto e visual.",
+      link: "ebooks.html#cinturinha-fina"
+    },
+    {
+      name: "A Comida com Testosterona",
+      img: "comida_com_testosterona.jpg.png",
+      desc: "Receitas e rotina alimentar (abra na seção dentro de Ebooks).",
+      link: "ebooks.html#comida-com-testosterona"
+    }
   ];
 
-  const TARGET_TOTAL = 300;
+  // Produtos ficam aqui (se quiser depois, adicionamos)
+  const produtos = [];
 
-  function pad3(n){ return String(n).padStart(3, "0"); }
+  // ====== SLIDER ======
+  function createSlider({ mountId, dotsId, prevId, nextId, items, intervalMs = 3500, emptyTitle, emptyDesc, emptyLink }) {
+    const mount = document.getElementById(mountId);
+    const dotsWrap = document.getElementById(dotsId);
+    const prevBtn = document.getElementById(prevId);
+    const nextBtn = document.getElementById(nextId);
 
-  // Geração inteligente para completar exatamente 300
-  const tags = ["Sono","Treino","Alimentação","Hábitos","Metabolismo","Mente","Água","Digestão","Rotina","Passos"];
-  const textMap = {
-    "Sono":"Sono melhor costuma reduzir fome e melhorar escolhas. Proteja horário e reduza telas à noite quando possível.",
-    "Treino":"Treino curto e frequente é mais sustentável. O que você repete na semana é o que transforma seu corpo.",
-    "Alimentação":"Comida de verdade na maioria dos dias facilita porção e saciedade. Planeje o básico e repita.",
-    "Hábitos":"Reduza fricção: deixe o que é bom fácil, e o que atrapalha longe. Ambiente bem montado ajuda muito.",
-    "Metabolismo":"Consistência e músculo ajudam a manter o corpo respondendo. Mudanças pequenas somam no mês.",
-    "Mente":"Pense em processo, não em perfeição. Um passo por vez, todo dia, vence qualquer pico de motivação.",
-    "Água":"Hidratação melhora disposição e pode evitar beliscos por confundir sede com fome. Tenha água por perto.",
-    "Digestão":"Comer com calma e mastigar bem melhora digestão e ajuda a perceber saciedade antes de exagerar.",
-    "Rotina":"Rotina vence motivação. Defina um mínimo diário e cumpra, mesmo em dia ruim.",
-    "Passos":"Aumentar passos é uma forma simples de gastar mais energia. Caminhadas curtas contam muito na semana."
-  };
+    if (!mount || !dotsWrap || !prevBtn || !nextBtn) return;
 
-  const curiosidades = [...baseCuriosidades];
-
-  // Se por algum motivo base passar de 300, corta (garante 300 exato)
-  if(curiosidades.length > TARGET_TOTAL){
-    curiosidades.length = TARGET_TOTAL;
-  }
-
-  // Completa até 300, com títulos únicos numerados
-  while(curiosidades.length < TARGET_TOTAL){
-    const n = curiosidades.length + 1; // 1..300
-    const tag = tags[n % tags.length];
-    curiosidades.push({
-      tag,
-      title: `Curiosidade #${pad3(n)}: um ajuste simples pode mudar sua semana`,
-      text: textMap[tag]
-    });
-  }
-
-  // =========================================================
-  // SEQUÊNCIA SEM REPETIR: vai seguindo até 300 e reinicia
-  // - Avança automaticamente 1 vez por dia (por visitante)
-  // - Botão "Próxima" avança sem voltar para a anterior
-  // =========================================================
-  const KEY_INDEX = "ms_curiosidade_index";
-  const KEY_LAST_DAY = "ms_curiosidade_last_day";
-
-  function todayKey(){
-    const d = new Date();
-    const y = d.getFullYear();
-    const m = String(d.getMonth()+1).padStart(2,"0");
-    const day = String(d.getDate()).padStart(2,"0");
-    return `${y}-${m}-${day}`;
-  }
-
-  function clampIndex(i){
-    const total = curiosidades.length;
-    if(total <= 0) return 0;
-    return ((i % total) + total) % total;
-  }
-
-  function getIndex(){
-    const raw = parseInt(localStorage.getItem(KEY_INDEX), 10);
-    return clampIndex(isNaN(raw) ? 0 : raw);
-  }
-
-  function setIndex(i){
-    localStorage.setItem(KEY_INDEX, String(clampIndex(i)));
-  }
-
-  function advanceIndex(steps = 1){
-    const next = clampIndex(getIndex() + steps);
-    setIndex(next);
-    return next;
-  }
-
-  function autoAdvanceDaily(){
-    const tk = todayKey();
-    const last = localStorage.getItem(KEY_LAST_DAY);
-    if(last !== tk){
-      localStorage.setItem(KEY_LAST_DAY, tk);
-      advanceIndex(1);
+    function setDisabled(disabled){
+      prevBtn.disabled = disabled;
+      nextBtn.disabled = disabled;
     }
-  }
 
-  function renderFeatured(idx){
-    const item = curiosidades[idx];
-    document.getElementById("dailyTitle").textContent = item.title;
-    document.getElementById("dailyText").textContent = item.text;
-    document.getElementById("dailyTag").textContent = "🏷 " + item.tag;
-
-    const pos = idx + 1;
-    document.getElementById("dailyIndex").textContent = "📌 " + pad3(pos) + " / " + pad3(curiosidades.length);
-  }
-
-  document.getElementById("btnNext").addEventListener("click", () => {
-    const idx = advanceIndex(1);
-    renderFeatured(idx);
-  });
-
-  document.getElementById("btnCopy").addEventListener("click", async () => {
-    const idx = getIndex();
-    const item = curiosidades[idx];
-    const text = `Curiosidade (${item.tag}): ${item.title}\n\n${item.text}\n\nMeta Saudável`;
-    try{
-      await navigator.clipboard.writeText(text);
-      const btn = document.getElementById("btnCopy");
-      const old = btn.textContent;
-      btn.textContent = "Copiado ✅";
-      setTimeout(() => btn.textContent = old, 1400);
-    }catch(e){
-      alert("Não foi possível copiar. Selecione o texto manualmente.");
-    }
-  });
-
-  function renderGrid(){
-    const grid = document.getElementById("grid");
-    grid.innerHTML = "";
-    curiosidades.forEach((c, i) => {
-      const card = document.createElement("div");
-      card.className = "card";
-      card.innerHTML = `
-        <span class="tag">${c.tag}</span>
-        <h3>${pad3(i+1)}. ${c.title}</h3>
-        <p>${c.text}</p>
+    if (!items || items.length === 0) {
+      mount.innerHTML = `
+        <div class="slide active clickable" data-link="${emptyLink}">
+          <div class="name">${emptyTitle}</div>
+          <div class="desc">${emptyDesc}</div>
+        </div>
       `;
-      grid.appendChild(card);
-    });
+      dotsWrap.innerHTML = "";
+      setDisabled(true);
+
+      const s = mount.querySelector(".slide");
+      s.addEventListener("click", () => { window.location.href = emptyLink; });
+      return;
+    }
+
+    let index = 0;
+    let timer = null;
+
+    function render() {
+      mount.innerHTML = "";
+      dotsWrap.innerHTML = "";
+
+      items.forEach((it, i) => {
+        const slide = document.createElement("div");
+        slide.className = "slide clickable" + (i === index ? " active" : "");
+        slide.setAttribute("data-link", it.link);
+
+        slide.innerHTML = `
+          <img src="${it.img}" alt="${it.name}" loading="lazy">
+          <div class="name">${it.name}</div>
+          <div class="desc">${it.desc || ""}</div>
+        `;
+
+        slide.addEventListener("click", () => {
+          window.location.href = it.link;
+        });
+
+        mount.appendChild(slide);
+
+        const dot = document.createElement("div");
+        dot.className = "dot" + (i === index ? " active" : "");
+        dot.addEventListener("click", () => {
+          index = i;
+          render();
+          restart();
+        });
+        dotsWrap.appendChild(dot);
+      });
+    }
+
+    function next() {
+      index = (index + 1) % items.length;
+      render();
+    }
+    function prev() {
+      index = (index - 1 + items.length) % items.length;
+      render();
+    }
+    function restart() {
+      if (timer) clearInterval(timer);
+      timer = setInterval(next, intervalMs);
+    }
+
+    prevBtn.addEventListener("click", () => { prev(); restart(); });
+    nextBtn.addEventListener("click", () => { next(); restart(); });
+
+    setDisabled(false);
+    render();
+    restart();
   }
 
-  // Atualiza textos para refletir 300 certinho
-  document.getElementById("subText").innerHTML =
-    `Aqui tem <b>${curiosidades.length} curiosidades</b> para você nunca enjoar.
-     A cada dia, o site avança automaticamente para a próxima — e você também pode clicar em “Próxima”.
-     Quando chegar na ${curiosidades.length}, volta para a <b>01</b>.`;
+  // init
+  createSlider({
+    mountId: "ebooksSlider",
+    dotsId: "ebooksDots",
+    prevId: "ebooksPrev",
+    nextId: "ebooksNext",
+    items: ebooks,
+    intervalMs: 3500,
+    emptyTitle: "Sem ebooks",
+    emptyDesc: "Adicione ebooks e eles vão aparecer aqui.",
+    emptyLink: "ebooks.html"
+  });
 
-  document.getElementById("gridSmall").textContent =
-    `${curiosidades.length} no total • leitura rápida`;
-
-  // INIT
-  autoAdvanceDaily();
-  renderFeatured(getIndex());
-  renderGrid();
+  createSlider({
+    mountId: "produtosSlider",
+    dotsId: "produtosDots",
+    prevId: "produtosPrev",
+    nextId: "produtosNext",
+    items: produtos,
+    intervalMs: 3500,
+    emptyTitle: "Produtos em breve",
+    emptyDesc: "Quando você adicionar produtos, eles vão aparecer aqui.",
+    emptyLink: "produtos.html"
+  });
 </script>
 
 </body>
