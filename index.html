@@ -87,16 +87,14 @@ nav a:hover{ background:var(--green); color:#fff; }
     gap:10px;
     padding:12px 14px 10px;
   }
-  .logo{
-    text-align:center;
-  }
+  .logo{ text-align:center; }
   nav{
     width:100%;
     justify-content:center;
   }
 }
 
-/* Em telas muito pequenas: deixa o menu mais compacto para não quebrar */
+/* Em telas muito pequenas: menu compacto para não quebrar */
 @media (max-width: 420px){
   nav a{
     font-size:11px;
@@ -111,7 +109,7 @@ nav a:hover{ background:var(--green); color:#fff; }
   padding:22px 14px 60px;
 }
 
-/* HERO (SEM BOTÕES) */
+/* HERO */
 .hero{
   background:var(--card);
   border-radius:16px;
@@ -129,6 +127,61 @@ nav a:hover{ background:var(--green); color:#fff; }
   color:var(--muted);
   font-size:14px;
   line-height:1.5;
+}
+
+/* Curiosidade do dia (topo) */
+.curiosity-top{
+  margin-top:14px;
+  background:var(--card);
+  border-radius:16px;
+  padding:18px;
+  box-shadow:0 0 18px rgba(0,0,0,0.08);
+  border:1px solid rgba(39,174,96,0.12);
+}
+.curiosity-badge{
+  display:inline-block;
+  background:#f3fff7;
+  border:1px solid rgba(39,174,96,0.18);
+  color:#1f8a4a;
+  font-weight:900;
+  font-size:12px;
+  padding:6px 10px;
+  border-radius:999px;
+  margin-bottom:10px;
+}
+.curiosity-title{
+  margin:0 0 8px;
+  font-weight:900;
+  color:#1f8a4a;
+  font-size:16px;
+}
+.curiosity-text{
+  margin:0;
+  color:#444;
+  font-size:14px;
+  line-height:1.55;
+}
+.curiosity-cta{
+  margin-top:12px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.curiosity-link{
+  display:inline-block;
+  text-decoration:none;
+  background:var(--green);
+  color:#fff;
+  font-weight:900;
+  padding:10px 12px;
+  border-radius:12px;
+}
+.curiosity-link:hover{ background:var(--green2); }
+.curiosity-sub{
+  color:#777;
+  font-size:12px;
+  font-weight:800;
 }
 
 /* SECTION */
@@ -218,12 +271,8 @@ nav a:hover{ background:var(--green); color:#fff; }
 }
 
 /* CLICK EFFECT */
-.slide.clickable{
-  cursor:pointer;
-}
-.slide.clickable:hover{
-  filter: brightness(0.98);
-}
+.slide.clickable{ cursor:pointer; }
+.slide.clickable:hover{ filter: brightness(0.98); }
 .slider:hover .slide.active img{
   transform: scale(1.01);
   transition: transform .25s ease;
@@ -353,13 +402,22 @@ footer{
 
 <main class="wrap">
 
-  <!-- HERO -->
   <section class="hero">
     <h1>Emagreça em Casa</h1>
-    <p>Explore ebooks e recomendações para criar rotina e consistência.</p>
+    <p>Conteúdo prático, simples e organizado para quem quer resultados reais.</p>
   </section>
 
-  <!-- SLIDERS -->
+  <!-- Curiosidade do Dia (topo para tráfego orgânico) -->
+  <section class="curiosity-top" aria-label="Curiosidade do dia">
+    <div class="curiosity-badge">Curiosidade do dia</div>
+    <h2 class="curiosity-title" id="curiosityTitle">Carregando...</h2>
+    <p class="curiosity-text" id="curiosityText">Carregando...</p>
+    <div class="curiosity-cta">
+      <a class="curiosity-link" href="curiosidades.html">Ver +300 curiosidades</a>
+      <span class="curiosity-sub">Dicas rápidas sobre saciedade, sono, ansiedade e hábitos.</span>
+    </div>
+  </section>
+
   <section class="section">
     <div class="section-title">
       Destaques
@@ -367,12 +425,8 @@ footer{
     </div>
 
     <div class="cards-row">
-      <!-- EBOOKS -->
       <div class="card">
-        <div class="section-title" style="margin-top:0;">
-          Ebooks em destaque <small>(gira sozinho)</small>
-        </div>
-
+        <div class="section-title" style="margin-top:0;">Ebooks em destaque</div>
         <div class="slider" id="ebooksSlider"></div>
 
         <div class="slider-controls">
@@ -382,12 +436,8 @@ footer{
         </div>
       </div>
 
-      <!-- PRODUTOS -->
       <div class="card">
-        <div class="section-title" style="margin-top:0;">
-          Produtos em destaque <small>(gira sozinho)</small>
-        </div>
-
+        <div class="section-title" style="margin-top:0;">Produtos em destaque</div>
         <div class="slider" id="produtosSlider"></div>
 
         <div class="slider-controls">
@@ -399,7 +449,6 @@ footer{
     </div>
   </section>
 
-  <!-- LINKS (SEM BOTÕES EXTRAS) -->
   <section class="section">
     <div class="section-title">Conteúdo</div>
 
@@ -407,18 +456,18 @@ footer{
       <div class="info-card">
         <h3>Vídeos</h3>
         <ul class="list">
-          <li>Dicas rápidas de treino em casa</li>
-          <li>Rotina semanal simples</li>
-          <li>Motivação e consistência</li>
+          <li>Em breve</li>
+          <li>Treinos simples, dicas rápidas e motivação</li>
         </ul>
       </div>
 
       <div class="info-card">
         <h3>Curiosidades</h3>
         <ul class="list">
-          <li>Hábitos que ajudam na saciedade</li>
-          <li>Como o sono influencia o peso</li>
-          <li>O que fazer quando bate a ansiedade</li>
+          <li>Mais de <strong>300 curiosidades</strong> sobre emagrecimento</li>
+          <li>Hábitos que aceleram ou atrapalham o resultado</li>
+          <li>Psicologia, mente e comportamento alimentar</li>
+          <li>Dicas rápidas para aplicar no dia a dia</li>
         </ul>
       </div>
     </div>
@@ -429,6 +478,50 @@ footer{
 </main>
 
 <script>
+  // ====== Curiosidade do dia ======
+  const curiosidadesDoDia = [
+    { t:"Sono e emagrecimento", d:"Dormir pouco aumenta a fome e reduz a saciedade. Priorize 7–8 horas para ajudar o corpo a controlar o apetite." },
+    { t:"Água antes das refeições", d:"Um copo de água 10–15 min antes da refeição pode ajudar você a comer com mais consciência e controlar porções." },
+    { t:"Proteína no café da manhã", d:"Um café da manhã com proteína tende a segurar mais a fome ao longo do dia (ex.: ovos, iogurte, frango desfiado)." },
+    { t:"Fibras são aliadas", d:"Fibras aumentam a saciedade. Inclua feijão, aveia, frutas com casca e verduras no dia a dia." },
+    { t:"Ansiedade x fome", d:"Às vezes é vontade, não fome. Espere 10 minutos, beba água e faça uma respiração lenta antes de decidir comer." },
+    { t:"Passos contam", d:"Aumentar passos diários ajuda muito. Comece com uma meta realista e suba aos poucos semana a semana." },
+    { t:"Refrigerante e açúcar", d:"Bebidas açucaradas somam muitas calorias sem matar a fome. Trocar por água ou zero já melhora o resultado." },
+    { t:"Comer devagar", d:"Demora alguns minutos para o cérebro registrar saciedade. Comer mais devagar pode reduzir exageros." },
+    { t:"Prato inteligente", d:"Metade do prato com salada/legumes + 1/4 proteína + 1/4 carboidrato costuma funcionar bem para emagrecer com saúde." },
+    { t:"Belisco invisível", d:"O que mais atrapalha é o “só um pedacinho”. Anote lanchinhos por 3 dias e você identifica o que está sabotando." },
+    { t:"Treino em casa funciona", d:"Consistência > intensidade. 15–20 min por dia já cria resultado quando vira hábito." },
+    { t:"Fome à noite", d:"À noite a vontade aumenta. Tenha opções planejadas (iogurte, fruta, chá) para não atacar qualquer coisa." }
+  ];
+
+  function dateKey(){
+    const now = new Date();
+    const y = now.getFullYear();
+    const m = String(now.getMonth()+1).padStart(2,"0");
+    const d = String(now.getDate()).padStart(2,"0");
+    return `${y}-${m}-${d}`;
+  }
+
+  function hashString(str){
+    let h = 0;
+    for(let i=0;i<str.length;i++){
+      h = (h<<5) - h + str.charCodeAt(i);
+      h |= 0;
+    }
+    return Math.abs(h);
+  }
+
+  (function setCuriosityOfDay(){
+    const k = dateKey();
+    const idx = hashString(k) % curiosidadesDoDia.length;
+    const item = curiosidadesDoDia[idx];
+
+    const titleEl = document.getElementById("curiosityTitle");
+    const textEl = document.getElementById("curiosityText");
+    if(titleEl) titleEl.textContent = item.t;
+    if(textEl) textEl.textContent = item.d;
+  })();
+
   // ====== DADOS ======
   const ebooks = [
     {
