@@ -55,7 +55,7 @@ header{
   white-space:nowrap;
 }
 
-/* MENU (desktop) */
+/* MENU */
 nav{
   display:flex;
   gap:8px;
@@ -64,11 +64,12 @@ nav{
   overflow:hidden;
 }
 
+/* MENU DINÂMICO (TikTok/WebView) */
 nav a{
   text-decoration:none;
   font-weight:900;
-  font-size:13px;
-  padding:8px 10px;
+  font-size: clamp(11px, 2.6vw, 13px);
+  padding: clamp(6px, 1.6vw, 8px) clamp(7px, 2.2vw, 10px);
   border-radius:10px;
   background:#f3fff7;
   color:#1f8a4a;
@@ -78,7 +79,7 @@ nav a{
 }
 nav a:hover{ background:var(--green); color:#fff; }
 
-/* Celular: logo central e menu centralizado na linha de baixo */
+/* Celular: logo central e menu abaixo (sem quebrar, com rolagem se precisar) */
 @media (max-width: 720px){
   .header-container{
     flex-direction:column;
@@ -91,15 +92,14 @@ nav a:hover{ background:var(--green); color:#fff; }
   nav{
     width:100%;
     justify-content:center;
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    gap: clamp(6px, 2vw, 8px);
+    padding-bottom:2px;
   }
-}
-
-/* Em telas muito pequenas: deixa o menu mais compacto para não quebrar */
-@media (max-width: 420px){
-  nav a{
-    font-size:11px;
-    padding:7px 8px;
-  }
+  nav::-webkit-scrollbar{ display:none; }
 }
 
 /* PAGE WRAP */
@@ -129,7 +129,7 @@ nav a:hover{ background:var(--green); color:#fff; }
   line-height:1.5;
 }
 
-/* Curiosidade do dia (topo) */
+/* Curiosidade do dia */
 .curiosity-top{
   margin-top:14px;
   background:var(--card);
@@ -284,13 +284,8 @@ nav a:hover{ background:var(--green); color:#fff; }
   }
 }
 
-/* CLICK EFFECT */
 .slide.clickable{ cursor:pointer; }
 .slide.clickable:hover{ filter: brightness(0.98); }
-.slider:hover .slide.active img{
-  transform: scale(1.01);
-  transition: transform .25s ease;
-}
 
 .slide .name{
   font-weight:900;
@@ -337,12 +332,9 @@ nav a:hover{ background:var(--green); color:#fff; }
   cursor:pointer;
 }
 .mini-btn:hover{ background:var(--green); color:#fff; }
-.mini-btn:disabled{
-  opacity:.45;
-  cursor:not-allowed;
-}
+.mini-btn:disabled{ opacity:.45; cursor:not-allowed; }
 
-/* INFO BLOCKS */
+/* INFO */
 .info-grid{
   display:grid;
   grid-template-columns: 1fr 1fr;
@@ -416,13 +408,11 @@ footer{
 
 <main class="wrap">
 
-  <!-- HERO -->
   <section class="hero">
     <h1>Emagreça em Casa</h1>
     <p>Conteúdo prático, simples e organizado para quem quer resultados reais.</p>
   </section>
 
-  <!-- Curiosidade do Dia (topo para tráfego orgânico) -->
   <section class="curiosity-top" aria-label="Curiosidade do dia">
     <div class="curiosity-badge">Curiosidade do dia</div>
     <h2 class="curiosity-title" id="curiosityTitle">Carregando...</h2>
@@ -435,7 +425,6 @@ footer{
     </div>
   </section>
 
-  <!-- SLIDERS -->
   <section class="section">
     <div class="section-title">
       Destaques
@@ -443,12 +432,8 @@ footer{
     </div>
 
     <div class="cards-row">
-      <!-- EBOOKS -->
       <div class="card">
-        <div class="section-title" style="margin-top:0;">
-          Ebooks em destaque
-        </div>
-
+        <div class="section-title" style="margin-top:0;">Ebooks em destaque</div>
         <div class="slider" id="ebooksSlider"></div>
 
         <div class="slider-controls">
@@ -458,12 +443,8 @@ footer{
         </div>
       </div>
 
-      <!-- PRODUTOS -->
       <div class="card">
-        <div class="section-title" style="margin-top:0;">
-          Produtos em destaque
-        </div>
-
+        <div class="section-title" style="margin-top:0;">Produtos em destaque</div>
         <div class="slider" id="produtosSlider"></div>
 
         <div class="slider-controls">
@@ -475,7 +456,6 @@ footer{
     </div>
   </section>
 
-  <!-- CONTEÚDO -->
   <section class="section">
     <div class="section-title">Conteúdo</div>
 
@@ -588,27 +568,26 @@ footer{
 
   // ====== DADOS ======
   const ebooks = [
-    {
-      name: "Como Emagrecer em Casa",
-      img: "capa_meta_saudavel.jpg",
-      desc: "Método prático para emagrecer sem academia.",
-      link: "ebooks.html"
-    },
-    {
-      name: "Cinturinha Fina",
-      img: "Cinturinha_Fina.png",
-      desc: "Foco em cintura e definição, com método direto e visual.",
-      link: "ebooks.html#cinturinha-fina"
-    },
-    {
-      name: "A Comida com Testosterona",
-      img: "comida_com_testosterona.jpg.png",
-      desc: "Receitas e rotina alimentar (abra na seção dentro de Ebooks).",
-      link: "ebooks.html#comida-com-testosterona"
-    }
+    { name: "Como Emagrecer em Casa", img: "capa_meta_saudavel.jpg", desc: "Método prático para emagrecer sem academia.", link: "ebooks.html" },
+    { name: "Cinturinha Fina", img: "Cinturinha_Fina.png", desc: "Foco em cintura e definição, com método direto e visual.", link: "ebooks.html#cinturinha-fina" },
+    { name: "A Comida com Testosterona", img: "comida_com_testosterona.jpg.png", desc: "Receitas e rotina alimentar (abra na seção dentro de Ebooks).", link: "ebooks.html#comida-com-testosterona" }
   ];
 
-  const produtos = [];
+  /* >>> AQUI: PRODUTOS (puxados da sua página Produtos) <<< */
+  const produtos = [
+    {
+      name: "Creatina Monohidratada 300g – Puro Nutrition",
+      img: "creatina-puro-nutrition-300g.jpg",
+      desc: "Suplemento amplamente utilizado para complementar treinos. Alta avaliação e boa aceitação.",
+      link: "produtos.html"
+    },
+    {
+      name: "Ômega 3 + Vitamina E Everlasting Nutrition (90 cápsulas)",
+      img: "omega-3-vitamina-e-everlasting-90caps.jpg",
+      desc: "Alta concentração EPA/DHA e selo de qualidade MEG-3®. Praticidade no dia a dia.",
+      link: "produtos.html"
+    }
+  ];
 
   // ====== SLIDER ======
   function createSlider({ mountId, dotsId, prevId, nextId, items, intervalMs = 3500, emptyTitle, emptyDesc, emptyLink }) {
