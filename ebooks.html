@@ -22,7 +22,7 @@
       z-index:999;
     }
 
-    /* ✅ Desktop: logo esquerda + menu direita (igual 1ª imagem) */
+    /* ✅ Desktop: logo esquerda + menu direita */
     .header-container{
       max-width:980px;
       margin:auto;
@@ -45,6 +45,8 @@
       display:flex;
       gap:8px;
       flex-wrap:nowrap;
+      align-items:center;
+      justify-content:flex-end;
     }
 
     nav a{
@@ -57,34 +59,53 @@
       color:#1f8a4a;
       border:1px solid rgba(39,174,96,0.18);
       white-space:nowrap;
+      line-height:1;
     }
     nav a:hover{
       background:#27ae60;
       color:#fff;
     }
 
-    /* ✅ Celular: logo central + menu central embaixo (padrão para todas as páginas) */
+    /* ✅ Mobile: logo central + menu central abaixo
+       ✅ Dinâmico: reduz fonte/padding conforme a tela, evitando quebrar/ir para 2 linhas
+    */
     @media (max-width:780px){
       .header-container{
         flex-direction:column;
         align-items:center;
         justify-content:center;
-        padding:12px 12px 10px;
+        padding:12px 10px 10px;
         gap:10px;
       }
       .logo{
         text-align:center;
         font-size:18px;
       }
+
+      /* ✅ menu em 1 linha e responsivo */
       nav{
         width:100%;
         justify-content:center;
-        flex-wrap:wrap;  /* pode quebrar em 2 linhas se precisar */
-        gap:8px;
+        flex-wrap:nowrap;           /* não quebra */
+        gap:6px;
+        overflow:hidden;            /* evita “andar pro lado” */
       }
+
+      /* ✅ fonte e padding com “clamp” se ajustam ao tamanho da tela */
       nav a{
-        font-size:12px;
-        padding:8px 10px;
+        font-size:clamp(10px, 2.6vw, 12px);
+        padding:clamp(6px, 1.7vw, 8px) clamp(6px, 2.2vw, 10px);
+        border-radius:10px;
+      }
+    }
+
+    /* ✅ Telas muito pequenas: reduz ainda mais e “aperta” */
+    @media (max-width:380px){
+      nav{ gap:5px; }
+      nav a{
+        font-size:clamp(9px, 2.8vw, 11px);
+        padding:6px 6px;
+        border-radius:9px;
       }
     }
 
@@ -131,7 +152,7 @@
       justify-content:flex-start;
     }
 
-    /* OFFER (harmonia entre cards) */
+    /* OFFER */
     .offer-box{
       margin-bottom:14px;
       padding:14px 12px;
