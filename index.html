@@ -36,15 +36,16 @@ header{
   box-shadow:0 2px 10px rgba(0,0,0,0.06);
 }
 
-/* >>> AJUSTE: HEADER EM 2 LINHAS (logo em cima, menu embaixo) <<< */
+/* Desktop: logo esquerda + menu direita */
 .header-container{
   max-width:1200px;
   margin:auto;
-  padding:12px 14px 10px;
+  padding:14px 14px;
   display:flex;
-  flex-direction:column;     /* 2 linhas */
-  align-items:center;        /* centraliza */
-  gap:10px;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:nowrap;
+  gap:12px;
 }
 
 .logo{
@@ -54,21 +55,20 @@ header{
   white-space:nowrap;
 }
 
-/* MENU FIXO (sem rolagem lateral) */
+/* MENU (desktop) */
 nav{
-  width:100%;
   display:flex;
-  justify-content:center;    /* centraliza os itens */
   gap:8px;
-  flex-wrap:nowrap;          /* não quebra linha */
-  overflow:hidden;           /* impede rolagem */
+  flex-wrap:nowrap;
+  justify-content:flex-end;
+  overflow:hidden;
 }
 
 nav a{
   text-decoration:none;
   font-weight:900;
-  font-size:12px;            /* levemente menor para caber */
-  padding:8px 10px;          /* mais compacto */
+  font-size:13px;
+  padding:8px 10px;
   border-radius:10px;
   background:#f3fff7;
   color:#1f8a4a;
@@ -78,7 +78,25 @@ nav a{
 }
 nav a:hover{ background:var(--green); color:#fff; }
 
-/* Em telas muito pequenas, reduz ainda mais para NÃO quebrar */
+/* Celular: logo central e menu centralizado na linha de baixo */
+@media (max-width: 720px){
+  .header-container{
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding:12px 14px 10px;
+  }
+  .logo{
+    text-align:center;
+  }
+  nav{
+    width:100%;
+    justify-content:center;
+  }
+}
+
+/* Em telas muito pequenas: deixa o menu mais compacto para não quebrar */
 @media (max-width: 420px){
   nav a{
     font-size:11px;
@@ -433,8 +451,6 @@ footer{
     }
   ];
 
-  // Adicione produtos depois (exemplo):
-  // { name:"Nome", img:"arquivo.png", desc:"descrição", link:"produtos.html#produto1" }
   const produtos = [];
 
   // ====== SLIDER ======
