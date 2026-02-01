@@ -38,7 +38,7 @@
       white-space:nowrap;
     }
 
-    /* MENU (ajustado igual no index: não quebra no celular) */
+    /* MENU (igual no index: não quebra no celular) */
     nav{
       display:flex;
       gap:8px;
@@ -50,7 +50,6 @@
     nav::-webkit-scrollbar{ display:none; }
 
     nav a{
-      margin-left:0; /* mantém gap controlando */
       text-decoration:none;
       font-weight:900;
       font-size:13px;
@@ -184,13 +183,6 @@
       font-size:15px;
       line-height:1.35;
     }
-    .muted{
-      margin:10px 0 0;
-      color:#666;
-      font-size:14px;
-      line-height:1.45;
-      text-align:left;
-    }
 
     /* BENEFITS */
     .benefits{
@@ -265,13 +257,6 @@
     }
     .btn-secondary:hover{ background:#f3fff7; }
 
-    /* DIVIDER */
-    .divider{
-      height:1px;
-      background:rgba(0,0,0,0.08);
-      margin:18px 0;
-    }
-
     /* FOOTER */
     footer{
       text-align:center;
@@ -328,7 +313,7 @@
     <section class="container" aria-label="Ebook Meta Saudável">
       <div class="offer-box">
         <div class="offer-title">Oferta termina em</div>
-        <div class="timer" id="countdown">15:00</div>
+        <div class="timer" id="countdown-ms">15:00</div>
 
         <div class="prices">
           <span class="old-price">R$ 97,00</span>
@@ -363,8 +348,20 @@
       <footer>© 2026 Meta Saudável</footer>
     </section>
 
-    <!-- RECOMENDAÇÃO (CINTURINHA FINA) -->
+    <!-- RECOMENDAÇÃO (CINTURINHA FINA) - COM OFERTA -->
     <section class="container" id="cinturinha-fina" aria-label="Ebook Cinturinha Fina">
+      <div class="offer-box">
+        <div class="offer-title">Oferta termina em</div>
+        <div class="timer" id="countdown-cf">15:00</div>
+
+        <div class="prices">
+          <span class="old-price">R$ 197,00</span>
+          <span class="new-price">R$ 97,00</span>
+        </div>
+
+        <div class="badge">Promoção por tempo limitado</div>
+      </div>
+
       <p class="headline">Cinturinha Fina</p>
 
       <img class="cover-aff" src="Cinturinha_Fina.png" alt="Capa do Ebook Cinturinha Fina" loading="lazy">
@@ -379,6 +376,39 @@
         👉 Ver Oferta
       </a>
 
+      <a class="btn-secondary" href="#comida-com-testosterona">Ver outra recomendação</a>
+
+      <footer>© 2026 Meta Saudável</footer>
+    </section>
+
+    <!-- NOVO EBOOK (A COMIDA COM TESTOSTERONA) - COM OFERTA -->
+    <section class="container" id="comida-com-testosterona" aria-label="Ebook A Comida com Testosterona">
+      <div class="offer-box">
+        <div class="offer-title">Oferta termina em</div>
+        <div class="timer" id="countdown-tst">15:00</div>
+
+        <div class="prices">
+          <span class="old-price">R$ 99,00</span>
+          <span class="new-price">R$ 47,00</span>
+        </div>
+
+        <div class="badge">Promoção por tempo limitado</div>
+      </div>
+
+      <p class="headline">A Comida com Testosterona</p>
+
+      <img class="cover-aff" src="comida_com_testosterona.jpg.png" alt="Capa do Ebook A Comida com Testosterona" loading="lazy">
+
+      <ul class="benefits">
+        <li><span class="check">✓</span> Receitas com alimentos naturais para promover bem-estar.</li>
+        <li><span class="check">✓</span> Conteúdo especial sobre menopausa.</li>
+        <li><span class="check">✓</span> Guia prático e fácil de aplicar no dia a dia.</li>
+      </ul>
+
+      <a class="btn" href="https://pay.hotmart.com/K83209126H?off=p4cbtmlm&checkoutMode=10&ref=E104199384C&bid=1769904933200" target="_blank">
+        👉 Ver Oferta
+      </a>
+
       <a class="btn-secondary" href="index.html">Voltar ao início</a>
 
       <footer>© 2026 Meta Saudável</footer>
@@ -387,20 +417,20 @@
   </main>
 
   <script>
-    // ======= TEMPORIZADOR (15 minutos por visitante) =======
+    // ======= TEMPORIZADOR (15 minutos por visitante / por produto) =======
     const OFFER_MINUTES = 15;
-    const offerKey = "metaSaudavelOfferEnd";
 
-    function startCountdown() {
-      let end = parseInt(localStorage.getItem(offerKey), 10);
+    function startCountdown(elId, storageKey) {
+      let end = parseInt(localStorage.getItem(storageKey), 10);
       const now = Date.now();
 
       if (!end || isNaN(end) || end <= now) {
         end = now + OFFER_MINUTES * 60000;
-        localStorage.setItem(offerKey, String(end));
+        localStorage.setItem(storageKey, String(end));
       }
 
-      const el = document.getElementById("countdown");
+      const el = document.getElementById(elId);
+      if (!el) return;
 
       function tick() {
         const diff = end - Date.now();
@@ -416,7 +446,10 @@
       tick();
     }
 
-    startCountdown();
+    // timers independentes
+    startCountdown("countdown-ms", "metaSaudavelOfferEnd_ms");
+    startCountdown("countdown-cf", "metaSaudavelOfferEnd_cf");
+    startCountdown("countdown-tst", "metaSaudavelOfferEnd_tst");
   </script>
 </body>
 </html>
