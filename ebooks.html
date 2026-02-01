@@ -28,7 +28,8 @@
       display:flex;
       justify-content:space-between;
       align-items:center;
-      gap:12px;
+      flex-wrap:wrap;
+      gap:10px;
     }
     .logo{
       font-weight:900;
@@ -37,10 +38,11 @@
       white-space:nowrap;
     }
 
-    /* MENU RESPONSIVO (igual no index) */
+    /* MENU (ajustado igual no index: não quebra no celular) */
     nav{
       display:flex;
       gap:8px;
+      flex-wrap:nowrap;
       overflow-x:auto;
       -webkit-overflow-scrolling:touch;
       scrollbar-width:none;
@@ -48,16 +50,17 @@
     nav::-webkit-scrollbar{ display:none; }
 
     nav a{
+      margin-left:0; /* mantém gap controlando */
       text-decoration:none;
       font-weight:900;
       font-size:13px;
-      padding:8px 12px;
+      padding:8px 10px;
       border-radius:10px;
       background:#f3fff7;
       color:#1f8a4a;
       border:1px solid rgba(39,174,96,0.18);
       white-space:nowrap;
-      flex-shrink:0;
+      flex:0 0 auto;
     }
     nav a:hover{
       background:#27ae60;
@@ -181,6 +184,13 @@
       font-size:15px;
       line-height:1.35;
     }
+    .muted{
+      margin:10px 0 0;
+      color:#666;
+      font-size:14px;
+      line-height:1.45;
+      text-align:left;
+    }
 
     /* BENEFITS */
     .benefits{
@@ -212,6 +222,19 @@
       margin-top:1px;
     }
 
+    /* TRUST */
+    .trust{
+      margin-top:14px;
+      background:#f7f7f7;
+      border:1px solid rgba(0,0,0,0.08);
+      border-radius:12px;
+      padding:12px;
+      text-align:left;
+      font-size:13px;
+      color:#555;
+      line-height:1.35;
+    }
+
     /* BUTTONS */
     .btn{
       display:block;
@@ -241,6 +264,13 @@
       text-align:center;
     }
     .btn-secondary:hover{ background:#f3fff7; }
+
+    /* DIVIDER */
+    .divider{
+      height:1px;
+      background:rgba(0,0,0,0.08);
+      margin:18px 0;
+    }
 
     /* FOOTER */
     footer{
@@ -319,9 +349,16 @@
         <li><span class="check">✓</span> Sono e hábitos para manter resultados no longo prazo.</li>
       </ul>
 
+      <div class="trust">
+        ✅ Compra segura • ✅ Acesso digital • ✅ Conteúdo direto e prático<br>
+        Dúvidas? Fale comigo no WhatsApp.
+      </div>
+
       <a class="btn" href="https://pay.cakto.com.br/wzbj2wo_749364" target="_blank">
         👉 Comprar Agora
       </a>
+
+      <a class="btn-secondary" href="#cinturinha-fina">Ver outra recomendação</a>
 
       <footer>© 2026 Meta Saudável</footer>
     </section>
