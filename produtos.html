@@ -107,61 +107,38 @@
       text-align:center;
     }
 
-    /* OFFER */
-    .offer-box{
+    /* "EM BREVE" */
+    .soon-box{
       margin:0 0 14px;
       padding:14px 12px;
       border-radius:12px;
       background:#f3fff7;
       border:1px solid rgba(39,174,96,0.25);
     }
-    .offer-title{
+    .soon-title{
       font-weight:900;
       color:#1f8a4a;
-      margin-bottom:8px;
+      margin-bottom:6px;
       font-size:13px;
       text-transform:uppercase;
       letter-spacing:0.7px;
     }
-    .timer{
-      margin:6px auto 10px;
-      padding:10px 12px;
-      border-radius:10px;
-      background:#fff;
-      border:1px dashed rgba(39,174,96,0.6);
+    .soon-text{
       font-weight:900;
       font-size:18px;
       color:#0f5f32;
-      min-width:160px;
-      width:fit-content;
+      margin:0;
     }
-    .prices{
-      display:flex;
-      justify-content:center;
-      gap:10px;
-      align-items:baseline;
-      flex-wrap:wrap;
-    }
-    .old-price{
-      color:#999;
-      text-decoration:line-through;
-      font-weight:800;
-      font-size:16px;
-    }
-    .new-price{
-      color:#1f8a4a;
-      font-weight:900;
-      font-size:26px;
-    }
-    .badge{
+    .soon-badge{
       margin-top:10px;
       padding:6px 10px;
       border-radius:20px;
-      background:var(--green);
-      color:#fff;
+      background:rgba(39,174,96,0.10);
+      color:#1f8a4a;
       font-weight:900;
       font-size:12px;
       display:inline-block;
+      border:1px solid rgba(39,174,96,0.25);
     }
 
     /* IMAGE */
@@ -175,6 +152,23 @@
       background:#fff;
     }
 
+    /* PLACEHOLDER IMAGE */
+    .img-placeholder{
+      width:100%;
+      max-width:280px;
+      height:180px;
+      border-radius:12px;
+      margin:12px auto;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 4px 10px rgba(0,0,0,0.12);
+      background:linear-gradient(135deg, rgba(39,174,96,0.12), rgba(39,174,96,0.04));
+      border:1px dashed rgba(39,174,96,0.45);
+      color:#1f8a4a;
+      font-weight:900;
+    }
+
     /* TEXT */
     .headline{
       margin:10px 0 0;
@@ -182,6 +176,12 @@
       color:#222;
       font-size:15px;
       line-height:1.35;
+    }
+    .muted{
+      color:#666;
+      font-size:13px;
+      margin:10px 0 0;
+      line-height:1.4;
     }
 
     /* BENEFITS */
@@ -214,19 +214,22 @@
       margin-top:1px;
     }
 
-    /* BUTTON */
+    /* BUTTON (DISABLED LOOK) */
     .btn{
       display:block;
-      background:var(--green);
-      color:#fff;
+      background:#cfeedd;
+      color:#1f8a4a;
       padding:15px;
       text-decoration:none;
       border-radius:10px;
       font-size:18px;
       margin-top:16px;
       font-weight:900;
+      border:1px solid rgba(39,174,96,0.25);
+      cursor:not-allowed;
+      pointer-events:none;
+      opacity:0.9;
     }
-    .btn:hover{ background:var(--green2); }
 
     footer{
       text-align:center;
@@ -276,99 +279,60 @@
 <main class="wrap">
   <div class="page-title">Produtos</div>
   <div class="page-sub">
-    Produtos e recomendações selecionadas para apoiar sua jornada de saúde e emagrecimento.
+    Em breve você vai encontrar aqui produtos e recomendações selecionadas para apoiar sua jornada de saúde e emagrecimento.
   </div>
 
   <!-- GRID (2 por linha) -->
   <section class="grid">
 
-    <!-- PRODUTO 1 (EXEMPLO) -->
+    <!-- CARD 1 (EM BREVE) -->
     <div class="container" id="produto-1">
-      <div class="offer-box">
-        <div class="offer-title">Oferta termina em</div>
-        <div class="timer" id="countdown-p1">15:00</div>
-
-        <div class="prices">
-          <span class="old-price">R$ 159,00</span>
-          <span class="new-price">R$ 99,00</span>
-        </div>
-
-        <div class="badge">Promoção por tempo limitado</div>
+      <div class="soon-box">
+        <div class="soon-title">Em breve</div>
+        <p class="soon-text">Novos produtos chegando</p>
+        <div class="soon-badge">Página em atualização</div>
       </div>
 
-      <p class="headline">Produto Exemplo 1</p>
+      <p class="headline">Estamos preparando recomendações para você</p>
 
-      <img class="img-prod" src="produto_exemplo_1.png" alt="Produto Exemplo 1" loading="lazy">
+      <div class="img-placeholder">📦 PRODUTO EM BREVE</div>
 
       <ul class="benefits">
-        <li><span class="check">✓</span> Benefício principal do produto.</li>
-        <li><span class="check">✓</span> Benefício secundário (resultado esperado).</li>
-        <li><span class="check">✓</span> Indicado para quem quer praticidade.</li>
+        <li><span class="check">✓</span> Seleção focada em praticidade e resultados.</li>
+        <li><span class="check">✓</span> Itens e recomendações alinhados com sua rotina.</li>
+        <li><span class="check">✓</span> Links e detalhes serão liberados em breve.</li>
       </ul>
 
-      <a class="btn" href="#" target="_blank">👉 Ver Oferta</a>
+      <a class="btn" href="#">🔒 Em breve</a>
       <footer>© 2026 Meta Saudável</footer>
     </div>
 
-    <!-- PRODUTO 2 (EXEMPLO) -->
+    <!-- CARD 2 (EM BREVE) -->
     <div class="container" id="produto-2">
-      <div class="offer-box">
-        <div class="offer-title">Oferta termina em</div>
-        <div class="timer" id="countdown-p2">15:00</div>
-
-        <div class="prices">
-          <span class="old-price">R$ 120,00</span>
-          <span class="new-price">R$ 79,00</span>
-        </div>
-
-        <div class="badge">Promoção por tempo limitado</div>
+      <div class="soon-box">
+        <div class="soon-title">Em breve</div>
+        <p class="soon-text">Ofertas e novidades</p>
+        <div class="soon-badge">Aguarde 🙂</div>
       </div>
 
-      <p class="headline">Produto Exemplo 2</p>
+      <p class="headline">Em breve: produtos recomendados + links</p>
 
-      <img class="img-prod" src="produto_exemplo_2.png" alt="Produto Exemplo 2" loading="lazy">
+      <div class="img-placeholder">🛒 OFERTAS EM BREVE</div>
 
       <ul class="benefits">
-        <li><span class="check">✓</span> Apoia a rotina (ex.: bem-estar / energia).</li>
-        <li><span class="check">✓</span> Fácil de encaixar no dia a dia.</li>
-        <li><span class="check">✓</span> Recomendação popular.</li>
+        <li><span class="check">✓</span> Recomendações confiáveis e fáceis de comprar.</li>
+        <li><span class="check">✓</span> Você verá preço, descrição e benefícios.</li>
+        <li><span class="check">✓</span> Tudo organizado para não ficar bagunçado.</li>
       </ul>
 
-      <a class="btn" href="#" target="_blank">👉 Ver Oferta</a>
+      <a class="btn" href="#">🔒 Em breve</a>
       <footer>© 2026 Meta Saudável</footer>
     </div>
 
   </section>
 </main>
 
-<script>
-  const OFFER_MINUTES = 15;
-
-  function startCountdown(elId, key){
-    let end = parseInt(localStorage.getItem(key),10);
-    const now = Date.now();
-    if(!end || end <= now){
-      end = now + OFFER_MINUTES*60000;
-      localStorage.setItem(key, end);
-    }
-    const el = document.getElementById(elId);
-    if(!el) return;
-
-    function tick(){
-      const diff = end - Date.now();
-      if(diff <= 0){ el.textContent = "00:00"; return; }
-      const m = String(Math.floor(diff/60000)).padStart(2,"0");
-      const s = String(Math.floor((diff%60000)/1000)).padStart(2,"0");
-      el.textContent = `${m}:${s}`;
-      setTimeout(tick,1000);
-    }
-    tick();
-  }
-
-  startCountdown("countdown-p1","offer-p1");
-  startCountdown("countdown-p2","offer-p2");
-</script>
+<!-- Removido: script de oferta/timer (modo espera) -->
 
 </body>
 </html>
-
