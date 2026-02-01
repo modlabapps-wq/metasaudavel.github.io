@@ -199,9 +199,7 @@ nav a:hover{ background:var(--green); color:#fff; }
 }
 
 /* SECTION */
-.section{
-  margin-top:18px;
-}
+.section{ margin-top:18px; }
 .section-title{
   display:flex;
   justify-content:space-between;
@@ -568,23 +566,43 @@ footer{
 
   // ====== DADOS ======
   const ebooks = [
-    { name: "Como Emagrecer em Casa", img: "capa_meta_saudavel.jpg", desc: "Método prático para emagrecer sem academia.", link: "ebooks.html" },
-    { name: "Cinturinha Fina", img: "Cinturinha_Fina.png", desc: "Foco em cintura e definição, com método direto e visual.", link: "ebooks.html#cinturinha-fina" },
-    { name: "A Comida com Testosterona", img: "comida_com_testosterona.jpg.png", desc: "Receitas e rotina alimentar (abra na seção dentro de Ebooks).", link: "ebooks.html#comida-com-testosterona" }
+    {
+      name: "Como Emagrecer em Casa",
+      img: "capa_meta_saudavel.jpg",
+      desc: "Método prático para emagrecer sem academia.",
+      link: "ebooks.html#como-emagrecer-em-casa"
+    },
+    {
+      name: "Cinturinha Fina",
+      img: "Cinturinha_Fina.png",
+      desc: "Foco em cintura e definição, com método direto e visual.",
+      link: "ebooks.html#cinturinha-fina"
+    },
+    {
+      name: "A Comida com Testosterona",
+      img: "comida_com_testosterona.jpg.png",
+      desc: "Receitas e rotina alimentar (abra direto no ebook).",
+      link: "ebooks.html#comida-com-testosterona"
+    },
+    {
+      name: "Dieta em Ação",
+      img: "dieta_em_acao.png",
+      desc: "Plano alimentar prático para organizar sua rotina e emagrecer.",
+      link: "ebooks.html#dieta-em-acao"
+    }
   ];
 
-  /* >>> AQUI: PRODUTOS (puxados da sua página Produtos) <<< */
   const produtos = [
     {
       name: "Creatina Monohidratada 300g – Puro Nutrition",
       img: "creatina-puro-nutrition-300g.jpg",
-      desc: "Suplemento amplamente utilizado para complementar treinos. Alta avaliação e boa aceitação.",
+      desc: "Suplemento amplamente utilizado para complementar treinos.",
       link: "produtos.html"
     },
     {
       name: "Ômega 3 + Vitamina E Everlasting Nutrition (90 cápsulas)",
       img: "omega-3-vitamina-e-everlasting-90caps.jpg",
-      desc: "Alta concentração EPA/DHA e selo de qualidade MEG-3®. Praticidade no dia a dia.",
+      desc: "Alta concentração EPA/DHA e selo MEG-3®.",
       link: "produtos.html"
     }
   ];
