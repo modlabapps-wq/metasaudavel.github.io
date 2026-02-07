@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Meta Saudável | Emagreça em Casa</title>
+<title>Radar De Ofertas | Achadinhos e Promoções</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -105,9 +105,10 @@ nav a:hover{ background:var(--green); color:#fff; }
   margin:0;
   color:var(--muted);
   font-size:14px;
+  line-height:1.5;
 }
 
-/* ===== CURIOSIDADE DO DIA (compacta) ===== */
+/* ===== ACHADINHO DO DIA (compacto) ===== */
 .curiosity-top{
   margin-top:14px;
   background:var(--card);
@@ -160,6 +161,10 @@ nav a:hover{ background:var(--green); color:#fff; }
 
 .curiosity-actions{
   margin-top:10px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center;
 }
 .curiosity-actions button{
   border:none;
@@ -175,6 +180,15 @@ nav a:hover{ background:var(--green); color:#fff; }
   background:var(--green);
   color:#fff;
 }
+.curiosity-actions a{
+  text-decoration:none;
+  background:var(--green);
+  color:#fff;
+  font-weight:900;
+  padding:8px 12px;
+  border-radius:12px;
+}
+.curiosity-actions a:hover{ background:var(--green2); }
 
 /* ===== SECTIONS ===== */
 .section{ margin-top:18px; }
@@ -231,10 +245,11 @@ nav a:hover{ background:var(--green); color:#fff; }
   pointer-events:auto;
   cursor:pointer;
 }
+
+/* Hover clicável (desktop) */
 .slide.active:hover{
   transform:translateY(-2px) scale(1.01);
 }
-
 .slide img{
   width:100%;
   max-width:320px;
@@ -242,6 +257,7 @@ nav a:hover{ background:var(--green); color:#fff; }
   object-fit:contain;
   border-radius:14px;
   box-shadow:0 8px 18px rgba(0,0,0,0.16);
+  background:#fff;
 }
 .slide .name{
   font-weight:900;
@@ -250,8 +266,10 @@ nav a:hover{ background:var(--green); color:#fff; }
 .slide .desc{
   font-size:13px;
   color:#666;
+  line-height:1.35;
 }
 
+/* controls */
 .slider-controls{
   display:flex;
   justify-content:space-between;
@@ -268,6 +286,26 @@ nav a:hover{ background:var(--green); color:#fff; }
 }
 .mini-btn:hover{ background:var(--green); color:#fff; }
 
+/* ===== SEÇÃO VIDEOS (em breve) ===== */
+.info-card{
+  margin-top:16px;
+  background:var(--card);
+  border-radius:16px;
+  padding:18px;
+  box-shadow:0 0 18px rgba(0,0,0,0.08);
+}
+.info-card h3{
+  margin:0 0 8px;
+  color:var(--green);
+  font-weight:900;
+}
+.info-card p{
+  margin:0;
+  color:#444;
+  line-height:1.5;
+  font-size:14px;
+}
+
 /* FOOTER */
 footer{
   text-align:center;
@@ -282,12 +320,14 @@ footer{
 
 <header>
   <div class="header-container">
-    <div class="logo">Meta Saudável</div>
+    <div class="logo">Radar De Ofertas</div>
     <nav>
-      <a href="ebooks.html">Ebooks</a>
-      <a href="produtos.html">Produtos</a>
+      <!-- Mantive os arquivos antigos pra não quebrar links agora -->
+      <a href="index.html">Início</a>
+      <a href="ebooks.html">Ofertas</a>
+      <a href="produtos.html">Amazon</a>
       <a href="videos.html">Vídeos</a>
-      <a href="curiosidades.html">Curiosidades</a>
+      <a href="curiosidades.html">Achadinhos</a>
     </nav>
   </div>
 </header>
@@ -295,19 +335,22 @@ footer{
 <main class="wrap">
 
 <section class="hero">
-  <h1>Emagreça em Casa</h1>
-  <p>Conteúdo simples, direto e organizado para quem quer resultados reais.</p>
+  <h1>Radar De Ofertas</h1>
+  <p>Achadinhos reais, promoções e produtos úteis de <strong>tudo</strong>: casa, eletrônicos, beleza, moda e mais.</p>
 </section>
 
 <section class="curiosity-top">
   <div class="curiosity-head">
-    <span class="curiosity-badge">Curiosidade do dia</span>
-    <a class="curiosity-more" href="curiosidades.html">Ver +300</a>
+    <span class="curiosity-badge">Achadinho do dia</span>
+    <a class="curiosity-more" href="curiosidades.html">Ver + Ofertas</a>
   </div>
-  <h3 class="curiosity-title" id="curTitle"></h3>
-  <p class="curiosity-text" id="curText"></p>
+
+  <h3 class="curiosity-title" id="dealTitle"></h3>
+  <p class="curiosity-text" id="dealText"></p>
+
   <div class="curiosity-actions">
-    <button onclick="copyCur()">📋 Copiar curiosidade</button>
+    <button onclick="copyDeal()">📋 Copiar</button>
+    <a id="dealLinkBtn" href="produtos.html">Abrir oferta</a>
   </div>
 </section>
 
@@ -316,7 +359,7 @@ footer{
 
   <div class="cards-row">
     <div class="card">
-      <div class="section-title">Ebooks</div>
+      <div class="section-title">Ofertas em destaque</div>
       <div class="slider" id="ebooksSlider"></div>
       <div class="slider-controls">
         <button class="mini-btn" onclick="prevSlide('ebooks')">◀</button>
@@ -325,7 +368,7 @@ footer{
     </div>
 
     <div class="card">
-      <div class="section-title">Produtos</div>
+      <div class="section-title">Mais procurados</div>
       <div class="slider" id="produtosSlider"></div>
       <div class="slider-controls">
         <button class="mini-btn" onclick="prevSlide('produtos')">◀</button>
@@ -335,52 +378,103 @@ footer{
   </div>
 </section>
 
-<footer>© 2026 Meta Saudável</footer>
+<section class="info-card">
+  <h3>Vídeos</h3>
+  <p><strong>Em breve</strong> — reviews rápidos, comparativos, “vale a pena?” e testes honestos dos produtos.</p>
+</section>
+
+<footer>© 2026 Radar De Ofertas</footer>
 </main>
 
 <script>
-/* Curiosidade do dia */
-const curiosidades=[
- ["Sono e emagrecimento","Dormir pouco aumenta a fome e reduz a saciedade."],
- ["Água antes das refeições","Beber água antes de comer ajuda a controlar porções."],
- ["Proteína no café","Proteína pela manhã ajuda a segurar a fome."]
+/* ===== ACHADINHO DO DIA =====
+   Troque os textos e links conforme você for publicando. */
+const deals = [
+  {
+    t: "Promo relâmpago: Fone Bluetooth custo-benefício",
+    d: "Se você quer um fone baratinho pra dia a dia, procura por modelos com 4.5+ estrelas e boa autonomia (6h+).",
+    link: "produtos.html"
+  },
+  {
+    t: "Achadinho de casa: organizadores que mudam tudo",
+    d: "Organizadores transparentes + etiquetas deixam a casa mais prática e dão sensação de “tudo no lugar”.",
+    link: "produtos.html"
+  },
+  {
+    t: "Eletrônicos: carregador rápido com proteção",
+    d: "Prefira carregadores com proteção contra sobrecarga e cabo reforçado. Vale mais do que o mais barato.",
+    link: "produtos.html"
+  }
 ];
-const d=new Date().getDate()%curiosidades.length;
-document.getElementById("curTitle").textContent=curiosidades[d][0];
-document.getElementById("curText").textContent=curiosidades[d][1];
-function copyCur(){
- navigator.clipboard.writeText(curiosidades[d][0]+" - "+curiosidades[d][1]);
+
+function dayKey(){
+  const now = new Date();
+  return `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,"0")}-${String(now.getDate()).padStart(2,"0")}`;
+}
+function hashString(str){
+  let h=0;
+  for(let i=0;i<str.length;i++){
+    h=(h<<5)-h+str.charCodeAt(i);
+    h|=0;
+  }
+  return Math.abs(h);
 }
 
-/* SLIDERS COM AUTOPLAY */
+const dealIndex = hashString(dayKey()) % deals.length;
+const deal = deals[dealIndex];
+
+document.getElementById("dealTitle").textContent = deal.t;
+document.getElementById("dealText").textContent = deal.d;
+
+const dealBtn = document.getElementById("dealLinkBtn");
+dealBtn.href = deal.link;
+
+function copyDeal(){
+  const txt = `Radar De Ofertas — ${deal.t}\n\n${deal.d}\n\nConfira: ${deal.link}`;
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt);
+  }else{
+    const ta=document.createElement("textarea");
+    ta.value=txt; ta.style.position="fixed"; ta.style.left="-9999px";
+    document.body.appendChild(ta);
+    ta.select();
+    try{ document.execCommand("copy"); }catch(e){}
+    document.body.removeChild(ta);
+  }
+}
+
+/* ===== SLIDERS COM AUTOPLAY =====
+   "ebooks" aqui virou "Ofertas em destaque" (mantive o id pra não quebrar nada) */
 const data={
- ebooks:[
-  {n:"Como Emagrecer em Casa",i:"capa_meta_saudavel.jpg",d:"Método prático.",l:"ebooks.html#como-emagrecer-em-casa"},
-  {n:"Cinturinha Fina",i:"Cinturinha_Fina.png",d:"Redução de medidas.",l:"ebooks.html#cinturinha-fina"},
-  {n:"A Comida com Testosterona",i:"comida_com_testosterona.jpg.png",d:"Alimentação e energia.",l:"ebooks.html#comida-com-testosterona"},
-  {n:"Dieta em Ação",i:"dieta_em_acao.png",d:"Plano alimentar.",l:"ebooks.html#dieta-em-acao"}
- ],
- produtos:[
-  {n:"Creatina Monohidratada",i:"creatina-puro-nutrition-300g.jpg",d:"Complemento para treino.",l:"produtos.html"},
-  {n:"Ômega 3 + Vitamina E",i:"omega-3-vitamina-e-everlasting-90caps.jpg",d:"EPA/DHA alta.",l:"produtos.html"}
- ]
+  ebooks:[
+    {n:"Smartwatch custo-benefício", i:"oferta_smartwatch.png", d:"Ótimo para dia a dia: passos, notificações e bateria boa.", l:"produtos.html"},
+    {n:"Organizadores para geladeira", i:"oferta_organizadores.png", d:"Deixa tudo visível e organizado — dá outra cara na cozinha.", l:"produtos.html"},
+    {n:"Kit beleza / autocuidado", i:"oferta_beleza.png", d:"Itens úteis pra rotina (sem gastar muito).", l:"produtos.html"},
+    {n:"Lâmpada inteligente", i:"oferta_lampada.png", d:"Controle pelo celular + economia + ambiente mais bonito.", l:"produtos.html"}
+  ],
+  produtos:[
+    {n:"Creatina Monohidratada (exemplo)", i:"creatina-puro-nutrition-300g.jpg", d:"Exemplo de item — troque para seus achados atuais.", l:"produtos.html"},
+    {n:"Ômega 3 (exemplo)", i:"omega-3-vitamina-e-everlasting-90caps.jpg", d:"Exemplo de item — troque conforme suas ofertas.", l:"produtos.html"}
+  ]
 };
 
 const idx={ebooks:0,produtos:0};
 
 function render(type){
- const s=document.getElementById(type+"Slider");
- const it=data[type][idx[type]];
- s.innerHTML=`<div class="slide active" onclick="location.href='${it.l}'">
-   <img src="${it.i}">
-   <div class="name">${it.n}</div>
-   <div class="desc">${it.d}</div>
- </div>`;
+  const s=document.getElementById(type+"Slider");
+  const it=data[type][idx[type]];
+  s.innerHTML =
+    `<div class="slide active" onclick="location.href='${it.l}'">
+      <img src="${it.i}" alt="${it.n}" loading="lazy">
+      <div class="name">${it.n}</div>
+      <div class="desc">${it.d}</div>
+    </div>`;
 }
 function nextSlide(t){ idx[t]=(idx[t]+1)%data[t].length; render(t); }
 function prevSlide(t){ idx[t]=(idx[t]-1+data[t].length)%data[t].length; render(t); }
 
-render("ebooks"); render("produtos");
+render("ebooks");
+render("produtos");
 setInterval(()=>nextSlide("ebooks"),3500);
 setInterval(()=>nextSlide("produtos"),3500);
 </script>
